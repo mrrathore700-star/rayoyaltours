@@ -28,7 +28,7 @@ const Contact = () => {
             <div className="space-y-6 mb-8">
               {[
                 { icon: MapPin, label: "Visit Us", value: "C-Scheme, Jaipur, Rajasthan 302001, India" },
-                { icon: Phone, label: "Call Us", value: "+91 98765 43210" },
+                { icon: Phone, label: "Call Us", value: "+91 94610 69858" },
                 { icon: Mail, label: "Email Us", value: "info@pinkelephant.tours" },
               ].map((item, i) => (
                 <div key={i} className="flex items-start gap-4">
