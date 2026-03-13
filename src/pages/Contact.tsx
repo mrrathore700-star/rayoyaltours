@@ -28,7 +28,7 @@ const Contact = () => {
             <div className="space-y-6 mb-8">
               {[
                 { icon: MapPin, label: "Visit Us", value: "C-Scheme, Jaipur, Rajasthan 302001, India" },
-                { icon: Phone, label: "Call Us", value: "+91 98765 43210" },
+                { icon: Phone, label: "Call Us", value: "+91 94610 69858" },
                 { icon: Mail, label: "Email Us", value: "info@pinkelephant.tours" },
               ].map((item, i) => (
                 <div key={i} className="flex items-start gap-4">
@@ -43,7 +43,7 @@ const Contact = () => {
               ))}
             </div>
             <a
-              href="https://wa.me/919876543210"
+              href="https://wa.me/919461069858"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 px-6 py-3 rounded-md bg-[hsl(142,70%,40%)] text-[hsl(0,0%,100%)] font-semibold hover:opacity-90 transition-opacity"
