@@ -32,7 +32,7 @@ const Sightseeing = () => (
               <h3 className="font-display text-2xl md:text-3xl font-bold text-foreground mb-3">{spot.title}</h3>
               <p className="font-serif text-lg text-muted-foreground mb-4">{spot.desc}</p>
               <a
-                href="https://wa.me/919876543210?text=I%20want%20to%20visit%20" 
+                href="https://wa.me/919461069858?text=I%20want%20to%20visit%20" 
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 px-6 py-3 rounded-md heritage-gradient text-primary-foreground font-semibold text-sm hover:opacity-90 transition-opacity"

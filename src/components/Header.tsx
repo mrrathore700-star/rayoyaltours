@@ -83,11 +83,11 @@ const Header = () => {
               </Link>
             ))}
             <a
-              href="tel:+919876543210"
+              href="tel:+919461069858"
               className="flex items-center gap-2 px-4 py-3 text-sm font-medium text-primary"
             >
               <Phone className="h-4 w-4" />
-              +91 98765 43210
+              +91 94610 69858
             </a>
           </nav>
         </div>

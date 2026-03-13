@@ -35,7 +35,7 @@ const Experiences = () => (
               <h3 className="font-display text-xl font-bold text-foreground mb-2">{exp.title}</h3>
               <p className="text-sm text-muted-foreground mb-4">{exp.desc}</p>
               <a
-                href="https://wa.me/919876543210"
+                href="https://wa.me/919461069858"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-sm font-semibold text-primary hover:text-primary/80 transition-colors"

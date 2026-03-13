@@ -37,7 +37,7 @@ const Taxi = () => (
               </div>
               <p className="text-sm text-muted-foreground mb-4">{s.desc}</p>
               <a
-                href="https://wa.me/919876543210?text=I%20need%20taxi%20service"
+                href="https://wa.me/919461069858?text=I%20need%20taxi%20service"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-sm font-semibold text-primary hover:text-primary/80 transition-colors"
