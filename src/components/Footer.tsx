@@ -6,7 +6,7 @@ const Footer = () => (
     <div className="container mx-auto px-4 py-16">
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
         <div>
-          <h3 className="font-display text-2xl font-bold mb-4">Pink Elephant</h3>
+          <h3 className="font-display text-2xl font-bold mb-4">Heritage Jaipur Travels</h3>
           <p className="text-sm opacity-80 font-serif text-lg leading-relaxed">
             Your trusted partner for royal Rajasthan heritage tours. Experience the grandeur of India's most colorful state with local Jaipur experts.
           </p>
@@ -53,13 +53,13 @@ const Footer = () => (
             </li>
             <li className="flex items-center gap-2">
               <Mail className="h-4 w-4 shrink-0" />
-              info@pinkelephant.tours
+              info@heritagejaipur.tours
             </li>
           </ul>
         </div>
       </div>
       <div className="mt-12 pt-8 border-t border-primary-foreground/20 text-center text-sm opacity-60">
-        © {new Date().getFullYear()} Pink Elephant Tours & Travels. All rights reserved.
+        © {new Date().getFullYear()} Heritage Jaipur Travels. All rights reserved.
       </div>
     </div>
   </footer>

@@ -10,7 +10,7 @@ import TourCard from "@/components/TourCard";
 import { tours } from "@/data/tours";
 
 const testimonials = [
-  { name: "Sarah M.", country: "United Kingdom", text: "An absolutely unforgettable experience. The team at Pink Elephant made us feel like royalty throughout our Rajasthan journey.", rating: 5 },
+  { name: "Sarah M.", country: "United Kingdom", text: "An absolutely unforgettable experience. The team at Heritage Jaipur Travels made us feel like royalty throughout our Rajasthan journey.", rating: 5 },
   { name: "James & Linda", country: "Australia", text: "Best tour company in Jaipur! Their local knowledge and attention to detail made our Golden Triangle tour truly special.", rating: 5 },
   { name: "Hiroshi T.", country: "Japan", text: "The desert safari was magical. Professional guides, authentic experiences, and incredible hospitality. Highly recommend!", rating: 5 },
 ];
@@ -40,7 +40,7 @@ const Index = () => {
         </div>
         <div className="relative z-10 text-center px-4 max-w-4xl mx-auto">
           <p className="font-serif text-lg md:text-xl text-sand tracking-widest uppercase mb-4 animate-fade-in">
-            Pink Elephant Tours & Travels
+            Heritage Jaipur Travels
           </p>
           <h1 className="font-display text-4xl md:text-6xl lg:text-7xl font-bold text-sand mb-6 animate-fade-in-up leading-tight">
             Experience the Royal Heritage of Rajasthan
@@ -100,7 +100,7 @@ const Index = () => {
       <section className="py-20 bg-background">
         <div className="container mx-auto px-4">
           <SectionHeading
-            title="Why Choose Pink Elephant Tours"
+            title="Why Choose Heritage Jaipur Travels"
             subtitle="We don't just show you Rajasthan — we help you live it"
           />
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -196,7 +196,7 @@ const Index = () => {
           <SectionHeading title="Frequently Asked Questions" />
           <div className="space-y-4">
             {[
-              { q: "How do I book a tour with Pink Elephant?", a: "Simply contact us via WhatsApp, email, or our contact form. We'll customize your perfect Rajasthan itinerary within 24 hours." },
+              { q: "How do I book a tour with Heritage Jaipur Travels?", a: "Simply contact us via WhatsApp, email, or our contact form. We'll customize your perfect Rajasthan itinerary within 24 hours." },
               { q: "Are your tours private or group tours?", a: "All our tours are 100% private. You'll have a dedicated driver and guide throughout your journey." },
               { q: "What is included in the tour price?", a: "Our packages typically include private AC vehicle, professional guide, hotel accommodation, monument entry fees, and select meals." },
               { q: "Is it safe for solo female travelers?", a: "Absolutely! We have extensive experience hosting solo female travelers and ensure the highest safety standards throughout the trip." },
