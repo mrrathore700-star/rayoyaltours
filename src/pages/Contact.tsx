@@ -29,7 +29,7 @@ const Contact = () => {
               {[
                 { icon: MapPin, label: "Visit Us", value: "C-Scheme, Jaipur, Rajasthan 302001, India" },
                 { icon: Phone, label: "Call Us", value: "+91 94610 69858" },
-                { icon: Mail, label: "Email Us", value: "info@heritagejaipur.tours" },
+                { icon: Mail, label: "Email Us", value: "info@heritagejaipurtravels.com", href: "mailto:info@heritagejaipurtravels.com" },
               ].map((item, i) => (
                 <div key={i} className="flex items-start gap-4">
                   <div className="w-12 h-12 rounded-full heritage-gradient flex items-center justify-center text-primary-foreground shrink-0">
