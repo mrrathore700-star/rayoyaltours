@@ -26,10 +26,10 @@ const Contact = () => {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 max-w-5xl mx-auto">
           <div>
             <div className="space-y-6 mb-8">
-              {[
+{[
                 { icon: MapPin, label: "Visit Us", value: "C-Scheme, Jaipur, Rajasthan 302001, India" },
-                { icon: Phone, label: "Call Us", value: "+91 94610 69858" },
-                { icon: Mail, label: "Email Us", value: "info@heritagejaipur.tours" },
+                { icon: Phone, label: "Call Us", value: "+91 94610 69858", href: "tel:+919461069858" },
+                { icon: Mail, label: "Email Us", value: "info@heritagejaipurtravels.com", href: "mailto:info@heritagejaipurtravels.com" },
               ].map((item, i) => (
                 <div key={i} className="flex items-start gap-4">
                   <div className="w-12 h-12 rounded-full heritage-gradient flex items-center justify-center text-primary-foreground shrink-0">
@@ -37,7 +37,11 @@ const Contact = () => {
                   </div>
                   <div>
                     <p className="font-display font-semibold text-foreground">{item.label}</p>
-                    <p className="text-sm text-muted-foreground">{item.value}</p>
+                    {item.href ? (
+                      <a href={item.href} className="text-sm text-primary hover:underline font-medium">{item.value}</a>
+                    ) : (
+                      <p className="text-sm text-muted-foreground">{item.value}</p>
+                    )}
                   </div>
                 </div>
               ))}
