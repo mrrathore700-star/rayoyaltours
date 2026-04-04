@@ -29,7 +29,7 @@ const Contact = () => {
               {[
                 { icon: MapPin, label: "Visit Us", value: "C-Scheme, Jaipur, Rajasthan 302001, India" },
                 { icon: Phone, label: "Call Us", value: "+91 94610 69858" },
-                { icon: Mail, label: "Email Us", value: "info@pinkelephant.tours" },
+                { icon: Mail, label: "Email Us", value: "info@heritagejaipur.tours" },
               ].map((item, i) => (
                 <div key={i} className="flex items-start gap-4">
                   <div className="w-12 h-12 rounded-full heritage-gradient flex items-center justify-center text-primary-foreground shrink-0">
@@ -53,7 +53,7 @@ const Contact = () => {
             {/* Map */}
             <div className="mt-8 rounded-lg overflow-hidden heritage-shadow">
               <iframe
-                title="Pink Elephant Tours Location"
+                title="Heritage Jaipur Travels Location"
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3557.6544895550447!2d75.7872!3d26.9124!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjbCsDU0JzQ0LjYiTiA3NcKwNDcnMTMuOSJF!5e0!3m2!1sen!2sin!4v1234567890"
                 width="100%"
                 height="250"

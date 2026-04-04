@@ -22,10 +22,10 @@ const Header = () => {
     <header className="fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-md border-b border-border">
       <div className="container mx-auto flex items-center justify-between h-16 md:h-20 px-4">
         <Link to="/" className="flex items-center gap-2">
-          <img src={logo} alt="Pink Elephant Tours" className="h-10 md:h-14 w-auto" />
+          <img src={logo} alt="Heritage Jaipur Travels" className="h-10 md:h-14 w-auto" />
           <div className="hidden sm:block">
             <span className="font-display text-lg md:text-xl font-bold text-foreground leading-tight block">
-              Pink Elephant
+              Heritage Jaipur Travels
             </span>
             <span className="text-xs text-muted-foreground tracking-widest uppercase">Tours & Travels</span>
           </div>
