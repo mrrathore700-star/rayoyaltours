@@ -33,19 +33,11 @@ const Footer = () => (
         <div>
           <h4 className="font-display text-lg font-semibold mb-4">Popular Tours</h4>
           <ul className="space-y-2 text-sm opacity-80">
-            {[
-              "Jaipur Heritage Tour",
-              "Golden Triangle Tour",
-              "Rajasthan Royal Tour",
-              "Desert Safari Jaisalmer",
-              "Udaipur Lake Tour",
-            ].map((tour) => (
-              <li key={tour}>
-                <Link to="/packages" className="hover:opacity-100 transition-opacity">
-                  {tour}
-                </Link>
-              </li>
-            ))}
+            <li>Jaipur Heritage Tour</li>
+            <li>Golden Triangle Tour</li>
+            <li>Rajasthan Royal Tour</li>
+            <li>Desert Safari Jaisalmer</li>
+            <li>Udaipur Lake Tour</li>
           </ul>
         </div>
         <div>
