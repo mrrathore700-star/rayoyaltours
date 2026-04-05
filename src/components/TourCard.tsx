@@ -38,7 +38,7 @@ const TourCard = ({ image, title, duration, highlights, price, slug }: TourCardP
         ))}
       </ul>
       <Link
-        to={slug ? `/packages#${slug}` : "/contact"}
+        to={slug ? `/packages/${slug}` : "/contact"}
         className="inline-flex items-center justify-center w-full py-2.5 rounded-md heritage-gradient text-primary-foreground font-semibold text-sm hover:opacity-90 transition-opacity"
       >
         Book Now
