@@ -25,7 +25,7 @@ export const tours = [
     image: royalTour,
     title: "Rajasthan Royal Heritage Tour",
     duration: "6 Days / 5 Nights",
-    highlights: ["Jaipur", "Jodhpur", "Jaisalmer", "Heritage Hotels"],
+    highlights: ["Jaipur", "Jodhpur", "Jaisalmer"],
     price: "From $699",
     slug: "rajasthan-royal",
   },
