@@ -63,7 +63,7 @@ const TourDetail = () => {
             <div className="flex flex-wrap gap-4 text-sm">
               <span className="flex items-center gap-1"><Calendar className="h-4 w-4" /> {tour.duration}</span>
               <span className="flex items-center gap-1"><MapPin className="h-4 w-4" /> Jaipur, Jodhpur, Jaisalmer</span>
-              <span className="inline-block bg-secondary text-secondary-foreground px-3 py-1 rounded-full font-bold">{tour.price}</span>
+              <a href="#book" className="inline-block bg-secondary text-secondary-foreground px-3 py-1 rounded-full font-bold hover:opacity-90 transition-opacity">Contact Us for Pricing</a>
             </div>
           </div>
         </section>
