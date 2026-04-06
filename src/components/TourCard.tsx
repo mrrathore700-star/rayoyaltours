@@ -19,9 +19,6 @@ const TourCard = ({ image, title, duration, highlights, slug }: TourCardProps) =
         className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
         loading="lazy"
       />
-      <div className="absolute top-4 right-4 bg-primary text-primary-foreground px-3 py-1 rounded-full text-sm font-bold">
-        Contact Us
-      </div>
     </div>
     <div className="p-5">
       <h3 className="font-display text-xl font-bold text-foreground mb-2">{title}</h3>
