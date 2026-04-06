@@ -27,7 +27,7 @@ const Header = () => {
             <span className="font-display text-lg md:text-xl font-bold text-foreground leading-tight block">
               Heritage Jaipur Travels
             </span>
-            <span className="text-xs text-muted-foreground tracking-widest uppercase">Tours & Travels</span>
+            
           </div>
         </Link>
 
