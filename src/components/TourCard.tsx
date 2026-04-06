@@ -6,11 +6,11 @@ interface TourCardProps {
   title: string;
   duration: string;
   highlights: string[];
-  price: string;
+  price?: string;
   slug?: string;
 }
 
-const TourCard = ({ image, title, duration, highlights, price, slug }: TourCardProps) => (
+const TourCard = ({ image, title, duration, highlights, slug }: TourCardProps) => (
   <div className="heritage-card group">
     <div className="relative overflow-hidden aspect-[4/3]">
       <img
@@ -19,8 +19,8 @@ const TourCard = ({ image, title, duration, highlights, price, slug }: TourCardP
         className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
         loading="lazy"
       />
-      <div className="absolute top-4 right-4 bg-secondary text-secondary-foreground px-3 py-1 rounded-full text-sm font-bold">
-        {price}
+      <div className="absolute top-4 right-4 bg-primary text-primary-foreground px-3 py-1 rounded-full text-sm font-bold">
+        Contact Us
       </div>
     </div>
     <div className="p-5">
