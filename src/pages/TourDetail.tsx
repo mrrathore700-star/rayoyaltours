@@ -2,6 +2,7 @@ import { useParams, Link } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import { ArrowLeft, CheckCircle, XCircle, MapPin, Calendar, Users, Star, Plane, Hotel, Send } from "lucide-react";
 import { tourDetails } from "@/data/tourDetails";
+import { tours } from "@/data/tours";
 import SectionHeading from "@/components/SectionHeading";
 import { useState } from "react";
 import { useToast } from "@/hooks/use-toast";
@@ -62,7 +63,7 @@ const TourDetail = () => {
             <h1 className="font-display text-3xl md:text-5xl font-bold mb-4">{tour.title}</h1>
             <div className="flex flex-wrap gap-4 text-sm">
               <span className="flex items-center gap-1"><Calendar className="h-4 w-4" /> {tour.duration}</span>
-              <span className="flex items-center gap-1"><MapPin className="h-4 w-4" /> {tour.highlights.slice(0, 3).join(", ")}</span>
+              <span className="flex items-center gap-1"><MapPin className="h-4 w-4" /> {tours.find(t => t.slug === slug)?.highlights.join(", ") || "Rajasthan"}</span>
               <a href="#book" className="inline-block bg-secondary text-secondary-foreground px-3 py-1 rounded-full font-bold hover:opacity-90 transition-opacity">Contact Us for Pricing</a>
             </div>
           </div>
