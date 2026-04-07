@@ -17,9 +17,9 @@ export const tours = [
   {
     image: goldenTriangle,
     title: "Golden Triangle Tour",
-    duration: "5 Days / 4 Nights",
+    duration: "6 Days / 5 Nights",
     highlights: ["Delhi", "Agra", "Jaipur"],
-    price: "From $349",
+    price: "Contact Us",
     slug: "golden-triangle",
   },
   {
