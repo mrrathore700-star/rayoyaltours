@@ -3,6 +3,7 @@ import goldenTriangle from "@/assets/golden-triangle.jpg";
 import royalTour from "@/assets/royal-tour.jpg";
 import desertSafari from "@/assets/desert-safari.jpg";
 import udaipurLake from "@/assets/udaipur-lake.jpg";
+import ranthamboreTiger from "@/assets/ranthambore-tiger.jpg";
 
 export const tours = [
   {
@@ -44,5 +45,13 @@ export const tours = [
     highlights: ["Udaipur"],
     price: "From $249",
     slug: "udaipur-lake",
+  },
+  {
+    image: ranthamboreTiger,
+    title: "Golden Triangle with Ranthambore",
+    duration: "7 Days / 6 Nights",
+    highlights: ["Delhi", "Agra", "Ranthambore", "Jaipur"],
+    price: "Contact Us",
+    slug: "golden-triangle-ranthambore",
   },
 ];
