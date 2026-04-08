@@ -96,8 +96,24 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Why Choose Us */}
+      {/* Experience / Trust Section */}
       <section className="py-20 bg-background">
+        <div className="container mx-auto px-4 text-center max-w-3xl">
+          <SectionHeading
+            title="20+ Years of Experience in Travel Industry"
+            subtitle="We have been serving customers offline for more than two decades"
+          />
+          <p className="font-serif text-lg text-muted-foreground mb-6">
+            Now, we are bringing our trusted services online to make booking easier for you.
+          </p>
+          <p className="text-xl font-semibold text-primary">
+            👉 Your comfort and safety is our top priority.
+          </p>
+        </div>
+      </section>
+
+      {/* Why Choose Us */}
+      <section className="py-20 sand-gradient mandala-bg">
         <div className="container mx-auto px-4">
           <SectionHeading
             title="Why Choose Heritage Jaipur Travels"
@@ -170,7 +186,7 @@ const Index = () => {
       {/* Testimonials */}
       <section className="py-20 sand-gradient mandala-bg">
         <div className="container mx-auto px-4">
-          <SectionHeading title="What Our Guests Say" subtitle="Trusted by travelers from around the world" />
+          <SectionHeading title="What Our Customers Say" subtitle="Trusted by travelers across India" />
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {testimonials.map((t, i) => (
               <div key={i} className="bg-card rounded-lg p-6 heritage-shadow">
@@ -180,12 +196,40 @@ const Index = () => {
                   ))}
                 </div>
                 <p className="font-serif text-lg text-foreground mb-4 italic">"{t.text}"</p>
-                <div>
-                  <p className="font-bold text-sm text-foreground">{t.name}</p>
-                  <p className="text-xs text-muted-foreground">{t.country}</p>
-                </div>
+                <p className="font-bold text-sm text-foreground">{t.name}</p>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Book Your Ride CTA */}
+      <section className="py-20 heritage-gradient">
+        <div className="container mx-auto px-4 text-center max-w-2xl">
+          <h2 className="font-display text-3xl md:text-4xl font-bold text-primary-foreground mb-4">
+            Book Your Ride Today!
+          </h2>
+          <p className="font-serif text-lg text-primary-foreground/80 mb-4">
+            Planning a trip? Let us make your journey safe and comfortable.
+          </p>
+          <p className="text-primary-foreground/90 font-semibold mb-8">
+            👉 Get best price & instant booking support
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <a
+              href="tel:+919461069858"
+              className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-md gold-gradient text-foreground font-bold text-lg hover:opacity-90 transition-opacity"
+            >
+              📞 Call Now
+            </a>
+            <a
+              href="https://wa.me/919461069858?text=Hi!%20I%20want%20to%20book%20a%20ride"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-md bg-green-600 text-white font-bold text-lg hover:bg-green-700 transition-colors"
+            >
+              💬 WhatsApp Now
+            </a>
           </div>
         </div>
       </section>
@@ -196,10 +240,9 @@ const Index = () => {
           <SectionHeading title="Frequently Asked Questions" />
           <div className="space-y-4">
             {[
-              { q: "How do I book a tour with Heritage Jaipur Travels?", a: "Simply contact us via WhatsApp, email, or our contact form. We'll customize your perfect Rajasthan itinerary within 24 hours." },
-              { q: "Are your tours private or group tours?", a: "All our tours are 100% private. You'll have a dedicated driver and guide throughout your journey." },
-              { q: "What is included in the tour price?", a: "Our packages typically include private AC vehicle, professional guide, hotel accommodation, monument entry fees, and select meals." },
-              { q: "Is it safe for solo female travelers?", a: "Absolutely! We have extensive experience hosting solo female travelers and ensure the highest safety standards throughout the trip." },
+              { q: "What is the starting price for taxi in Jaipur?", a: "Prices start from affordable rates depending on your trip. Contact us for the best quote." },
+              { q: "Do you provide driver with vehicle?", a: "Yes, all bookings include experienced and professional drivers." },
+              { q: "Is tempo traveller available for outstation trips?", a: "Yes, we provide tempo travellers for local and outstation travel across India." },
             ].map((faq, i) => (
               <details key={i} className="group bg-card rounded-lg heritage-shadow">
                 <summary className="p-5 font-display font-semibold text-foreground cursor-pointer list-none flex items-center justify-between">
