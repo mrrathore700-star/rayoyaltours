@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Star, Shield, Users, Heart, ArrowRight } from "lucide-react";
+import { Star, Shield, Users, Heart, ArrowRight, Phone, MessageCircle, Clock, Car, CheckCircle, HelpCircle } from "lucide-react";
 import heroPalace from "@/assets/hero-palace.jpg";
 import culturalDance from "@/assets/cultural-dance.jpg";
 import localMarket from "@/assets/local-market.jpg";
