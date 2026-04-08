@@ -17,6 +17,7 @@ import Gallery from "./pages/Gallery";
 import Blog from "./pages/Blog";
 import Contact from "./pages/Contact";
 import TourDetail from "./pages/TourDetail";
+import About from "./pages/About";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -32,6 +33,7 @@ const App = () => (
           <Header />
           <Routes>
             <Route path="/" element={<Index />} />
+            <Route path="/about" element={<About />} />
             <Route path="/packages" element={<Packages />} />
             <Route path="/packages/:slug" element={<TourDetail />} />
             <Route path="/sightseeing" element={<Sightseeing />} />

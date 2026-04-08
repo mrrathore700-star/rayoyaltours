@@ -5,6 +5,7 @@ import logo from "@/assets/logo.png";
 
 const navLinks = [
   { label: "Home", to: "/" },
+  { label: "About Us", to: "/about" },
   { label: "Tour Packages", to: "/packages" },
   { label: "Jaipur Sightseeing", to: "/sightseeing" },
   { label: "Taxi & Transport", to: "/taxi" },
