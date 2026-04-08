@@ -15,6 +15,7 @@ const Footer = () => (
           <h4 className="font-display text-lg font-semibold mb-4">Quick Links</h4>
           <ul className="space-y-2 text-sm opacity-80">
             {[
+              { label: "About Us", to: "/about" },
               { label: "Tour Packages", to: "/packages" },
               { label: "Jaipur Sightseeing", to: "/sightseeing" },
               { label: "Heritage Experiences", to: "/experiences" },
