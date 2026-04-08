@@ -10,9 +10,9 @@ import TourCard from "@/components/TourCard";
 import { tours } from "@/data/tours";
 
 const testimonials = [
-  { name: "Sarah M.", country: "United Kingdom", text: "An absolutely unforgettable experience. The team at Heritage Jaipur Travels made us feel like royalty throughout our Rajasthan journey.", rating: 5 },
-  { name: "James & Linda", country: "Australia", text: "Best tour company in Jaipur! Their local knowledge and attention to detail made our Golden Triangle tour truly special.", rating: 5 },
-  { name: "Hiroshi T.", country: "Japan", text: "The desert safari was magical. Professional guides, authentic experiences, and incredible hospitality. Highly recommend!", rating: 5 },
+  { name: "Happy Customer", text: "Very good service, clean vehicle and polite driver.", rating: 5 },
+  { name: "Satisfied Traveler", text: "Best tempo traveller service in Jaipur, highly recommended.", rating: 5 },
+  { name: "Regular Client", text: "On-time pickup and smooth travel experience.", rating: 5 },
 ];
 
 const whyChoose = [
