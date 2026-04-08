@@ -16,10 +16,10 @@ const testimonials = [
 ];
 
 const whyChoose = [
-  { icon: Shield, title: "Trusted Local Experts", desc: "15+ years of expertise in Rajasthan tourism with deep local knowledge" },
-  { icon: Users, title: "Private & Customized", desc: "Every tour is private and tailored to your preferences and pace" },
+  { icon: Shield, title: "20+ Years Experience", desc: "Two decades of trusted offline service in Jaipur and Rajasthan" },
+  { icon: Users, title: "1000+ Happy Customers", desc: "Families, tourists & corporate clients trust our reliable service" },
   { icon: Heart, title: "Authentic Experiences", desc: "Go beyond tourist spots with genuine cultural immersions" },
-  { icon: Star, title: "5-Star Reviews", desc: "Rated excellent by 2000+ international travelers on TripAdvisor" },
+  { icon: Star, title: "Pan-India Services", desc: "Travel across Rajasthan and all over India with our fleet" },
 ];
 
 const galleryImages = [
