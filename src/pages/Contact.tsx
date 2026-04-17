@@ -27,7 +27,7 @@ const Contact = () => {
           <div>
             <div className="space-y-6 mb-8">
 {[
-                { icon: MapPin, label: "Visit Us", value: "C-Scheme, Jaipur, Rajasthan 302001, India" },
+                { icon: MapPin, label: "Visit Us", value: "G33 Ground Floor, Behind Airtel, Ganpati Plaza, MI Road, Jaipur, Rajasthan - 302001" },
                 { icon: Phone, label: "Call Us", value: "+91 94610 69858", href: "tel:+919461069858" },
                 { icon: Mail, label: "Email Us", value: "info@heritagejaipurtravels.com", href: "mailto:info@heritagejaipurtravels.com" },
               ].map((item, i) => (
@@ -58,7 +58,7 @@ const Contact = () => {
             <div className="mt-8 rounded-lg overflow-hidden heritage-shadow">
               <iframe
                 title="Heritage Jaipur Travels Location"
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3557.6544895550447!2d75.7872!3d26.9124!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjbCsDU0JzQ0LjYiTiA3NcKwNDcnMTMuOSJF!5e0!3m2!1sen!2sin!4v1234567890"
+                src="https://www.google.com/maps?q=Ganpati+Plaza,+MI+Road,+Jaipur,+Rajasthan+302001&output=embed"
                 width="100%"
                 height="250"
                 style={{ border: 0 }}
