@@ -1,6 +1,6 @@
 import { useState } from "react";
 import SectionHeading from "@/components/SectionHeading";
-import { MapPin, Phone, Mail, MessageCircle } from "lucide-react";
+import { MapPin, Phone, Mail, MessageCircle, Instagram } from "lucide-react";
 import { toast } from "sonner";
 
 const Contact = () => {
@@ -30,6 +30,7 @@ const Contact = () => {
                 { icon: MapPin, label: "Visit Us", value: "G 31 Ground Floor, Behind Airtel, Ganpati Plaza, MI Road, Jaipur, Rajasthan - 302001" },
                 { icon: Phone, label: "Call Us", value: "+91 94610 69858", href: "tel:+919461069858" },
                 { icon: Mail, label: "Email Us", value: "info@heritagejaipurtravels.com", href: "mailto:info@heritagejaipurtravels.com" },
+                { icon: Instagram, label: "Follow Us", value: "@heritagejaipurtravels", href: "https://www.instagram.com/heritagejaipurtravels?igsh=MWR0d2licnJseGRqdQ%3D%3D" },
               ].map((item, i) => (
                 <div key={i} className="flex items-start gap-4">
                   <div className="w-12 h-12 rounded-full heritage-gradient flex items-center justify-center text-primary-foreground shrink-0">
@@ -38,7 +39,7 @@ const Contact = () => {
                   <div>
                     <p className="font-display font-semibold text-foreground">{item.label}</p>
                     {item.href ? (
-                      <a href={item.href} className="text-sm text-primary hover:underline font-medium">{item.value}</a>
+                      <a href={item.href} target={item.href.startsWith("http") ? "_blank" : undefined} rel={item.href.startsWith("http") ? "noopener noreferrer" : undefined} className="text-sm text-primary hover:underline font-medium">{item.value}</a>
                     ) : (
                       <p className="text-sm text-muted-foreground">{item.value}</p>
                     )}
