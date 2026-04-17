@@ -27,7 +27,7 @@ const Contact = () => {
           <div>
             <div className="space-y-6 mb-8">
 {[
-                { icon: MapPin, label: "Visit Us", value: "G33 Ground Floor, Behind Airtel, Ganpati Plaza, MI Road, Jaipur, Rajasthan - 302001" },
+                { icon: MapPin, label: "Visit Us", value: "G 31 Ground Floor, Behind Airtel, Ganpati Plaza, MI Road, Jaipur, Rajasthan - 302001" },
                 { icon: Phone, label: "Call Us", value: "+91 94610 69858", href: "tel:+919461069858" },
                 { icon: Mail, label: "Email Us", value: "info@heritagejaipurtravels.com", href: "mailto:info@heritagejaipurtravels.com" },
               ].map((item, i) => (
