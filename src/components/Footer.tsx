@@ -63,8 +63,13 @@ const Footer = () => (
           </ul>
         </div>
       </div>
-      <div className="mt-12 pt-8 border-t border-primary-foreground/20 text-center text-sm opacity-60">
-        © {new Date().getFullYear()} Heritage Jaipur Travels. All rights reserved.
+      <div className="mt-12 pt-8 border-t border-primary-foreground/20 flex flex-col md:flex-row items-center justify-between gap-4 text-sm opacity-80">
+        <p>© {new Date().getFullYear()} Heritage Jaipur Travels. All rights reserved.</p>
+        <nav className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2">
+          <Link to="/privacy-policy" className="hover:opacity-100 transition-opacity">Privacy Policy</Link>
+          <Link to="/terms-and-conditions" className="hover:opacity-100 transition-opacity">Terms & Conditions</Link>
+          <Link to="/refund-policy" className="hover:opacity-100 transition-opacity">Refund Policy</Link>
+        </nav>
       </div>
     </div>
   </footer>
