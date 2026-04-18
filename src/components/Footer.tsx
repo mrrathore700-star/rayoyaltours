@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { MapPin, Phone, Mail } from "lucide-react";
+import { MapPin, Phone, Mail, Instagram } from "lucide-react";
 
 const Footer = () => (
   <footer className="heritage-gradient text-primary-foreground">
@@ -55,6 +55,10 @@ const Footer = () => (
             <li className="flex items-center gap-2">
               <Mail className="h-4 w-4 shrink-0" />
               <a href="mailto:info@heritagejaipurtravels.com" className="hover:opacity-100 transition-opacity">info@heritagejaipurtravels.com</a>
+            </li>
+            <li className="flex items-center gap-2">
+              <Instagram className="h-4 w-4 shrink-0" />
+              <a href="https://www.instagram.com/heritagejaipurtravels?igsh=MWR0d2licnJseGRqdQ%3D%3D" target="_blank" rel="noopener noreferrer" className="hover:opacity-100 transition-opacity">@heritagejaipurtravels</a>
             </li>
           </ul>
         </div>
