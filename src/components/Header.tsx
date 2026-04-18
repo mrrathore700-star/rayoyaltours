@@ -12,7 +12,7 @@ const navLinks = [
   { label: "Heritage Experiences", to: "/experiences" },
   { label: "Gallery", to: "/gallery" },
   { label: "Blog", to: "/blog" },
-  { label: "Contact Us", to: "/contact" },
+  { label: "Contact", to: "/contact" },
 ];
 
 const Header = () => {
