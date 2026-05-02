@@ -58,7 +58,7 @@ const Header = () => {
           </a>
           <button
             onClick={() => setOpen(!open)}
-            className="lg:hidden p-2 text-foreground"
+            className="lg:hidden p-3 min-h-11 min-w-11 text-foreground flex items-center justify-center"
             aria-label="Toggle menu"
           >
             {open ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
