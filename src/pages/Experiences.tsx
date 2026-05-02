@@ -1,4 +1,5 @@
 import SectionHeading from "@/components/SectionHeading";
+import SEO from "@/components/SEO";
 import desertSafari from "@/assets/desert-safari.jpg";
 import villageTour from "@/assets/village-tour.jpg";
 import rajasthaniFood from "@/assets/rajasthani-food.jpg";

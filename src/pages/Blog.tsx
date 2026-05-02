@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import SectionHeading from "@/components/SectionHeading";
+import SEO from "@/components/SEO";
 import hawaMahal from "@/assets/hawa-mahal.jpg";
 import goldenTriangle from "@/assets/golden-triangle.jpg";
 import desertSafari from "@/assets/desert-safari.jpg";

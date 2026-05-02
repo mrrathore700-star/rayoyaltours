@@ -1,4 +1,5 @@
 import SectionHeading from "@/components/SectionHeading";
+import SEO from "@/components/SEO";
 import { Car, Plane, MapPin, Navigation, Bus, Clock, Shield } from "lucide-react";
 import luxuryCar from "@/assets/luxury-car.jpg";
 import fleetImg from "@/assets/fleet-vehicles.jpg";
