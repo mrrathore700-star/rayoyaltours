@@ -1,5 +1,6 @@
 import { useState } from "react";
 import SectionHeading from "@/components/SectionHeading";
+import SEO from "@/components/SEO";
 import { MapPin, Phone, Mail, MessageCircle, Instagram } from "lucide-react";
 import { toast } from "sonner";
 
@@ -18,6 +19,11 @@ const Contact = () => {
 
   return (
     <main className="pt-24 pb-20">
+      <SEO
+        title="Contact Heritage Jaipur Travels | Plan Your Rajasthan Trip"
+        description="Get in touch with Heritage Jaipur Travels for Jaipur sightseeing, Rajasthan tour packages, taxi bookings and Golden Triangle trips. Call +91 94610 69858 or WhatsApp now."
+        path="/contact"
+      />
       <section className="container mx-auto px-4">
         <SectionHeading
           title="Contact Us"
