@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import SectionHeading from "@/components/SectionHeading";
+import SEO from "@/components/SEO";
 import hawaMahal from "@/assets/hawa-mahal.jpg";
 import goldenTriangle from "@/assets/golden-triangle.jpg";
 import desertSafari from "@/assets/desert-safari.jpg";
@@ -14,6 +15,11 @@ const posts = [
 
 const Blog = () => (
   <main className="pt-24 pb-20">
+    <SEO
+      title="Rajasthan Travel Blog | Tips, Guides & Itineraries"
+      description="Travel tips, destination guides and itineraries for Jaipur, Rajasthan and the Golden Triangle from local travel experts at Heritage Jaipur Travels."
+      path="/blog"
+    />
     <section className="container mx-auto px-4">
       <SectionHeading
         title="Travel Blog"

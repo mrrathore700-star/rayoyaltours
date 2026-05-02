@@ -1,4 +1,5 @@
 import SectionHeading from "@/components/SectionHeading";
+import SEO from "@/components/SEO";
 import cityPalace from "@/assets/city-palace.jpg";
 import amberFort from "@/assets/amber-fort.jpg";
 import hawaMahal from "@/assets/hawa-mahal.jpg";

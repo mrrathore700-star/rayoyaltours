@@ -1,4 +1,5 @@
 import SectionHeading from "@/components/SectionHeading";
+import SEO from "@/components/SEO";
 import desertSafari from "@/assets/desert-safari.jpg";
 import villageTour from "@/assets/village-tour.jpg";
 import rajasthaniFood from "@/assets/rajasthani-food.jpg";
@@ -15,6 +16,11 @@ const experiences = [
 
 const Experiences = () => (
   <main className="pt-24 pb-20">
+    <SEO
+      title="Heritage Experiences in Rajasthan | Camel Safari, Folk Dance, Village Tours"
+      description="Live the royal Rajasthan experience — camel safari in Thar, traditional folk dance, village tours, authentic Rajasthani cuisine and fort & palace heritage walks."
+      path="/experiences"
+    />
     <section className="container mx-auto px-4">
       <SectionHeading
         title="Heritage Experiences"

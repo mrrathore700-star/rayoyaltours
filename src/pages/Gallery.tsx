@@ -1,4 +1,5 @@
 import SectionHeading from "@/components/SectionHeading";
+import SEO from "@/components/SEO";
 import heroPalace from "@/assets/hero-palace.jpg";
 import amberFort from "@/assets/amber-fort.jpg";
 import cityPalace from "@/assets/city-palace.jpg";
@@ -29,6 +30,11 @@ const images = [
 
 const Gallery = () => (
   <main className="pt-24 pb-20">
+    <SEO
+      title="Rajasthan Photo Gallery | Forts, Palaces, Desert & Culture"
+      description="A visual journey through Rajasthan — forts, palaces, desert dunes, vibrant markets and traditional culture, captured by Heritage Jaipur Travels."
+      path="/gallery"
+    />
     <section className="container mx-auto px-4">
       <SectionHeading
         title="Photo Gallery"

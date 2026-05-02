@@ -1,4 +1,5 @@
 import SectionHeading from "@/components/SectionHeading";
+import SEO from "@/components/SEO";
 import { Car, Plane, MapPin, Navigation, Bus, Clock, Shield } from "lucide-react";
 import luxuryCar from "@/assets/luxury-car.jpg";
 import fleetImg from "@/assets/fleet-vehicles.jpg";
@@ -18,6 +19,11 @@ const fleet = [
 
 const Taxi = () => (
   <main className="pt-24 pb-20">
+    <SEO
+      title="Jaipur Taxi & Tempo Traveller Service | Outstation & Airport Transfers"
+      description="Book reliable taxi and tempo traveller services in Jaipur — local sightseeing, outstation trips across India, airport pickup & drop. Sedans, SUVs, 12/16/20 seater tempo travellers."
+      path="/taxi"
+    />
     {/* Hero */}
     <section className="relative py-20 mb-16 overflow-hidden rounded-none">
       <div className="absolute inset-0">
