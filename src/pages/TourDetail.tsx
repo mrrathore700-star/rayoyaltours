@@ -47,8 +47,33 @@ const TourDetail = () => {
         <title>{tour.metaTitle}</title>
         <meta name="description" content={tour.metaDescription} />
         <meta name="keywords" content={tour.seoKeywords.join(", ")} />
+        <link rel="canonical" href={`https://www.heritagejaipurtravels.com/packages/${slug}`} />
+        <meta property="og:type" content="website" />
         <meta property="og:title" content={tour.metaTitle} />
         <meta property="og:description" content={tour.metaDescription} />
+        <meta property="og:url" content={`https://www.heritagejaipurtravels.com/packages/${slug}`} />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={tour.metaTitle} />
+        <meta name="twitter:description" content={tour.metaDescription} />
+        <script type="application/ld+json">{JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "TouristTrip",
+          "name": tour.title,
+          "description": tour.metaDescription,
+          "url": `https://www.heritagejaipurtravels.com/packages/${slug}`,
+          "touristType": tour.idealFor,
+          "itinerary": tour.itinerary.map((d) => ({
+            "@type": "ItemList",
+            "name": `Day ${d.day}: ${d.title}`,
+            "itemListElement": d.activities,
+          })),
+          "provider": {
+            "@type": "TravelAgency",
+            "name": "Heritage Jaipur Travels",
+            "telephone": "+919461069858",
+            "url": "https://www.heritagejaipurtravels.com",
+          },
+        })}</script>
       </Helmet>
 
       <main className="pt-20">
