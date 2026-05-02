@@ -22,7 +22,7 @@ const spots = [
     desc: "The 'Victory Fort' overlooking Amber, home to Jaivana — the world's largest wheeled cannon ever built. Known for its massive ramparts, secret underground passages connecting to Amber Fort, and the legendary lost treasure of the Kachwaha kings.",
   },
   {
-    image: nahargarhFort",
+    image: nahargarhFort,
     title: "Nahargarh Fort",
     desc: "Perched on the Aravalli hills, Nahargarh offers Jaipur's most breathtaking sunset and night views — the entire Pink City glittering below. Famous for Madhavendra Bhawan (12 identical queen suites connected by corridors), the Wax Museum, Padao open-air rooftop restaurant for romantic candlelight dinners under the stars, and weekend night camping experiences with bonfires and folk music.",
   },
