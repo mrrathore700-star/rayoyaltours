@@ -1,6 +1,7 @@
 import { Shield, Users, Clock, Phone, Car, CheckCircle, Star, MapPin, Plane, Navigation, Bus } from "lucide-react";
 import { Link } from "react-router-dom";
 import SectionHeading from "@/components/SectionHeading";
+import SEO from "@/components/SEO";
 import heroPalace from "@/assets/hero-palace.jpg";
 import fleetImg from "@/assets/fleet-vehicles.jpg";
 
@@ -29,6 +30,11 @@ const fleet = [
 
 const About = () => (
   <main className="pt-24 pb-20">
+    <SEO
+      title="About Heritage Jaipur Travels | 20+ Years of Trusted Travel in Jaipur"
+      description="Heritage Jaipur Travels is a trusted Jaipur-based travel agency with 20+ years of experience offering reliable taxi, tempo traveller and Rajasthan tour services across India."
+      path="/about"
+    />
     {/* Hero */}
     <section className="relative py-20 mb-16 overflow-hidden">
       <div className="absolute inset-0">
