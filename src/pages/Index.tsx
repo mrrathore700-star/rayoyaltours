@@ -7,6 +7,7 @@ import desertSafari from "@/assets/desert-safari.jpg";
 import jaisalmerFort from "@/assets/jaisalmer-fort.jpg";
 import SectionHeading from "@/components/SectionHeading";
 import TourCard from "@/components/TourCard";
+import SEO from "@/components/SEO";
 import { tours } from "@/data/tours";
 
 const testimonials = [
@@ -32,6 +33,11 @@ const galleryImages = [
 const Index = () => {
   return (
     <main>
+      <SEO
+        title="Heritage Jaipur Travels | Royal Rajasthan Heritage Tours from Jaipur"
+        description="Plan your dream Rajasthan trip with Heritage Jaipur Travels — Jaipur sightseeing, Golden Triangle packages, desert safari, and authentic heritage tours by 20+ year local experts."
+        path="/"
+      />
       {/* Hero */}
       <section className="relative min-h-screen flex items-center justify-center">
         <div className="absolute inset-0">
