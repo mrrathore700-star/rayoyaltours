@@ -5,8 +5,7 @@
   <url><loc>https://www.heritagejaipurtravels.com/packages</loc><priority>0.9</priority></url>
   <url><loc>https://www.heritagejaipurtravels.com/sightseeing</loc><priority>0.8</priority></url>
   <url><loc>https://www.heritagejaipurtravels.com/taxi</loc><priority>0.8</priority></url>
-  <url><loc>https://www.heritagejaipurtravels.com/experiences</loc><priority>0.8</priority></url>
-  <url><loc>https://www.heritagejaipurtravels.com/live-experiences</loc><priority>0.9</priority></url>
+  <url><loc>https://www.heritagejaipurtravels.com/experiences</loc><priority>0.9</priority></url>
   <url><loc>https://www.heritagejaipurtravels.com/gallery</loc><priority>0.6</priority></url>
   <url><loc>https://www.heritagejaipurtravels.com/blog</loc><priority>0.6</priority></url>
   <url><loc>https://www.heritagejaipurtravels.com/contact</loc><priority>0.9</priority></url>
@@ -16,6 +15,55 @@
   <url><loc>https://www.heritagejaipurtravels.com/packages/jaipur-heritage</loc><priority>0.8</priority></url>
   <url><loc>https://www.heritagejaipurtravels.com/packages/desert-safari</loc><priority>0.8</priority></url>
   <url><loc>https://www.heritagejaipurtravels.com/packages/udaipur-lake</loc><priority>0.8</priority></url>
+  <url><loc>https://www.heritagejaipurtravels.com/experiences/camel-safari-jaisalmer</loc><priority>0.7</priority></url>
+  <url><loc>https://www.heritagejaipurtravels.com/experiences/luxury-desert-camping-jaisalmer</loc><priority>0.7</priority></url>
+  <url><loc>https://www.heritagejaipurtravels.com/experiences/jeep-safari-thar</loc><priority>0.7</priority></url>
+  <url><loc>https://www.heritagejaipurtravels.com/experiences/sandboarding-jaisalmer</loc><priority>0.7</priority></url>
+  <url><loc>https://www.heritagejaipurtravels.com/experiences/desert-photography-tour</loc><priority>0.7</priority></url>
+  <url><loc>https://www.heritagejaipurtravels.com/experiences/desert-stargazing</loc><priority>0.7</priority></url>
+  <url><loc>https://www.heritagejaipurtravels.com/experiences/ethical-elephant-experience-jaipur</loc><priority>0.7</priority></url>
+  <url><loc>https://www.heritagejaipurtravels.com/experiences/leopard-safari-jawai</loc><priority>0.7</priority></url>
+  <url><loc>https://www.heritagejaipurtravels.com/experiences/tiger-safari-ranthambore</loc><priority>0.7</priority></url>
+  <url><loc>https://www.heritagejaipurtravels.com/experiences/bird-watching-bharatpur</loc><priority>0.7</priority></url>
+  <url><loc>https://www.heritagejaipurtravels.com/experiences/marwari-horse-riding</loc><priority>0.7</priority></url>
+  <url><loc>https://www.heritagejaipurtravels.com/experiences/palace-hotel-stays-rajasthan</loc><priority>0.7</priority></url>
+  <url><loc>https://www.heritagejaipurtravels.com/experiences/royal-dining-experience</loc><priority>0.7</priority></url>
+  <url><loc>https://www.heritagejaipurtravels.com/experiences/vintage-car-ride-udaipur</loc><priority>0.7</priority></url>
+  <url><loc>https://www.heritagejaipurtravels.com/experiences/fort-storytelling-tours</loc><priority>0.7</priority></url>
+  <url><loc>https://www.heritagejaipurtravels.com/experiences/maharaja-photoshoot</loc><priority>0.7</priority></url>
+  <url><loc>https://www.heritagejaipurtravels.com/experiences/rajasthani-cooking-class</loc><priority>0.7</priority></url>
+  <url><loc>https://www.heritagejaipurtravels.com/experiences/street-food-tour-jaipur</loc><priority>0.7</priority></url>
+  <url><loc>https://www.heritagejaipurtravels.com/experiences/traditional-rajasthani-thali</loc><priority>0.7</priority></url>
+  <url><loc>https://www.heritagejaipurtravels.com/experiences/village-lunch-rajasthan</loc><priority>0.7</priority></url>
+  <url><loc>https://www.heritagejaipurtravels.com/experiences/spice-market-tour-jaipur</loc><priority>0.7</priority></url>
+  <url><loc>https://www.heritagejaipurtravels.com/experiences/block-printing-jaipur</loc><priority>0.7</priority></url>
+  <url><loc>https://www.heritagejaipurtravels.com/experiences/blue-pottery-jaipur</loc><priority>0.7</priority></url>
+  <url><loc>https://www.heritagejaipurtravels.com/experiences/turban-tying-jaipur</loc><priority>0.7</priority></url>
+  <url><loc>https://www.heritagejaipurtravels.com/experiences/mehendi-session-jaipur</loc><priority>0.7</priority></url>
+  <url><loc>https://www.heritagejaipurtravels.com/experiences/folk-dance-workshop</loc><priority>0.7</priority></url>
+  <url><loc>https://www.heritagejaipurtravels.com/experiences/puppet-making-jaipur</loc><priority>0.7</priority></url>
+  <url><loc>https://www.heritagejaipurtravels.com/experiences/pushkar-camel-fair</loc><priority>0.7</priority></url>
+  <url><loc>https://www.heritagejaipurtravels.com/experiences/jaisalmer-desert-festival</loc><priority>0.7</priority></url>
+  <url><loc>https://www.heritagejaipurtravels.com/experiences/teej-festival-jaipur</loc><priority>0.7</priority></url>
+  <url><loc>https://www.heritagejaipurtravels.com/experiences/gangaur-festival-rajasthan</loc><priority>0.7</priority></url>
+  <url><loc>https://www.heritagejaipurtravels.com/experiences/holi-rajasthan</loc><priority>0.7</priority></url>
+  <url><loc>https://www.heritagejaipurtravels.com/experiences/village-walk-rajasthan</loc><priority>0.7</priority></url>
+  <url><loc>https://www.heritagejaipurtravels.com/experiences/farming-experience-rajasthan</loc><priority>0.7</priority></url>
+  <url><loc>https://www.heritagejaipurtravels.com/experiences/bazaar-shopping-jaipur</loc><priority>0.7</priority></url>
+  <url><loc>https://www.heritagejaipurtravels.com/experiences/rickshaw-tour-jaipur</loc><priority>0.7</priority></url>
+  <url><loc>https://www.heritagejaipurtravels.com/experiences/yoga-rajasthan</loc><priority>0.7</priority></url>
+  <url><loc>https://www.heritagejaipurtravels.com/experiences/meditation-rajasthan</loc><priority>0.7</priority></url>
+  <url><loc>https://www.heritagejaipurtravels.com/experiences/ayurvedic-spa-rajasthan</loc><priority>0.7</priority></url>
+  <url><loc>https://www.heritagejaipurtravels.com/experiences/temple-rituals-rajasthan</loc><priority>0.7</priority></url>
+  <url><loc>https://www.heritagejaipurtravels.com/experiences/hawa-mahal-sunrise-photography</loc><priority>0.7</priority></url>
+  <url><loc>https://www.heritagejaipurtravels.com/experiences/blue-city-walk-jodhpur</loc><priority>0.7</priority></url>
+  <url><loc>https://www.heritagejaipurtravels.com/experiences/udaipur-boat-ride</loc><priority>0.7</priority></url>
+  <url><loc>https://www.heritagejaipurtravels.com/experiences/hidden-gems-photography</loc><priority>0.7</priority></url>
+  <url><loc>https://www.heritagejaipurtravels.com/experiences/private-chauffeur-tour-rajasthan</loc><priority>0.7</priority></url>
+  <url><loc>https://www.heritagejaipurtravels.com/experiences/helicopter-ride-rajasthan</loc><priority>0.7</priority></url>
+  <url><loc>https://www.heritagejaipurtravels.com/experiences/private-desert-dinner</loc><priority>0.7</priority></url>
+  <url><loc>https://www.heritagejaipurtravels.com/experiences/luxury-train-rajasthan</loc><priority>0.7</priority></url>
+  <url><loc>https://www.heritagejaipurtravels.com/experiences/vip-tours-rajasthan</loc><priority>0.7</priority></url>
   <url><loc>https://www.heritagejaipurtravels.com/privacy-policy</loc><priority>0.3</priority></url>
   <url><loc>https://www.heritagejaipurtravels.com/terms-and-conditions</loc><priority>0.3</priority></url>
   <url><loc>https://www.heritagejaipurtravels.com/refund-policy</loc><priority>0.3</priority></url>
