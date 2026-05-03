@@ -438,7 +438,7 @@ export const categories: Category[] = [
         "1–2 hours",
         "Lake Pichola, Udaipur",
         "All year (best Sept–March)"),
-      make("hidden-gems-photography", "Hidden Gems Photography Tour", "Photography", panmeena = jalMahal,
+      make("hidden-gems-photography", "Hidden Gems Photography Tour", "Photography", jalMahal,
         "Photograph the Rajasthan no guidebook tells you about.",
         "Stepwells, secret havelis, tucked-away temples, painted ceilings, royal cenotaphs, market characters — Rajasthan is overflowing with hidden photo gold. This bespoke tour, designed around your interests, takes you to 6–8 lesser-known spots in Jaipur and surroundings, all with a local pro photographer. Custom-paced, custom-routed, fully exclusive.",
         ["Custom-curated route", "6–8 hidden locations", "Pro photographer guide", "Permits arranged", "All experience levels"],
