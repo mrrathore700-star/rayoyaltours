@@ -13,7 +13,8 @@ import Packages from "./pages/Packages";
 import Sightseeing from "./pages/Sightseeing";
 import Taxi from "./pages/Taxi";
 import Experiences from "./pages/Experiences";
-import LiveExperiences from "./pages/LiveExperiences";
+import ExperienceDetail from "./pages/ExperienceDetail";
+import { Navigate } from "react-router-dom";
 import Gallery from "./pages/Gallery";
 import Blog from "./pages/Blog";
 import Contact from "./pages/Contact";
@@ -43,7 +44,8 @@ const App = () => (
             <Route path="/sightseeing" element={<Sightseeing />} />
             <Route path="/taxi" element={<Taxi />} />
             <Route path="/experiences" element={<Experiences />} />
-            <Route path="/live-experiences" element={<LiveExperiences />} />
+            <Route path="/experiences/:slug" element={<ExperienceDetail />} />
+            <Route path="/live-experiences" element={<Navigate to="/experiences" replace />} />
             <Route path="/gallery" element={<Gallery />} />
             <Route path="/blog" element={<Blog />} />
             <Route path="/contact" element={<Contact />} />
