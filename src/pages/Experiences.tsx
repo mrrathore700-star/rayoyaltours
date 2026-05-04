@@ -145,14 +145,12 @@ const Experiences = () => {
                         </li>
                       ))}
                     </ul>
-                    <a
-                      href={waLink(`Hi! I'm interested in ${cat.title} in Rajasthan.`)}
-                      target="_blank"
-                      rel="noopener noreferrer"
+                    <Link
+                      to={`/experiences/category/${cat.id}`}
                       className="inline-flex items-center px-5 py-2.5 rounded-md heritage-gradient text-primary-foreground font-semibold text-sm hover:opacity-90 transition"
                     >
-                      View {cat.title.split(" ")[0]} Experiences →
-                    </a>
+                      View All {cat.title.split(" ")[0]} Experiences →
+                    </Link>
                   </div>
                 </div>
               </div>
