@@ -45,6 +45,7 @@ const App = () => (
             <Route path="/sightseeing" element={<Sightseeing />} />
             <Route path="/taxi" element={<Taxi />} />
             <Route path="/experiences" element={<Experiences />} />
+            <Route path="/experiences/category/:categoryId" element={<ExperienceCategory />} />
             <Route path="/experiences/:slug" element={<ExperienceDetail />} />
             <Route path="/live-experiences" element={<Navigate to="/experiences" replace />} />
             <Route path="/gallery" element={<Gallery />} />
