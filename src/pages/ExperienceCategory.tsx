@@ -85,36 +85,20 @@ const ExperienceCategory = () => {
                   loading="lazy"
                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                 />
-                <div className="absolute top-3 left-3 bg-background/90 backdrop-blur px-3 py-1 rounded-full text-xs font-semibold text-foreground">
-                  {exp.duration}
-                </div>
               </Link>
-              <div className="p-5 flex flex-col flex-1">
-                <h2 className="font-display text-xl font-bold text-foreground mb-2">
+              <div className="p-6 flex flex-col flex-1">
+                <h2 className="font-display text-xl font-bold text-foreground mb-3">
                   <Link to={`/experiences/${exp.slug}`} className="hover:text-primary transition">
                     {exp.title}
                   </Link>
                 </h2>
-                <p className="text-sm text-muted-foreground mb-3 flex-1">{exp.shortDesc}</p>
-                <p className="text-xs text-muted-foreground mb-4">
-                  📍 {exp.location} · 🗓 {exp.bestTime}
-                </p>
-                <div className="flex flex-col sm:flex-row gap-2 mt-auto">
-                  <Link
-                    to={`/experiences/${exp.slug}`}
-                    className="flex-1 text-center px-4 py-2 rounded-md heritage-gradient text-primary-foreground text-sm font-semibold hover:opacity-90 transition"
-                  >
-                    Book Now
-                  </Link>
-                  <a
-                    href={waLink(`Hi! I'd like to customise the "${exp.title}" experience.`)}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex-1 text-center px-4 py-2 rounded-md border-2 border-primary text-primary text-sm font-semibold hover:bg-primary hover:text-primary-foreground transition"
-                  >
-                    Customize
-                  </a>
-                </div>
+                <p className="text-sm text-muted-foreground mb-6 flex-1 line-clamp-2">{exp.shortDesc}</p>
+                <Link
+                  to={`/experiences/${exp.slug}`}
+                  className="mt-auto inline-flex items-center justify-center px-5 py-2.5 rounded-md heritage-gradient text-primary-foreground text-sm font-semibold tracking-wide hover:opacity-90 transition"
+                >
+                  View Experience →
+                </Link>
               </div>
             </article>
           ))}
