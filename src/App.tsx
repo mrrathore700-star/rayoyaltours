@@ -14,6 +14,7 @@ import Sightseeing from "./pages/Sightseeing";
 import Taxi from "./pages/Taxi";
 import Experiences from "./pages/Experiences";
 import ExperienceDetail from "./pages/ExperienceDetail";
+import ExperienceCategory from "./pages/ExperienceCategory";
 import { Navigate } from "react-router-dom";
 import Gallery from "./pages/Gallery";
 import Blog from "./pages/Blog";
@@ -44,6 +45,7 @@ const App = () => (
             <Route path="/sightseeing" element={<Sightseeing />} />
             <Route path="/taxi" element={<Taxi />} />
             <Route path="/experiences" element={<Experiences />} />
+            <Route path="/experiences/category/:categoryId" element={<ExperienceCategory />} />
             <Route path="/experiences/:slug" element={<ExperienceDetail />} />
             <Route path="/live-experiences" element={<Navigate to="/experiences" replace />} />
             <Route path="/gallery" element={<Gallery />} />
