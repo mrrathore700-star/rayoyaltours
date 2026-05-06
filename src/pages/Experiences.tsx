@@ -1,14 +1,8 @@
 import { useMemo, useState } from "react";
 import { Link } from "react-router-dom";
 import SEO from "@/components/SEO";
-import { categories, allExperiences, type Experience } from "@/data/experiences";
-import {
-  Dialog,
-  DialogContent,
-  DialogHeader,
-  DialogTitle,
-} from "@/components/ui/dialog";
-import { Search, MessageCircle, Sparkles, Star, Crown, Heart, Camera, Footprints, Users, Award, Phone } from "lucide-react";
+import { categories, allExperiences } from "@/data/experiences";
+import { Search, Sparkles, Star } from "lucide-react";
 import heroPalace from "@/assets/hero-palace.jpg";
 
 const waLink = (msg: string) =>
@@ -25,7 +19,6 @@ const POPULAR = new Set([
 const Experiences = () => {
   const [activeCat, setActiveCat] = useState<string>("all");
   const [query, setQuery] = useState("");
-  const [open, setOpen] = useState<Experience | null>(null);
 
   const filtered = useMemo(() => {
     const q = query.trim().toLowerCase();
@@ -43,10 +36,6 @@ const Experiences = () => {
       );
     });
   }, [activeCat, query]);
-
-  const related = open
-    ? allExperiences.filter((e) => e.category === open.category && e.slug !== open.slug).slice(0, 3)
-    : [];
 
   const jsonLd = {
     "@context": "https://schema.org",
@@ -170,10 +159,10 @@ const Experiences = () => {
           ) : (
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
               {filtered.map((exp) => (
-                <article
+                <Link
                   key={exp.slug}
-                  className="group relative bg-card rounded-xl overflow-hidden border border-border heritage-shadow hover:shadow-2xl hover:-translate-y-1 transition-all duration-500 flex flex-col cursor-pointer animate-fade-in"
-                  onClick={() => setOpen(exp)}
+                  to={`/experiences/${exp.slug}`}
+                  className="group relative bg-card rounded-xl overflow-hidden border border-border heritage-shadow hover:shadow-2xl hover:-translate-y-1 transition-all duration-500 flex flex-col animate-fade-in"
                 >
                   <div className="relative aspect-[4/3] overflow-hidden">
                     <img
@@ -199,17 +188,11 @@ const Experiences = () => {
                     <p className="text-sm text-muted-foreground line-clamp-3 mb-5 flex-1">
                       {exp.shortDesc}
                     </p>
-                    <button
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        setOpen(exp);
-                      }}
-                      className="inline-flex items-center justify-center gap-2 w-full px-4 py-2.5 rounded-md heritage-gradient text-primary-foreground text-sm font-semibold hover:opacity-90 transition"
-                    >
-                      <Sparkles className="h-4 w-4" /> Book This Experience
-                    </button>
+                    <span className="inline-flex items-center justify-center gap-2 w-full px-4 py-2.5 rounded-md heritage-gradient text-primary-foreground text-sm font-semibold group-hover:opacity-90 transition">
+                      <Sparkles className="h-4 w-4" /> View Experience →
+                    </span>
                   </div>
-                </article>
+                </Link>
               ))}
             </div>
           )}
@@ -242,230 +225,6 @@ const Experiences = () => {
           </Link>
         </div>
       </section>
-
-      {/* Detail Modal */}
-      <Dialog open={!!open} onOpenChange={(v) => !v && setOpen(null)}>
-        <DialogContent className="max-w-3xl max-h-[92vh] overflow-y-auto p-0 gap-0 [&>button]:bg-background/80 [&>button]:backdrop-blur [&>button]:rounded-full [&>button]:p-1.5 [&>button]:top-3 [&>button]:right-3 [&>button]:opacity-100">
-          {open && (
-            <>
-              <div className="relative aspect-[16/9] overflow-hidden">
-                <img src={open.image} alt={open.title} className="w-full h-full object-cover" />
-                <div className="absolute inset-0 bg-gradient-to-t from-background via-background/30 to-transparent" />
-                <div className="absolute bottom-0 left-0 right-0 p-5 md:p-7">
-                  {POPULAR.has(open.slug) && (
-                    <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-secondary text-secondary-foreground text-[11px] font-bold uppercase tracking-wide mb-2">
-                      <Star className="h-3 w-3 fill-current" /> Most Popular
-                    </span>
-                  )}
-                  <span className="block text-xs uppercase tracking-widest text-secondary mb-1">
-                    {open.category}
-                  </span>
-                  <DialogHeader>
-                    <DialogTitle className="font-display text-2xl md:text-4xl font-bold text-foreground leading-tight text-left">
-                      {open.title}
-                    </DialogTitle>
-                  </DialogHeader>
-                  {open.details ? (
-                    <span className="block text-base md:text-lg font-serif italic text-foreground/85 mt-2">
-                      "{open.details.subtitle}"
-                    </span>
-                  ) : null}
-                </div>
-              </div>
-
-              <div className="p-5 md:p-7 space-y-10">
-                {open.details ? (
-                  <>
-                    <section>
-                      <h3 className="font-display text-lg md:text-xl font-bold text-foreground mb-3 flex items-center gap-2">
-                        <Sparkles className="h-5 w-5 text-secondary" /> Experience Overview
-                      </h3>
-                      <p className="text-foreground/90 leading-relaxed whitespace-pre-line">
-                        {open.details.overview}
-                      </p>
-                    </section>
-
-                    <section>
-                      <h3 className="font-display text-lg md:text-xl font-bold text-foreground mb-4 flex items-center gap-2">
-                        <Crown className="h-5 w-5 text-secondary" /> What Makes This Experience Unique
-                      </h3>
-                      <div className="grid sm:grid-cols-2 gap-3">
-                        {open.details.unique.map((u, i) => (
-                          <div key={i} className="p-4 rounded-lg border border-border bg-muted/20">
-                            <p className="font-semibold text-foreground mb-1">{u.title}</p>
-                            <p className="text-sm text-muted-foreground">{u.text}</p>
-                          </div>
-                        ))}
-                      </div>
-                    </section>
-
-                    <section>
-                      <h3 className="font-display text-lg md:text-xl font-bold text-foreground mb-3 flex items-center gap-2">
-                        <Star className="h-5 w-5 text-secondary" /> What You Will Experience
-                      </h3>
-                      <ul className="space-y-2">
-                        {open.details.willExperience.map((h, i) => (
-                          <li key={i} className="flex gap-2.5 items-start text-foreground/90">
-                            <span className="text-secondary mt-1.5">◆</span>
-                            <span>{h}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </section>
-
-                    <section>
-                      <h3 className="font-display text-lg md:text-xl font-bold text-foreground mb-3 flex items-center gap-2">
-                        <Heart className="h-5 w-5 text-secondary" /> What You Will Feel
-                      </h3>
-                      <blockquote className="p-5 rounded-lg bg-muted/30 border-l-4 border-secondary font-serif italic text-foreground/90 leading-relaxed">
-                        {open.details.willFeel}
-                      </blockquote>
-                    </section>
-
-                    <section>
-                      <h3 className="font-display text-lg md:text-xl font-bold text-foreground mb-3 flex items-center gap-2">
-                        <Camera className="h-5 w-5 text-secondary" /> Perfect Moments
-                      </h3>
-                      <ul className="grid sm:grid-cols-2 gap-2">
-                        {open.details.perfectMoments.map((h, i) => (
-                          <li key={i} className="flex gap-2.5 items-start text-foreground/90">
-                            <span className="text-secondary mt-1.5">◆</span>
-                            <span>{h}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </section>
-
-                    <section>
-                      <h3 className="font-display text-lg md:text-xl font-bold text-foreground mb-3 flex items-center gap-2">
-                        <Footprints className="h-5 w-5 text-secondary" /> Experience Flow
-                      </h3>
-                      <ol className="space-y-3">
-                        {open.details.flow.map((h, i) => (
-                          <li key={i} className="flex gap-3 items-start">
-                            <span className="flex-shrink-0 w-7 h-7 rounded-full heritage-gradient text-primary-foreground text-sm font-bold flex items-center justify-center">
-                              {i + 1}
-                            </span>
-                            <span className="text-foreground/90 pt-0.5">{h}</span>
-                          </li>
-                        ))}
-                      </ol>
-                    </section>
-
-                    <section>
-                      <h3 className="font-display text-lg md:text-xl font-bold text-foreground mb-3 flex items-center gap-2">
-                        <Users className="h-5 w-5 text-secondary" /> Ideal For
-                      </h3>
-                      <ul className="grid sm:grid-cols-2 gap-2">
-                        {open.details.idealFor.map((h, i) => (
-                          <li key={i} className="flex gap-2.5 items-start text-foreground/90">
-                            <span className="text-secondary mt-1.5">◆</span>
-                            <span>{h}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </section>
-
-                    <section>
-                      <h3 className="font-display text-lg md:text-xl font-bold text-foreground mb-3 flex items-center gap-2">
-                        <Award className="h-5 w-5 text-secondary" /> Why Travelers Love It
-                      </h3>
-                      <p className="text-foreground/90 leading-relaxed font-serif italic text-lg">
-                        {open.details.whyLove}
-                      </p>
-                    </section>
-
-                    <section>
-                      <h3 className="font-display text-lg md:text-xl font-bold text-foreground mb-3 flex items-center gap-2">
-                        <Phone className="h-5 w-5 text-secondary" /> Plan Your Experience
-                      </h3>
-                      <ul className="space-y-2">
-                        {open.details.planExperience.map((h, i) => (
-                          <li key={i} className="flex gap-2.5 items-start text-foreground/90">
-                            <span className="text-secondary mt-1.5">◆</span>
-                            <span>{h}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </section>
-                  </>
-                ) : (
-                  <>
-                    <p className="text-foreground/90 leading-relaxed text-base md:text-lg">
-                      {open.description}
-                    </p>
-
-                    {open.highlights?.length > 0 && (
-                      <div>
-                        <h3 className="font-display text-lg font-bold text-foreground mb-3 flex items-center gap-2">
-                          <Sparkles className="h-5 w-5 text-secondary" /> Highlights
-                        </h3>
-                        <ul className="grid sm:grid-cols-2 gap-2.5">
-                          {open.highlights.map((h, i) => (
-                            <li key={i} className="flex gap-2.5 items-start text-sm text-foreground">
-                              <span className="text-secondary mt-1">◆</span>
-                              <span>{h}</span>
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-                    )}
-
-                    <div className="flex flex-wrap gap-3 pt-2">
-                      <a
-                        href={waLink(`Hi! I'd like to book the "${open.title}" experience. Please share details.`)}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="flex-1 min-w-[200px] inline-flex items-center justify-center gap-2 px-6 py-3 rounded-md bg-[hsl(142,70%,40%)] text-white font-semibold hover:opacity-90 transition"
-                      >
-                        <MessageCircle className="h-5 w-5" /> Book on WhatsApp
-                      </a>
-                      <Link
-                        to={`/experiences/${open.slug}`}
-                        onClick={() => setOpen(null)}
-                        className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-md heritage-gradient text-primary-foreground font-semibold hover:opacity-90 transition"
-                      >
-                        View Full Details →
-                      </Link>
-                    </div>
-                  </>
-                )}
-
-                {related.length > 0 && (
-                  <div className="pt-4 border-t border-border">
-                    <h3 className="font-display text-lg font-bold text-foreground mb-4">
-                      You may also love
-                    </h3>
-                    <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
-                      {related.map((r) => (
-                        <button
-                          key={r.slug}
-                          onClick={() => setOpen(r)}
-                          className="text-left group rounded-lg overflow-hidden border border-border bg-card hover:shadow-md transition"
-                        >
-                          <div className="aspect-[4/3] overflow-hidden">
-                            <img
-                              src={r.image}
-                              alt={r.title}
-                              loading="lazy"
-                              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                            />
-                          </div>
-                          <div className="p-3">
-                            <h4 className="font-semibold text-sm text-foreground line-clamp-2 group-hover:text-primary transition">
-                              {r.title}
-                            </h4>
-                          </div>
-                        </button>
-                      ))}
-                    </div>
-                  </div>
-                )}
-              </div>
-            </>
-          )}
-        </DialogContent>
-      </Dialog>
     </main>
   );
 };
