@@ -26,6 +26,18 @@ export interface Experience {
   inclusions: string[];
   exclusions: string[];
   priceFrom?: string;
+  details?: {
+    subtitle: string;
+    overview: string;
+    unique: { title: string; text: string }[];
+    willExperience: string[];
+    willFeel: string;
+    perfectMoments: string[];
+    flow: string[];
+    idealFor: string[];
+    whyLove: string;
+    planExperience: string[];
+  };
 }
 
 export interface Category {
