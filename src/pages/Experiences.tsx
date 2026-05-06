@@ -8,7 +8,7 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog";
-import { Search, MessageCircle, Sparkles, Star, X } from "lucide-react";
+import { Search, MessageCircle, Sparkles, Star, Crown, Heart, Camera, Footprints, Users, Award, Phone } from "lucide-react";
 import heroPalace from "@/assets/hero-palace.jpg";
 
 const waLink = (msg: string) =>
