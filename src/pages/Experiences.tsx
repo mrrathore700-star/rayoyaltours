@@ -8,7 +8,7 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog";
-import { Search, MessageCircle, Sparkles, Star, X } from "lucide-react";
+import { Search, MessageCircle, Sparkles, Star, Crown, Heart, Camera, Footprints, Users, Award, Phone } from "lucide-react";
 import heroPalace from "@/assets/hero-palace.jpg";
 
 const waLink = (msg: string) =>
@@ -265,47 +265,171 @@ const Experiences = () => {
                       {open.title}
                     </DialogTitle>
                   </DialogHeader>
+                  {open.details ? (
+                    <span className="block text-base md:text-lg font-serif italic text-foreground/85 mt-2">
+                      "{open.details.subtitle}"
+                    </span>
+                  ) : null}
                 </div>
               </div>
 
-              <div className="p-5 md:p-7 space-y-6">
-                <p className="text-foreground/90 leading-relaxed text-base md:text-lg">
-                  {open.description}
-                </p>
+              <div className="p-5 md:p-7 space-y-10">
+                {open.details ? (
+                  <>
+                    <section>
+                      <h3 className="font-display text-lg md:text-xl font-bold text-foreground mb-3 flex items-center gap-2">
+                        <Sparkles className="h-5 w-5 text-secondary" /> Experience Overview
+                      </h3>
+                      <p className="text-foreground/90 leading-relaxed whitespace-pre-line">
+                        {open.details.overview}
+                      </p>
+                    </section>
 
-                {open.highlights?.length > 0 && (
-                  <div>
-                    <h3 className="font-display text-lg font-bold text-foreground mb-3 flex items-center gap-2">
-                      <Sparkles className="h-5 w-5 text-secondary" /> Highlights
-                    </h3>
-                    <ul className="grid sm:grid-cols-2 gap-2.5">
-                      {open.highlights.map((h, i) => (
-                        <li key={i} className="flex gap-2.5 items-start text-sm text-foreground">
-                          <span className="text-secondary mt-1">◆</span>
-                          <span>{h}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
+                    <section>
+                      <h3 className="font-display text-lg md:text-xl font-bold text-foreground mb-4 flex items-center gap-2">
+                        <Crown className="h-5 w-5 text-secondary" /> What Makes This Experience Unique
+                      </h3>
+                      <div className="grid sm:grid-cols-2 gap-3">
+                        {open.details.unique.map((u, i) => (
+                          <div key={i} className="p-4 rounded-lg border border-border bg-muted/20">
+                            <p className="font-semibold text-foreground mb-1">{u.title}</p>
+                            <p className="text-sm text-muted-foreground">{u.text}</p>
+                          </div>
+                        ))}
+                      </div>
+                    </section>
+
+                    <section>
+                      <h3 className="font-display text-lg md:text-xl font-bold text-foreground mb-3 flex items-center gap-2">
+                        <Star className="h-5 w-5 text-secondary" /> What You Will Experience
+                      </h3>
+                      <ul className="space-y-2">
+                        {open.details.willExperience.map((h, i) => (
+                          <li key={i} className="flex gap-2.5 items-start text-foreground/90">
+                            <span className="text-secondary mt-1.5">◆</span>
+                            <span>{h}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </section>
+
+                    <section>
+                      <h3 className="font-display text-lg md:text-xl font-bold text-foreground mb-3 flex items-center gap-2">
+                        <Heart className="h-5 w-5 text-secondary" /> What You Will Feel
+                      </h3>
+                      <blockquote className="p-5 rounded-lg bg-muted/30 border-l-4 border-secondary font-serif italic text-foreground/90 leading-relaxed">
+                        {open.details.willFeel}
+                      </blockquote>
+                    </section>
+
+                    <section>
+                      <h3 className="font-display text-lg md:text-xl font-bold text-foreground mb-3 flex items-center gap-2">
+                        <Camera className="h-5 w-5 text-secondary" /> Perfect Moments
+                      </h3>
+                      <ul className="grid sm:grid-cols-2 gap-2">
+                        {open.details.perfectMoments.map((h, i) => (
+                          <li key={i} className="flex gap-2.5 items-start text-foreground/90">
+                            <span className="text-secondary mt-1.5">◆</span>
+                            <span>{h}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </section>
+
+                    <section>
+                      <h3 className="font-display text-lg md:text-xl font-bold text-foreground mb-3 flex items-center gap-2">
+                        <Footprints className="h-5 w-5 text-secondary" /> Experience Flow
+                      </h3>
+                      <ol className="space-y-3">
+                        {open.details.flow.map((h, i) => (
+                          <li key={i} className="flex gap-3 items-start">
+                            <span className="flex-shrink-0 w-7 h-7 rounded-full heritage-gradient text-primary-foreground text-sm font-bold flex items-center justify-center">
+                              {i + 1}
+                            </span>
+                            <span className="text-foreground/90 pt-0.5">{h}</span>
+                          </li>
+                        ))}
+                      </ol>
+                    </section>
+
+                    <section>
+                      <h3 className="font-display text-lg md:text-xl font-bold text-foreground mb-3 flex items-center gap-2">
+                        <Users className="h-5 w-5 text-secondary" /> Ideal For
+                      </h3>
+                      <ul className="grid sm:grid-cols-2 gap-2">
+                        {open.details.idealFor.map((h, i) => (
+                          <li key={i} className="flex gap-2.5 items-start text-foreground/90">
+                            <span className="text-secondary mt-1.5">◆</span>
+                            <span>{h}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </section>
+
+                    <section>
+                      <h3 className="font-display text-lg md:text-xl font-bold text-foreground mb-3 flex items-center gap-2">
+                        <Award className="h-5 w-5 text-secondary" /> Why Travelers Love It
+                      </h3>
+                      <p className="text-foreground/90 leading-relaxed font-serif italic text-lg">
+                        {open.details.whyLove}
+                      </p>
+                    </section>
+
+                    <section>
+                      <h3 className="font-display text-lg md:text-xl font-bold text-foreground mb-3 flex items-center gap-2">
+                        <Phone className="h-5 w-5 text-secondary" /> Plan Your Experience
+                      </h3>
+                      <ul className="space-y-2">
+                        {open.details.planExperience.map((h, i) => (
+                          <li key={i} className="flex gap-2.5 items-start text-foreground/90">
+                            <span className="text-secondary mt-1.5">◆</span>
+                            <span>{h}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </section>
+                  </>
+                ) : (
+                  <>
+                    <p className="text-foreground/90 leading-relaxed text-base md:text-lg">
+                      {open.description}
+                    </p>
+
+                    {open.highlights?.length > 0 && (
+                      <div>
+                        <h3 className="font-display text-lg font-bold text-foreground mb-3 flex items-center gap-2">
+                          <Sparkles className="h-5 w-5 text-secondary" /> Highlights
+                        </h3>
+                        <ul className="grid sm:grid-cols-2 gap-2.5">
+                          {open.highlights.map((h, i) => (
+                            <li key={i} className="flex gap-2.5 items-start text-sm text-foreground">
+                              <span className="text-secondary mt-1">◆</span>
+                              <span>{h}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    )}
+
+                    <div className="flex flex-wrap gap-3 pt-2">
+                      <a
+                        href={waLink(`Hi! I'd like to book the "${open.title}" experience. Please share details.`)}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex-1 min-w-[200px] inline-flex items-center justify-center gap-2 px-6 py-3 rounded-md bg-[hsl(142,70%,40%)] text-white font-semibold hover:opacity-90 transition"
+                      >
+                        <MessageCircle className="h-5 w-5" /> Book on WhatsApp
+                      </a>
+                      <Link
+                        to={`/experiences/${open.slug}`}
+                        onClick={() => setOpen(null)}
+                        className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-md heritage-gradient text-primary-foreground font-semibold hover:opacity-90 transition"
+                      >
+                        View Full Details →
+                      </Link>
+                    </div>
+                  </>
                 )}
-
-                <div className="flex flex-wrap gap-3 pt-2">
-                  <a
-                    href={waLink(`Hi! I'd like to book the "${open.title}" experience. Please share details.`)}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex-1 min-w-[200px] inline-flex items-center justify-center gap-2 px-6 py-3 rounded-md bg-[hsl(142,70%,40%)] text-white font-semibold hover:opacity-90 transition"
-                  >
-                    <MessageCircle className="h-5 w-5" /> Book on WhatsApp
-                  </a>
-                  <Link
-                    to={`/experiences/${open.slug}`}
-                    onClick={() => setOpen(null)}
-                    className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-md heritage-gradient text-primary-foreground font-semibold hover:opacity-90 transition"
-                  >
-                    View Full Details →
-                  </Link>
-                </div>
 
                 {related.length > 0 && (
                   <div className="pt-4 border-t border-border">

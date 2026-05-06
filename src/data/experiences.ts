@@ -26,6 +26,18 @@ export interface Experience {
   inclusions: string[];
   exclusions: string[];
   priceFrom?: string;
+  details?: {
+    subtitle: string;
+    overview: string;
+    unique: { title: string; text: string }[];
+    willExperience: string[];
+    willFeel: string;
+    perfectMoments: string[];
+    flow: string[];
+    idealFor: string[];
+    whyLove: string;
+    planExperience: string[];
+  };
 }
 
 export interface Category {
@@ -188,13 +200,68 @@ export const categories: Category[] = [
         "2–3 hours per fort",
         "Jaipur, Jodhpur, Chittorgarh, Kumbhalgarh",
         "October to March"),
-      make("maharaja-photoshoot", "Maharaja & Maharani Photoshoot", "Royal & Heritage", royalTour,
-        "Become royalty for a day — costumes, palace location and pro photographer.",
-        "Dress in authentic Rajput royal attire — sherwani, safa and jewels for him; bridal lehenga and royal jewellery for her — and pose for a professional photoshoot inside a real palace or haveli. Perfect for honeymooners, anniversary couples or anyone who wants the ultimate Rajasthan keepsake. All edited photos delivered digitally.",
-        ["Royal costumes & jewellery", "Pro photographer + assistant", "Heritage haveli/palace location", "Edited high-res photos", "Couples / family / solo"],
-        "2–3 hours",
-        "Jaipur, Udaipur, Jodhpur",
-        "All year"),
+      Object.assign(
+        make("maharaja-photoshoot", "Maharaja & Maharani Photoshoot", "Royal & Heritage", royalTour,
+          "Become royalty for a day — costumes, palace location and pro photographer.",
+          "Dress in authentic Rajput royal attire — sherwani, safa and jewels for him; bridal lehenga and royal jewellery for her — and pose for a professional photoshoot inside a real palace or haveli. Perfect for honeymooners, anniversary couples or anyone who wants the ultimate Rajasthan keepsake. All edited photos delivered digitally.",
+          ["Royal costumes & jewellery", "Pro photographer + assistant", "Heritage haveli/palace location", "Edited high-res photos", "Couples / family / solo"],
+          "2–3 hours",
+          "Jaipur, Udaipur, Jodhpur",
+          "All year"),
+        {
+          details: {
+            subtitle: "Step into royalty — and become part of Rajasthan's timeless story.",
+            overview:
+              "Imagine yourself dressed in royal attire, standing inside a grand palace or heritage courtyard. The fabric of your outfit flows elegantly, traditional jewelry shines in the light, and every detail around you reflects the glory of Rajasthan's royal past. For a moment, you are no longer a traveler — you are a Maharaja or Maharani.\n\nWith a professional photographer guiding you, every pose, every angle, and every expression is captured in a way that feels cinematic, authentic, and unforgettable. This is not just a photoshoot. It's a royal transformation into history.",
+            unique: [
+              { title: "Authentic royal costumes", text: "Traditional Rajasthani outfits with detailed styling." },
+              { title: "Palace & heritage locations", text: "Shoot in stunning backdrops like forts, courtyards, and heritage havelis." },
+              { title: "Professional photography", text: "Expert photographers who understand lighting, poses, and storytelling." },
+              { title: "Cultural immersion", text: "Experience the elegance of royal lifestyle through visuals." },
+            ],
+            willExperience: [
+              "Welcome and introduction to the experience",
+              "Selection of royal outfits (Maharaja / Maharani style)",
+              "Assistance with dressing and styling",
+              "Guided photoshoot at premium heritage locations",
+              "Multiple poses and cinematic shots",
+              "Optional candid and lifestyle photography",
+              "Delivery of professionally edited photos",
+            ],
+            willFeel:
+              "A sense of confidence, elegance, and royal pride. It's not just about photos — it's about feeling like royalty.",
+            perfectMoments: [
+              "Royal portraits in palace settings",
+              "Couple shots in traditional attire",
+              "Walking shots in heritage corridors",
+              "Close-up jewelry and costume details",
+              "Cinematic wide-angle royal visuals",
+            ],
+            flow: [
+              "Arrival at photoshoot location",
+              "Outfit selection and styling",
+              "Preparation and briefing",
+              "Begin guided photoshoot session",
+              "Capture multiple scenes and poses",
+              "Wrap-up and photo selection process",
+            ],
+            idealFor: [
+              "Couples & honeymoon travelers",
+              "Content creators & influencers",
+              "Luxury travelers",
+              "Wedding & pre-wedding shoots",
+              "First-time India visitors",
+            ],
+            whyLove:
+              "Because it gives them something unforgettable — a chance to be royalty, not just see it.",
+            planExperience: [
+              "Couple & solo shoots available",
+              "Custom locations (Jaipur, Udaipur, Jodhpur)",
+              "Combine with palace stay or vintage car ride",
+            ],
+          },
+        }
+      ),
     ],
   },
   {
