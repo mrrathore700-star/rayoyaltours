@@ -26,6 +26,9 @@ export interface Experience {
   inclusions: string[];
   exclusions: string[];
   priceFrom?: string;
+  experienceType?: string;
+  groupType?: string;
+  gallery?: string[];
   details?: {
     subtitle: string;
     overview: string;
