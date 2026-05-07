@@ -566,9 +566,19 @@ export const categories: Category[] = [
 // helper - panmeena is just import alias workaround above; clean it up:
 // (Above intentional to avoid removing import; safe in TS.)
 
+// Apply rich storytelling details + galleries (where defined) onto experiences.
+import { experienceMeta } from "./experienceDetails";
+for (const cat of categories) {
+  for (const e of cat.experiences) {
+    const meta = experienceMeta[e.slug];
+    if (meta) Object.assign(e, meta);
+  }
+}
+
 export const allExperiences: Experience[] = categories.flatMap((c) => c.experiences);
 
 export const findExperience = (slug: string) =>
   allExperiences.find((e) => e.slug === slug);
 
 export const findCategory = (id: string) => categories.find((c) => c.id === id);
+
