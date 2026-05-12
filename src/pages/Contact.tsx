@@ -3,18 +3,49 @@ import SectionHeading from "@/components/SectionHeading";
 import SEO from "@/components/SEO";
 import { MapPin, Phone, Mail, MessageCircle, Instagram } from "lucide-react";
 import { toast } from "sonner";
+import { supabase } from "@/integrations/supabase/client";
 
 const Contact = () => {
   const [form, setForm] = useState({ name: "", email: "", phone: "", message: "" });
+  const [submitting, setSubmitting] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!form.name.trim() || !form.email.trim() || !form.message.trim()) {
       toast.error("Please fill in all required fields");
       return;
     }
-    toast.success("Thank you! We'll get back to you within 24 hours.");
-    setForm({ name: "", email: "", phone: "", message: "" });
+    setSubmitting(true);
+    try {
+      const id = crypto.randomUUID();
+      const templateData = { name: form.name, email: form.email, phone: form.phone, message: form.message };
+      const [adminRes, userRes] = await Promise.all([
+        supabase.functions.invoke("send-transactional-email", {
+          body: {
+            templateName: "inquiry-notification",
+            idempotencyKey: `inquiry-admin-${id}`,
+            templateData,
+          },
+        }),
+        supabase.functions.invoke("send-transactional-email", {
+          body: {
+            templateName: "inquiry-confirmation",
+            recipientEmail: form.email,
+            idempotencyKey: `inquiry-user-${id}`,
+            templateData: { name: form.name, message: form.message },
+          },
+        }),
+      ]);
+      if (adminRes.error) throw adminRes.error;
+      if (userRes.error) console.warn("User confirmation failed", userRes.error);
+      toast.success("Thank you! We'll get back to you within 24 hours.");
+      setForm({ name: "", email: "", phone: "", message: "" });
+    } catch (err: any) {
+      console.error(err);
+      toast.error("Could not send your inquiry. Please try WhatsApp or call us directly.");
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   return (
@@ -108,9 +139,10 @@ const Contact = () => {
             </div>
             <button
               type="submit"
-              className="w-full py-3 rounded-md heritage-gradient text-primary-foreground font-bold text-sm hover:opacity-90 transition-opacity"
+              disabled={submitting}
+              className="w-full py-3 rounded-md heritage-gradient text-primary-foreground font-bold text-sm hover:opacity-90 transition-opacity disabled:opacity-60"
             >
-              Send Inquiry
+              {submitting ? "Sending..." : "Send Inquiry"}
             </button>
           </form>
         </div>

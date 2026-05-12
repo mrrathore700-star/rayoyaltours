@@ -25,6 +25,7 @@ import PrivacyPolicy from "./pages/PrivacyPolicy";
 import TermsAndConditions from "./pages/TermsAndConditions";
 import RefundPolicy from "./pages/RefundPolicy";
 import NotFound from "./pages/NotFound";
+import Unsubscribe from "./pages/Unsubscribe";
 
 const queryClient = new QueryClient();
 
@@ -54,6 +55,7 @@ const App = () => (
             <Route path="/privacy-policy" element={<PrivacyPolicy />} />
             <Route path="/terms-and-conditions" element={<TermsAndConditions />} />
             <Route path="/refund-policy" element={<RefundPolicy />} />
+            <Route path="/unsubscribe" element={<Unsubscribe />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
           <Footer />
