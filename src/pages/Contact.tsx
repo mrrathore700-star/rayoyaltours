@@ -139,9 +139,10 @@ const Contact = () => {
             </div>
             <button
               type="submit"
-              className="w-full py-3 rounded-md heritage-gradient text-primary-foreground font-bold text-sm hover:opacity-90 transition-opacity"
+              disabled={submitting}
+              className="w-full py-3 rounded-md heritage-gradient text-primary-foreground font-bold text-sm hover:opacity-90 transition-opacity disabled:opacity-60"
             >
-              Send Inquiry
+              {submitting ? "Sending..." : "Send Inquiry"}
             </button>
           </form>
         </div>
