@@ -100,19 +100,26 @@ Deno.serve(async (req) => {
         content: text,
         html,
       });
-    } finally {
-      await client.close().catch(() => {});
+    } catch (sendErr) {
+      console.error("SMTP send failed", { host, port, user, err: String(sendErr) });
+      try { await client.close(); } catch (_) { /* ignore */ }
+      return new Response(
+        JSON.stringify({ error: "Failed to send inquiry", detail: String(sendErr) }),
+        { status: 502, headers: { ...corsHeaders, "Content-Type": "application/json" } },
+      );
     }
+
+    try { await client.close(); } catch (_) { /* ignore */ }
 
     return new Response(JSON.stringify({ ok: true }), {
       headers: { ...corsHeaders, "Content-Type": "application/json" },
     });
   } catch (err) {
     console.error("contact error", err);
-    return new Response(JSON.stringify({ error: "Failed to send inquiry" }), {
-      status: 500,
-      headers: { ...corsHeaders, "Content-Type": "application/json" },
-    });
+    return new Response(
+      JSON.stringify({ error: "Failed to send inquiry", detail: String(err) }),
+      { status: 500, headers: { ...corsHeaders, "Content-Type": "application/json" } },
+    );
   }
 });
 
