@@ -1,29 +1,14 @@
 import { useRef, useState } from "react";
-import emailjs from "@emailjs/browser";
+import { supabase } from "@/integrations/supabase/client";
 import SectionHeading from "@/components/SectionHeading";
 import SEO from "@/components/SEO";
 import { MapPin, Phone, Mail, MessageCircle, Instagram, Loader2, CheckCircle2 } from "lucide-react";
 import { toast } from "sonner";
 
-/**
- * EmailJS configuration
- * ---------------------
- * Create a free account at https://www.emailjs.com/ and replace the values below.
- *
- *   1. SERVICE_ID  – EmailJS → Email Services → your service (e.g. Gmail/SMTP that
- *                    sends FROM info@heritagejaipurtravels.com)
- *   2. TEMPLATE_ID – EmailJS → Email Templates → your template
- *                    Template "To Email" must be: info@heritagejaipurtravels.com
- *                    Use these template variables:
- *                      {{from_name}} {{from_email}} {{phone}} {{message}} {{sent_at}}
- *                    Subject: New Inquiry – Heritage Jaipur Travels
- *   3. PUBLIC_KEY  – EmailJS → Account → API Keys → Public Key
- *
- * These are public-safe keys (EmailJS is designed for client-side use).
- */
-const EMAILJS_SERVICE_ID = "YOUR_SERVICE_ID";
-const EMAILJS_TEMPLATE_ID = "YOUR_TEMPLATE_ID";
-const EMAILJS_PUBLIC_KEY = "YOUR_PUBLIC_KEY";
+// Submissions are POSTed to a secure backend function ("contact") which uses
+// SMTP (SMTP_HOST / SMTP_PORT / SMTP_USER / SMTP_PASS) to deliver the inquiry
+// directly to info@heritagejaipurtravels.com. No SMTP credentials live in the
+// client.
 
 const isValidEmail = (email: string) => /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email);
 
@@ -46,8 +31,7 @@ const Contact = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (submitting) return;
-    // Spam guard: honeypot + minimum 3s between submits
-    if (website) return;
+    if (website) return; // honeypot tripped
     if (Date.now() - lastSubmitRef.current < 3000) return;
 
     const err = validate();
@@ -59,33 +43,26 @@ const Contact = () => {
     setSubmitting(true);
     lastSubmitRef.current = Date.now();
     try {
-      const sentAt = new Date().toLocaleString("en-IN", {
-        dateStyle: "full",
-        timeStyle: "short",
-        timeZone: "Asia/Kolkata",
+      const { data, error } = await supabase.functions.invoke("contact", {
+        body: {
+          name: form.name.trim(),
+          email: form.email.trim(),
+          phone: form.phone.trim(),
+          message: form.message.trim(),
+          website,
+        },
       });
 
-      await emailjs.send(
-        EMAILJS_SERVICE_ID,
-        EMAILJS_TEMPLATE_ID,
-        {
-          from_name: form.name,
-          from_email: form.email,
-          phone: form.phone || "Not provided",
-          message: form.message,
-          sent_at: sentAt,
-          to_email: "info@heritagejaipurtravels.com",
-          reply_to: form.email,
-        },
-        { publicKey: EMAILJS_PUBLIC_KEY },
-      );
+      if (error || (data as any)?.error) {
+        throw new Error((data as any)?.error || error?.message || "Send failed");
+      }
 
       setSent(true);
       toast.success("Inquiry sent successfully. Our team will contact you shortly.");
       setForm({ name: "", email: "", phone: "", message: "" });
       formRef.current?.reset();
     } catch (error) {
-      console.error("EmailJS error:", error);
+      console.error("Contact form error:", error);
       toast.error("Could not send your inquiry. Please try WhatsApp or call us directly.");
     } finally {
       setSubmitting(false);
