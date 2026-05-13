@@ -1,13 +1,48 @@
 import type { VercelRequest, VercelResponse } from "@vercel/node";
-import nodemailer from "nodemailer";
+import nodemailer, { type Transporter } from "nodemailer";
 
 const RECIPIENT = "info@heritagejaipurtravels.com";
+const REPLY_TO_SUPPORT = "support@heritagejaipurtravels.com";
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
 
 const escapeHtml = (s: string) =>
   s.replace(/[&<>"']/g, (c) =>
     ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]!),
   );
+
+const clean = (v: string | undefined) =>
+  (v ?? "").trim().replace(/^['"]|['"]$/g, "").replace(/^[A-Z_]+=/, "");
+
+type SmtpAttempt = { host: string; port: number; secure: boolean; label: string };
+
+function buildAttempts(): SmtpAttempt[] {
+  const envHost = clean(process.env.SMTP_HOST);
+  const envPort = Number.parseInt(clean(process.env.SMTP_PORT) || "0", 10);
+  const attempts: SmtpAttempt[] = [];
+
+  if (envHost && Number.isInteger(envPort) && envPort > 0) {
+    attempts.push({
+      host: envHost,
+      port: envPort,
+      secure: envPort === 465,
+      label: "env",
+    });
+  }
+  // Auto fallbacks for cPanel / Hostinger setups
+  attempts.push({ host: "mail.heritagejaipurtravels.com", port: 465, secure: true, label: "cpanel-465" });
+  attempts.push({ host: "mail.heritagejaipurtravels.com", port: 587, secure: false, label: "cpanel-587" });
+  attempts.push({ host: "smtp.hostinger.com", port: 465, secure: true, label: "hostinger-465" });
+  attempts.push({ host: "smtp.hostinger.com", port: 587, secure: false, label: "hostinger-587" });
+
+  // De-duplicate
+  const seen = new Set<string>();
+  return attempts.filter((a) => {
+    const key = `${a.host}:${a.port}:${a.secure}`;
+    if (seen.has(key)) return false;
+    seen.add(key);
+    return true;
+  });
+}
 
 export default async function handler(req: VercelRequest, res: VercelResponse) {
   res.setHeader("Access-Control-Allow-Origin", "*");
@@ -38,25 +73,16 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     if (!message || message.length < 5 || message.length > 2000)
       return res.status(400).json({ success: false, error: "Please share a few words about your trip" });
 
-    const host = process.env.SMTP_HOST?.trim();
-    const port = Number.parseInt(process.env.SMTP_PORT?.trim() || "465", 10);
-    const user = process.env.SMTP_USER?.trim();
-    const pass = process.env.SMTP_PASS?.trim();
+    const user = clean(process.env.SMTP_USER) || "info@heritagejaipurtravels.com";
+    const pass = clean(process.env.SMTP_PASS);
 
-    if (!host || !user || !pass || !Number.isInteger(port)) {
-      console.error("SMTP env vars missing or invalid");
-      return res.status(500).json({ success: false, error: "Email service not configured" });
+    if (!pass) {
+      console.warn("[contact] SMTP_PASS missing — cannot send email");
+      return res.status(500).json({
+        success: false,
+        error: "Email service not configured. Please contact us via WhatsApp.",
+      });
     }
-
-    const transporter = nodemailer.createTransport({
-      host,
-      port,
-      secure: port === 465,
-      auth: { user, pass },
-      connectionTimeout: 15000,
-      greetingTimeout: 15000,
-      socketTimeout: 20000,
-    });
 
     const sentAt = new Date().toLocaleString("en-IN", {
       dateStyle: "full",
@@ -70,46 +96,79 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       `Date & Time: ${sentAt}\n\nMessage:\n${message}\n`;
 
     const html = `
-      <div style="font-family:Arial,sans-serif;max-width:600px;margin:auto;padding:24px;background:#FFF8F0;border:1px solid #C9A84C40;border-radius:12px">
-        <h2 style="color:#8B1A1A;margin:0 0 16px">New Inquiry – Heritage Jaipur Travels</h2>
-        <table style="width:100%;border-collapse:collapse;font-size:14px;color:#333">
-          <tr><td style="padding:6px 0;font-weight:bold;width:120px">Name</td><td>${escapeHtml(name)}</td></tr>
-          <tr><td style="padding:6px 0;font-weight:bold">Email</td><td><a href="mailto:${escapeHtml(email)}">${escapeHtml(email)}</a></td></tr>
-          <tr><td style="padding:6px 0;font-weight:bold">Phone</td><td>${escapeHtml(phone || "Not provided")}</td></tr>
-          <tr><td style="padding:6px 0;font-weight:bold">Date &amp; Time</td><td>${escapeHtml(sentAt)}</td></tr>
-        </table>
-        <h3 style="color:#8B1A1A;margin:20px 0 8px">Message</h3>
-        <p style="white-space:pre-wrap;color:#333;line-height:1.5">${escapeHtml(message)}</p>
+      <div style="font-family:Arial,sans-serif;max-width:620px;margin:auto;background:#FFF8F0;border:1px solid #C9A84C40;border-radius:12px;overflow:hidden">
+        <div style="background:linear-gradient(135deg,#8B1A1A 0%,#C9A84C 100%);padding:20px 24px">
+          <h2 style="color:#FFF8F0;margin:0;font-size:20px;letter-spacing:.5px">Heritage Jaipur Travels</h2>
+          <p style="color:#FFF8F0;opacity:.9;margin:4px 0 0;font-size:13px">New Quick Inquiry</p>
+        </div>
+        <div style="padding:24px">
+          <table style="width:100%;border-collapse:collapse;font-size:14px;color:#333">
+            <tr><td style="padding:8px 0;font-weight:bold;width:130px;color:#8B1A1A">Name</td><td>${escapeHtml(name)}</td></tr>
+            <tr><td style="padding:8px 0;font-weight:bold;color:#8B1A1A">Email</td><td><a href="mailto:${escapeHtml(email)}" style="color:#8B1A1A">${escapeHtml(email)}</a></td></tr>
+            <tr><td style="padding:8px 0;font-weight:bold;color:#8B1A1A">Phone</td><td>${escapeHtml(phone || "Not provided")}</td></tr>
+            <tr><td style="padding:8px 0;font-weight:bold;color:#8B1A1A">Submitted</td><td>${escapeHtml(sentAt)}</td></tr>
+          </table>
+          <h3 style="color:#8B1A1A;margin:20px 0 8px;border-top:1px solid #C9A84C40;padding-top:16px">Message</h3>
+          <p style="white-space:pre-wrap;color:#333;line-height:1.6;margin:0">${escapeHtml(message)}</p>
+        </div>
+        <div style="background:#8B1A1A;color:#FFF8F0;padding:12px 24px;font-size:12px;text-align:center">
+          Reply directly to this email to respond to ${escapeHtml(name)}.
+        </div>
       </div>`;
 
-    try {
-      await transporter.sendMail({
-        from: `Heritage Jaipur Travels <${user}>`,
-        to: RECIPIENT,
-        replyTo: `${name} <${email}>`,
-        subject: "New Inquiry - Heritage Jaipur Travels",
-        text,
-        html,
-      });
-    } catch (sendErr) {
-      console.error("SMTP send failed:", sendErr);
-      return res.status(502).json({
-        success: false,
-        error: "Unable to send inquiry. Please try again later.",
-      });
-    } finally {
-      transporter.close();
+    const attempts = buildAttempts();
+    const errors: string[] = [];
+
+    for (const attempt of attempts) {
+      let transporter: Transporter | null = null;
+      try {
+        transporter = nodemailer.createTransport({
+          host: attempt.host,
+          port: attempt.port,
+          secure: attempt.secure,
+          auth: { user, pass },
+          connectionTimeout: 10000,
+          greetingTimeout: 10000,
+          socketTimeout: 15000,
+          tls: { rejectUnauthorized: false },
+        });
+
+        await transporter.verify();
+
+        await transporter.sendMail({
+          from: `Heritage Jaipur Travels <${user}>`,
+          to: RECIPIENT,
+          replyTo: `${name} <${email}>`,
+          headers: { "Reply-To": `${name} <${email}>`, "X-Support-Contact": REPLY_TO_SUPPORT },
+          subject: "New Inquiry – Heritage Jaipur Travels",
+          text,
+          html,
+        });
+
+        console.log(`[contact] sent via ${attempt.label} (${attempt.host}:${attempt.port})`);
+        return res.status(200).json({
+          success: true,
+          message: "Thank you. Our Rajasthan travel specialist will contact you shortly.",
+        });
+      } catch (err) {
+        const msg = err instanceof Error ? err.message : String(err);
+        console.warn(`[contact] attempt ${attempt.label} failed: ${msg}`);
+        errors.push(`${attempt.label}: ${msg}`);
+      } finally {
+        try { transporter?.close(); } catch { /* ignore */ }
+      }
     }
 
-    return res.status(200).json({
-      success: true,
-      message: "Thank you. Our travel specialist will contact you shortly.",
+    console.error("[contact] all SMTP attempts failed:", errors.join(" | "));
+    return res.status(502).json({
+      success: false,
+      error: "Unable to send inquiry right now. Please try again later.",
     });
   } catch (err) {
-    console.error("Contact API error:", err);
+    console.error("[contact] handler error:", err);
     return res.status(500).json({
       success: false,
-      error: "Unable to send inquiry. Please try again later.",
+      error: "Unable to send inquiry right now. Please try again later.",
     });
   }
 }
