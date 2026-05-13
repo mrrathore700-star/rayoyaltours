@@ -11,37 +11,26 @@ const escapeHtml = (s: string) =>
   );
 
 const clean = (v: string | undefined) =>
-  (v ?? "").trim().replace(/^['"]|['"]$/g, "").replace(/^[A-Z_]+=/, "");
+  (v ?? "").trim().replace(/^[\'"]|[\'"]$/g, "").replace(/^[A-Z_]+=/, "");
+
+const parseSecure = (value: string | undefined, fallback: boolean) => {
+  const normalized = clean(value).toLowerCase();
+  if (["true", "1", "yes"].includes(normalized)) return true;
+  if (["false", "0", "no"].includes(normalized)) return false;
+  return fallback;
+};
 
 type SmtpAttempt = { host: string; port: number; secure: boolean; label: string };
 
 function buildAttempts(): SmtpAttempt[] {
-  const envHost = clean(process.env.SMTP_HOST);
-  const envPort = Number.parseInt(clean(process.env.SMTP_PORT) || "0", 10);
-  const attempts: SmtpAttempt[] = [];
+  const host = clean(process.env.SMTP_HOST) || "mail.heritagejaipurtravels.com";
+  const port = Number.parseInt(clean(process.env.SMTP_PORT) || "465", 10);
 
-  if (envHost && Number.isInteger(envPort) && envPort > 0) {
-    attempts.push({
-      host: envHost,
-      port: envPort,
-      secure: envPort === 465,
-      label: "env",
-    });
+  if (!Number.isInteger(port) || port <= 0) {
+    throw new Error("Invalid SMTP_PORT. Expected a number like 465.");
   }
-  // Auto fallbacks for cPanel / Hostinger setups
-  attempts.push({ host: "mail.heritagejaipurtravels.com", port: 465, secure: true, label: "cpanel-465" });
-  attempts.push({ host: "mail.heritagejaipurtravels.com", port: 587, secure: false, label: "cpanel-587" });
-  attempts.push({ host: "smtp.hostinger.com", port: 465, secure: true, label: "hostinger-465" });
-  attempts.push({ host: "smtp.hostinger.com", port: 587, secure: false, label: "hostinger-587" });
 
-  // De-duplicate
-  const seen = new Set<string>();
-  return attempts.filter((a) => {
-    const key = `${a.host}:${a.port}:${a.secure}`;
-    if (seen.has(key)) return false;
-    seen.add(key);
-    return true;
-  });
+  return [{ host, port, secure: parseSecure(process.env.SMTP_SECURE, port === 465), label: "smtp" }];
 }
 
 export default async function handler(req: VercelRequest, res: VercelResponse) {
