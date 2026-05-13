@@ -1,8 +1,7 @@
 import type { VercelRequest, VercelResponse } from "@vercel/node";
-import nodemailer, { type Transporter } from "nodemailer";
+import nodemailer from "nodemailer";
 
 const RECIPIENT = "info@heritagejaipurtravels.com";
-const REPLY_TO_SUPPORT = "support@heritagejaipurtravels.com";
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
 
 const escapeHtml = (s: string) =>
@@ -11,27 +10,7 @@ const escapeHtml = (s: string) =>
   );
 
 const clean = (v: string | undefined) =>
-  (v ?? "").trim().replace(/^[\'"]|[\'"]$/g, "").replace(/^[A-Z_]+=/, "");
-
-const parseSecure = (value: string | undefined, fallback: boolean) => {
-  const normalized = clean(value).toLowerCase();
-  if (["true", "1", "yes"].includes(normalized)) return true;
-  if (["false", "0", "no"].includes(normalized)) return false;
-  return fallback;
-};
-
-type SmtpAttempt = { host: string; port: number; secure: boolean; label: string };
-
-function buildAttempts(): SmtpAttempt[] {
-  const host = clean(process.env.SMTP_HOST) || "mail.heritagejaipurtravels.com";
-  const port = Number.parseInt(clean(process.env.SMTP_PORT) || "465", 10);
-
-  if (!Number.isInteger(port) || port <= 0) {
-    throw new Error("Invalid SMTP_PORT. Expected a number like 465.");
-  }
-
-  return [{ host, port, secure: parseSecure(process.env.SMTP_SECURE, port === 465), label: "smtp" }];
-}
+  (v ?? "").trim().replace(/^['"]|['"]$/g, "");
 
 export default async function handler(req: VercelRequest, res: VercelResponse) {
   res.setHeader("Access-Control-Allow-Origin", "*");
@@ -44,7 +23,8 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
   }
 
   try {
-    const body = typeof req.body === "string" ? JSON.parse(req.body || "{}") : (req.body ?? {});
+    const body =
+      typeof req.body === "string" ? JSON.parse(req.body || "{}") : (req.body ?? {});
     const name = String(body.name ?? "").trim();
     const email = String(body.email ?? "").trim();
     const phone = String(body.phone ?? "").trim();
@@ -60,23 +40,33 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     if (phone && phone.length > 30)
       return res.status(400).json({ success: false, error: "Phone number is too long" });
     if (!message || message.length < 5 || message.length > 2000)
-      return res.status(400).json({ success: false, error: "Please share a few words about your trip" });
+      return res
+        .status(400)
+        .json({ success: false, error: "Please share a few words about your trip" });
 
-    if (!clean(process.env.SMTP_HOST)) console.warn("[contact] SMTP_HOST missing — using mail.heritagejaipurtravels.com");
-    if (!clean(process.env.SMTP_PORT)) console.warn("[contact] SMTP_PORT missing — using 465");
-    if (!clean(process.env.SMTP_SECURE)) console.warn("[contact] SMTP_SECURE missing — using true for port 465");
-
-    const user = clean(process.env.SMTP_USER) || "info@heritagejaipurtravels.com";
-    if (!clean(process.env.SMTP_USER)) console.warn("[contact] SMTP_USER missing — using info@heritagejaipurtravels.com");
+    const host = clean(process.env.SMTP_HOST) || "mail.heritagejaipurtravels.com";
+    const portRaw = clean(process.env.SMTP_PORT) || "465";
+    const port = Number.parseInt(portRaw, 10);
+    const user = clean(process.env.SMTP_USER) || RECIPIENT;
     const pass = clean(process.env.SMTP_PASS);
 
+    if (!Number.isInteger(port) || port <= 0 || port > 65535) {
+      console.error("[contact] Invalid SMTP_PORT:", portRaw);
+      return res.status(500).json({
+        success: false,
+        error: "Email service misconfigured. Please contact us via WhatsApp.",
+      });
+    }
+
     if (!pass) {
-      console.warn("[contact] SMTP_PASS missing — cannot send email");
+      console.error("[contact] SMTP_PASS missing — cannot send email");
       return res.status(500).json({
         success: false,
         error: "Email service not configured. Please contact us via WhatsApp.",
       });
     }
+
+    const secure = port === 465;
 
     const sentAt = new Date().toLocaleString("en-IN", {
       dateStyle: "full",
@@ -110,56 +100,51 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
         </div>
       </div>`;
 
-    const attempts = buildAttempts();
-    const errors: string[] = [];
+    const transporter = nodemailer.createTransport({
+      host,
+      port,
+      secure,
+      auth: { user, pass },
+      connectionTimeout: 10000,
+      greetingTimeout: 10000,
+      socketTimeout: 15000,
+      tls: { rejectUnauthorized: false },
+    });
 
-    for (const attempt of attempts) {
-      let transporter: Transporter | null = null;
+    try {
+      await transporter.verify();
+
+      await transporter.sendMail({
+        from: `Heritage Jaipur Travels <${user}>`,
+        to: RECIPIENT,
+        replyTo: `${name} <${email}>`,
+        subject: "New Inquiry – Heritage Jaipur Travels",
+        text,
+        html,
+      });
+
+      console.log(`[contact] sent via ${host}:${port} (secure=${secure})`);
+      return res.status(200).json({
+        success: true,
+        message: "Thank you. Our Rajasthan travel specialist will contact you shortly.",
+      });
+    } catch (err) {
+      const msg = err instanceof Error ? err.message : String(err);
+      console.error(`[contact] SMTP failed at ${host}:${port} (secure=${secure}):`, msg);
+      console.error("[contact] full error:", err);
+      return res.status(502).json({
+        success: false,
+        error: "Unable to send inquiry right now. Please try again later.",
+      });
+    } finally {
       try {
-        transporter = nodemailer.createTransport({
-          host: attempt.host,
-          port: attempt.port,
-          secure: attempt.secure,
-          auth: { user, pass },
-          connectionTimeout: 10000,
-          greetingTimeout: 10000,
-          socketTimeout: 15000,
-          tls: { rejectUnauthorized: false },
-        });
-
-        await transporter.verify();
-
-        await transporter.sendMail({
-          from: `Heritage Jaipur Travels <${user}>`,
-          to: RECIPIENT,
-          replyTo: `${name} <${email}>`,
-          headers: { "Reply-To": `${name} <${email}>`, "X-Support-Contact": REPLY_TO_SUPPORT },
-          subject: "New Inquiry – Heritage Jaipur Travels",
-          text,
-          html,
-        });
-
-        console.log(`[contact] sent via ${attempt.label} (${attempt.host}:${attempt.port})`);
-        return res.status(200).json({
-          success: true,
-          message: "Thank you. Our Rajasthan travel specialist will contact you shortly.",
-        });
-      } catch (err) {
-        const msg = err instanceof Error ? err.message : String(err);
-        console.warn(`[contact] attempt ${attempt.label} failed: ${msg}`);
-        errors.push(`${attempt.label}: ${msg}`);
-      } finally {
-        try { transporter?.close(); } catch { /* ignore */ }
+        transporter.close();
+      } catch {
+        /* ignore */
       }
     }
-
-    console.error("[contact] all SMTP attempts failed:", errors.join(" | "));
-    return res.status(502).json({
-      success: false,
-      error: "Unable to send inquiry right now. Please try again later.",
-    });
   } catch (err) {
-    console.error("[contact] handler error:", err);
+    console.error("[contact] handler crashed:", err);
     return res.status(500).json({
       success: false,
       error: "Unable to send inquiry right now. Please try again later.",
