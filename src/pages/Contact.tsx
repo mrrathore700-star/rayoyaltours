@@ -1,5 +1,4 @@
 import { useRef, useState } from "react";
-import { supabase } from "@/integrations/supabase/client";
 import SectionHeading from "@/components/SectionHeading";
 import SEO from "@/components/SEO";
 import { MapPin, Phone, Mail, MessageCircle, Instagram, Loader2, CheckCircle2 } from "lucide-react";
@@ -43,22 +42,25 @@ const Contact = () => {
     setSubmitting(true);
     lastSubmitRef.current = Date.now();
     try {
-      const { data, error } = await supabase.functions.invoke("contact", {
-        body: {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
           name: form.name.trim(),
           email: form.email.trim(),
           phone: form.phone.trim(),
           message: form.message.trim(),
           website,
-        },
+        }),
       });
 
-      if (error || (data as any)?.error) {
-        throw new Error((data as any)?.error || error?.message || "Send failed");
+      const data = await res.json().catch(() => ({}));
+      if (!res.ok || !data?.success) {
+        throw new Error(data?.error || "Send failed");
       }
 
       setSent(true);
-      toast.success("Inquiry sent successfully. Our team will contact you shortly.");
+      toast.success("Thank you. Our travel specialist will contact you shortly.");
       setForm({ name: "", email: "", phone: "", message: "" });
       formRef.current?.reset();
     } catch (error) {
@@ -215,7 +217,7 @@ const Contact = () => {
 
             {sent && (
               <p className="text-xs text-center font-medium" style={{ color: "#8B1A1A" }}>
-                Inquiry sent successfully. Our team will contact you shortly.
+                Thank you. Our travel specialist will contact you shortly.
               </p>
             )}
           </form>
