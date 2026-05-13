@@ -1,8 +1,9 @@
 // Secure SMTP-based contact form endpoint for Heritage Jaipur Travels.
 // Sends inquiry emails directly to info@heritagejaipurtravels.com via SMTP.
-// Uses env vars: SMTP_HOST, SMTP_PORT, SMTP_USER, SMTP_PASS.
+// Runtime secrets used: SMTP_HOST, SMTP_PORT, SMTP_USER, SMTP_PASS.
 
-import { SMTPClient } from "https://deno.land/x/denomailer@1.6.0/mod.ts";
+// @deno-types="npm:@types/nodemailer@6.4.17"
+import nodemailer from "npm:nodemailer@6.9.16";
 
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
@@ -18,13 +19,45 @@ const escapeHtml = (s: string) =>
     ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]!),
   );
 
+const json = (payload: Record<string, unknown>, status = 200) =>
+  new Response(JSON.stringify(payload), {
+    status,
+    headers: { ...corsHeaders, "Content-Type": "application/json" },
+  });
+
+const getSecret = (name: string) => {
+  const raw = Deno.env.get(name)?.trim();
+  if (!raw) return "";
+
+  // Be tolerant of values accidentally saved as "SMTP_HOST=mail.example.com".
+  const prefix = `${name}=`;
+  const normalized = raw.startsWith(prefix) ? raw.slice(prefix.length).trim() : raw;
+
+  return normalized.replace(/^['"]|['"]$/g, "");
+};
+
+const resolveSmtpConfig = () => {
+  const host = getSecret("SMTP_HOST");
+  const portValue = getSecret("SMTP_PORT");
+  const user = getSecret("SMTP_USER");
+  const pass = getSecret("SMTP_PASS");
+  const port = Number.parseInt(portValue || "465", 10);
+
+  if (!host || !user || !pass) {
+    return { error: "Missing SMTP_HOST, SMTP_USER, or SMTP_PASS" } as const;
+  }
+
+  if (!Number.isInteger(port) || port < 1 || port > 65535) {
+    return { error: `Invalid SMTP_PORT value: ${portValue || "empty"}` } as const;
+  }
+
+  return { host, port, user, pass } as const;
+};
+
 Deno.serve(async (req) => {
   if (req.method === "OPTIONS") return new Response("ok", { headers: corsHeaders });
   if (req.method !== "POST") {
-    return new Response(JSON.stringify({ error: "Method not allowed" }), {
-      status: 405,
-      headers: { ...corsHeaders, "Content-Type": "application/json" },
-    });
+    return json({ success: false, error: "Method not allowed" }, 405);
   }
 
   try {
@@ -35,9 +68,7 @@ Deno.serve(async (req) => {
     const message = String(body.message ?? "").trim();
     const website = String(body.website ?? ""); // honeypot
 
-    if (website) return new Response(JSON.stringify({ ok: true }), {
-      headers: { ...corsHeaders, "Content-Type": "application/json" },
-    });
+    if (website) return json({ success: true, ok: true });
 
     // Validation
     if (!name || name.length > 100) return bad("Please enter a valid name");
@@ -46,25 +77,21 @@ Deno.serve(async (req) => {
     if (!message || message.length < 5 || message.length > 2000)
       return bad("Please share a few words about your trip");
 
-    const host = Deno.env.get("SMTP_HOST");
-    const port = Number(Deno.env.get("SMTP_PORT") ?? "465");
-    const user = Deno.env.get("SMTP_USER");
-    const pass = Deno.env.get("SMTP_PASS");
-    if (!host || !user || !pass) {
-      console.error("Missing SMTP env vars");
-      return new Response(JSON.stringify({ error: "Email service not configured" }), {
-        status: 500,
-        headers: { ...corsHeaders, "Content-Type": "application/json" },
-      });
+    const smtpConfig = resolveSmtpConfig();
+    if ("error" in smtpConfig) {
+      console.error("Contact SMTP configuration error:", smtpConfig.error);
+      return json({ success: false, error: "Email service not configured" }, 500);
     }
 
-    const client = new SMTPClient({
-      connection: {
-        hostname: host,
-        port,
-        tls: port === 465, // implicit TLS for 465, STARTTLS otherwise
-        auth: { username: user, password: pass },
-      },
+    const { host, port, user, pass } = smtpConfig;
+    const transporter = nodemailer.createTransport({
+      host,
+      port,
+      secure: port === 465,
+      auth: { user, pass },
+      connectionTimeout: 10000,
+      greetingTimeout: 10000,
+      socketTimeout: 10000,
     });
 
     const sentAt = new Date().toLocaleString("en-IN", {
@@ -92,40 +119,29 @@ Deno.serve(async (req) => {
       </div>`;
 
     try {
-      await client.send({
+      await transporter.sendMail({
         from: `Heritage Jaipur Travels <${user}>`,
         to: RECIPIENT,
         replyTo: `${name} <${email}>`,
         subject: "New Inquiry - Heritage Jaipur Travels",
-        content: text,
+        text,
         html,
       });
     } catch (sendErr) {
-      console.error("SMTP send failed", { host, port, user, err: String(sendErr) });
-      try { await client.close(); } catch (_) { /* ignore */ }
-      return new Response(
-        JSON.stringify({ error: "Failed to send inquiry", detail: String(sendErr) }),
-        { status: 502, headers: { ...corsHeaders, "Content-Type": "application/json" } },
-      );
+      console.error("Contact SMTP send failed:", { host, port, user, error: String(sendErr) });
+      transporter.close();
+      return json({ success: false, error: "Unable to send inquiry. Please try again later." }, 502);
     }
 
-    try { await client.close(); } catch (_) { /* ignore */ }
+    transporter.close();
 
-    return new Response(JSON.stringify({ ok: true }), {
-      headers: { ...corsHeaders, "Content-Type": "application/json" },
-    });
+    return json({ success: true, ok: true });
   } catch (err) {
-    console.error("contact error", err);
-    return new Response(
-      JSON.stringify({ error: "Failed to send inquiry", detail: String(err) }),
-      { status: 500, headers: { ...corsHeaders, "Content-Type": "application/json" } },
-    );
+    console.error("Contact function error:", err);
+    return json({ success: false, error: "Unable to send inquiry. Please try again later." }, 500);
   }
 });
 
 function bad(msg: string) {
-  return new Response(JSON.stringify({ error: msg }), {
-    status: 400,
-    headers: { ...corsHeaders, "Content-Type": "application/json" },
-  });
+  return json({ success: false, error: msg }, 400);
 }
