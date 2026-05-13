@@ -4,10 +4,9 @@ import SEO from "@/components/SEO";
 import { MapPin, Phone, Mail, MessageCircle, Instagram, Loader2, CheckCircle2 } from "lucide-react";
 import { toast } from "sonner";
 
-// Submissions are POSTed to a secure backend function ("contact") which uses
-// SMTP (SMTP_HOST / SMTP_PORT / SMTP_USER / SMTP_PASS) to deliver the inquiry
-// directly to info@heritagejaipurtravels.com. No SMTP credentials live in the
-// client.
+// Submissions are POSTed to the Vercel serverless API route (/api/contact),
+// which uses SMTP environment variables on the server. No SMTP credentials live
+// in the client.
 
 const isValidEmail = (email: string) => /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email);
 
@@ -60,12 +59,12 @@ const Contact = () => {
       }
 
       setSent(true);
-      toast.success("Thank you. Our travel specialist will contact you shortly.");
+      toast.success("Thank you. Our Rajasthan travel specialist will contact you shortly.");
       setForm({ name: "", email: "", phone: "", message: "" });
       formRef.current?.reset();
     } catch (error) {
       console.error("Contact form error:", error);
-      toast.error("Could not send your inquiry. Please try WhatsApp or call us directly.");
+      toast.error("Unable to send inquiry right now. Please try again later.");
     } finally {
       setSubmitting(false);
     }
@@ -217,7 +216,7 @@ const Contact = () => {
 
             {sent && (
               <p className="text-xs text-center font-medium" style={{ color: "#8B1A1A" }}>
-                Thank you. Our travel specialist will contact you shortly.
+                Thank you. Our Rajasthan travel specialist will contact you shortly.
               </p>
             )}
           </form>
