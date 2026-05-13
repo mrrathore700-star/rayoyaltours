@@ -62,7 +62,12 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     if (!message || message.length < 5 || message.length > 2000)
       return res.status(400).json({ success: false, error: "Please share a few words about your trip" });
 
+    if (!clean(process.env.SMTP_HOST)) console.warn("[contact] SMTP_HOST missing — using mail.heritagejaipurtravels.com");
+    if (!clean(process.env.SMTP_PORT)) console.warn("[contact] SMTP_PORT missing — using 465");
+    if (!clean(process.env.SMTP_SECURE)) console.warn("[contact] SMTP_SECURE missing — using true for port 465");
+
     const user = clean(process.env.SMTP_USER) || "info@heritagejaipurtravels.com";
+    if (!clean(process.env.SMTP_USER)) console.warn("[contact] SMTP_USER missing — using info@heritagejaipurtravels.com");
     const pass = clean(process.env.SMTP_PASS);
 
     if (!pass) {
