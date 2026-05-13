@@ -217,7 +217,7 @@ const Contact = () => {
 
             {sent && (
               <p className="text-xs text-center font-medium" style={{ color: "#8B1A1A" }}>
-                Inquiry sent successfully. Our team will contact you shortly.
+                Thank you. Our travel specialist will contact you shortly.
               </p>
             )}
           </form>
