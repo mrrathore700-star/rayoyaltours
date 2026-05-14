@@ -1,57 +1,42 @@
+Plan to make the contact inquiry system production-ready on Vercel:
 
-## Goal
+1. Normalize the Vercel project structure
+   - Keep the serverless function at exactly `api/contact.ts` in the project root.
+   - Keep `vercel.json` as exactly:
 
-Replace the current short modal content for **Maharaja & Maharani Photoshoot** on `/experiences` with a fully structured, premium, scroll-friendly layout — without price, Book Now, or Customize buttons.
+```json
+{
+  "version": 2
+}
+```
 
-## Where it lives
+   - Remove any obsolete contact/email implementations if present, including EmailJS/Web3Forms handlers, old rewrites/routes/builds config, and any Supabase Edge Function contact/email code. Current inspection found no `supabase/functions` folder and no EmailJS/Web3Forms usage in the frontend.
 
-The `/experiences` page (`src/pages/Experiences.tsx`) opens a `Dialog` modal when a card is clicked. Today every experience renders the same generic block (description + highlights + WhatsApp/View Full Details buttons). We will introduce an optional rich-content schema and special-case the modal rendering when it is present. Only the Maharaja Photoshoot will use it for now; the structure is reusable for future premium experiences.
+2. Replace `api/contact.ts` with a minimal Vercel Node function
+   - Use TypeScript with `export default async function handler(req, res)`.
+   - Handle only `POST`; `GET` returns `405 Method Not Allowed` so `/api/contact` is not a 404 after deployment.
+   - Read only `SMTP_HOST`, `SMTP_PORT`, `SMTP_USER`, `SMTP_PASS` from environment variables.
+   - Use Nodemailer SMTP with `secure: true` when port is `465`.
+   - Send all inquiries to `info@heritagejaipurtravels.com`.
+   - Include Name, Email, Phone, Message, and Time.
+   - Return exactly `{ "success": true }` on success.
+   - Return exactly `{ "success": false, "error": "Unable to send inquiry. Please try again later." }` on failures.
+   - Add detailed server-side `console.error` logs without exposing credentials.
 
-## Changes
+3. Update the Contact page form behavior
+   - Submit with `fetch('/api/contact')` using `POST` and `Content-Type: application/json`.
+   - Preserve client-side validation and spam honeypot.
+   - Show a loading state while sending.
+   - Show success text: `Thank you. Our Rajasthan travel specialist will contact you shortly.`
+   - Show failure text: `Unable to send inquiry right now. Please try again later.`
 
-### 1. `src/data/experiences.ts`
-- Extend the `Experience` interface with one optional field:
-  ```ts
-  details?: {
-    subtitle: string;
-    overview: string;            // cinematic paragraph
-    unique: { title: string; text: string }[];
-    willExperience: string[];
-    willFeel: string;
-    perfectMoments: string[];
-    flow: string[];
-    idealFor: string[];
-    whyLove: string;
-    planExperience: string[];
-  };
-  ```
-- Attach a `details` object to the existing `maharaja-photoshoot` experience using the exact copy supplied by the user (Overview, What Makes This Unique, What You Will Experience, What You Will Feel, Perfect Moments, Experience Flow, Ideal For, Why Travelers Love It, Plan Your Experience).
-- The existing `make()` helper stays untouched; we just spread `details` on after creation.
+4. Dependency/config verification
+   - Ensure `nodemailer`, `@types/nodemailer`, and `@vercel/node` are present.
+   - Keep the app compatible with React + Vite + Vercel, framework preset Vite, output directory `dist`.
 
-### 2. `src/pages/Experiences.tsx` — modal body
-When `open.details` exists, render a new premium body **instead of** the current description / highlights / Book / View Full Details block. Layout:
+5. Validation after implementation
+   - Check files are in the expected paths.
+   - Run a focused test/lint-style validation where appropriate without changing deployment settings.
+   - Confirm the local source is ready so that after Vercel redeploys, `/api/contact` should return `Method Not Allowed` for browser GET instead of 404.
 
-- Header band already present (image + category + title) — add subtitle line under the title using `details.subtitle`.
-- Sections rendered top-to-bottom with consistent spacing (`space-y-8`), each with a small lucide icon + heading:
-  - Sparkles — Experience Overview (paragraph)
-  - Crown — What Makes This Experience Unique (cards/bullets with **bold heading** + description)
-  - Star — What You Will Experience (clean bullet list)
-  - Heart — What You Will Feel (short paragraph in a soft `bg-muted/30` quote block)
-  - Camera — Perfect Moments (bullets)
-  - Footprints — Experience Flow (numbered step list)
-  - Users — Ideal For (bullets)
-  - Award — Why Travelers Love It (paragraph)
-  - Phone — Plan Your Experience (bullets)
-- Mobile-first: `prose`-like sizing, single column on mobile, two columns for the "Unique" cards from `sm:` up.
-- **Remove** the WhatsApp "Book on WhatsApp" and "View Full Details" buttons for this layout, per the user's instruction. Keep only a minimal subtle text link "Close" / dialog X (already provided by the dialog).
-- Keep the "You may also love" related-experiences section at the bottom — it is exploration-focused, not a booking CTA.
-
-Generic experiences (without `details`) keep the current modal exactly as it is.
-
-### 3. SEO / structured data
-No route change. The existing JSON-LD on `/experiences` is fine. No new pages, no new dependencies.
-
-## Out of scope
-- No edits to `ExperienceDetail.tsx` (separate route, separate request if needed later).
-- No price, Book Now, or Customize buttons added anywhere in this layout.
-- No new icons package — all icons come from already-installed `lucide-react`.
+Important deployment note: if Vercel still shows 404 after these source fixes, the remaining cause is outside code: Vercel is deploying the wrong Git branch/root directory or the latest commit was not redeployed. The root directory must be the repository root that contains `api/`, `src/`, `public/`, `package.json`, and `vercel.json`.
