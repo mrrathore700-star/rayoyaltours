@@ -140,15 +140,20 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       </div>`;
 
     const transporter = nodemailer.createTransport({
-      host: smtpHost,
-      port: smtpPort,
-      secure,
-      auth: { user: smtpUser, pass: smtpPass },
-      connectionTimeout: 10000,
-      greetingTimeout: 10000,
-      socketTimeout: 15000,
-      tls: { rejectUnauthorized: false },
-    });
+host: "mail.heritagejaipurtravels.com",
+port: 465,
+secure: true,
+auth: {
+user: "[info@heritagejaipurtravels.com](mailto:info@heritagejaipurtravels.com)",
+pass: process.env.SMTP_PASS,
+},
+connectionTimeout: 15000,
+greetingTimeout: 15000,
+socketTimeout: 20000,
+});
+
+await transporter.verify();
+
 
     try {
       console.log("[contact] Sending inquiry", { host: smtpHost, port: smtpPort, secure });
