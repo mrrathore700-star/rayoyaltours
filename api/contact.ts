@@ -2,174 +2,105 @@ import type { VercelRequest, VercelResponse } from "@vercel/node";
 import nodemailer from "nodemailer";
 
 const RECIPIENT_EMAIL = "info@heritagejaipurtravels.com";
-const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
-const FAILURE_BODY = {
-  success: false as const,
-  error: "Unable to send inquiry. Please try again later.",
-};
 
-const cleanEnv = (value: string | undefined) =>
-  (value ?? "").trim().replace(/^['"]|['"]$/g, "");
-const cleanText = (value: unknown) => String(value ?? "").trim();
-
-const escapeHtml = (value: string) =>
-  value.replace(/[&<>"']/g, (char) => {
-    const entities: Record<string, string> = {
-      "&": "&amp;",
-      "<": "&lt;",
-      ">": "&gt;",
-      '"': "&quot;",
-      "'": "&#39;",
-    };
-    return entities[char] ?? char;
-  });
-
-const parseBody = (req: VercelRequest): Record<string, unknown> => {
-  if (!req.body) return {};
-  if (typeof req.body === "string") {
-    try {
-      return JSON.parse(req.body || "{}");
-    } catch (error) {
-      console.error("[contact] Failed to parse JSON body", error);
-      return {};
-    }
-  }
-  return req.body as Record<string, unknown>;
-};
-
-export default async function handler(req: VercelRequest, res: VercelResponse) {
+export default async function handler(
+  req: VercelRequest,
+  res: VercelResponse
+) {
+  // CORS
   res.setHeader("Access-Control-Allow-Origin", "*");
   res.setHeader("Access-Control-Allow-Methods", "POST, OPTIONS");
   res.setHeader("Access-Control-Allow-Headers", "Content-Type");
 
   if (req.method === "OPTIONS") {
-    return res.status(204).end();
+    return res.status(200).end();
   }
 
   if (req.method !== "POST") {
-    res.setHeader("Allow", "POST");
-    res.setHeader("Content-Type", "text/plain; charset=utf-8");
     return res.status(405).send("Method Not Allowed");
   }
 
   try {
-    const body = parseBody(req);
-    const name = cleanText(body.name);
-    const email = cleanText(body.email).toLowerCase();
-    const phone = cleanText(body.phone);
-    const message = cleanText(body.message);
-    const website = cleanText((body as { website?: unknown }).website);
+    // Body parse
+    const body =
+      typeof req.body === "string"
+        ? JSON.parse(req.body)
+        : req.body;
 
-    // Honeypot — silently accept and discard
-    if (website) {
-      console.warn("[contact] Honeypot tripped, ignoring submission");
-      return res.status(200).json({ success: true });
-    }
+    const name = body?.name?.trim() || "";
+    const email = body?.email?.trim() || "";
+    const phone = body?.phone?.trim() || "";
+    const message = body?.message?.trim() || "";
 
-    if (!name || name.length > 100) {
-      console.error("[contact] Invalid name", { length: name.length });
-      return res.status(400).json(FAILURE_BODY);
-    }
-    if (!EMAIL_PATTERN.test(email) || email.length > 255) {
-      console.error("[contact] Invalid email");
-      return res.status(400).json(FAILURE_BODY);
-    }
-    if (phone.length > 30) {
-      console.error("[contact] Invalid phone length");
-      return res.status(400).json(FAILURE_BODY);
-    }
-    if (!message || message.length < 5 || message.length > 2000) {
-      console.error("[contact] Invalid message length", { length: message.length });
-      return res.status(400).json(FAILURE_BODY);
-    }
-
-    const smtpHost = cleanEnv(process.env.SMTP_HOST);
-    const smtpPortValue = cleanEnv(process.env.SMTP_PORT);
-    const smtpUser = cleanEnv(process.env.SMTP_USER);
-    const smtpPass = cleanEnv(process.env.SMTP_PASS);
-
-    if (!smtpHost || !smtpPortValue || !smtpUser || !smtpPass) {
-      console.error("[contact] Missing SMTP env vars", {
-        hasHost: !!smtpHost,
-        hasPort: !!smtpPortValue,
-        hasUser: !!smtpUser,
-        hasPass: !!smtpPass,
+    // Validation
+    if (!name || !email || !message) {
+      return res.status(400).json({
+        success: false,
+        error: "Missing required fields",
       });
-      return res.status(500).json(FAILURE_BODY);
     }
 
-    const smtpPort = Number.parseInt(smtpPortValue, 10);
-    if (!Number.isInteger(smtpPort) || smtpPort < 1 || smtpPort > 65535) {
-      console.error("[contact] Invalid SMTP_PORT value", { smtpPortValue });
-      return res.status(500).json(FAILURE_BODY);
-    }
-
-    const secure = smtpPort === 465;
-    const submittedAt = new Date().toLocaleString("en-IN", {
-      dateStyle: "full",
-      timeStyle: "short",
-      timeZone: "Asia/Kolkata",
+    // Gmail SMTP transporter
+    const transporter = nodemailer.createTransport({
+      host: "smtp.gmail.com",
+      port: 465,
+      secure: true,
+      auth: {
+        user: process.env.SMTP_USER,
+        pass: process.env.SMTP_PASS,
+      },
     });
 
-    const text = [
-      "New Inquiry – Heritage Jaipur Travels",
-      "",
-      `Name: ${name}`,
-      `Email: ${email}`,
-      `Phone: ${phone || "Not provided"}`,
-      `Time: ${submittedAt}`,
-      "",
-      "Message:",
-      message,
-    ].join("\n");
+    // Verify SMTP
+    await transporter.verify();
 
+    // Email content
     const html = `
-      <div style="font-family:Arial,sans-serif;max-width:640px;margin:0 auto;background:#fff8f0;border:1px solid rgba(201,168,76,.35);border-radius:12px;overflow:hidden">
-        <div style="background:#8b1a1a;color:#fff8f0;padding:20px 24px">
-          <h2 style="margin:0;font-size:21px">Heritage Jaipur Travels</h2>
-          <p style="margin:5px 0 0;font-size:13px;opacity:.9">New Inquiry</p>
+      <div style="font-family:Arial,sans-serif;padding:20px;background:#fff8f0">
+        <h2 style="color:#8B1A1A">
+          New Inquiry – Heritage Jaipur Travels
+        </h2>
+
+        <p><strong>Name:</strong> ${name}</p>
+        <p><strong>Email:</strong> ${email}</p>
+        <p><strong>Phone:</strong> ${phone || "Not provided"}</p>
+
+        <div style="margin-top:20px">
+          <strong>Message:</strong>
+          <p>${message}</p>
         </div>
-        <div style="padding:24px;color:#2f241d;font-size:14px;line-height:1.6">
-          <p><strong>Name:</strong> ${escapeHtml(name)}</p>
-          <p><strong>Email:</strong> <a href="mailto:${escapeHtml(email)}">${escapeHtml(email)}</a></p>
-          <p><strong>Phone:</strong> ${escapeHtml(phone || "Not provided")}</p>
-          <p><strong>Time:</strong> ${escapeHtml(submittedAt)}</p>
-          <hr style="border:0;border-top:1px solid rgba(201,168,76,.35);margin:20px 0" />
-          <p style="white-space:pre-wrap;margin:0">${escapeHtml(message)}</p>
-        </div>
-      </div>`;
+      </div>
+    `;
 
-    const transporter = nodemailer.createTransport({
-host: "smtp.gmail.com",
-port: 465,
-secure: true,
-auth: {
-user: process.env.SMTP_USER,
-pass: process.env.SMTP_PASS,
-},
-});
+    // Send email
+    const info = await transporter.sendMail({
+      from: `"Heritage Jaipur Travels" <${process.env.SMTP_USER}>`,
+      to: RECIPIENT_EMAIL,
+      replyTo: email,
+      subject: "New Inquiry – Heritage Jaipur Travels",
+      html,
+      text: `
+Name: ${name}
+Email: ${email}
+Phone: ${phone}
 
-await transporter.verify();
-console.log("SMTP READY");
+Message:
+${message}
+      `,
+    });
 
+    console.log("EMAIL SENT:", info.messageId);
 
-    try {
-      console.log("[contact] Sending inquiry", { host: smtpHost, port: smtpPort, secure });
-      const info = await transporter.sendMail({
-        from: `Heritage Jaipur Travels <${process.env.SMTP USER}>`,
-        to: info@heritagejaipurtravels.com,
-        replyTo: email,
-        subject: "New Inquiry – Heritage Jaipur Travels",
-        text,
-        html,
-      });
-      console.log("[contact] Inquiry sent", { messageId: info.messageId });
-      return res.status(200).json({ success: true });
-    } finally {
-      transporter.close();
-    }
+    return res.status(200).json({
+      success: true,
+      message: "Thank you. Our Rajasthan travel specialist will contact you shortly.",
+    });
   } catch (error) {
-    console.error("[contact] Inquiry email failed", error);
-    return res.status(500).json(FAILURE_BODY);
+    console.error("CONTACT FORM ERROR:", error);
+
+    return res.status(500).json({
+      success: false,
+      error: "Unable to send inquiry right now. Please try again later.",
+    });
   }
 }
