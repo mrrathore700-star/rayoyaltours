@@ -16,7 +16,21 @@ const SEO = ({ title, description, path = "", image = DEFAULT_IMAGE, jsonLd }: S
   const url = `${SITE_URL}${path}`;
   return (
     <Helmet>
+      {/* Google Analytics */}
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-H0WKDZPSQ3"></script>
+
+      <script>
+        {`
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-H0WKDZPSQ3');
+    `}
+      </script>
+
       <title>{title}</title>
+
       <meta name="description" content={description} />
       <link rel="canonical" href={url} />
       <meta property="og:type" content="website" />
@@ -28,9 +42,7 @@ const SEO = ({ title, description, path = "", image = DEFAULT_IMAGE, jsonLd }: S
       <meta name="twitter:title" content={title} />
       <meta name="twitter:description" content={description} />
       <meta name="twitter:image" content={image} />
-      {jsonLd && (
-        <script type="application/ld+json">{JSON.stringify(jsonLd)}</script>
-      )}
+      {jsonLd && <script type="application/ld+json">{JSON.stringify(jsonLd)}</script>}
     </Helmet>
   );
 };
