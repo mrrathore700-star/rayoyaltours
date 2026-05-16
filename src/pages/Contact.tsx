@@ -229,6 +229,15 @@ const Contact = () => {
           </form>
         </div>
       </section>
+
+      <LuxCtaBand
+        image={heroPalace}
+        eyebrow="Or simply"
+        title={<>Message Us Directly On <span className="text-[#C9A84C]">WhatsApp</span></>}
+        subtitle="A specialist usually replies within hours."
+        primary={{ label: "WhatsApp Specialist", href: "https://wa.me/919461069858", external: true }}
+        secondary={{ label: "Call +91 94610 69858", href: "tel:+919461069858" }}
+      />
     </main>
   );
 };
