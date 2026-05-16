@@ -1,8 +1,11 @@
 import { useRef, useState } from "react";
-import SectionHeading from "@/components/SectionHeading";
 import SEO from "@/components/SEO";
 import { MapPin, Phone, Mail, MessageCircle, Instagram, Loader2, CheckCircle2 } from "lucide-react";
 import { toast } from "sonner";
+import LuxHero from "@/components/luxury/LuxHero";
+import LuxCtaBand from "@/components/luxury/LuxCtaBand";
+import { LuxAnchorBtn } from "@/components/luxury/LuxButton";
+import heroPalace from "@/assets/hero-palace.jpg";
 
 // Submissions are POSTed to the Vercel serverless API route (/api/contact),
 // which uses SMTP environment variables on the server. No SMTP credentials live
