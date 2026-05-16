@@ -1,4 +1,4 @@
-import { Clock, MapPin } from "lucide-react";
+import { Clock, ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
 
 interface TourCardProps {
@@ -11,37 +11,30 @@ interface TourCardProps {
 }
 
 const TourCard = ({ image, title, duration, highlights, slug }: TourCardProps) => (
-  <div className="heritage-card group">
-    <div className="relative overflow-hidden aspect-[4/3]">
-      <img
-        src={image}
-        alt={title}
-        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
-        loading="lazy"
-      />
-    </div>
-    <div className="p-5">
-      <h3 className="font-display text-xl font-bold text-foreground mb-2">{title}</h3>
-      <div className="flex items-center gap-4 text-sm text-muted-foreground mb-3">
-        <span className="flex items-center gap-1">
-          <Clock className="h-4 w-4" /> {duration}
+  <Link
+    to={slug ? `/packages/${slug}` : "/contact"}
+    className="lux-edit-card group block"
+  >
+    <img src={image} alt={title} loading="lazy" className="lux-edit-img" />
+    <div className="lux-edit-overlay" />
+    <div className="lux-edit-body">
+      <div className="flex items-center gap-3 mb-3">
+        <span className="lux-rule-gold" />
+        <span className="lux-eyebrow text-[10px]">{highlights.slice(0, 3).join(" · ")}</span>
+      </div>
+      <h3 className="font-display text-2xl md:text-[26px] font-semibold leading-snug mb-3 text-[#FFF8F0]">
+        {title}
+      </h3>
+      <div className="flex items-center justify-between text-[13px] text-[#FFF8F0]/75">
+        <span className="inline-flex items-center gap-2">
+          <Clock className="h-3.5 w-3.5 text-[#C9A84C]" /> {duration}
+        </span>
+        <span className="inline-flex items-center gap-1.5 text-[#C9A84C] tracking-[0.16em] uppercase text-[11px] group-hover:gap-3 transition-all">
+          View Journey <ArrowRight className="h-3.5 w-3.5" />
         </span>
       </div>
-      <ul className="space-y-1 mb-4">
-        {highlights.map((h, i) => (
-          <li key={i} className="text-sm text-muted-foreground flex items-center gap-2">
-            <MapPin className="h-3 w-3 text-primary shrink-0" /> {h}
-          </li>
-        ))}
-      </ul>
-      <Link
-        to={slug ? `/packages/${slug}` : "/contact"}
-        className="inline-flex items-center justify-center w-full py-2.5 rounded-md heritage-gradient text-primary-foreground font-semibold text-sm hover:opacity-90 transition-opacity"
-      >
-        Book Now
-      </Link>
     </div>
-  </div>
+  </Link>
 );
 
 export default TourCard;
