@@ -1,106 +1,112 @@
 import { Shield, Users, Clock, Phone, Car, CheckCircle, Star, MapPin, Plane, Navigation, Bus } from "lucide-react";
-import { Link } from "react-router-dom";
-import SectionHeading from "@/components/SectionHeading";
 import SEO from "@/components/SEO";
 import heroPalace from "@/assets/hero-palace.jpg";
 import fleetImg from "@/assets/fleet-vehicles.jpg";
+import LuxHero from "@/components/luxury/LuxHero";
+import LuxSectionHeading from "@/components/luxury/LuxSectionHeading";
+import LuxCtaBand from "@/components/luxury/LuxCtaBand";
+import LuxTrustStrip from "@/components/luxury/LuxTrustStrip";
+import { LuxLinkBtn, LuxAnchorBtn } from "@/components/luxury/LuxButton";
 
 const whyChoose = [
-  { icon: Clock, title: "20+ Years Experience", desc: "Serving customers offline for more than two decades in the travel industry" },
-  { icon: Users, title: "1000+ Happy Customers", desc: "Families, tourists, and corporate clients trust us for reliable service" },
-  { icon: Shield, title: "Verified & Experienced Drivers", desc: "Polite, well-trained drivers with deep knowledge of routes across India" },
-  { icon: Car, title: "Clean & Well-Maintained Vehicles", desc: "Every vehicle is clean, sanitized, safe, and ready for your journey" },
-  { icon: Phone, title: "24/7 Customer Support", desc: "Round-the-clock assistance for all your travel needs" },
-  { icon: CheckCircle, title: "Affordable & Transparent Pricing", desc: "No hidden charges – honest and competitive rates" },
-  { icon: Star, title: "On-Time Pickup & Drop", desc: "We value your time – always punctual, always reliable" },
+  { icon: Clock, title: "20+ Years", desc: "Two decades of crafting Rajasthan journeys" },
+  { icon: Users, title: "1000+ Travelers", desc: "Trusted by families and travelers worldwide" },
+  { icon: Shield, title: "Private Chauffeurs", desc: "Polite, multilingual, deeply local" },
+  { icon: Car, title: "Curated Fleet", desc: "Spotless, sanitized, regularly serviced" },
+  { icon: Phone, title: "Concierge Care", desc: "24/7 support throughout your stay" },
+  { icon: CheckCircle, title: "Transparent", desc: "No hidden charges. Ever." },
+  { icon: Star, title: "Pan-India", desc: "Rajasthan and beyond, seamlessly" },
 ];
 
 const services = [
-  { icon: MapPin, title: "Jaipur Local Sightseeing", desc: "Explore Jaipur's top attractions with our comfortable taxi service." },
-  { icon: Bus, title: "Tempo Traveller on Rent", desc: "12, 16, 20 seater tempo travellers for family & group trips across India." },
-  { icon: Navigation, title: "Outstation Taxi Service", desc: "Travel from Jaipur to Delhi, Agra, Udaipur, Jodhpur, Mumbai, and destinations across India." },
-  { icon: Plane, title: "Airport Pickup & Drop", desc: "On-time pickup and drop service from Jaipur Airport and other major airports." },
+  { icon: MapPin, title: "Private Jaipur Sightseeing", desc: "Quiet mornings at Amber, sunsets at Nahargarh — at your own pace." },
+  { icon: Bus, title: "Tempo Traveller Atelier", desc: "12, 16, 20-seater vehicles for families and small groups." },
+  { icon: Navigation, title: "Outstation Journeys", desc: "Door-to-door routes to Delhi, Agra, Udaipur, Jodhpur and beyond." },
+  { icon: Plane, title: "Airport Concierge", desc: "Quiet, punctual transfers from any Indian airport." },
 ];
 
 const fleet = [
-  { name: "Sedan", models: "Dzire, Etios", capacity: "4 Passengers", icon: Car },
-  { name: "SUV", models: "Innova, Ertiga", capacity: "6-7 Passengers", icon: Car },
+  { name: "Sedan", models: "Dzire · Etios", capacity: "4 Passengers", icon: Car },
+  { name: "SUV", models: "Innova · Ertiga", capacity: "6–7 Passengers", icon: Car },
   { name: "Tempo Traveller", models: "12 / 16 / 20 Seater", capacity: "Groups & Families", icon: Bus },
 ];
 
 const About = () => (
-  <main className="pt-24 pb-20">
+  <main className="lux-cream-bg">
     <SEO
-      title="About Heritage Jaipur Travels | 20+ Years of Trusted Travel in Jaipur"
-      description="Heritage Jaipur Travels is a trusted Jaipur-based travel agency with 20+ years of experience offering reliable taxi, tempo traveller and Rajasthan tour services across India."
+      title="About Heritage Jaipur Travels | Two Decades of Private Rajasthan Journeys"
+      description="A Jaipur-born travel atelier with 20+ years of experience designing private Rajasthan journeys, transfers and curated tours for international travelers."
       path="/about"
     />
-    {/* Hero */}
-    <section className="relative py-20 mb-16 overflow-hidden">
-      <div className="absolute inset-0">
-        <img src={heroPalace} alt="Heritage Jaipur Travels" className="w-full h-full object-cover" />
-        <div className="absolute inset-0 bg-foreground/60" />
-      </div>
-      <div className="relative z-10 container mx-auto px-4 text-center">
-        <h1 className="font-display text-4xl md:text-5xl font-bold text-sand mb-4">About Heritage Jaipur Travels</h1>
-        <p className="font-serif text-xl text-sand/80 max-w-3xl mx-auto">
-          Your trusted travel partner in Jaipur with 20+ years of experience in the travel industry
-        </p>
-      </div>
-    </section>
 
-    {/* About Story */}
-    <section className="container mx-auto px-4 mb-20">
-      <div className="max-w-4xl mx-auto">
-        <SectionHeading title="Our Story" subtitle="Two decades of trust and service" />
-        <div className="prose prose-lg mx-auto text-muted-foreground space-y-4">
-          <p className="text-lg leading-relaxed">
-            Welcome to <strong className="text-foreground">Heritage Jaipur Travels</strong> – your trusted travel partner in Jaipur with 20+ years of experience in the travel industry.
+    <LuxHero
+      image={heroPalace}
+      eyebrow="Our House"
+      title={<>Crafted in <span className="text-[#C9A84C]">Jaipur</span>, Trusted Worldwide</>}
+      subtitle="Two decades of intimate Rajasthan knowledge, distilled into private journeys for travelers from over forty countries."
+    />
+
+    <LuxTrustStrip />
+
+    {/* Story */}
+    <section className="py-24 md:py-32 lux-cream-bg">
+      <div className="container mx-auto px-6 max-w-3xl">
+        <LuxSectionHeading
+          eyebrow="Our Story"
+          title="Twenty years of slow, considered travel"
+        />
+        <div className="font-serif text-lg md:text-xl leading-[1.85] text-[#0F0F0F]/80 space-y-6">
+          <p className="first-letter:font-display first-letter:text-6xl first-letter:font-semibold first-letter:text-[#6E0F1F] first-letter:float-left first-letter:leading-[0.85] first-letter:mr-3 first-letter:mt-1">
+            Heritage Jaipur Travels began in a small office on MI Road — quietly, without fanfare, with a single conviction: that Rajasthan deserved to be travelled slowly, privately, and by those who knew its rhythms intimately.
           </p>
-          <p className="text-lg leading-relaxed">
-            Although our website is new, our business is not. We have been serving customers offline for more than two decades, providing reliable taxi and tempo traveller services across Jaipur, Rajasthan, and all over India. With years of experience, we understand what travelers really need – <strong className="text-foreground">safety, comfort, and on-time service</strong>.
+          <p>
+            For more than twenty years we have been composing journeys for travelers from London, Tokyo, Berlin, Sydney, and beyond — families, couples, photographers, writers. Our work is not in the brochure; it is in the morning the host of a haveli unlocks a private courtyard for you, the chef who teaches you a dish his grandmother taught him, the chauffeur who knows the back road to Amber before the crowds.
           </p>
-          <p className="text-lg leading-relaxed">
-            Over the years, we have successfully served <strong className="text-foreground">1000+ happy customers</strong>, including families, tourists, and corporate clients. Our long journey in this field has helped us build strong local knowledge and a reputation for dependable service.
-          </p>
-          <p className="text-lg leading-relaxed">
-            One of our biggest strengths is our team of <strong className="text-foreground">experienced and professional drivers</strong>. They are polite, well-trained, and have deep knowledge of Jaipur, Rajasthan, and pan-India routes, ensuring a smooth and enjoyable journey for every customer.
+          <p>
+            We remain a small house by choice. Every itinerary is shaped by hand. Every traveler is known by name.
           </p>
         </div>
       </div>
     </section>
 
-    {/* Why Choose Us */}
-    <section className="py-20 sand-gradient mandala-bg">
-      <div className="container mx-auto px-4">
-        <SectionHeading title="Why Choose Us?" subtitle="20+ years of trust, reliability, and service excellence" />
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+    {/* Why Choose */}
+    <section className="py-24 md:py-32 lux-black-bg text-[#FFF8F0]">
+      <div className="container mx-auto px-6">
+        <LuxSectionHeading
+          tone="dark"
+          eyebrow="Why Travelers Choose Us"
+          title="A boutique standard, lovingly maintained"
+        />
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
           {whyChoose.map((item, i) => (
-            <div key={i} className="text-center p-6 rounded-lg bg-card heritage-shadow">
-              <div className="inline-flex items-center justify-center w-14 h-14 rounded-full heritage-gradient text-primary-foreground mb-4">
+            <div key={i} className="text-center p-8 border border-[#C9A84C]/20 rounded-sm bg-[#FFF8F0]/[0.02]">
+              <div className="inline-flex items-center justify-center w-14 h-14 rounded-full border border-[#C9A84C]/40 text-[#C9A84C] mb-5">
                 <item.icon className="h-6 w-6" />
               </div>
-              <h3 className="font-display text-lg font-bold text-foreground mb-2">{item.title}</h3>
-              <p className="text-sm text-muted-foreground">{item.desc}</p>
+              <h3 className="font-display text-lg font-semibold mb-2">{item.title}</h3>
+              <p className="text-sm text-[#FFF8F0]/70 leading-relaxed">{item.desc}</p>
             </div>
           ))}
         </div>
       </div>
     </section>
 
-    {/* Our Services */}
-    <section className="py-20 bg-background">
-      <div className="container mx-auto px-4">
-        <SectionHeading title="Our Travel Services" subtitle="Reliable services across Rajasthan and all over India" />
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+    {/* Services */}
+    <section className="py-24 md:py-32 lux-cream-bg">
+      <div className="container mx-auto px-6">
+        <LuxSectionHeading
+          eyebrow="What We Do"
+          title="Private Travel Services"
+        />
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl mx-auto">
           {services.map((s, i) => (
-            <div key={i} className="heritage-card p-6 flex gap-4">
-              <div className="shrink-0 w-14 h-14 rounded-full heritage-gradient flex items-center justify-center text-primary-foreground">
+            <div key={i} className="p-8 bg-white/60 backdrop-blur-sm border border-[#C9A84C]/20 rounded-sm flex gap-5">
+              <div className="shrink-0 w-14 h-14 rounded-full bg-[#6E0F1F] text-[#C9A84C] flex items-center justify-center">
                 <s.icon className="h-6 w-6" />
               </div>
               <div>
-                <h3 className="font-display text-xl font-bold text-foreground mb-2">{s.title}</h3>
-                <p className="text-sm text-muted-foreground">{s.desc}</p>
+                <h3 className="font-display text-xl font-semibold text-[#0F0F0F] mb-2">{s.title}</h3>
+                <p className="font-serif text-[15px] text-[#0F0F0F]/70 leading-relaxed">{s.desc}</p>
               </div>
             </div>
           ))}
@@ -109,52 +115,38 @@ const About = () => (
     </section>
 
     {/* Fleet */}
-    <section className="py-20 sand-gradient">
-      <div className="container mx-auto px-4">
-        <SectionHeading title="Our Fleet" subtitle="Clean, sanitized, and regularly maintained vehicles" />
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-10">
+    <section className="py-24 md:py-32" style={{ background: "linear-gradient(180deg, #FFF8F0 0%, #F5ECDC 100%)" }}>
+      <div className="container mx-auto px-6">
+        <LuxSectionHeading
+          eyebrow="The Fleet"
+          title="Spotless, sanitized, ever-ready"
+        />
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12 max-w-5xl mx-auto">
           {fleet.map((v, i) => (
-            <div key={i} className="bg-card rounded-lg p-8 heritage-shadow text-center">
-              <div className="inline-flex items-center justify-center w-16 h-16 rounded-full heritage-gradient text-primary-foreground mb-4">
+            <div key={i} className="text-center p-10 border border-[#C9A84C]/30 bg-white/70 rounded-sm">
+              <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-[#6E0F1F] text-[#C9A84C] mb-5">
                 <v.icon className="h-7 w-7" />
               </div>
-              <h3 className="font-display text-2xl font-bold text-foreground mb-1">{v.name}</h3>
-              <p className="text-sm text-muted-foreground mb-1">{v.models}</p>
-              <p className="text-sm font-semibold text-primary">{v.capacity}</p>
+              <h3 className="font-display text-2xl font-semibold text-[#0F0F0F] mb-1">{v.name}</h3>
+              <p className="font-serif text-sm text-[#0F0F0F]/65 mb-2">{v.models}</p>
+              <p className="text-xs tracking-[0.18em] uppercase text-[#C9A84C]">{v.capacity}</p>
             </div>
           ))}
         </div>
-        <div className="rounded-lg overflow-hidden max-w-4xl mx-auto heritage-shadow">
+        <div className="rounded-sm overflow-hidden max-w-4xl mx-auto">
           <img src={fleetImg} alt="Heritage Jaipur Travels fleet of vehicles" className="w-full h-auto object-cover" loading="lazy" />
         </div>
       </div>
     </section>
 
-    {/* CTA */}
-    <section className="py-20 bg-background">
-      <div className="container mx-auto px-4 text-center max-w-2xl">
-        <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-4">Ready to Travel?</h2>
-        <p className="font-serif text-lg text-muted-foreground mb-8">
-          Book your ride today and experience the Heritage Jaipur Travels difference – safe, comfortable, and on-time service across India.
-        </p>
-        <div className="flex flex-col sm:flex-row gap-4 justify-center">
-          <Link
-            to="/contact"
-            className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-md heritage-gradient text-primary-foreground font-bold text-lg hover:opacity-90 transition-opacity"
-          >
-            Contact Us
-          </Link>
-          <a
-            href="https://wa.me/919461069858?text=Hi!%20I%20want%20to%20book%20a%20ride"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-md gold-gradient text-foreground font-bold text-lg hover:opacity-90 transition-opacity"
-          >
-            WhatsApp Now
-          </a>
-        </div>
-      </div>
-    </section>
+    <LuxCtaBand
+      image={heroPalace}
+      eyebrow="Begin"
+      title={<>Ready to <span className="text-[#C9A84C]">Travel?</span></>}
+      subtitle="Tell us your dates and rhythm — we'll quietly shape the rest."
+      primary={{ label: "Plan My Journey", to: "/contact" }}
+      secondary={{ label: "WhatsApp Specialist", href: "https://wa.me/919461069858", external: true }}
+    />
   </main>
 );
 

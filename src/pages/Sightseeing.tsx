@@ -1,4 +1,3 @@
-import SectionHeading from "@/components/SectionHeading";
 import SEO from "@/components/SEO";
 import cityPalace from "@/assets/city-palace.jpg";
 import amberFort from "@/assets/amber-fort.jpg";
@@ -10,91 +9,90 @@ import jaigarhFort from "@/assets/jaigarh-fort.jpg";
 import pannaMeenaKund from "@/assets/panna-meena-kund.jpg";
 import albertHall from "@/assets/albert-hall.jpg";
 import localMarket from "@/assets/local-market.jpg";
+import LuxHero from "@/components/luxury/LuxHero";
+import LuxCtaBand from "@/components/luxury/LuxCtaBand";
+import { LuxAnchorBtn, LuxLinkBtn } from "@/components/luxury/LuxButton";
 
 const spots = [
-  {
-    image: amberFort,
-    title: "Amber Fort (Amer Fort)",
-    desc: "A majestic 16th-century hilltop fort built by Raja Man Singh I, famous for its Sheesh Mahal (Hall of Mirrors), Diwan-e-Aam, Ganesh Pol gate and elephant rides up to the entrance. UNESCO World Heritage Site with stunning Maota Lake views.",
-  },
-  {
-    image: jaigarhFort,
-    title: "Jaigarh Fort",
-    desc: "The 'Victory Fort' overlooking Amber, home to Jaivana — the world's largest wheeled cannon ever built. Known for its massive ramparts, secret underground passages connecting to Amber Fort, and the legendary lost treasure of the Kachwaha kings.",
-  },
-  {
-    image: nahargarhFort,
-    title: "Nahargarh Fort",
-    desc: "Perched on the Aravalli hills, Nahargarh offers Jaipur's most breathtaking sunset and night views — the entire Pink City glittering below. Famous for Madhavendra Bhawan (12 identical queen suites connected by corridors), the Wax Museum, Padao open-air rooftop restaurant for romantic candlelight dinners under the stars, and weekend night camping experiences with bonfires and folk music.",
-  },
-  {
-    image: jalMahal,
-    title: "Jal Mahal",
-    desc: "The 'Water Palace' that appears to float in the middle of Man Sagar Lake. Four of its five storeys remain submerged year-round. Best viewed at sunrise and sunset when migratory birds gather. A perfect photo stop on the way to Amber Fort.",
-  },
-  {
-    image: hawaMahal,
-    title: "Hawa Mahal",
-    desc: "The iconic 'Palace of Winds' with 953 small jharokha windows designed so royal ladies could observe street festivals unseen. Jaipur's most photographed five-storey honeycomb façade in pink sandstone — best captured at sunrise from the rooftop café opposite.",
-  },
-  {
-    image: cityPalace,
-    title: "City Palace",
-    desc: "A magnificent blend of Rajasthani and Mughal architecture, home to the royal family of Jaipur since 1727. Highlights include Mubarak Mahal, Chandra Mahal, the famous Peacock Gate at Pritam Niwas Chowk, and a museum of royal costumes and weapons.",
-  },
-  {
-    image: jantarMantar,
-    title: "Jantar Mantar",
-    desc: "A UNESCO World Heritage Site built by Maharaja Sawai Jai Singh II, featuring 19 astronomical instruments including the Samrat Yantra — the world's largest stone sundial that tells time accurate to 2 seconds.",
-  },
-  {
-    image: pannaMeenaKund,
-    title: "Panna Meena Ka Kund",
-    desc: "A stunning 16th-century symmetrical stepwell near Amber Fort, famous for its criss-cross zigzag staircases on all four sides. A hidden gem and Instagram favourite — peaceful, free to visit, and an architectural marvel of ancient water harvesting.",
-  },
-  {
-    image: albertHall,
-    title: "Albert Hall Museum",
-    desc: "Rajasthan's oldest museum located in Ram Niwas Garden, built in spectacular Indo-Saracenic style. Houses Egyptian mummies, Persian carpets, miniature paintings and royal artefacts. Beautifully illuminated at night and surrounded by hundreds of pigeons at dusk — a magical sight.",
-  },
-  {
-    image: localMarket,
-    title: "Local Market Tours",
-    desc: "Explore Jaipur's vibrant bazaars — Johari Bazaar for gold, silver and Kundan-Meena jewellery; Bapu Bazaar for Jaipuri juttis, mojaris and textiles; Tripolia Bazaar for lac bangles and brassware; Chandpole for marble idols; Nehru Bazaar for block-print fabrics, Bandhej sarees and Rajasthani handicrafts. A shopper's paradise full of colour, aroma and culture.",
-  },
+  { image: amberFort, title: "Amber Fort", desc: "A 16th-century hilltop fort by Raja Man Singh I — famed for its Sheesh Mahal, Ganesh Pol, and the soft Maota Lake mornings before the crowds arrive." },
+  { image: jaigarhFort, title: "Jaigarh Fort", desc: "The Victory Fort above Amber — home to the largest wheeled cannon ever built, with secret passages and the legendary lost treasure of the Kachwahas." },
+  { image: nahargarhFort, title: "Nahargarh Fort", desc: "Perched on the Aravalli hills with Jaipur's most breathtaking sunset views — twelve identical queen suites, an open-air rooftop, and night-camping under desert stars." },
+  { image: jalMahal, title: "Jal Mahal", desc: "The Water Palace that floats in Man Sagar Lake — four storeys submerged, best photographed at sunrise when migratory birds gather on still water." },
+  { image: hawaMahal, title: "Hawa Mahal", desc: "The Palace of Winds — 953 honeycomb windows in pink sandstone, designed so royal ladies could observe street festivals unseen." },
+  { image: cityPalace, title: "City Palace", desc: "Royal residence since 1727 — Mubarak Mahal, Chandra Mahal, and the famed Peacock Gate at Pritam Niwas Chowk." },
+  { image: jantarMantar, title: "Jantar Mantar", desc: "A UNESCO World Heritage Site of nineteen astronomical instruments — including the world's largest stone sundial, accurate to two seconds." },
+  { image: pannaMeenaKund, title: "Panna Meena Ka Kund", desc: "A symmetrical 16th-century stepwell — criss-cross stairways, peaceful, free to visit, and a quiet marvel of ancient water harvesting." },
+  { image: albertHall, title: "Albert Hall Museum", desc: "Rajasthan's oldest museum in Indo-Saracenic style — Egyptian mummies, Persian carpets, royal artefacts, magical at dusk when illuminated." },
+  { image: localMarket, title: "The Bazaars", desc: "Johari for jewellery, Bapu for juttis, Tripolia for lac bangles, Nehru for block-print — a sensory journey through Jaipur's living craft." },
 ];
 
 const Sightseeing = () => (
-  <main className="pt-24 pb-20">
-    <section className="container mx-auto px-4">
-      <SectionHeading
-        title="Jaipur Sightseeing"
-        subtitle="Discover the Pink City's iconic landmarks and hidden gems with our expert local guides"
-      />
-      <div className="space-y-16">
-        {spots.map((spot, i) => (
-          <div key={i} className={`flex flex-col ${i % 2 ? "md:flex-row-reverse" : "md:flex-row"} gap-8 items-center`}>
-            <div className="w-full md:w-1/2">
-              <div className="overflow-hidden rounded-lg heritage-shadow">
-                <img src={spot.image} alt={spot.title} className="w-full aspect-[4/3] object-cover" loading="lazy" width={1024} height={768} />
+  <main className="lux-cream-bg">
+    <SEO
+      title="Jaipur Sightseeing | Private Tours of the Pink City"
+      description="Explore Jaipur's forts, palaces, stepwells and bazaars with private local specialists — quiet mornings at Amber, sunsets at Nahargarh, hidden lanes beyond the guidebook."
+      path="/sightseeing"
+    />
+
+    <LuxHero
+      image={amberFort}
+      eyebrow="Pink City"
+      title={<>Jaipur, <span className="text-[#C9A84C]">Slowly</span> Discovered</>}
+      subtitle="Forts before the crowds, palaces behind closed doors, bazaars known only to locals."
+      actions={
+        <>
+          <LuxLinkBtn to="/contact" variant="gold">Design My Day</LuxLinkBtn>
+          <LuxAnchorBtn href="https://wa.me/919461069858" external variant="outline">WhatsApp Specialist</LuxAnchorBtn>
+        </>
+      }
+    />
+
+    <section className="py-24 md:py-32">
+      <div className="container mx-auto px-6 max-w-6xl">
+        <div className="space-y-24 md:space-y-32">
+          {spots.map((spot, i) => (
+            <div key={i} className={`flex flex-col ${i % 2 ? "md:flex-row-reverse" : "md:flex-row"} gap-10 md:gap-16 items-center`}>
+              <div className="w-full md:w-1/2">
+                <div className="relative overflow-hidden rounded-sm group">
+                  <img
+                    src={spot.image}
+                    alt={spot.title}
+                    className="w-full aspect-[4/5] object-cover transition-transform duration-[1200ms] group-hover:scale-105"
+                    loading="lazy"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
+                </div>
+              </div>
+              <div className="w-full md:w-1/2">
+                <div className="flex items-center gap-3 mb-5">
+                  <span className="lux-rule-gold" />
+                  <span className="lux-eyebrow">Chapter {String(i + 1).padStart(2, "0")}</span>
+                </div>
+                <h3 className="font-display text-3xl md:text-4xl font-semibold text-[#0F0F0F] mb-5 leading-tight">{spot.title}</h3>
+                <p className="font-serif text-lg text-[#0F0F0F]/75 mb-7 leading-relaxed">{spot.desc}</p>
+                <a
+                  href={`https://wa.me/919461069858?text=${encodeURIComponent(`I want to visit ${spot.title}. Please share details.`)}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-3 text-xs tracking-[0.22em] uppercase text-[#C9A84C] hover:text-[#6E0F1F] transition-colors"
+                >
+                  <span className="lux-rule-gold" /> Plan This Visit
+                </a>
               </div>
             </div>
-            <div className="w-full md:w-1/2">
-              <h3 className="font-display text-2xl md:text-3xl font-bold text-foreground mb-3">{spot.title}</h3>
-              <p className="font-serif text-lg text-muted-foreground mb-4">{spot.desc}</p>
-              <a
-                href={`https://wa.me/919461069858?text=${encodeURIComponent(`I want to visit ${spot.title} in Jaipur. Please share details.`)}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-6 py-3 rounded-md heritage-gradient text-primary-foreground font-semibold text-sm hover:opacity-90 transition-opacity"
-              >
-                Book This Visit
-              </a>
-            </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
     </section>
+
+    <LuxCtaBand
+      image={cityPalace}
+      eyebrow="Begin"
+      title={<>Compose Your Private <span className="text-[#C9A84C]">Jaipur</span> Day</>}
+      subtitle="Tell us what moves you — we'll arrange the rest, from chauffeur to chai."
+      primary={{ label: "Plan My Day", to: "/contact" }}
+      secondary={{ label: "WhatsApp Specialist", href: "https://wa.me/919461069858", external: true }}
+    />
   </main>
 );
 

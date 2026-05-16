@@ -1,8 +1,11 @@
 import { useRef, useState } from "react";
-import SectionHeading from "@/components/SectionHeading";
 import SEO from "@/components/SEO";
 import { MapPin, Phone, Mail, MessageCircle, Instagram, Loader2, CheckCircle2 } from "lucide-react";
 import { toast } from "sonner";
+import LuxHero from "@/components/luxury/LuxHero";
+import LuxCtaBand from "@/components/luxury/LuxCtaBand";
+
+import heroPalace from "@/assets/hero-palace.jpg";
 
 // Submissions are POSTed to the Vercel serverless API route (/api/contact),
 // which uses SMTP environment variables on the server. No SMTP credentials live
@@ -71,18 +74,22 @@ const Contact = () => {
   };
 
   return (
-    <main className="pt-24 pb-20" style={{ backgroundColor: "#FFF8F0" }}>
+    <main className="lux-cream-bg">
       <SEO
-        title="Contact Heritage Jaipur Travels | Plan Your Rajasthan Trip"
-        description="Get in touch with Heritage Jaipur Travels for Jaipur sightseeing, Rajasthan tour packages, taxi bookings and Golden Triangle trips. Call +91 94610 69858 or WhatsApp now."
+        title="Contact Heritage Jaipur Travels | Plan Your Private Rajasthan Journey"
+        description="Speak with a Rajasthan travel specialist at Heritage Jaipur Travels — private journeys, transfers and curated experiences. Call +91 94610 69858 or WhatsApp now."
         path="/contact"
       />
-      <section className="container mx-auto px-4">
-        <SectionHeading
-          title="Contact Us"
-          subtitle="Ready to plan your dream Rajasthan trip? We'd love to hear from you."
-        />
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 max-w-5xl mx-auto">
+
+      <LuxHero
+        image={heroPalace}
+        eyebrow="Begin"
+        title={<>Speak With A <span className="text-[#C9A84C]">Rajasthan</span> Specialist</>}
+        subtitle="Tell us how you love to travel — we'll quietly compose the rest."
+      />
+
+      <section className="container mx-auto px-6 py-24 md:py-32">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 max-w-6xl mx-auto">
           <div>
             <div className="space-y-6 mb-8">
               {[
@@ -222,6 +229,15 @@ const Contact = () => {
           </form>
         </div>
       </section>
+
+      <LuxCtaBand
+        image={heroPalace}
+        eyebrow="Or simply"
+        title={<>Message Us Directly On <span className="text-[#C9A84C]">WhatsApp</span></>}
+        subtitle="A specialist usually replies within hours."
+        primary={{ label: "WhatsApp Specialist", href: "https://wa.me/919461069858", external: true }}
+        secondary={{ label: "Call +91 94610 69858", href: "tel:+919461069858" }}
+      />
     </main>
   );
 };

@@ -2,24 +2,36 @@ interface SectionHeadingProps {
   title: string;
   subtitle?: string;
   centered?: boolean;
+  eyebrow?: string;
+  tone?: "light" | "dark";
 }
 
-const SectionHeading = ({ title, subtitle, centered = true }: SectionHeadingProps) => (
-  <div className={`mb-12 ${centered ? "text-center" : ""}`}>
-    <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-3">
-      {title}
-    </h2>
-    {subtitle && (
-      <p className="font-serif text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto">
-        {subtitle}
-      </p>
-    )}
-    <div className={`mt-4 flex items-center gap-2 ${centered ? "justify-center" : ""}`}>
-      <span className="h-px w-12 bg-primary" />
-      <span className="h-2 w-2 rounded-full bg-secondary" />
-      <span className="h-px w-12 bg-primary" />
+const SectionHeading = ({
+  title,
+  subtitle,
+  centered = true,
+  eyebrow,
+  tone = "light",
+}: SectionHeadingProps) => {
+  const titleColor = tone === "dark" ? "text-[#FFF8F0]" : "text-[#0F0F0F]";
+  const subColor = tone === "dark" ? "text-[#FFF8F0]/75" : "text-[#0F0F0F]/65";
+  return (
+    <div className={`mb-14 md:mb-16 ${centered ? "text-center" : ""}`}>
+      <div className={`flex items-center gap-3 mb-5 ${centered ? "justify-center" : ""}`}>
+        <span className="lux-rule-gold" />
+        <span className="lux-eyebrow">{eyebrow ?? "Heritage Jaipur"}</span>
+        {centered && <span className="lux-rule-gold" />}
+      </div>
+      <h2 className={`font-display font-semibold leading-[1.1] tracking-tight text-3xl md:text-5xl ${titleColor}`}>
+        {title}
+      </h2>
+      {subtitle && (
+        <p className={`font-serif italic text-lg md:text-xl mt-5 max-w-2xl mx-auto leading-relaxed ${subColor}`}>
+          {subtitle}
+        </p>
+      )}
     </div>
-  </div>
-);
+  );
+};
 
 export default SectionHeading;
