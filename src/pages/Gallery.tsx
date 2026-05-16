@@ -1,4 +1,3 @@
-import SectionHeading from "@/components/SectionHeading";
 import SEO from "@/components/SEO";
 import heroPalace from "@/assets/hero-palace.jpg";
 import amberFort from "@/assets/amber-fort.jpg";
@@ -12,6 +11,9 @@ import jaisalmerFort from "@/assets/jaisalmer-fort.jpg";
 import royalTour from "@/assets/royal-tour.jpg";
 import rajasthaniFood from "@/assets/rajasthani-food.jpg";
 import villageTour from "@/assets/village-tour.jpg";
+import LuxHero from "@/components/luxury/LuxHero";
+import LuxCtaBand from "@/components/luxury/LuxCtaBand";
+import { LuxLinkBtn, LuxAnchorBtn } from "@/components/luxury/LuxButton";
 
 const images = [
   { src: heroPalace, alt: "Rajasthan palace at sunset", cat: "Palaces" },
@@ -29,37 +31,57 @@ const images = [
 ];
 
 const Gallery = () => (
-  <main className="pt-24 pb-20">
+  <main className="lux-cream-bg">
     <SEO
-      title="Rajasthan Photo Gallery | Forts, Palaces, Desert & Culture"
-      description="A visual journey through Rajasthan — forts, palaces, desert dunes, vibrant markets and traditional culture, captured by Heritage Jaipur Travels."
+      title="Rajasthan Gallery | Forts, Palaces, Desert & Culture"
+      description="A visual journey through Rajasthan — forts, palaces, desert dunes, vibrant bazaars and traditional culture, captured by Heritage Jaipur Travels."
       path="/gallery"
     />
-    <section className="container mx-auto px-4">
-      <SectionHeading
-        title="Photo Gallery"
-        subtitle="A visual journey through the colors, forts, and culture of Rajasthan"
-      />
-      <div className="columns-1 sm:columns-2 lg:columns-3 gap-4 space-y-4">
-        {images.map((img, i) => (
-          <div key={i} className="break-inside-avoid overflow-hidden rounded-lg heritage-shadow group cursor-pointer">
-            <div className="relative">
+
+    <LuxHero
+      image={udaipurLake}
+      eyebrow="Visual Journey"
+      title={<>Moments From <span className="text-[#C9A84C]">Rajasthan</span></>}
+      subtitle="A quiet album of palaces, deserts, dance and dust — the Rajasthan we know."
+      actions={
+        <>
+          <LuxLinkBtn to="/experiences" variant="gold">Explore Experiences</LuxLinkBtn>
+          <LuxAnchorBtn href="https://wa.me/919461069858" external variant="outline">Plan My Journey</LuxAnchorBtn>
+        </>
+      }
+    />
+
+    <section className="py-24 md:py-32">
+      <div className="container mx-auto px-6">
+        <div className="columns-1 sm:columns-2 lg:columns-3 gap-5 [&>*]:mb-5">
+          {images.map((img, i) => (
+            <div key={i} className="break-inside-avoid overflow-hidden rounded-sm group cursor-pointer relative">
               <img
                 src={img.src}
                 alt={img.alt}
-                className="w-full object-cover group-hover:scale-105 transition-transform duration-700"
+                className="w-full object-cover transition-transform duration-[1200ms] group-hover:scale-110"
                 loading="lazy"
               />
-              <div className="absolute inset-0 bg-foreground/0 group-hover:bg-foreground/20 transition-colors duration-300 flex items-end">
-                <span className="opacity-0 group-hover:opacity-100 transition-opacity p-4 text-sand text-sm font-semibold">
-                  {img.alt}
-                </span>
+              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/0 to-black/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-end p-6">
+                <div>
+                  <span className="lux-eyebrow text-[10px]">{img.cat}</span>
+                  <p className="font-serif text-[#FFF8F0] text-base mt-1">{img.alt}</p>
+                </div>
               </div>
             </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
     </section>
+
+    <LuxCtaBand
+      image={heroPalace}
+      eyebrow="Begin"
+      title={<>Live The <span className="text-[#C9A84C]">Frame</span></>}
+      subtitle="Step into the moments — privately curated by our Rajasthan specialists."
+      primary={{ label: "Plan My Journey", to: "/contact" }}
+      secondary={{ label: "WhatsApp Specialist", href: "https://wa.me/919461069858", external: true }}
+    />
   </main>
 );
 
