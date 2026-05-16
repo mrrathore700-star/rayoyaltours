@@ -1,66 +1,77 @@
-# Luxury Redesign — Experiences Page
+# Website-Wide Luxury Design System Rollout
 
-A complete cinematic redesign of `/experiences` to position Heritage Jaipur Travels as a premium boutique Rajasthan brand for international travelers. Visual-only refresh — data, routing, and tour content remain untouched.
+Apply the cinematic luxury design language from the Experiences page across the entire Heritage Jaipur Travels website so every page feels like one premium boutique Rajasthan travel brand.
 
-## Design language
+## Goals
 
-- Palette (scoped to this page via tokens): Gold `#C9A84C`, Deep Maroon `#6E0F1F`, Cream `#FFF8F0`, Warm Black `#0F0F0F`, overlay `rgba(0,0,0,0.45)`.
-- Typography: keep existing serif (Playfair / Cormorant) for headings, Lato for body — already aligned with editorial luxury feel. Increase tracking, line-height, and section spacing.
-- Mood: Aman Resorts / A&K — cinematic, emotional, breathable, editorial.
+- One unified luxury identity across all pages, components, and CTAs.
+- Editorial typography, generous whitespace, cinematic imagery, gold-on-maroon accents.
+- Subtle, premium motion (Ken Burns hero, fade-up reveals, hover zoom, floating particles).
+- Same buttons, cards, hero pattern, trust strips, and CTA bands everywhere.
 
-## Page structure (top → bottom)
+## Design system (single source of truth)
 
-1. **Cinematic Hero (90vh / 75vh mobile)**
-   - Full-bleed palace/desert image with slow Ken Burns zoom + dark gradient overlay + subtle floating gold particles.
-   - Left-aligned content on desktop, centered on mobile.
-   - Glass badge: "49 Curated Rajasthan Experiences".
-   - H1: "Experience Rajasthan Beyond The Guidebooks".
-   - Sub: international-traveler focused intro.
-   - Two CTAs: "Explore Experiences" (gold) + "Plan My Rajasthan Journey" (outline).
-   - Trust row: ★ Private Experiences · Local Experts · Luxury Journeys · 20+ Years.
+Promote the existing `lux-*` utilities in `src/index.css` into the global token layer so every page uses them automatically:
 
-2. **Sticky luxury filter bar** — refined version of current bar; thinner, gold underline for active, glass background.
+- Colors: Gold `#C9A84C`, Deep Maroon `#6E0F1F`, Cream `#FFF8F0`, Warm Black `#0F0F0F`, overlay `rgba(0,0,0,0.45)`.
+- Typography: Playfair Display (headings, editorial tracking), Cormorant Garamond (serif body lead-ins), Lato (body). Larger leading, wider letter-spacing on display headings.
+- Spacing: Increase vertical section padding (`py-24 md:py-32`), wider container gutters, more breathing room between cards.
+- Radius/shadow: Soft rounded (rounded-2xl), layered luxury shadow already in `lux-btn-gold` / `lux-card`.
 
-3. **Sectioned editorial groupings** (replace single grid). Each section: serif heading + italic intro paragraph + cinematic card grid.
-   - Royal Rajasthan
-   - Desert Experiences
-   - Wildlife & Nature
-   - Spiritual Rajasthan
-   - Village & Cultural Life
-   - Food & Culinary
-   - Luxury Photography
-   - Sections are derived by mapping existing `categories` from `src/data/experiences.ts` to these luxury labels (no data changes; titles are display-only overrides).
+New shared building blocks (added under `src/components/luxury/`):
 
-4. **Editorial experience cards**
-   - Taller 4/5 cinematic ratio, dark gradient overlay, title + 1-line emotional micro-desc revealed over image, hover image zoom + gold underline on CTA.
-   - Emotional title overrides for popular slugs (display-only map): e.g. leopard-safari → "Track the Wild Leopards of Jawai", camel-safari → "Ride Through Rajasthan's Golden Dunes", village-tour → "Discover Rajasthan Through Local Village Life". Original slugs/routes preserved.
-   - "View Experience" gold link with arrow.
+- `LuxHero` — cinematic full-bleed hero with Ken Burns image, dark overlay, gold particles, glass eyebrow badge, headline, sub, dual CTAs.
+- `LuxButton` — `variant: "gold" | "outline"` wrapping the existing `lux-btn-gold` / `lux-btn-outline` styles.
+- `LuxCard` — 4:5 editorial card with overlay, hover zoom, gold underline CTA.
+- `LuxSectionHeading` — centered eyebrow + serif title + thin gold rule + intro line.
+- `LuxTrustStrip` — 4-pillar trust row (20+ Years, Private Journeys, International Travelers, Local Experts).
+- `LuxTestimonials` — premium quote cards with traveler name + origin.
+- `LuxCtaBand` — full-bleed image + dark overlay + emotional headline + dual CTAs.
+- `LuxFooter` — deep maroon background, cream text, gold dividers, premium spacing (replaces current `Footer.tsx` content).
+- `LuxHeader` — sticky glass navbar with subtle blur, gold hover underline on nav links, premium mobile slide menu (replaces current `Header.tsx` content).
 
-5. **Trust strip** — "Crafting Rajasthan Experiences for International Travelers for Over 20 Years" with 4 pillars (Local Experts · Private Experiences · Handcrafted Journeys · Trusted Specialists).
+`SectionHeading`, `TourCard`, and existing CTAs stay in the codebase but are restyled (or wrap the new luxury components) so all pages using them inherit the new look without touching every page.
 
-6. **Testimonial section** — 3 luxury quote cards (international travelers). Static content.
+## Page-by-page application
 
-7. **Cinematic CTA band** — full-bleed desert/night image, dark overlay, "Begin Your Rajasthan Story" + sub + two CTAs (Plan My Journey → /contact, WhatsApp specialist).
+For each page: swap hero to `LuxHero`, restyle sections with `LuxSectionHeading`, replace generic cards with `LuxCard`-styled equivalents, add `LuxTrustStrip` where it fits, end with `LuxCtaBand`.
 
-8. Existing global Footer is unchanged in this scope (footer redesign not included to keep change focused on Experiences page; can be a follow-up).
+- `Index` (Home): full LuxHero, packages section with LuxCards, trust strip, experience banner -> LuxCtaBand, testimonials -> LuxTestimonials, FAQ kept but restyled (cream cards, gold accents), final CTA band.
+- `About`: LuxHero ("Crafted in Jaipur, Trusted Worldwide"), story section with serif drop-cap, trust strip, founder/timeline editorial block, CTA band.
+- `Packages`: LuxHero, TourCards restyled to LuxCard look, CTA band.
+- `TourDetail`: cinematic hero using tour image, editorial itinerary layout (numbered serif days), inclusions/exclusions in glass cards, sticky inquiry CTA, CTA band.
+- `Sightseeing`: LuxHero, LuxCards per attraction, CTA band.
+- `Taxi`: LuxHero, fleet cards as LuxCards, pricing replaced with "Request a Quote" gold CTAs, CTA band.
+- `Experiences` & `ExperienceDetail` & `ExperienceCategory`: already luxury; align minor spacing/heading components to shared primitives.
+- `Gallery`: LuxHero, masonry-style premium grid with hover zoom + caption overlay.
+- `Blog`: LuxHero, editorial article cards.
+- `Contact`: LuxHero, form on glass panel over cinematic image, contact pillars, CTA band.
+- `Privacy / Terms / Refund / Unsubscribe / NotFound`: cream background, serif headings, generous spacing, luxury footer/header inherited.
 
 ## Motion
 
-- Hero: Ken Burns zoom (CSS keyframes), fade-in stagger, floating gold particles (lightweight pure-CSS dots, no library).
-- Sections: fade-in-up on scroll via IntersectionObserver hook (small inline utility, no new dep).
-- Cards: image scale on hover, gradient deepen, gold underline reveal.
-
-## Technical details
-
-- Files touched:
-  - `src/pages/Experiences.tsx` — full rewrite.
-  - `src/index.css` — append small set of luxury utility classes (luxury-hero-zoom, gold-particles, fade-up, glass-badge) scoped via class names so they don't affect the rest of the site.
-- No new packages. No data file edits. No route changes. Card links continue to `/experiences/:slug`.
-- Reuses existing imagery from `src/assets`. Uses `hero-palace.jpg` for hero and a desert/night asset for the CTA band (will pick from existing assets — `desert-safari.jpg` as fallback).
-- SEO/JSON-LD block kept and updated copy.
-- Accessibility: keep semantic h1/h2, alt text on every image, focus-visible rings on CTAs, reduced-motion media query disables Ken Burns + particles.
+- Hero: `lux-ken-burns` + `lux-particles` + `lux-fade-up` staggered text.
+- Sections: IntersectionObserver `useReveal` hook (already in Experiences) extracted to `src/hooks/useReveal.ts` and reused.
+- Cards: existing `.lux-card` hover zoom + gold underline.
+- Respect `prefers-reduced-motion` (already handled in CSS).
 
 ## Out of scope
 
-- No backend, contact API, or footer changes.
-- No edits to tour data, categories, or routing.
+- No backend, data, routing, or content changes (tours/experiences data stays as-is).
+- No new images generated; reuse existing assets in `src/assets/`.
+- No package installs.
+- Contact API (`api/contact.ts`) untouched.
+
+## Technical notes
+
+- All new components live in `src/components/luxury/` and consume only Tailwind + the `lux-*` utilities already in `src/index.css` (small additions: `lux-eyebrow`, `lux-rule-gold`, `lux-section`, `lux-footer-bg`).
+- `Header.tsx` and `Footer.tsx` are rewritten in place (kept at same path/import) so `App.tsx` doesn't change.
+- `SectionHeading` and `TourCard` updated to use luxury styling so every page picks up the new look without per-page rewrites.
+- SEO components and routes unchanged.
+
+## Deliverables
+
+1. Updated `src/index.css` with shared luxury utilities + small additions.
+2. New `src/components/luxury/*` primitives + `src/hooks/useReveal.ts`.
+3. Rewritten `Header.tsx`, `Footer.tsx`, `SectionHeading.tsx`, `TourCard.tsx`.
+4. Page-level refactors for Index, About, Packages, TourDetail, Sightseeing, Taxi, Gallery, Blog, Contact, and minor polish on Experiences family + legal pages.
