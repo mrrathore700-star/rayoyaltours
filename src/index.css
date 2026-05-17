@@ -293,6 +293,55 @@
   @media (min-width: 768px) { .lux-section { padding-top: 8rem; padding-bottom: 8rem; } }
 
   .lux-footer-bg { background: #2A0A12; }
+
+  /* === Luxury light navbar (v2) === */
+  .lux-nav-clear {
+    background: transparent;
+    border-bottom: 1px solid transparent;
+    box-shadow: none;
+  }
+  .lux-nav-light {
+    background: #F8F5EF;
+    border-bottom: 1px solid rgba(11, 28, 51, 0.06);
+    box-shadow: 0 8px 28px -16px rgba(11, 28, 51, 0.25);
+  }
+  .lux-nav-link-v2 {
+    position: relative;
+    letter-spacing: 0.16em;
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    font-family: var(--font-display);
+    transition: color 0.3s ease;
+  }
+  .lux-nav-link-v2.is-light { color: #F8F5EF; }
+  .lux-nav-link-v2.is-dark  { color: #0B1C33; }
+  .lux-nav-link-v2:hover { color: #D4AF37; }
+  .lux-nav-link-v2.is-active { color: #D4AF37; }
+  .lux-nav-link-v2::after {
+    content: ""; position: absolute; left: 12px; right: 12px; bottom: 2px;
+    height: 1px; background: #D4AF37;
+    transform: scaleX(0); transform-origin: left;
+    transition: transform 0.4s ease;
+  }
+  .lux-nav-link-v2:hover::after,
+  .lux-nav-link-v2.is-active::after { transform: scaleX(1); }
+  .lux-nav-link-v2:focus-visible {
+    outline: 2px solid #D4AF37; outline-offset: 4px; border-radius: 2px;
+  }
+
+  .lux-cta-gold {
+    background: #D4AF37;
+    color: #FFFFFF;
+    box-shadow: 0 8px 22px -10px rgba(212, 175, 55, 0.7);
+    transition: all 0.35s ease;
+    font-weight: 500;
+  }
+  .lux-cta-gold:hover {
+    background: #C49A2A;
+    box-shadow: 0 14px 32px -10px rgba(212, 175, 55, 0.9);
+    transform: translateY(-2px);
+  }
+
   .lux-cream-bg { background: #FFF8F0; }
   .lux-black-bg { background: #0F0F0F; }
 
