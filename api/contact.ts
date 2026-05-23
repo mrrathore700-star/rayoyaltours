@@ -144,8 +144,6 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     });
 
     try {
-      console.log("[contact] Verifying SMTP connection", { host: smtpHost, port: smtpPort, secure });
-
       const info = await transporter.sendMail({
         from: `Heritage Jaipur Travels <${smtpUser}>`,
         to: RECIPIENT_EMAIL,
