@@ -258,7 +258,7 @@ const Experiences = () => {
   };
 
   return (
-    <main style={{ background: "#FFF8F0" }} className="pt-16 md:pt-20">
+    <main style={{ background: "#FFF8F0" }}>
       <SEO
         title="Luxury Rajasthan Experiences | Heritage Jaipur Travels"
         description="A curated portfolio of luxury Rajasthan experiences — royal palace stays, desert nights, leopard safaris, spiritual rituals, artisan workshops and private cultural moments for international travellers."
