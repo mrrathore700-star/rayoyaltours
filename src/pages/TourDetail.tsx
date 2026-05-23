@@ -19,8 +19,8 @@ const TourDetail = () => {
     return (
       <main className="pt-24 pb-20 text-center">
         <div className="container mx-auto px-4">
-          <h1 className="font-display text-3xl font-bold mb-4">Tour Not Found</h1>
-          <Link to="/packages" className="text-primary hover:underline">← Back to Packages</Link>
+          <h1 className="font-display text-3xl font-bold mb-4">Journey Not Found</h1>
+          <Link to="/packages" className="text-primary hover:underline">← Back to Journeys</Link>
         </div>
       </main>
     );
@@ -34,10 +34,10 @@ const TourDetail = () => {
     }
     setSubmitting(true);
     const whatsappMsg = encodeURIComponent(
-      `Hi! I'm interested in the ${tour.title}.\n\nName: ${form.name}\nEmail: ${form.email}\nPhone: ${form.phone}\nTravelers: ${form.travelers}\nPreferred Date: ${form.date}\nMessage: ${form.message}`
+      `Hello, I would like to enquire about the ${tour.title}.\n\nName: ${form.name}\nEmail: ${form.email}\nPhone: ${form.phone}\nTravellers: ${form.travelers}\nPreferred Date: ${form.date}\nMessage: ${form.message}`
     );
     window.open(`https://wa.me/919461069858?text=${whatsappMsg}`, "_blank");
-    toast({ title: "Redirecting to WhatsApp!", description: "Our team will respond shortly." });
+    toast({ title: "Redirecting to WhatsApp!", description: "Your specialist will be in touch shortly." });
     setSubmitting(false);
   };
 
@@ -121,7 +121,7 @@ const TourDetail = () => {
         {/* Arrival & Departure */}
         <section className="py-16 sand-gradient">
           <div className="container mx-auto px-4 max-w-4xl">
-            <SectionHeading title="Arrival & Departure" subtitle="Flexible pickup and drop options for your convenience" />
+            <SectionHeading title="Arrival & Departure" subtitle="Flexible arrival and departure arrangements for your journey" />
             <div className="grid md:grid-cols-2 gap-8">
               <div className="bg-card rounded-lg p-6 heritage-shadow">
                 <h3 className="font-display text-lg font-bold text-foreground mb-4 flex items-center gap-2">
@@ -134,7 +134,7 @@ const TourDetail = () => {
                     </li>
                   ))}
                 </ul>
-                <p className="mt-4 text-xs text-muted-foreground italic">Our driver will greet you with a placard and assist with luggage.</p>
+                <p className="mt-4 text-xs text-muted-foreground italic">Your chauffeur will greet you by name and assist with your luggage.</p>
               </div>
               <div className="bg-card rounded-lg p-6 heritage-shadow">
                 <h3 className="font-display text-lg font-bold text-foreground mb-4 flex items-center gap-2">
@@ -147,7 +147,7 @@ const TourDetail = () => {
                     </li>
                   ))}
                 </ul>
-                <p className="mt-4 text-xs text-muted-foreground italic">Private air-conditioned vehicle with professional driver throughout.</p>
+                <p className="mt-4 text-xs text-muted-foreground italic">Private air-conditioned vehicle with a dedicated chauffeur throughout.</p>
               </div>
             </div>
           </div>
@@ -261,7 +261,7 @@ const TourDetail = () => {
               </div>
               <div>
                 <h3 className="font-display text-2xl font-bold text-foreground mb-6 flex items-center gap-2">
-                  <Star className="h-6 w-6 text-secondary" /> Why Choose This Tour?
+                  <Star className="h-6 w-6 text-secondary" /> Why Choose This Journey?
                 </h3>
                 <ul className="space-y-3">
                   {tour.whyChoose.map((item, i) => (
@@ -278,7 +278,7 @@ const TourDetail = () => {
         {/* Booking Form */}
         <section className="py-16 bg-background" id="book">
           <div className="container mx-auto px-4 max-w-2xl">
-            <SectionHeading title="Book This Tour" subtitle="Fill in your details and we'll get back to you instantly" />
+            <SectionHeading title="Enquire About This Journey" subtitle="Share your details and our specialist will respond shortly" />
             <form onSubmit={handleSubmit} className="bg-card rounded-lg p-8 heritage-shadow space-y-5">
               <div className="grid sm:grid-cols-2 gap-4">
                 <div>
@@ -316,7 +316,7 @@ const TourDetail = () => {
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-semibold text-foreground mb-1">No. of Travelers</label>
+                  <label className="block text-sm font-semibold text-foreground mb-1">Number of Travellers</label>
                   <input
                     type="number"
                     min={1}
@@ -352,15 +352,15 @@ const TourDetail = () => {
                   disabled={submitting}
                   className="flex-1 inline-flex items-center justify-center gap-2 py-3 rounded-md heritage-gradient text-primary-foreground font-bold hover:opacity-90 transition-opacity"
                 >
-                  <Send className="h-4 w-4" /> Book via WhatsApp
+                  <Send className="h-4 w-4" /> Enquire via WhatsApp
                 </button>
                 <a
-                  href={`https://wa.me/919461069858?text=${encodeURIComponent(`Hi! I'm interested in the ${tour.title}. Please share details.`)}`}
+                  href={`https://wa.me/919461069858?text=${encodeURIComponent(`Hello, I would like to enquire about the ${tour.title}. Please share details.`)}`}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex-1 inline-flex items-center justify-center gap-2 py-3 rounded-md gold-gradient text-foreground font-bold hover:opacity-90 transition-opacity"
                 >
-                  Get Instant Quote
+                  Get a Quick Quote
                 </a>
               </div>
             </form>
