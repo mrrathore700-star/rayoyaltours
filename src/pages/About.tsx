@@ -10,17 +10,17 @@ import { LuxLinkBtn, LuxAnchorBtn } from "@/components/luxury/LuxButton";
 
 const whyChoose = [
   { icon: Clock, title: "20+ Years", desc: "Two decades of crafting Rajasthan journeys" },
-  { icon: Users, title: "1000+ Travelers", desc: "Trusted by families and travelers worldwide" },
-  { icon: Shield, title: "Private Chauffeurs", desc: "Polite, multilingual, deeply local" },
-  { icon: Car, title: "Curated Fleet", desc: "Spotless, sanitized, regularly serviced" },
-  { icon: Phone, title: "Concierge Care", desc: "24/7 support throughout your stay" },
+  { icon: Users, title: "1000+ Travellers", desc: "Trusted by families and travellers worldwide" },
+  { icon: Shield, title: "Private Chauffeurs", desc: "Courteous, multilingual, intimately local" },
+  { icon: Car, title: "Curated Fleet", desc: "Spotless, maintained, regularly serviced" },
+  { icon: Phone, title: "Concierge Care", desc: "Round-the-clock concierge support throughout your journey" },
   { icon: CheckCircle, title: "Transparent", desc: "No hidden charges. Ever." },
   { icon: Star, title: "Pan-India", desc: "Rajasthan and beyond, seamlessly" },
 ];
 
 const services = [
   { icon: MapPin, title: "Private Jaipur Sightseeing", desc: "Quiet mornings at Amber, sunsets at Nahargarh — at your own pace." },
-  { icon: Bus, title: "Tempo Traveller Atelier", desc: "12, 16, 20-seater vehicles for families and small groups." },
+  { icon: Bus, title: "Tempo Traveller Service", desc: "12, 16, 20-seater vehicles for families and small groups." },
   { icon: Navigation, title: "Outstation Journeys", desc: "Door-to-door routes to Delhi, Agra, Udaipur, Jodhpur and beyond." },
   { icon: Plane, title: "Airport Concierge", desc: "Quiet, punctual transfers from any Indian airport." },
 ];
@@ -35,7 +35,7 @@ const About = () => (
   <main className="lux-cream-bg">
     <SEO
       title="About Heritage Jaipur Travels | Two Decades of Private Rajasthan Journeys"
-      description="A Jaipur-born travel atelier with 20+ years of experience designing private Rajasthan journeys, transfers and curated tours for international travelers."
+      description="A Jaipur-born travel house with 20+ years of experience designing private Rajasthan journeys, transfers and curated tours for international travelers."
       path="/about"
     />
 
@@ -43,7 +43,7 @@ const About = () => (
       image={heroPalace}
       eyebrow="Our House"
       title={<>Crafted in <span className="text-[#C9A84C]">Jaipur</span>, Trusted Worldwide</>}
-      subtitle="Two decades of intimate Rajasthan knowledge, distilled into private journeys for travelers from over forty countries."
+      subtitle="Two decades of intimate knowledge of Rajasthan, distilled into private journeys for travellers from over 40 countries."
     />
 
     <LuxTrustStrip />
@@ -57,13 +57,13 @@ const About = () => (
         />
         <div className="font-serif text-lg md:text-xl leading-[1.85] text-[#0F0F0F]/80 space-y-6">
           <p className="first-letter:font-display first-letter:text-6xl first-letter:font-semibold first-letter:text-[#6E0F1F] first-letter:float-left first-letter:leading-[0.85] first-letter:mr-3 first-letter:mt-1">
-            Heritage Jaipur Travels began in a small office on MI Road — quietly, without fanfare, with a single conviction: that Rajasthan deserved to be travelled slowly, privately, and by those who knew its rhythms intimately.
+            Heritage Jaipur Travels began in a small office on MI Road — without ceremony, with a single conviction: that Rajasthan deserved to be travelled slowly, privately, and by those who knew its rhythms intimately.
           </p>
           <p>
-            For more than twenty years we have been composing journeys for travelers from London, Tokyo, Berlin, Sydney, and beyond — families, couples, photographers, writers. Our work is not in the brochure; it is in the morning the host of a haveli unlocks a private courtyard for you, the chef who teaches you a dish his grandmother taught him, the chauffeur who knows the back road to Amber before the crowds.
+            For more than twenty years we have been crafting journeys for travellers from London, Tokyo, Berlin, Sydney, and beyond — families, couples, photographers, writers. Our work is not in a brochure; it is in the morning the host of a haveli unlocks a private courtyard for you, the chef who teaches you a dish his grandmother taught him, the chauffeur who knows the back road to Amber before the crowds.
           </p>
           <p>
-            We remain a small house by choice. Every itinerary is shaped by hand. Every traveler is known by name.
+            We remain a boutique company by choice. Every itinerary is personally designed. Every traveller is known by name.
           </p>
         </div>
       </div>
@@ -74,8 +74,8 @@ const About = () => (
       <div className="container mx-auto px-6">
         <LuxSectionHeading
           tone="dark"
-          eyebrow="Why Travelers Choose Us"
-          title="A boutique standard, lovingly maintained"
+          eyebrow="Why Travellers Choose Us"
+          title="A boutique standard, consistently upheld"
         />
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
           {whyChoose.map((item, i) => (
@@ -119,7 +119,7 @@ const About = () => (
       <div className="container mx-auto px-6">
         <LuxSectionHeading
           eyebrow="The Fleet"
-          title="Spotless, sanitized, ever-ready"
+          title="Spotless, maintained, ever-ready"
         />
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12 max-w-5xl mx-auto">
           {fleet.map((v, i) => (

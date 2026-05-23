@@ -109,14 +109,14 @@ const ExperienceCategory = () => {
       <section className="py-14 md:py-20 bg-muted/30">
         <div className="container mx-auto px-4 text-center max-w-3xl">
           <h2 className="font-display text-2xl md:text-4xl font-bold text-foreground mb-4">
-            Can't decide? Let our experts plan it for you
+            Not sure where to begin? Let our specialists design your experience for you
           </h2>
           <p className="text-muted-foreground mb-7">
-            Tell us your dates and dream moments — we'll craft a free, personalised {category.title.toLowerCase()} itinerary.
+            Tell us your dates and dream moments — we'll craft a complimentary, personalised {category.title.toLowerCase()} itinerary.
           </p>
           <div className="flex flex-wrap justify-center gap-3">
             <a
-              href={waLink(`Hi! I'm interested in ${category.title} in Rajasthan. Please share details.`)}
+              href={waLink(`Hello, I would like to enquire about ${category.title} in Rajasthan. Please share details.`)}
               target="_blank"
               rel="noopener noreferrer"
               className="px-6 py-3 rounded-md bg-[hsl(142,70%,40%)] text-white font-semibold shadow-lg hover:opacity-90 transition"
