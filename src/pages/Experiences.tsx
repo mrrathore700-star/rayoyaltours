@@ -76,9 +76,9 @@ const SECTIONS: Array<{ id: string; title: string; intro: string; catIds: string
 ];
 
 const trustPillars = [
-  { title: "Local Experts", text: "Born-and-raised Rajasthan specialists." },
+  { title: "Local Experts", text: "Born and raised in Rajasthan." },
   { title: "Private Experiences", text: "Designed exclusively around you." },
-  { title: "Handcrafted Journeys", text: "No templates. Every itinerary, bespoke." },
+  { title: "Handcrafted Journeys", text: "No templates. Every itinerary bespoke." },
   { title: "Trusted Specialists", text: "20+ years curating for global travellers." },
 ];
 
