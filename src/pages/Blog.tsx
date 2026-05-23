@@ -8,8 +8,8 @@ import LuxCtaBand from "@/components/luxury/LuxCtaBand";
 import { LuxLinkBtn, LuxAnchorBtn } from "@/components/luxury/LuxButton";
 
 const posts = [
-  { image: hawaMahal, title: "Best Places to Visit in Jaipur", excerpt: "The fifteen attractions that define the Pink City — from grand forts to hidden bazaars and quiet courtyards.", date: "March 5, 2026", slug: "best-places-jaipur" },
-  { image: goldenTriangle, title: "An Ultimate Rajasthan Travel Guide", excerpt: "Best time to visit, what to pack, cultural etiquette, and the unspoken rituals of slow Rajasthan travel.", date: "February 20, 2026", slug: "rajasthan-travel-guide" },
+  { image: hawaMahal, title: "The Best Places to Visit in Jaipur", excerpt: "The fifteen attractions that define the Pink City — from grand forts to hidden bazaars and quiet courtyards.", date: "March 5, 2026", slug: "best-places-jaipur" },
+  { image: goldenTriangle, title: "The Ultimate Rajasthan Travel Guide", excerpt: "Best time to visit, what to pack, cultural etiquette, and the unspoken rituals of slow Rajasthan travel.", date: "February 20, 2026", slug: "rajasthan-travel-guide" },
   { image: desertSafari, title: "Golden Triangle Itinerary: Delhi · Agra · Jaipur", excerpt: "A five-day private itinerary covering India's most iconic cities — with insider notes from local specialists.", date: "February 10, 2026", slug: "golden-triangle-itinerary" },
   { image: royalTour, title: "The Finest Heritage Hotels in Rajasthan", excerpt: "Stay like royalty in converted palaces and forts — our curated edit of Rajasthan's most evocative hotels.", date: "January 28, 2026", slug: "heritage-hotels-rajasthan" },
 ];
@@ -26,7 +26,7 @@ const Blog = () => (
       image={hawaMahal}
       eyebrow="The Journal"
       title={<>Notes From <span className="text-[#C9A84C]">Rajasthan</span></>}
-      subtitle="Editorial guides, itineraries and quiet observations — written by those who live here."
+      subtitle="Editorial guides, itineraries and quiet observations — written by those who call Rajasthan home."
     />
 
     <section className="py-24 md:py-32">
@@ -48,7 +48,7 @@ const Blog = () => (
                 {post.title}
               </h3>
               <p className="font-serif text-[17px] text-[#0F0F0F]/70 leading-relaxed mb-4">{post.excerpt}</p>
-              <span className="text-xs tracking-[0.22em] uppercase text-[#C9A84C]">Read The Story →</span>
+              <span className="text-xs tracking-[0.22em] uppercase text-[#C9A84C]">Read the Story →</span>
             </article>
           ))}
         </div>
@@ -58,7 +58,7 @@ const Blog = () => (
     <LuxCtaBand
       image={royalTour}
       eyebrow="Travel With Us"
-      title={<>Turn The Page Into A <span className="text-[#C9A84C]">Journey</span></>}
+      title={<>Turn the Page into a <span className="text-[#C9A84C]">Journey</span></>}
       primary={{ label: "Plan My Journey", to: "/contact" }}
       secondary={{ label: "WhatsApp Specialist", href: "https://wa.me/919461069858", external: true }}
     />

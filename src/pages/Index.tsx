@@ -119,7 +119,7 @@ const Index = () => {
         <div className="container mx-auto px-6">
           <LuxSectionHeading
             tone="dark"
-            eyebrow="From Our Travelers"
+            eyebrow="From Our Travellers"
             title="Stories From Around The World"
           />
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
@@ -151,7 +151,7 @@ const Index = () => {
         image={heroPalace}
         eyebrow="Begin"
         title={<>Begin Your <span className="text-[#C9A84C]">Rajasthan</span> Story</>}
-        subtitle="Tell us how you love to travel — we'll quietly compose the rest."
+        subtitle="Tell us how you love to travel — we'll quietly craft the rest."
         primary={{ label: "Plan My Journey", to: "/contact" }}
         secondary={{ label: "WhatsApp Specialist", href: "https://wa.me/919461069858", external: true }}
       />

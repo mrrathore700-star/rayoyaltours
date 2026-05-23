@@ -11,7 +11,7 @@ const Packages = () => (
   <main className="lux-cream-bg">
     <SEO
       title="Rajasthan Tour Packages | Private Journeys by Heritage Jaipur Travels"
-      description="Browse our curated Rajasthan tour packages — Golden Triangle, Jaipur Heritage, Jaisalmer Desert Safari, Udaipur Lake Tour and more. Private journeys by Jaipur locals."
+      description="Explore our curated private Rajasthan journeys — Golden Triangle, Jaipur Heritage, Jaisalmer Desert Safari, Udaipur Lake Tour and more. Private journeys designed by Jaipur specialists."
       path="/packages"
     />
 
@@ -23,7 +23,7 @@ const Packages = () => (
       actions={
         <>
           <LuxLinkBtn to="/contact" variant="gold">Design My Journey</LuxLinkBtn>
-          <LuxAnchorBtn href="https://wa.me/919461069858" external variant="outline">Speak To A Specialist</LuxAnchorBtn>
+          <LuxAnchorBtn href="https://wa.me/919461069858" external variant="outline">Speak With A Specialist</LuxAnchorBtn>
         </>
       }
     />
@@ -31,8 +31,8 @@ const Packages = () => (
     <section className="container mx-auto px-6 py-24 md:py-32">
       <LuxSectionHeading
         eyebrow="Our Collection"
-        title="Handcrafted Rajasthan Tour Packages"
-        intro="Six signature journeys — adapt any of them, or compose something entirely your own with our specialists."
+        title="Private Rajasthan Journeys"
+        intro="Our signature journeys — tailor any of them, or craft something entirely your own with our specialists."
       />
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {tours.map((tour) => (
@@ -45,7 +45,7 @@ const Packages = () => (
       image={royalTour}
       eyebrow="Bespoke"
       title={<>Craft Your Private <span className="text-[#C9A84C]">Rajasthan</span> Experience</>}
-      subtitle="None of the above? We design entirely bespoke itineraries — palace stays, desert nights, wildlife trails."
+      subtitle="Looking for something different? We design entirely bespoke itineraries — palace stays, desert nights, wildlife trails."
       primary={{ label: "Plan My Journey", to: "/contact" }}
       secondary={{ label: "WhatsApp Specialist", href: "https://wa.me/919461069858", external: true }}
     />

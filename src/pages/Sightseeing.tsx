@@ -21,8 +21,8 @@ const spots = [
   { image: hawaMahal, title: "Hawa Mahal", desc: "The Palace of Winds — 953 honeycomb windows in pink sandstone, designed so royal ladies could observe street festivals unseen." },
   { image: cityPalace, title: "City Palace", desc: "Royal residence since 1727 — Mubarak Mahal, Chandra Mahal, and the famed Peacock Gate at Pritam Niwas Chowk." },
   { image: jantarMantar, title: "Jantar Mantar", desc: "A UNESCO World Heritage Site of nineteen astronomical instruments — including the world's largest stone sundial, accurate to two seconds." },
-  { image: pannaMeenaKund, title: "Panna Meena Ka Kund", desc: "A symmetrical 16th-century stepwell — criss-cross stairways, peaceful, free to visit, and a quiet marvel of ancient water harvesting." },
-  { image: albertHall, title: "Albert Hall Museum", desc: "Rajasthan's oldest museum in Indo-Saracenic style — Egyptian mummies, Persian carpets, royal artefacts, magical at dusk when illuminated." },
+  { image: pannaMeenaKund, title: "Panna Meena Ka Kund", desc: "A symmetrical 16th-century stepwell — interlocking stairways, peaceful, free to visit, and a quiet marvel of ancient water harvesting." },
+  { image: albertHall, title: "Albert Hall Museum", desc: "Rajasthan's oldest museum in Indo-Saracenic style — Egyptian mummies, Persian carpets, royal artefacts, breathtaking at dusk under evening illumination." },
   { image: localMarket, title: "The Bazaars", desc: "Johari for jewellery, Bapu for juttis, Tripolia for lac bangles, Nehru for block-print — a sensory journey through Jaipur's living craft." },
 ];
 
@@ -71,7 +71,7 @@ const Sightseeing = () => (
                 <h3 className="font-display text-3xl md:text-4xl font-semibold text-[#0F0F0F] mb-5 leading-tight">{spot.title}</h3>
                 <p className="font-serif text-lg text-[#0F0F0F]/75 mb-7 leading-relaxed">{spot.desc}</p>
                 <a
-                  href={`https://wa.me/919461069858?text=${encodeURIComponent(`I want to visit ${spot.title}. Please share details.`)}`}
+                  href={`https://wa.me/919461069858?text=${encodeURIComponent(`I would like to arrange a private visit to ${spot.title}. Please share details.`)}`}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-3 text-xs tracking-[0.22em] uppercase text-[#C9A84C] hover:text-[#6E0F1F] transition-colors"
@@ -88,7 +88,7 @@ const Sightseeing = () => (
     <LuxCtaBand
       image={cityPalace}
       eyebrow="Begin"
-      title={<>Compose Your Private <span className="text-[#C9A84C]">Jaipur</span> Day</>}
+      title={<>Craft Your Private <span className="text-[#C9A84C]">Jaipur</span> Day</>}
       subtitle="Tell us what moves you — we'll arrange the rest, from chauffeur to chai."
       primary={{ label: "Plan My Day", to: "/contact" }}
       secondary={{ label: "WhatsApp Specialist", href: "https://wa.me/919461069858", external: true }}

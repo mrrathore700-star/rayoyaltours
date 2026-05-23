@@ -67,7 +67,7 @@ const Contact = () => {
       formRef.current?.reset();
     } catch (error) {
       console.error("Contact form error:", error);
-      toast.error("Unable to send inquiry right now. Please try again later.");
+      toast.error("Unable to send enquiry right now. Please try again later.");
     } finally {
       setSubmitting(false);
     }
@@ -85,7 +85,7 @@ const Contact = () => {
         image={heroPalace}
         eyebrow="Begin"
         title={<>Speak With A <span className="text-[#C9A84C]">Rajasthan</span> Specialist</>}
-        subtitle="Tell us how you love to travel — we'll quietly compose the rest."
+        subtitle="Tell us how you love to travel — we'll quietly craft the rest."
       />
 
       <section className="container mx-auto px-6 py-24 md:py-32">
@@ -149,8 +149,8 @@ const Contact = () => {
             <div className="absolute inset-x-0 top-0 h-1 rounded-t-2xl" style={{ background: "linear-gradient(90deg, #C9A84C 0%, #8B1A1A 50%, #C9A84C 100%)" }} />
 
             <div>
-              <h3 className="font-display text-2xl md:text-3xl font-bold" style={{ color: "#8B1A1A" }}>Quick Inquiry</h3>
-              <p className="text-sm mt-1" style={{ color: "#8B1A1A99" }}>Begin your royal Rajasthan journey</p>
+              <h3 className="font-display text-2xl md:text-3xl font-bold" style={{ color: "#8B1A1A" }}>Send an Enquiry</h3>
+              <p className="text-sm mt-1" style={{ color: "#8B1A1A99" }}>Begin your private Rajasthan journey</p>
             </div>
 
             {/* Honeypot — hidden from users */}
@@ -187,10 +187,10 @@ const Contact = () => {
             ))}
 
             <div>
-              <label className="block text-sm font-semibold mb-1.5" style={{ color: "#8B1A1A" }}>Travel Plans / Message *</label>
+              <label className="block text-sm font-semibold mb-1.5" style={{ color: "#8B1A1A" }}>Your Travel Plans *</label>
               <textarea
                 required
-                placeholder="Tell us about your dream Rajasthan trip..."
+                placeholder="Tell us about your ideal Rajasthan journey..."
                 value={form.message}
                 onChange={(e) => setForm({ ...form, message: e.target.value })}
                 rows={4}
@@ -213,11 +213,11 @@ const Contact = () => {
               }}
             >
               {submitting ? (
-                <><Loader2 className="h-4 w-4 animate-spin" /> Sending Inquiry...</>
+                <><Loader2 className="h-4 w-4 animate-spin" /> Sending Enquiry...</>
               ) : sent ? (
                 <><CheckCircle2 className="h-4 w-4" /> Sent — Send Another</>
               ) : (
-                "Send Inquiry"
+                "Send Enquiry"
               )}
             </button>
 
@@ -232,9 +232,9 @@ const Contact = () => {
 
       <LuxCtaBand
         image={heroPalace}
-        eyebrow="Or simply"
+        eyebrow="Or Simply"
         title={<>Message Us Directly On <span className="text-[#C9A84C]">WhatsApp</span></>}
-        subtitle="A specialist usually replies within hours."
+        subtitle="A specialist will reply within a few hours."
         primary={{ label: "WhatsApp Specialist", href: "https://wa.me/919461069858", external: true }}
         secondary={{ label: "Call +91 94610 69858", href: "tel:+919461069858" }}
       />

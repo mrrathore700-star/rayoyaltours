@@ -9,7 +9,7 @@ import { LuxLinkBtn, LuxAnchorBtn } from "@/components/luxury/LuxButton";
 
 const services = [
   { icon: MapPin, title: "Private Jaipur Sightseeing", desc: "Quiet mornings at Amber, sunsets at Nahargarh — at your own pace." },
-  { icon: Bus, title: "Tempo Traveller Atelier", desc: "12, 16, 20-seater vehicles for families and small groups." },
+  { icon: Bus, title: "Tempo Traveller Service", desc: "12, 16, 20-seater vehicles for families and small groups." },
   { icon: Navigation, title: "Outstation Journeys", desc: "Door-to-door routes across Rajasthan and beyond." },
   { icon: Plane, title: "Airport Concierge", desc: "Quiet, punctual transfers from any Indian airport." },
 ];
@@ -46,7 +46,7 @@ const Taxi = () => (
       <div className="container mx-auto px-6">
         <LuxSectionHeading
           eyebrow="What We Offer"
-          title="A Private Transport Atelier"
+          title="A Private Transport Service"
         />
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl mx-auto">
           {services.map((s, i) => (
@@ -77,7 +77,7 @@ const Taxi = () => (
       <div className="container mx-auto px-6">
         <LuxSectionHeading
           eyebrow="The Fleet"
-          title="Spotless, sanitized, ever-ready"
+          title="Spotless, maintained, ever-ready"
         />
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12 max-w-5xl mx-auto">
           {fleet.map((v, i) => (
@@ -102,8 +102,8 @@ const Taxi = () => (
       <div className="container mx-auto px-6">
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-10 max-w-4xl mx-auto">
           {[
-            { icon: Shield, title: "Verified Drivers", desc: "Experienced, polite, deeply local" },
-            { icon: Clock, title: "On Time, Always", desc: "Punctual pickup & drop, every time" },
+            { icon: Shield, title: "Professional Chauffeurs", desc: "Experienced, courteous, deeply local" },
+            { icon: Clock, title: "Punctual, Always", desc: "Punctual pickup & drop, every time" },
             { icon: Car, title: "Pan-India", desc: "Rajasthan and beyond, seamlessly" },
           ].map((item, i) => (
             <div key={i} className="text-center">
@@ -122,7 +122,7 @@ const Taxi = () => (
       image={luxuryCar}
       eyebrow="Reserve"
       title={<>Request A <span className="text-[#C9A84C]">Private</span> Transfer</>}
-      subtitle="Tell us your route and dates — we'll send a tailored quote within hours."
+      subtitle="Tell us your journey and dates — we'll send a tailored quote within hours."
       primary={{ label: "Request Quote", to: "/contact" }}
       secondary={{ label: "WhatsApp Specialist", href: "https://wa.me/919461069858", external: true }}
     />

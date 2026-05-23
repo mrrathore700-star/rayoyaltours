@@ -239,7 +239,7 @@ const ExperienceDetail = () => {
         )}
 
         {d?.whyLove ? (
-          <Section icon={Award} title="Why Travelers Love It">
+          <Section icon={Award} title="Why Travellers Love It">
             <p className="font-serif italic text-foreground/90 text-lg leading-relaxed">
               {d.whyLove}
             </p>
@@ -289,10 +289,10 @@ const ExperienceDetail = () => {
       <section className="py-16 md:py-20">
         <div className="container mx-auto px-4 max-w-3xl text-center">
           <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-4">
-            Ready to live this experience?
+            Ready to begin this experience?
           </h2>
           <p className="font-serif text-lg text-muted-foreground mb-8">
-            Speak with our local concierge — we'll plan every detail for you.
+            Speak with our Rajasthan specialist — we'll arrange every detail personally for you.
           </p>
           <div className="flex flex-col sm:flex-row gap-3 justify-center">
             <a
@@ -301,7 +301,7 @@ const ExperienceDetail = () => {
               rel="noopener noreferrer"
               className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-md bg-[hsl(142,70%,40%)] text-white font-semibold shadow-lg hover:opacity-90 transition hover-scale"
             >
-              <MessageCircle className="h-5 w-5" /> Book on WhatsApp
+              <MessageCircle className="h-5 w-5" /> Enquire on WhatsApp
             </a>
             <a
               href={waLink(customizeMsg)}
@@ -331,7 +331,7 @@ const ExperienceDetail = () => {
         <section className="py-14 md:py-20 bg-muted/30">
           <div className="container mx-auto px-4">
             <h2 className="font-display text-2xl md:text-3xl font-bold text-foreground mb-10 text-center">
-              You may also love
+              You May Also Enjoy
             </h2>
             <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
               {related.map((r) => (
@@ -369,7 +369,7 @@ const ExperienceDetail = () => {
           rel="noopener noreferrer"
           className="flex items-center justify-center gap-2 w-full py-3 rounded-md bg-[hsl(142,70%,40%)] text-white font-semibold"
         >
-          <MessageCircle className="h-5 w-5" /> Book This Experience
+          <MessageCircle className="h-5 w-5" /> Enquire About This Experience
         </a>
       </div>
 
