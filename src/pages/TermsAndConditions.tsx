@@ -1,12 +1,12 @@
-import { Helmet } from "react-helmet-async";
+import SEO from "@/components/SEO";
 
 const TermsAndConditions = () => (
   <>
-    <Helmet>
-      <title>Terms & Conditions | Heritage Jaipur Travels</title>
-      <meta name="description" content="Terms and Conditions governing the use of Heritage Jaipur Travels' website and tour booking services." />
-      <link rel="canonical" href="/terms-and-conditions" />
-    </Helmet>
+    <SEO
+      title="Terms & Conditions | Heritage Jaipur Travels"
+      description="Terms and Conditions governing the use of Heritage Jaipur Travels' website and tour booking services."
+      path="/terms-and-conditions"
+    />
     <main className="pt-24 md:pt-28 pb-16">
       <div className="container mx-auto px-4 max-w-4xl">
         <h1 className="font-display text-4xl md:text-5xl font-bold text-foreground mb-6">Terms & Conditions</h1>
