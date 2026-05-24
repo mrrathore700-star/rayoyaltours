@@ -1,9 +1,11 @@
 import SEO from "@/components/SEO";
+import { Helmet } from "react-helmet-async";
 
 const Unsubscribe = () => {
   return (
     <main className="pt-28 pb-20 min-h-[60vh]">
       <SEO title="Unsubscribe | Heritage Jaipur Travels" description="Manage your email preferences." path="/unsubscribe" />
+      <Helmet><meta name="robots" content="noindex, follow" /></Helmet>
       <div className="container mx-auto px-4 max-w-md">
         <div className="bg-card rounded-lg p-8 heritage-shadow text-center">
           <h1 className="font-display text-2xl font-bold text-foreground mb-4">Email Preferences</h1>
