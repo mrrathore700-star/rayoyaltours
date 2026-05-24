@@ -31,7 +31,7 @@ const Index = () => {
   return (
     <main className="lux-cream-bg">
       <SEO
-        title="Heritage Jaipur Travels | Private Rajasthan Journeys for International Travelers"
+        title="Heritage Jaipur Travels | Private Rajasthan Journeys"
         description="A boutique Rajasthan travel atelier crafting cinematic private journeys — palaces, deserts, wildlife and culture, designed by Jaipur-born specialists for over 20 years."
         path="/"
       />
