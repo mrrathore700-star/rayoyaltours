@@ -1,12 +1,12 @@
-import { Helmet } from "react-helmet-async";
+import SEO from "@/components/SEO";
 
 const PrivacyPolicy = () => (
   <>
-    <Helmet>
-      <title>Privacy Policy | Heritage Jaipur Travels</title>
-      <meta name="description" content="Read the Privacy Policy of Heritage Jaipur Travels to understand how we collect, use and protect your personal information." />
-      <link rel="canonical" href="/privacy-policy" />
-    </Helmet>
+    <SEO
+      title="Privacy Policy | Heritage Jaipur Travels"
+      description="Read the Privacy Policy of Heritage Jaipur Travels to understand how we collect, use and protect your personal information."
+      path="/privacy-policy"
+    />
     <main className="pt-24 md:pt-28 pb-16">
       <div className="container mx-auto px-4 max-w-4xl">
         <h1 className="font-display text-4xl md:text-5xl font-bold text-foreground mb-6">Privacy Policy</h1>

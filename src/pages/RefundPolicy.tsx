@@ -1,12 +1,12 @@
-import { Helmet } from "react-helmet-async";
+import SEO from "@/components/SEO";
 
 const RefundPolicy = () => (
   <>
-    <Helmet>
-      <title>Refund & Cancellation Policy | Heritage Jaipur Travels</title>
-      <meta name="description" content="Refund and cancellation policy for tours and services booked with Heritage Jaipur Travels." />
-      <link rel="canonical" href="/refund-policy" />
-    </Helmet>
+    <SEO
+      title="Refund & Cancellation Policy | Heritage Jaipur Travels"
+      description="Refund and cancellation policy for tours and services booked with Heritage Jaipur Travels."
+      path="/refund-policy"
+    />
     <main className="pt-24 md:pt-28 pb-16">
       <div className="container mx-auto px-4 max-w-4xl">
         <h1 className="font-display text-4xl md:text-5xl font-bold text-foreground mb-6">Refund & Cancellation Policy</h1>

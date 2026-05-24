@@ -35,7 +35,7 @@ const About = () => (
   <main className="lux-cream-bg">
     <SEO
       title="About Heritage Jaipur Travels | Two Decades of Private Rajasthan Journeys"
-      description="A Jaipur-born travel house with 20+ years of experience designing private Rajasthan journeys, transfers and curated tours for international travelers."
+      description="A Jaipur-born travel house with 20+ years of experience designing private Rajasthan journeys, transfers and curated tours for international travellers."
       path="/about"
     />
 
