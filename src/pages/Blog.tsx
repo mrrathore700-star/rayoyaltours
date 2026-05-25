@@ -3,6 +3,9 @@ import hawaMahal from "@/assets/hawa-mahal.jpg";
 import goldenTriangle from "@/assets/golden-triangle.jpg";
 import desertSafari from "@/assets/desert-safari.jpg";
 import royalTour from "@/assets/royal-tour.jpg";
+import jaisalmerFort from "@/assets/jaisalmer-fort.jpg";
+import ranthamboreTiger from "@/assets/ranthambore-tiger.jpg";
+import udaipurLake from "@/assets/udaipur-lake.jpg";
 import LuxHero from "@/components/luxury/LuxHero";
 import LuxCtaBand from "@/components/luxury/LuxCtaBand";
 import { LuxLinkBtn, LuxAnchorBtn } from "@/components/luxury/LuxButton";
@@ -12,6 +15,10 @@ const posts = [
   { image: goldenTriangle, title: "The Ultimate Rajasthan Travel Guide", excerpt: "Best time to visit, what to pack, cultural etiquette, and the unspoken rituals of slow Rajasthan travel.", date: "February 20, 2026", slug: "rajasthan-travel-guide" },
   { image: desertSafari, title: "Golden Triangle Itinerary: Delhi · Agra · Jaipur", excerpt: "A five-day private itinerary covering India's most iconic cities — with insider notes from local specialists.", date: "February 10, 2026", slug: "golden-triangle-itinerary" },
   { image: royalTour, title: "The Finest Heritage Hotels in Rajasthan", excerpt: "Stay like royalty in converted palaces and forts — our curated edit of Rajasthan's most evocative hotels.", date: "January 28, 2026", slug: "heritage-hotels-rajasthan" },
+  { image: desertSafari, title: "Best Time to Visit Rajasthan", excerpt: "A month-by-month guide from Jaipur specialists — covering weather, festivals, crowds and insider tips for every season.", date: "April 15, 2026", slug: "best-time-visit-rajasthan" },
+  { image: jaisalmerFort, title: "Camel Safari Jaisalmer — The Complete Guide", excerpt: "Everything you need to know about a camel safari in Jaisalmer — where to go, what to expect, how long, and how to avoid the tourist traps.", date: "April 20, 2026", slug: "camel-safari-jaisalmer-guide" },
+  { image: ranthamboreTiger, title: "Ranthambore Tiger Safari — Everything You Need to Know", excerpt: "Best zones, best months, jeep vs canter, permit booking — the complete planning guide for Ranthambore from local specialists.", date: "April 25, 2026", slug: "ranthambore-tiger-safari-guide" },
+  { image: udaipurLake, title: "Udaipur Travel Guide — The City of Lakes", excerpt: "What to see, where to stay, what to eat, and how to experience Udaipur beyond the standard tourist trail.", date: "May 1, 2026", slug: "udaipur-lake-city-guide" },
 ];
 
 const Blog = () => (
