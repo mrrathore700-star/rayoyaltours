@@ -18,6 +18,7 @@ import ExperienceCategory from "./pages/ExperienceCategory";
 import { Navigate } from "react-router-dom";
 import Gallery from "./pages/Gallery";
 import Blog from "./pages/Blog";
+import BlogPost from "./pages/BlogPost";
 import Contact from "./pages/Contact";
 import TourDetail from "./pages/TourDetail";
 import About from "./pages/About";
@@ -51,6 +52,7 @@ const App = () => (
             <Route path="/live-experiences" element={<Navigate to="/experiences" replace />} />
             <Route path="/gallery" element={<Gallery />} />
             <Route path="/blog" element={<Blog />} />
+            <Route path="/blog/:slug" element={<BlogPost />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/privacy-policy" element={<PrivacyPolicy />} />
             <Route path="/terms-and-conditions" element={<TermsAndConditions />} />
