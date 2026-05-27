@@ -5,9 +5,24 @@ import hawaMahal from "@/assets/hawa-mahal.jpg";
 import royalTour from "@/assets/royal-tour.jpg";
 import LuxHero from "@/components/luxury/LuxHero";
 import LuxCtaBand from "@/components/luxury/LuxCtaBand";
+import LuxTrustStrip from "@/components/luxury/LuxTrustStrip";
 import { blogPosts } from "@/data/blogPosts";
 
-const filters = ["All", "Luxury Travel", "Heritage", "Wildlife", "Desert", "Food & Culture", "Spiritual", "Photography"];
+const filters = [
+  "All",
+  "Luxury Rajasthan",
+  "Jaipur Travel",
+  "Itineraries",
+  "Palace Stays",
+  "Wildlife & Safari",
+  "Desert",
+  "Food & Culture",
+  "Spiritual",
+  "Photography",
+  "Hidden Rajasthan",
+];
+
+const SITE_URL = "https://www.heritagejaipurtravels.com";
 
 const Blog = () => {
   const [active, setActive] = useState("All");
@@ -18,19 +33,54 @@ const Blog = () => {
     [active]
   );
 
+  const blogSchema = {
+    "@context": "https://schema.org",
+    "@type": "Blog",
+    name: "Luxury Rajasthan Travel Journal",
+    description:
+      "Curated travel stories, palace stays, wildlife journeys and cultural discoveries across Rajasthan — written by Jaipur-based luxury travel specialists.",
+    url: `${SITE_URL}/blog`,
+    publisher: {
+      "@type": "TravelAgency",
+      name: "Heritage Jaipur Travels",
+      url: SITE_URL,
+    },
+    blogPost: blogPosts.map((p) => ({
+      "@type": "BlogPosting",
+      headline: p.title,
+      description: p.metaDescription,
+      url: `${SITE_URL}/blog/${p.slug}`,
+      image: `${SITE_URL}${p.image}`,
+      datePublished: p.date,
+      articleSection: p.category,
+      author: { "@type": "Organization", name: "Heritage Jaipur Travels" },
+    })),
+  };
+
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: SITE_URL },
+      { "@type": "ListItem", position: 2, name: "Travel Journal", item: `${SITE_URL}/blog` },
+    ],
+  };
+
   return (
     <main className="lux-cream-bg">
       <SEO
-        title="Travel Journal | Stories & Guides from Rajasthan"
-        description="Curated travel stories, palace stays, wildlife journeys and cultural discoveries across Rajasthan — written by local specialists at Heritage Jaipur Travels."
+        title="Luxury Rajasthan Travel Journal | Stories & Guides — Heritage Jaipur Travels"
+        description="Luxury Rajasthan travel inspiration — palace stays, Jaipur travel guides, tiger safaris, desert journeys, hidden experiences and itineraries from Jaipur-based specialists with 20+ years of expertise."
         path="/blog"
+        image={hawaMahal}
+        jsonLd={[blogSchema, breadcrumbSchema]}
       />
 
       <LuxHero
         image={hawaMahal}
         eyebrow="Luxury Rajasthan Travel Journal"
         title={<>Stories, Guides &amp; Experiences From <span className="text-[#C9A84C]">Rajasthan</span></>}
-        subtitle="Explore curated travel stories, hidden experiences, palace stays, wildlife journeys, and cultural discoveries across Rajasthan."
+        subtitle="Luxury travel inspiration, hidden experiences, palace stays, cultural journeys, wildlife adventures and immersive Rajasthan stories for international travellers."
       />
 
       {/* Featured Article */}
@@ -45,7 +95,7 @@ const Blog = () => {
             <Link to={`/blog/${featured.slug}`} className="relative overflow-hidden aspect-[4/5] rounded-sm group block">
               <img
                 src={featured.image}
-                alt={featured.title}
+                alt={featured.imageAlt || featured.title}
                 className="w-full h-full object-cover lux-ken-burns"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
@@ -77,8 +127,10 @@ const Blog = () => {
         </div>
       </section>
 
+      <LuxTrustStrip />
+
       {/* Filter Strip */}
-      <section className="pb-12">
+      <section className="pt-20 pb-12">
         <div className="container mx-auto px-6">
           <div className="flex items-center gap-3 justify-center mb-8">
             <span className="lux-rule-gold" />
@@ -119,7 +171,7 @@ const Blog = () => {
                     <div className="relative overflow-hidden aspect-[4/5] rounded-sm mb-6">
                       <img
                         src={post.image}
-                        alt={post.title}
+                        alt={post.imageAlt || post.title}
                         className="w-full h-full object-cover transition-transform duration-[1200ms] group-hover:scale-105"
                         loading="lazy"
                       />
@@ -151,7 +203,7 @@ const Blog = () => {
         title={<>Begin Your Rajasthan <span className="text-[#C9A84C]">Story</span></>}
         subtitle="Let our Jaipur-based specialists craft a private journey shaped entirely around you."
         primary={{ label: "Plan My Rajasthan Journey", to: "/contact" }}
-        secondary={{ label: "Speak With A Specialist", href: "https://wa.me/919461069858", external: true }}
+        secondary={{ label: "WhatsApp A Specialist", href: "https://wa.me/919461069858", external: true }}
       />
     </main>
   );
