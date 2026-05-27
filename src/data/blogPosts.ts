@@ -39,7 +39,9 @@ export const blogPosts: BlogPost[] = [
     excerpt:
       "The fifteen attractions that define the Pink City — from grand forts to hidden bazaars and quiet courtyards.",
     date: "March 5, 2026",
-    category: "Heritage",
+    category: "Jaipur Travel",
+    imageAlt: "Hawa Mahal at sunrise, Jaipur — the Palace of Winds, an iconic landmark of the Pink City",
+    keywords: ["best places jaipur", "jaipur travel guide", "things to do in jaipur", "amber fort", "city palace jaipur", "luxury jaipur tours"],
     readTime: "8 min read",
     seoTitle: "The Best Places to Visit in Jaipur | Heritage Jaipur Travels",
     metaDescription:
@@ -124,6 +126,11 @@ export const blogPosts: BlogPost[] = [
         ],
       },
     ],
+    relatedLinks: [
+      { label: "Jaipur Heritage Tour Package", to: "/packages/jaipur-heritage" },
+      { label: "Hawa Mahal Sunrise Photography", to: "/experiences/hawa-mahal-sunrise-photography" },
+      { label: "Jaipur Sightseeing", to: "/sightseeing" },
+    ],
     cta: { label: "Design your private Jaipur day", to: "/contact" },
   },
   {
@@ -133,7 +140,9 @@ export const blogPosts: BlogPost[] = [
     excerpt:
       "Best time to visit, what to pack, cultural etiquette, and the unspoken rituals of slow Rajasthan travel.",
     date: "February 20, 2026",
-    category: "Luxury Travel",
+    category: "Luxury Rajasthan",
+    imageAlt: "Golden Triangle landmarks — luxury Rajasthan travel inspiration",
+    keywords: ["rajasthan travel guide", "luxury rajasthan tours", "rajasthan itinerary", "best time to visit rajasthan", "luxury india travel"],
     readTime: "12 min read",
     seoTitle: "The Ultimate Rajasthan Travel Guide | Heritage Jaipur Travels",
     metaDescription:
@@ -192,6 +201,11 @@ export const blogPosts: BlogPost[] = [
         ],
       },
     ],
+    relatedLinks: [
+      { label: "Rajasthan Royal Heritage Tour", to: "/packages/rajasthan-royal" },
+      { label: "All Luxury Experiences", to: "/experiences" },
+      { label: "Private Tour Packages", to: "/packages" },
+    ],
     cta: { label: "Plan your private Rajasthan journey", to: "/contact" },
   },
   {
@@ -201,7 +215,9 @@ export const blogPosts: BlogPost[] = [
     excerpt:
       "A five-day private itinerary covering India's most iconic cities — with insider notes from local specialists.",
     date: "February 10, 2026",
-    category: "Heritage",
+    category: "Itineraries",
+    imageAlt: "Golden Triangle India — Delhi, Agra and Jaipur private luxury tour",
+    keywords: ["golden triangle itinerary", "delhi agra jaipur tour", "5 day golden triangle", "taj mahal tour", "private india tour"],
     readTime: "10 min read",
     seoTitle: "Golden Triangle Itinerary: Delhi, Agra & Jaipur | Heritage Jaipur Travels",
     metaDescription:
@@ -263,6 +279,11 @@ export const blogPosts: BlogPost[] = [
         ],
       },
     ],
+    relatedLinks: [
+      { label: "Golden Triangle Package", to: "/packages/golden-triangle" },
+      { label: "Golden Triangle with Ranthambore", to: "/packages/golden-triangle-ranthambore" },
+      { label: "Jaipur Heritage Tour", to: "/packages/jaipur-heritage" },
+    ],
     cta: { label: "Book your private Golden Triangle journey", to: "/contact" },
   },
   {
@@ -272,7 +293,9 @@ export const blogPosts: BlogPost[] = [
     excerpt:
       "Stay like royalty in converted palaces and forts — our curated edit of Rajasthan's most evocative hotels.",
     date: "January 28, 2026",
-    category: "Luxury Travel",
+    category: "Palace Stays",
+    imageAlt: "Royal palace heritage hotel in Rajasthan — luxury palace stays",
+    keywords: ["heritage hotels rajasthan", "palace hotels rajasthan", "rambagh palace", "taj lake palace udaipur", "luxury palace stays india"],
     readTime: "7 min read",
     seoTitle: "The Finest Heritage Hotels in Rajasthan | Heritage Jaipur Travels",
     metaDescription:
@@ -334,6 +357,11 @@ export const blogPosts: BlogPost[] = [
         ],
       },
     ],
+    relatedLinks: [
+      { label: "Palace Hotel Stays Experience", to: "/experiences/palace-hotel-stays-rajasthan" },
+      { label: "Rajasthan Royal Heritage Tour", to: "/packages/rajasthan-royal" },
+      { label: "Royal Dining Experience", to: "/experiences/royal-dining-experience" },
+    ],
     cta: { label: "Curate your heritage hotel journey", to: "/contact" },
   },
   {
@@ -343,7 +371,9 @@ export const blogPosts: BlogPost[] = [
     excerpt:
       "A month-by-month guide from Jaipur specialists — covering weather, festivals, crowds and insider tips for every season.",
     date: "April 15, 2026",
-    category: "Luxury Travel",
+    category: "Luxury Rajasthan",
+    imageAlt: "Thar Desert dunes at sunset — best season for Rajasthan travel",
+    keywords: ["best time to visit rajasthan", "rajasthan weather", "rajasthan in winter", "pushkar fair", "desert festival jaisalmer"],
     readTime: "9 min read",
     seoTitle: "Best Time to Visit Rajasthan — Month by Month Guide | Heritage Jaipur Travels",
     metaDescription:
@@ -401,6 +431,11 @@ export const blogPosts: BlogPost[] = [
         ],
       },
     ],
+    relatedLinks: [
+      { label: "Rajasthan Royal Heritage Tour", to: "/packages/rajasthan-royal" },
+      { label: "Pushkar Camel Fair Experience", to: "/experiences/pushkar-camel-fair" },
+      { label: "Jaisalmer Desert Festival", to: "/experiences/jaisalmer-desert-festival" },
+    ],
     cta: { label: "Shape the perfect Rajasthan journey", to: "/contact" },
   },
   {
@@ -411,6 +446,8 @@ export const blogPosts: BlogPost[] = [
       "Everything you need to know about a camel safari in Jaisalmer — where to go, what to expect, how long, and how to avoid the tourist traps.",
     date: "April 20, 2026",
     category: "Desert",
+    imageAlt: "Jaisalmer Fort and Thar Desert dunes — luxury camel safari Rajasthan",
+    keywords: ["camel safari jaisalmer", "thar desert safari", "sam sand dunes", "khuri dunes", "luxury desert camping rajasthan"],
     readTime: "8 min read",
     seoTitle: "Camel Safari Jaisalmer — The Complete Guide | Heritage Jaipur Travels",
     metaDescription:
@@ -466,6 +503,11 @@ export const blogPosts: BlogPost[] = [
         ],
       },
     ],
+    relatedLinks: [
+      { label: "Camel Safari Jaisalmer", to: "/experiences/camel-safari-jaisalmer" },
+      { label: "Luxury Desert Camping", to: "/experiences/luxury-desert-camping-jaisalmer" },
+      { label: "Jaisalmer Desert Safari Package", to: "/packages/desert-safari" },
+    ],
     cta: { label: "Arrange your private Jaisalmer camel safari", to: "/contact" },
   },
   {
@@ -475,7 +517,9 @@ export const blogPosts: BlogPost[] = [
     excerpt:
       "Best zones, best months, jeep vs canter, permit booking — the complete planning guide for Ranthambore from local specialists.",
     date: "April 25, 2026",
-    category: "Wildlife",
+    category: "Wildlife & Safari",
+    imageAlt: "Wild Bengal tiger at Ranthambore National Park — Rajasthan tiger safari",
+    keywords: ["ranthambore tiger safari", "bengal tiger india", "ranthambore national park", "wildlife safari rajasthan", "jeep safari ranthambore"],
     readTime: "9 min read",
     seoTitle: "Ranthambore Tiger Safari — The Complete Guide | Heritage Jaipur Travels",
     metaDescription:
@@ -532,6 +576,11 @@ export const blogPosts: BlogPost[] = [
         ],
       },
     ],
+    relatedLinks: [
+      { label: "Tiger Safari Ranthambore", to: "/experiences/tiger-safari-ranthambore" },
+      { label: "Golden Triangle with Ranthambore", to: "/packages/golden-triangle-ranthambore" },
+      { label: "Leopard Safari Jawai", to: "/experiences/leopard-safari-jawai" },
+    ],
     cta: { label: "Arrange your Ranthambore tiger safari", to: "/contact" },
   },
   {
@@ -541,7 +590,9 @@ export const blogPosts: BlogPost[] = [
     excerpt:
       "What to see, where to stay, what to eat, and how to experience Udaipur beyond the standard tourist trail.",
     date: "May 1, 2026",
-    category: "Heritage",
+    category: "Palace Stays",
+    imageAlt: "Lake Pichola and the City Palace of Udaipur — luxury City of Lakes travel",
+    keywords: ["udaipur travel guide", "city of lakes udaipur", "lake palace udaipur", "udaipur things to do", "luxury udaipur tour"],
     readTime: "11 min read",
     seoTitle: "Udaipur Travel Guide — The City of Lakes | Heritage Jaipur Travels",
     metaDescription:
@@ -615,6 +666,11 @@ export const blogPosts: BlogPost[] = [
           "Two nights in Udaipur is sufficient for the city itself. Three nights allows the wider region.",
         ],
       },
+    ],
+    relatedLinks: [
+      { label: "Udaipur Lake Tour Package", to: "/packages/udaipur-lake" },
+      { label: "Udaipur Boat Ride", to: "/experiences/udaipur-boat-ride" },
+      { label: "Vintage Car Ride Udaipur", to: "/experiences/vintage-car-ride-udaipur" },
     ],
     cta: { label: "Plan your private Udaipur journey", to: "/contact" },
   },
