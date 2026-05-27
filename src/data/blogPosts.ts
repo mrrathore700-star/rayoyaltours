@@ -11,9 +11,12 @@ export type BlogSection = {
   paragraphs: string[];
 };
 
+export type RelatedLink = { label: string; to: string };
+
 export type BlogPost = {
   slug: string;
   image: string;
+  imageAlt?: string;
   title: string;
   excerpt: string;
   date: string;
@@ -21,8 +24,10 @@ export type BlogPost = {
   readTime: string;
   seoTitle: string;
   metaDescription: string;
+  keywords?: string[];
   intro: string[];
   sections: BlogSection[];
+  relatedLinks?: RelatedLink[];
   cta: { label: string; to: string };
 };
 
