@@ -37,12 +37,21 @@ const Header = () => {
         scrolled ? "lux-nav" : "bg-gradient-to-b from-black/55 to-transparent"
       }`}
     >
-      <div className="container mx-auto flex items-center justify-between h-16 md:h-20 px-4 md:px-8">
-        <Link to="/" className="flex items-center gap-3">
-          <img src={logo} alt="Heritage Jaipur Travels" className="h-9 md:h-12 w-auto" />
-          <span className="hidden sm:block font-display text-base md:text-lg tracking-[0.18em] uppercase text-[#FFF8F0]">
-            Heritage <span className="text-[#C9A84C]">Jaipur</span>
-          </span>
+      <div className="container mx-auto flex items-center justify-between h-20 md:h-28 px-4 md:px-8">
+        <Link
+          to="/"
+          className="flex items-center group"
+          aria-label="Heritage Jaipur Travels — Home"
+        >
+          <img
+            src={logo}
+            alt="Heritage Jaipur Travels Luxury Rajasthan Tours"
+            width={200}
+            height={70}
+            fetchPriority="high"
+            decoding="async"
+            className="w-[140px] md:w-[200px] h-auto transition-transform duration-500 ease-out group-hover:scale-[1.03]"
+          />
         </Link>
 
         <nav className="hidden lg:flex items-center gap-1">
@@ -77,7 +86,7 @@ const Header = () => {
 
       {/* Mobile slide menu */}
       <div
-        className={`lg:hidden fixed inset-0 top-16 z-40 transition-all duration-500 ${
+        className={`lg:hidden fixed inset-0 top-20 z-40 transition-all duration-500 ${
           open ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
         }`}
       >
