@@ -36,7 +36,7 @@ const TourDetail = () => {
     const whatsappMsg = encodeURIComponent(
       `Hello, I would like to enquire about the ${tour.title}.\n\nName: ${form.name}\nEmail: ${form.email}\nPhone: ${form.phone}\nTravellers: ${form.travelers}\nPreferred Date: ${form.date}\nMessage: ${form.message}`
     );
-    window.open(`https://wa.me/919461069858?text=${whatsappMsg}`, "_blank");
+    window.open(`https://wa.me/919887688843?text=${whatsappMsg}`, "_blank");
     toast({ title: "Redirecting to WhatsApp!", description: "Your specialist will be in touch shortly." });
     setSubmitting(false);
   };
@@ -70,7 +70,7 @@ const TourDetail = () => {
           "provider": {
             "@type": "TravelAgency",
             "name": "Heritage Jaipur Travels",
-            "telephone": "+919461069858",
+            "telephone": "+919887688843",
             "url": "https://www.heritagejaipurtravels.com",
           },
         })}</script>
@@ -355,7 +355,7 @@ const TourDetail = () => {
                   <Send className="h-4 w-4" /> Enquire via WhatsApp
                 </button>
                 <a
-                  href={`https://wa.me/919461069858?text=${encodeURIComponent(`Hello, I would like to enquire about the ${tour.title}. Please share details.`)}`}
+                  href={`https://wa.me/919887688843?text=${encodeURIComponent(`Hello, I would like to enquire about the ${tour.title}. Please share details.`)}`}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex-1 inline-flex items-center justify-center gap-2 py-3 rounded-md gold-gradient text-foreground font-bold hover:opacity-90 transition-opacity"

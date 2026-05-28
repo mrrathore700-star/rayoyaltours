@@ -65,8 +65,8 @@ const TermsAndConditions = () => (
             <h2 className="font-display text-2xl font-semibold mt-8 mb-3">9. Contact Us</h2>
             <p>
               <strong>Heritage Jaipur Travels</strong><br />
-              G 31 Ground Floor, Behind Airtel, Ganpati Plaza, MI Road, Jaipur, Rajasthan - 302001<br />
-              Phone: +91 94610 69858<br />
+              G 31 Ground Floor, Ganpati Plaza, MI Road, Jaipur, Rajasthan - 302001<br />
+              Phone: +91 98876 88843<br />
               Email: <a className="text-primary underline" href="mailto:info@heritagejaipurtravels.com">info@heritagejaipurtravels.com</a>
             </p>
           </section>

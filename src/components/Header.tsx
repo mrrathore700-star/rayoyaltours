@@ -68,11 +68,11 @@ const Header = () => {
 
         <div className="flex items-center gap-3">
           <a
-            href="tel:+919461069858"
+            href="tel:+919887688843"
             className="hidden md:inline-flex items-center gap-2 text-xs tracking-[0.18em] uppercase text-[#C9A84C] hover:text-[#FFF8F0] transition-colors"
           >
             <Phone className="h-4 w-4" />
-            +91 94610 69858
+            +91 98876 88843
           </a>
           <button
             onClick={() => setOpen(!open)}
@@ -105,10 +105,10 @@ const Header = () => {
             </Link>
           ))}
           <a
-            href="tel:+919461069858"
+            href="tel:+919887688843"
             className="mt-8 inline-flex items-center justify-center gap-2 py-3 rounded-full lux-btn-gold tracking-[0.18em] uppercase text-xs font-display"
           >
-            <Phone className="h-4 w-4" /> +91 94610 69858
+            <Phone className="h-4 w-4" /> +91 98876 88843
           </a>
         </nav>
       </div>

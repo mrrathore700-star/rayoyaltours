@@ -203,7 +203,7 @@ const Blog = () => {
         title={<>Begin Your Rajasthan <span className="text-[#C9A84C]">Story</span></>}
         subtitle="Let our Jaipur-based specialists craft a private journey shaped entirely around you."
         primary={{ label: "Plan My Rajasthan Journey", to: "/contact" }}
-        secondary={{ label: "WhatsApp A Specialist", href: "https://wa.me/919461069858", external: true }}
+        secondary={{ label: "WhatsApp A Specialist", href: "https://wa.me/919887688843", external: true }}
       />
     </main>
   );

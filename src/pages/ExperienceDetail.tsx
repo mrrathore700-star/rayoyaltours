@@ -32,7 +32,7 @@ import {
 } from "lucide-react";
 
 const waLink = (msg: string) =>
-  `https://wa.me/919461069858?text=${encodeURIComponent(msg)}`;
+  `https://wa.me/919887688843?text=${encodeURIComponent(msg)}`;
 
 const Section = ({
   icon: Icon,
@@ -115,7 +115,7 @@ const ExperienceDetail = () => {
     provider: {
       "@type": "TravelAgency",
       name: "Heritage Jaipur Travels",
-      telephone: "+91-9461069858",
+      telephone: "+91-9887688843",
       email: "info@heritagejaipurtravels.com",
       url: "https://www.heritagejaipurtravels.com",
     },
@@ -321,7 +321,7 @@ const ExperienceDetail = () => {
             </a>
           </div>
           <p className="mt-6 text-sm text-muted-foreground inline-flex items-center gap-2 justify-center">
-            <Phone className="h-4 w-4 text-secondary" /> +91 9461069858
+            <Phone className="h-4 w-4 text-secondary" /> +91 9887688843
           </p>
         </div>
       </section>

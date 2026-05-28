@@ -45,7 +45,7 @@ const Index = () => {
         actions={
           <>
             <LuxLinkBtn to="/contact" variant="gold">Begin Your Journey</LuxLinkBtn>
-            <LuxAnchorBtn href="https://wa.me/919461069858?text=Hi!%20I%20want%20to%20plan%20my%20Rajasthan%20trip" external variant="outline">Speak To A Specialist</LuxAnchorBtn>
+            <LuxAnchorBtn href="https://wa.me/919887688843?text=Hi!%20I%20want%20to%20plan%20my%20Rajasthan%20trip" external variant="outline">Speak To A Specialist</LuxAnchorBtn>
           </>
         }
       />
@@ -80,7 +80,7 @@ const Index = () => {
         title={<>Live the Royal <span className="text-[#C9A84C]">Rajasthani</span> Experience</>}
         subtitle="Camel rides through golden dunes, candlelit dinners inside ancient forts, mornings with master artisans. The Rajasthan most travelers only read about."
         primary={{ label: "Explore Experiences", to: "/experiences" }}
-        secondary={{ label: "Speak To A Specialist", href: "https://wa.me/919461069858", external: true }}
+        secondary={{ label: "Speak To A Specialist", href: "https://wa.me/919887688843", external: true }}
       />
 
       {/* Gallery Preview */}
@@ -153,7 +153,7 @@ const Index = () => {
         title={<>Begin Your <span className="text-[#C9A84C]">Rajasthan</span> Story</>}
         subtitle="Tell us how you love to travel — we'll quietly craft the rest."
         primary={{ label: "Plan My Journey", to: "/contact" }}
-        secondary={{ label: "WhatsApp Specialist", href: "https://wa.me/919461069858", external: true }}
+        secondary={{ label: "WhatsApp Specialist", href: "https://wa.me/919887688843", external: true }}
       />
     </main>
   );

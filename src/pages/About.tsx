@@ -145,7 +145,7 @@ const About = () => (
       title={<>Ready to <span className="text-[#C9A84C]">Travel?</span></>}
       subtitle="Tell us your dates and rhythm — we'll quietly shape the rest."
       primary={{ label: "Plan My Journey", to: "/contact" }}
-      secondary={{ label: "WhatsApp Specialist", href: "https://wa.me/919461069858", external: true }}
+      secondary={{ label: "WhatsApp Specialist", href: "https://wa.me/919887688843", external: true }}
     />
   </main>
 );

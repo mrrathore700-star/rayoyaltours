@@ -4,7 +4,7 @@ import SectionHeading from "@/components/SectionHeading";
 import { categories } from "@/data/experiences";
 
 const waLink = (msg: string) =>
-  `https://wa.me/919461069858?text=${encodeURIComponent(msg)}`;
+  `https://wa.me/919887688843?text=${encodeURIComponent(msg)}`;
 
 const ExperienceCategory = () => {
   const { categoryId } = useParams<{ categoryId: string }>();

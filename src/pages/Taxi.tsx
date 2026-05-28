@@ -36,7 +36,7 @@ const Taxi = () => (
       actions={
         <>
           <LuxLinkBtn to="/contact" variant="gold">Request A Quote</LuxLinkBtn>
-          <LuxAnchorBtn href="https://wa.me/919461069858?text=I%20need%20a%20private%20transfer" external variant="outline">WhatsApp Specialist</LuxAnchorBtn>
+          <LuxAnchorBtn href="https://wa.me/919887688843?text=I%20need%20a%20private%20transfer" external variant="outline">WhatsApp Specialist</LuxAnchorBtn>
         </>
       }
     />
@@ -58,7 +58,7 @@ const Taxi = () => (
                 <h3 className="font-display text-xl font-semibold text-[#0F0F0F] mb-2">{s.title}</h3>
                 <p className="font-serif text-[15px] text-[#0F0F0F]/70 leading-relaxed mb-4">{s.desc}</p>
                 <a
-                  href="https://wa.me/919461069858?text=I%20need%20private%20transport"
+                  href="https://wa.me/919887688843?text=I%20need%20private%20transport"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-xs tracking-[0.18em] uppercase text-[#C9A84C] hover:text-[#6E0F1F] transition-colors"
@@ -124,7 +124,7 @@ const Taxi = () => (
       title={<>Request A <span className="text-[#C9A84C]">Private</span> Transfer</>}
       subtitle="Tell us your journey and dates — we'll send a tailored quote within hours."
       primary={{ label: "Request Quote", to: "/contact" }}
-      secondary={{ label: "WhatsApp Specialist", href: "https://wa.me/919461069858", external: true }}
+      secondary={{ label: "WhatsApp Specialist", href: "https://wa.me/919887688843", external: true }}
     />
   </main>
 );
