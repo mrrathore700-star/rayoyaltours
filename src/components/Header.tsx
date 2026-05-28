@@ -107,6 +107,7 @@ const Header = () => {
           ))}
           <a
             href="tel:+919887688843"
+            aria-label="Call Heritage Jaipur Travels"
             className="mt-8 inline-flex items-center justify-center gap-2 py-3 rounded-full lux-btn-gold tracking-[0.18em] uppercase text-xs font-display"
           >
             <Phone className="h-4 w-4" /> +91 98876 88843
