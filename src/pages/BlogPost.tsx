@@ -150,7 +150,7 @@ const BlogPost = () => {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <LuxLinkBtn to="/contact" variant="gold">Plan My Rajasthan Journey</LuxLinkBtn>
-              <LuxAnchorBtn href="https://wa.me/919461069858" variant="outline" external>
+              <LuxAnchorBtn href="https://wa.me/919887688843" variant="outline" external>
                 WhatsApp A Specialist
               </LuxAnchorBtn>
             </div>
@@ -238,7 +238,7 @@ const BlogPost = () => {
         title={<>Begin Your Rajasthan <span className="text-[#C9A84C]">Story</span></>}
         subtitle="Let our Rajasthan specialists create a journey beyond ordinary travel."
         primary={{ label: "Plan My Rajasthan Journey", to: "/contact" }}
-        secondary={{ label: "WhatsApp A Specialist", href: "https://wa.me/919461069858", external: true }}
+        secondary={{ label: "WhatsApp A Specialist", href: "https://wa.me/919887688843", external: true }}
       />
     </main>
   );

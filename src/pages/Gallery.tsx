@@ -46,7 +46,7 @@ const Gallery = () => (
       actions={
         <>
           <LuxLinkBtn to="/experiences" variant="gold">Explore Experiences</LuxLinkBtn>
-          <LuxAnchorBtn href="https://wa.me/919461069858" external variant="outline">Plan My Journey</LuxAnchorBtn>
+          <LuxAnchorBtn href="https://wa.me/919887688843" external variant="outline">Plan My Journey</LuxAnchorBtn>
         </>
       }
     />
@@ -80,7 +80,7 @@ const Gallery = () => (
       title={<>Live The <span className="text-[#C9A84C]">Frame</span></>}
       subtitle="Step into the moments — privately curated by our Rajasthan specialists."
       primary={{ label: "Plan My Journey", to: "/contact" }}
-      secondary={{ label: "WhatsApp Specialist", href: "https://wa.me/919461069858", external: true }}
+      secondary={{ label: "WhatsApp Specialist", href: "https://wa.me/919887688843", external: true }}
     />
   </main>
 );

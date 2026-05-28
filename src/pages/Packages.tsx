@@ -23,7 +23,7 @@ const Packages = () => (
       actions={
         <>
           <LuxLinkBtn to="/contact" variant="gold">Design My Journey</LuxLinkBtn>
-          <LuxAnchorBtn href="https://wa.me/919461069858" external variant="outline">Speak With A Specialist</LuxAnchorBtn>
+          <LuxAnchorBtn href="https://wa.me/919887688843" external variant="outline">Speak With A Specialist</LuxAnchorBtn>
         </>
       }
     />
@@ -47,7 +47,7 @@ const Packages = () => (
       title={<>Craft Your Private <span className="text-[#C9A84C]">Rajasthan</span> Experience</>}
       subtitle="Looking for something different? We design entirely bespoke itineraries — palace stays, desert nights, wildlife trails."
       primary={{ label: "Plan My Journey", to: "/contact" }}
-      secondary={{ label: "WhatsApp Specialist", href: "https://wa.me/919461069858", external: true }}
+      secondary={{ label: "WhatsApp Specialist", href: "https://wa.me/919887688843", external: true }}
     />
   </main>
 );

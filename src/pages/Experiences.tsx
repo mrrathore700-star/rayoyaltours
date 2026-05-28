@@ -7,7 +7,7 @@ import heroPalace from "@/assets/hero-palace.jpg";
 import desertSafari from "@/assets/desert-safari.jpg";
 
 const waLink = (msg: string) =>
-  `https://wa.me/919461069858?text=${encodeURIComponent(msg)}`;
+  `https://wa.me/919887688843?text=${encodeURIComponent(msg)}`;
 
 // Display-only emotional title overrides keyed by slug substring
 const emotionalTitle = (exp: Experience): string => {
@@ -251,7 +251,7 @@ const Experiences = () => {
     provider: {
       "@type": "TravelAgency",
       name: "Heritage Jaipur Travels",
-      telephone: "+91-9461069858",
+      telephone: "+91-9887688843",
       email: "info@heritagejaipurtravels.com",
       url: "https://www.heritagejaipurtravels.com",
     },

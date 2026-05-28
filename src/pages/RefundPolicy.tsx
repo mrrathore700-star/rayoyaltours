@@ -58,8 +58,8 @@ const RefundPolicy = () => (
             <p>For any cancellation or refund-related queries, please reach out to us:</p>
             <p>
               <strong>Heritage Jaipur Travels</strong><br />
-              G 31 Ground Floor, Behind Airtel, Ganpati Plaza, MI Road, Jaipur, Rajasthan - 302001<br />
-              Phone: +91 94610 69858<br />
+              G 31 Ground Floor, Ganpati Plaza, MI Road, Jaipur, Rajasthan - 302001<br />
+              Phone: +91 98876 88843<br />
               Email: <a className="text-primary underline" href="mailto:info@heritagejaipurtravels.com">info@heritagejaipurtravels.com</a>
             </p>
           </section>

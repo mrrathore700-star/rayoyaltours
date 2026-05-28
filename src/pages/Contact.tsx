@@ -77,7 +77,7 @@ const Contact = () => {
     <main className="lux-cream-bg">
       <SEO
         title="Contact Heritage Jaipur Travels | Plan Your Private Rajasthan Journey"
-        description="Speak with a Rajasthan travel specialist at Heritage Jaipur Travels — private journeys, transfers and curated experiences. Call +91 94610 69858 or WhatsApp now."
+        description="Speak with a Rajasthan travel specialist at Heritage Jaipur Travels — private journeys, transfers and curated experiences. Call +91 98876 88843 or WhatsApp now."
         path="/contact"
       />
 
@@ -93,8 +93,8 @@ const Contact = () => {
           <div>
             <div className="space-y-6 mb-8">
               {[
-                { icon: MapPin, label: "Visit Us", value: "G 31 Ground Floor, Behind Airtel, Ganpati Plaza, MI Road, Jaipur, Rajasthan - 302001" },
-                { icon: Phone, label: "Call Us", value: "+91 94610 69858", href: "tel:+919461069858" },
+                { icon: MapPin, label: "Visit Us", value: "G 31 Ground Floor, Ganpati Plaza, MI Road, Jaipur, Rajasthan - 302001" },
+                { icon: Phone, label: "Call Us", value: "+91 98876 88843", href: "tel:+919887688843" },
                 { icon: Mail, label: "Email Us", value: "info@heritagejaipurtravels.com", href: "mailto:info@heritagejaipurtravels.com" },
                 { icon: Instagram, label: "Follow Us", value: "@heritagejaipurtravels", href: "https://www.instagram.com/heritagejaipurtravels?igsh=MWR0d2licnJseGRqdQ%3D%3D" },
               ].map((item, i) => (
@@ -114,7 +114,7 @@ const Contact = () => {
               ))}
             </div>
             <a
-              href="https://wa.me/919461069858"
+              href="https://wa.me/919887688843"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 px-6 py-3 rounded-md bg-[hsl(142,70%,40%)] text-[hsl(0,0%,100%)] font-semibold hover:opacity-90 transition-opacity"
@@ -235,8 +235,8 @@ const Contact = () => {
         eyebrow="Or Simply"
         title={<>Message Us Directly On <span className="text-[#C9A84C]">WhatsApp</span></>}
         subtitle="A specialist will reply within a few hours."
-        primary={{ label: "WhatsApp Specialist", href: "https://wa.me/919461069858", external: true }}
-        secondary={{ label: "Call +91 94610 69858", href: "tel:+919461069858" }}
+        primary={{ label: "WhatsApp Specialist", href: "https://wa.me/919887688843", external: true }}
+        secondary={{ label: "Call +91 98876 88843", href: "tel:+919887688843" }}
       />
     </main>
   );

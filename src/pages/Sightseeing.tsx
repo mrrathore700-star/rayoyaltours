@@ -42,7 +42,7 @@ const Sightseeing = () => (
       actions={
         <>
           <LuxLinkBtn to="/contact" variant="gold">Design My Day</LuxLinkBtn>
-          <LuxAnchorBtn href="https://wa.me/919461069858" external variant="outline">WhatsApp Specialist</LuxAnchorBtn>
+          <LuxAnchorBtn href="https://wa.me/919887688843" external variant="outline">WhatsApp Specialist</LuxAnchorBtn>
         </>
       }
     />
@@ -71,7 +71,7 @@ const Sightseeing = () => (
                 <h3 className="font-display text-3xl md:text-4xl font-semibold text-[#0F0F0F] mb-5 leading-tight">{spot.title}</h3>
                 <p className="font-serif text-lg text-[#0F0F0F]/75 mb-7 leading-relaxed">{spot.desc}</p>
                 <a
-                  href={`https://wa.me/919461069858?text=${encodeURIComponent(`I would like to arrange a private visit to ${spot.title}. Please share details.`)}`}
+                  href={`https://wa.me/919887688843?text=${encodeURIComponent(`I would like to arrange a private visit to ${spot.title}. Please share details.`)}`}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-3 text-xs tracking-[0.22em] uppercase text-[#C9A84C] hover:text-[#6E0F1F] transition-colors"
@@ -91,7 +91,7 @@ const Sightseeing = () => (
       title={<>Craft Your Private <span className="text-[#C9A84C]">Jaipur</span> Day</>}
       subtitle="Tell us what moves you — we'll arrange the rest, from chauffeur to chai."
       primary={{ label: "Plan My Day", to: "/contact" }}
-      secondary={{ label: "WhatsApp Specialist", href: "https://wa.me/919461069858", external: true }}
+      secondary={{ label: "WhatsApp Specialist", href: "https://wa.me/919887688843", external: true }}
     />
   </main>
 );
