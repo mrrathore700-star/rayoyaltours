@@ -69,6 +69,7 @@ const Header = () => {
         <div className="flex items-center gap-3">
           <a
             href="tel:+919887688843"
+            aria-label="Call Heritage Jaipur Travels"
             className="hidden md:inline-flex items-center gap-2 text-xs tracking-[0.18em] uppercase text-[#C9A84C] hover:text-[#FFF8F0] transition-colors"
           >
             <Phone className="h-4 w-4" />
