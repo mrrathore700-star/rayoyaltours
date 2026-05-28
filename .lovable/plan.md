@@ -1,94 +1,53 @@
+# Luxury Navbar & Favicon Refinement
 
-# Luxury Rajasthan Travel Journal — SEO & Premium Optimization
+**Awaiting logo upload** — please attach the transparent PNG logo before I switch to build mode. I'll save it to `src/assets/logo.png` (overwriting the current one) and crop the Hawa Mahal element for the favicon.
 
-Scope: enhance the existing `src/pages/Blog.tsx`, `src/pages/BlogPost.tsx`, and `src/data/blogPosts.ts`. No new routes, no new dependencies. Reuses the existing luxury design system (LuxHero, LuxCtaBand, LuxTrustStrip, gold/maroon/cream tokens, Playfair/Cormorant/Lato).
+## Decisions locked in
+- Logo size: **200px desktop / 140px mobile** (auto height)
+- Palette: keep existing **Maroon / Royal Gold / Sand Beige** site tokens — ignore the Navy/Pink swap to preserve sitewide consistency
+- Favicon: crop the pink Hawa Mahal element from the uploaded logo
 
----
+## Scope
 
-## 1. Rename to "Luxury Rajasthan Travel Journal"
+### 1. `src/components/Header.tsx`
+- Replace logo block: `<img>` with `width={200}` / `height` auto on desktop, `width={140}` on mobile via responsive classes (`w-[140px] md:w-[200px]`), `alt="Heritage Jaipur Travels Luxury Rajasthan Tours"`, `fetchpriority="high"`, explicit dimensions for CLS
+- Remove the adjacent "Heritage Jaipur" text wordmark (logo already contains brand name) to keep navbar clean at the larger size
+- Increase navbar height to accommodate larger logo: `h-20 md:h-28`
+- Add subtle hover scale on logo (`hover:scale-[1.03] transition-transform duration-500`)
+- Keep existing scroll-blur (`lux-nav` class) and gold hover underline on nav links (already in `index.css`)
+- Mobile menu: keep current full-screen overlay, refine stagger timing, ensure touch targets ≥44px
+- Right CTA: keep `+91 94610 69858` with phone icon; visible on `md+`
 
-- Header nav label "Blog" → "Journal" (short, keeps nav balance) in `src/components/Header.tsx` and `src/components/Footer.tsx`.
-- Hero eyebrow already reads "Luxury Rajasthan Travel Journal" — keep.
-- SEO `<title>` updated to: `Luxury Rajasthan Travel Journal | Stories & Guides — Heritage Jaipur Travels`.
+### 2. `src/assets/logo.png`
+- Overwrite with uploaded file (after user uploads)
 
-## 2. SEO upgrades
+### 3. Favicon set (`public/`)
+- Crop Hawa Mahal portion from logo → generate:
+  - `public/favicon.png` (32×32, overwrite existing)
+  - `public/apple-touch-icon.png` (180×180)
+  - `public/android-chrome-192.png`, `public/android-chrome-512.png`
+- Delete stale `public/favicon.ico` if present (browsers auto-request it)
 
-**Blog index (`/blog`)**
-- Add JSON-LD `Blog` schema listing all 8 posts (headline, url, image, datePublished, author).
-- Add `BreadcrumbList` JSON-LD (Home → Journal).
-- Stronger meta description targeting "luxury Rajasthan travel", "Jaipur travel guide", "Rajasthan itinerary".
-- Single H1 (hero title), proper H2/H3 hierarchy in sections.
+### 4. `index.html`
+- Update favicon links:
+  ```html
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+  <link rel="icon" type="image/png" sizes="192x192" href="/android-chrome-192.png" />
+  <link rel="icon" type="image/png" sizes="512x512" href="/android-chrome-512.png" />
+  ```
+- Update sitewide `<title>` → `Luxury Rajasthan Tours | Heritage Jaipur Travels`
+- Update sitewide `<meta description>` → `Experience private luxury Rajasthan tours, heritage stays, cultural journeys, and premium local experiences with Heritage Jaipur Travels.`
+- Update matching `og:title` / `og:description` / `twitter:*`
 
-**Blog post (`/blog/:slug`)**
-- Already has `BlogPosting` JSON-LD — extend with: `mainEntityOfPage`, `dateModified`, `keywords`, `articleSection` (category), `wordCount`, `inLanguage: "en"`, full publisher logo object.
-- Add `BreadcrumbList` JSON-LD (Home → Journal → Post title).
-- Ensure `<h1>` is the post title (currently in LuxHero — verify it renders as h1; if not, adjust LuxHero or wrap).
-- Section headings as proper `<h2>` (already are).
-- Optimized `alt` text on hero + related images (descriptive, keyword-aware — derive from post title + category).
-- Per-post `keywords` array added to data model and emitted in JSON-LD only (not meta keywords).
+### 5. CSS (`src/index.css`)
+- No new design tokens — existing `lux-nav`, `lux-nav-link`, `lux-btn-gold` already cover blur, gold underline, hover glow
+- Add only a small `.lux-logo` utility if needed for hover scale (otherwise inline Tailwind)
 
-**Sitemap**
-- Update `public/sitemap.xml` (or generator if present) to include all 8 `/blog/{slug}` URLs.
+## Out of scope
+- No palette change (Navy/Pink ignored per your answer)
+- No font change (existing Cinzel/Cormorant/serif stack already matches the requested luxury serifs)
+- No other pages touched
 
-## 3. Categories — expand filter strip
-
-Extend filters to the 10 SEO-target categories:
-All, Luxury Rajasthan, Jaipur Travel, Itineraries, Palace Stays, Wildlife & Safari, Desert, Food & Culture, Spiritual, Photography, Hidden Rajasthan.
-
-Re-map each post's `category` field in `src/data/blogPosts.ts` to one of these. Empty categories show the existing graceful empty state.
-
-## 4. Trust strip on Journal index
-
-Insert `LuxTrustStrip` (already exists) between the featured article and the filter strip. No new component.
-
-## 5. Enhanced article cards
-
-Cards already have image, category badge, date, read time, excerpt, "Read the Story →". Additions:
-- Hover: subtle gold underline animation on title (CSS only, using existing tokens).
-- Image alt text upgraded per post (e.g. `"Amber Fort at sunrise, Jaipur — luxury heritage tour"`).
-
-## 6. Internal linking inside articles
-
-Add an optional `relatedLinks` array to each post in `blogPosts.ts`:
-```ts
-relatedLinks?: { label: string; to: string }[]
-```
-Rendered in `BlogPost.tsx` as an elegant "Related Experiences" block (gold rule + 2–3 luxury link buttons) above the bottom CTA. Examples:
-- "Best Places in Jaipur" → links to `/experiences` + `/packages`
-- "Camel Safari Jaisalmer" → links to the matching experience detail page
-- "Ranthambore Tiger Safari" → wildlife experience page
-
-Links use existing routes only — no new pages.
-
-## 7. In-article CTA band (mid-article)
-
-Add a single elegant inline CTA card mid-article (after the 2nd section) inside `BlogPost.tsx`:
-- Gold rule + eyebrow "Plan Your Journey"
-- Serif headline: "Create a Private {Category} Journey"
-- Two `LuxLinkBtn` / `LuxAnchorBtn`: "Plan My Rajasthan Journey" → `/contact`, "WhatsApp A Specialist" → wa.me link.
-
-Reuses existing button primitives — no new styling.
-
-## 8. Social sharing optimization
-
-- Per-post OG image already passes `post.image`. Add `og:type=article`, `article:published_time`, `article:author`, `article:section` via Helmet in `BlogPost.tsx` (extend `SEO.tsx` to accept optional `type` and `articleMeta` props).
-- Twitter card already `summary_large_image` — keep.
-- Pinterest: ensure all post images have descriptive alt text (covered in §2).
-
-## 9. Bottom CTA
-
-Already present (`LuxCtaBand` with "Begin Your Rajasthan Story"). Keep as-is on both index and post pages.
-
----
-
-## Technical summary
-
-**Files edited:**
-- `src/pages/Blog.tsx` — JSON-LD (Blog + Breadcrumb), trust strip, expanded filters, stronger SEO title/desc
-- `src/pages/BlogPost.tsx` — extended JSON-LD, breadcrumb, mid-article CTA, related links block, article OG meta
-- `src/data/blogPosts.ts` — re-mapped categories, added `keywords`, `relatedLinks`, `alt` per post
-- `src/components/SEO.tsx` — optional `type` + `articleMeta` props for article OG tags
-- `src/components/Header.tsx`, `src/components/Footer.tsx` — nav label "Blog" → "Journal"
-- `public/sitemap.xml` — add 8 post URLs
-
-**No new:** routes, dependencies, components, design tokens, fonts, or backend changes. All visual additions reuse existing luxury primitives so the Journal stays visually identical to the rest of the site.
+## Next step
+Upload the transparent PNG logo and I'll execute on approval.
