@@ -86,7 +86,7 @@ const Header = () => {
 
       {/* Mobile slide menu */}
       <div
-        className={`lg:hidden fixed inset-0 top-16 z-40 transition-all duration-500 ${
+        className={`lg:hidden fixed inset-0 top-20 z-40 transition-all duration-500 ${
           open ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
         }`}
       >
