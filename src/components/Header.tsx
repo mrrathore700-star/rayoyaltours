@@ -46,11 +46,11 @@ const Header = () => {
           <img
             src={logo}
             alt="Heritage Jaipur Travels Luxury Rajasthan Tours"
-            width={200}
-            height={70}
+            width={240}
+            height={130}
             fetchPriority="high"
             decoding="async"
-            className="w-[140px] md:w-[200px] h-auto transition-transform duration-500 ease-out group-hover:scale-[1.03]"
+            className="w-[160px] md:w-[220px] lg:w-[240px] h-auto transition-transform duration-500 ease-out group-hover:scale-[1.03]"
           />
         </Link>
 
