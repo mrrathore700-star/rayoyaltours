@@ -33,8 +33,8 @@ const Header = () => {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-        scrolled ? "lux-nav" : "bg-gradient-to-b from-black/55 to-transparent"
+      className={`fixed top-0 left-0 right-0 z-50 ${
+        scrolled ? "lux-nav" : "lux-nav-top"
       }`}
     >
       <div className="container mx-auto flex items-center justify-between h-20 md:h-28 px-4 md:px-8">
