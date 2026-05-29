@@ -296,12 +296,33 @@
   .lux-cream-bg { background: #FFF8F0; }
   .lux-black-bg { background: #0F0F0F; }
 
-  /* Glass navbar */
+  /* Cinematic luxury navbar */
+  .lux-nav-top {
+    background: linear-gradient(
+      180deg,
+      rgba(20, 20, 20, 0.55) 0%,
+      rgba(40, 10, 16, 0.40) 60%,
+      rgba(0, 0, 0, 0.10) 100%
+    );
+    backdrop-filter: blur(8px) saturate(140%);
+    -webkit-backdrop-filter: blur(8px) saturate(140%);
+    border-bottom: 1px solid rgba(201, 168, 76, 0.18);
+  }
   .lux-nav {
-    background: rgba(15, 15, 15, 0.55);
-    backdrop-filter: blur(16px) saturate(140%);
-    -webkit-backdrop-filter: blur(16px) saturate(140%);
-    border-bottom: 1px solid rgba(201, 168, 76, 0.22);
+    background: linear-gradient(
+      180deg,
+      rgba(20, 20, 20, 0.82) 0%,
+      rgba(40, 10, 16, 0.72) 50%,
+      rgba(0, 0, 0, 0.55) 100%
+    );
+    backdrop-filter: blur(14px) saturate(150%);
+    -webkit-backdrop-filter: blur(14px) saturate(150%);
+    border-bottom: 1px solid rgba(201, 168, 76, 0.28);
+    box-shadow: 0 10px 30px -18px rgba(0, 0, 0, 0.55);
+  }
+  header.lux-nav-top, header.lux-nav {
+    transition: background 0.5s ease, backdrop-filter 0.5s ease,
+                box-shadow 0.5s ease, border-color 0.5s ease;
   }
   .lux-nav-link {
     position: relative;
@@ -309,13 +330,15 @@
     letter-spacing: 0.08em;
     font-size: 0.82rem;
     text-transform: uppercase;
-    transition: color 0.3s ease;
+    transition: color 0.35s ease, opacity 0.35s ease;
   }
   .lux-nav-link::after {
     content: ""; position: absolute; left: 12px; right: 12px; bottom: 4px;
-    height: 1px; background: #C9A84C;
-    transform: scaleX(0); transform-origin: left;
-    transition: transform 0.4s ease;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, #C9A84C, transparent);
+    box-shadow: 0 0 8px rgba(201, 168, 76, 0.6);
+    transform: scaleX(0); transform-origin: center;
+    transition: transform 0.45s ease;
   }
   .lux-nav-link:hover, .lux-nav-link.is-active { color: #C9A84C; }
   .lux-nav-link:hover::after, .lux-nav-link.is-active::after { transform: scaleX(1); }
