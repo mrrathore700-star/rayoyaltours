@@ -122,7 +122,7 @@ const ExperienceDetail = () => {
   };
 
   return (
-    <main className="pt-20 md:pt-28 scroll-smooth pb-24 md:pb-0">
+    <main className="scroll-smooth pb-24 md:pb-0">
       <SEO
         title={`${exp.title} | Heritage Jaipur Travels`}
         description={exp.shortDesc}
