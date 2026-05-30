@@ -39,27 +39,29 @@ const App = () => (
         <BrowserRouter>
           <ScrollToTop />
           <Header />
-          <Routes>
-            <Route path="/" element={<Index />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/packages" element={<Packages />} />
-            <Route path="/packages/:slug" element={<TourDetail />} />
-            <Route path="/sightseeing" element={<Sightseeing />} />
-            <Route path="/taxi" element={<Taxi />} />
-            <Route path="/experiences" element={<Experiences />} />
-            <Route path="/experiences/category/:categoryId" element={<ExperienceCategory />} />
-            <Route path="/experiences/:slug" element={<ExperienceDetail />} />
-            <Route path="/live-experiences" element={<Navigate to="/experiences" replace />} />
-            <Route path="/gallery" element={<Gallery />} />
-            <Route path="/blog" element={<Blog />} />
-            <Route path="/blog/:slug" element={<BlogPost />} />
-            <Route path="/contact" element={<Contact />} />
-            <Route path="/privacy-policy" element={<PrivacyPolicy />} />
-            <Route path="/terms-and-conditions" element={<TermsAndConditions />} />
-            <Route path="/refund-policy" element={<RefundPolicy />} />
-            <Route path="/unsubscribe" element={<Unsubscribe />} />
-            <Route path="*" element={<NotFound />} />
-          </Routes>
+          <div className="pt-[90px] md:pt-[105px]">
+            <Routes>
+              <Route path="/" element={<Index />} />
+              <Route path="/about" element={<About />} />
+              <Route path="/packages" element={<Packages />} />
+              <Route path="/packages/:slug" element={<TourDetail />} />
+              <Route path="/sightseeing" element={<Sightseeing />} />
+              <Route path="/taxi" element={<Taxi />} />
+              <Route path="/experiences" element={<Experiences />} />
+              <Route path="/experiences/category/:categoryId" element={<ExperienceCategory />} />
+              <Route path="/experiences/:slug" element={<ExperienceDetail />} />
+              <Route path="/live-experiences" element={<Navigate to="/experiences" replace />} />
+              <Route path="/gallery" element={<Gallery />} />
+              <Route path="/blog" element={<Blog />} />
+              <Route path="/blog/:slug" element={<BlogPost />} />
+              <Route path="/contact" element={<Contact />} />
+              <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+              <Route path="/terms-and-conditions" element={<TermsAndConditions />} />
+              <Route path="/refund-policy" element={<RefundPolicy />} />
+              <Route path="/unsubscribe" element={<Unsubscribe />} />
+              <Route path="*" element={<NotFound />} />
+            </Routes>
+          </div>
           <Footer />
           <WhatsAppButton />
         </BrowserRouter>

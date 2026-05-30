@@ -1,69 +1,81 @@
 ## Goal
 
-Two surgical changes — no layout/structure changes to the navbar:
+Two changes:
+1. Make the navbar logo fully visible (no cropping) at premium luxury sizing across all breakpoints.
+2. Ensure every page's content starts below the fixed navbar — never behind it.
 
-1. Upgrade navbar background to a cinematic luxury glass treatment that matches the site palette (maroon → black gradient + gold border + blur), with a smoother on-scroll transition.
-2. Ensure every page's hero/top content sits cleanly below the fixed navbar instead of being cropped.
+## 1. Navbar logo — full visibility, larger, cinematic
 
-## Changes
+File: `src/components/Header.tsx`
 
-### 1. Navbar background (`src/index.css` — `.lux-nav` + new initial-state class)
-
-Keep `Header.tsx` markup unchanged. Restyle via CSS only:
-
-- **Initial (top of page)** — currently uses a flat black→transparent gradient. Replace with a cinematic translucent gradient using brand maroon + dark overlay, light blur, soft gold hairline:
-  ```css
-  background: linear-gradient(180deg,
-    rgba(20,20,20,0.55) 0%,
-    rgba(40,10,10,0.40) 60%,
-    rgba(0,0,0,0.10) 100%);
-  backdrop-filter: blur(8px) saturate(140%);
-  border-bottom: 1px solid rgba(201,168,76,0.18);
+- Increase navbar height so the full logo (Hawa Mahal + elephant + road + airplane + wordmark) breathes:
+  - Desktop: `h-24 md:h-28` → **`h-[90px] md:h-[105px]`**
+  - Keeps it within the requested 95–110px desktop / 85–95px mobile envelope.
+- Replace the current logo `<img>` classes with a dedicated `logo-container` wrapper + image rules so nothing gets clipped:
+  ```tsx
+  <Link to="/" className="logo-container flex items-center shrink-0" aria-label="Heritage Jaipur Travels — Home">
+    <img
+      src={logo}
+      alt="Heritage Jaipur Travels Luxury Rajasthan Tours"
+      width={360}
+      height={140}
+      loading="eager"
+      fetchPriority="high"
+      decoding="async"
+      className="lux-logo block h-auto object-contain"
+    />
+  </Link>
   ```
-- **Scrolled (`.lux-nav`)** — denser cinematic glass:
+- Add CSS in `src/index.css` under `@layer utilities`:
   ```css
-  background: linear-gradient(180deg,
-    rgba(20,20,20,0.82) 0%,
-    rgba(40,10,10,0.72) 50%,
-    rgba(0,0,0,0.55) 100%);
-  backdrop-filter: blur(14px) saturate(150%);
-  border-bottom: 1px solid rgba(201,168,76,0.28);
-  box-shadow: 0 10px 30px -18px rgba(0,0,0,0.55);
+  .lux-logo {
+    width: 340px;
+    height: auto;
+    object-fit: contain;
+    transition: transform .35s ease;
+    filter: drop-shadow(0 0 10px rgba(200,155,60,0.15));
+  }
+  .lux-logo:hover { transform: scale(1.02); }
+  @media (max-width: 1024px) { .lux-logo { width: 280px; } }
+  @media (max-width: 768px)  { .lux-logo { width: 240px; } }
+  @media (max-width: 380px)  { .lux-logo { width: 210px; } }
+  .logo-container { overflow: visible; min-width: max-content; }
   ```
-- Add `transition: background .5s ease, backdrop-filter .5s ease, box-shadow .5s ease, border-color .5s ease;` on the header so the toggle between the two states is smooth.
-- Slightly refine `.lux-nav-link` hover (a touch more glow on the gold underline + softer opacity). No structural change.
+- Keep existing nav links, phone CTA, hamburger, and mobile slide-out untouched in structure. Only ensure right-side cluster uses `shrink-0` so the logo never compresses.
+- Mobile slide menu `top-20` → **`top-[90px]`** to match the new navbar height.
 
-### 2. Header.tsx (minimal)
+## 2. Universal "content below navbar" fix
 
-Swap the current top-state class `bg-gradient-to-b from-black/55 to-transparent` for a new semantic class (e.g. `lux-nav-top`) so the cinematic gradient + blur defined in CSS applies at the top of the page too. No change to logo, menu, height (`h-20 md:h-28`), buttons, or mobile menu.
+The fixed navbar is now ~90px / 105px tall. Instead of patching every page individually, add a single global offset:
 
-### 3. Hero / page top spacing fix
+File: `src/App.tsx`
 
-The fixed navbar is `h-20 md:h-28` (80px / 112px). Pages that use `LuxHero` already include internal `pt-28 md:pt-32`, so they're fine — but a few pages render their own hero/top section without that compensation, causing the "hidden behind navbar" effect.
+- Wrap the routed `<main>` (or the `<Routes>` container) with `pt-[90px] md:pt-[105px]` so every page automatically clears the navbar.
+- Pages that already include their own hero top-padding (via `LuxHero`'s `pt-28 md:pt-32`) will visually still look fine — the small extra space reads as luxury whitespace, and no hero gets clipped behind the navbar anymore.
+- Revert the ad-hoc `pt-20 md:pt-28` previously added to `ExperienceDetail.tsx` and `ExperienceCategory.tsx` so spacing isn't doubled.
 
-Audit + fix each page's first section to start below the navbar by adding `pt-20 md:pt-28` (or wrapping `<main>` with that padding) on:
+Optionally, where `LuxHero` is used, reduce its internal padding from `pt-28 md:pt-32` to `pt-8 md:pt-12` so the hero image sits flush below the navbar without an empty band. (Single edit in `src/components/luxury/LuxHero.tsx`.)
 
-- `Contact.tsx`
-- `Gallery.tsx`
-- `Blog.tsx` / `BlogPost.tsx`
-- `TourDetail.tsx`
-- `ExperienceDetail.tsx` / `ExperienceCategory.tsx`
-- `PrivacyPolicy.tsx`, `TermsAndConditions.tsx`, `RefundPolicy.tsx`, `Unsubscribe.tsx`, `NotFound.tsx`
+## 3. Navbar background (keep cinematic, slight tune)
 
-For pages already using `LuxHero` (Index, Packages, Experiences, Sightseeing, Taxi, About) — verify hero looks correct; the existing `pt-28 md:pt-32` inside `LuxHero` already covers the navbar, so no change needed there.
-
-### 4. Mobile menu
-
-The mobile slide-out panel (`top-20`) stays put. We only restyle its backdrop tint to match the new cinematic palette (very small tweak in the existing inline style) so it feels consistent — no structural change.
+In `src/index.css`, tweak `.lux-nav-top` background to the requested tint:
+```css
+background: rgba(20,12,10,0.34);
+backdrop-filter: blur(14px) saturate(140%);
+border-bottom: 1px solid rgba(200,155,60,0.15);
+```
+Keep the denser `.lux-nav` (scrolled) state as-is for the smooth on-scroll darkening.
 
 ## Out of scope
 
-- No changes to logo size, menu items, button placement, typography, navbar height, or responsive behavior.
-- No content or copy changes.
+- No changes to menu items, fonts, phone CTA copy, footer, or any page content.
 - No new dependencies.
+- Logo asset itself is not modified — only how it's displayed.
 
 ## Files touched
 
-- `src/index.css` — `.lux-nav` restyle + new `.lux-nav-top` initial state + transition
-- `src/components/Header.tsx` — swap one className for the new initial-state class; tiny mobile-menu backdrop tint tweak
-- Page files listed above — add top padding to the first section/wrapper where the hero is being clipped
+- `src/components/Header.tsx` — navbar height, logo wrapper/classes, mobile menu offset
+- `src/index.css` — `.lux-logo` rules + `.lux-nav-top` tint tweak
+- `src/App.tsx` — global top padding for routed content
+- `src/components/luxury/LuxHero.tsx` — reduce internal top padding (optional, to avoid double spacing)
+- `src/pages/ExperienceDetail.tsx`, `src/pages/ExperienceCategory.tsx` — remove redundant `pt-20 md:pt-28`
