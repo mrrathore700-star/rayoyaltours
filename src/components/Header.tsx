@@ -37,24 +37,25 @@ const Header = () => {
         scrolled ? "lux-nav" : "lux-nav-top"
       }`}
     >
-      <div className="container mx-auto flex items-center justify-between h-20 md:h-28 px-4 md:px-8">
+      <div className="container mx-auto flex items-center justify-between h-[90px] md:h-[105px] px-4 md:px-8 gap-4">
         <Link
           to="/"
-          className="flex items-center group"
+          className="logo-container flex items-center shrink-0 group"
           aria-label="Heritage Jaipur Travels — Home"
         >
           <img
             src={logo}
             alt="Heritage Jaipur Travels Luxury Rajasthan Tours"
-            width={240}
-            height={130}
+            width={360}
+            height={140}
+            loading="eager"
             fetchPriority="high"
             decoding="async"
-            className="w-[160px] md:w-[220px] lg:w-[240px] h-auto transition-transform duration-500 ease-out group-hover:scale-[1.03]"
+            className="lux-logo block h-auto object-contain"
           />
         </Link>
 
-        <nav className="hidden lg:flex items-center gap-1">
+        <nav className="hidden lg:flex items-center gap-1 shrink-0">
           {navLinks.map((link) => (
             <Link
               key={link.to}
