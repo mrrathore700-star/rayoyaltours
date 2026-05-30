@@ -26,7 +26,7 @@ const ExperienceCategory = () => {
   };
 
   return (
-    <main className="pt-20 md:pt-28">
+    <main>
       <SEO
         title={`${category.title} in Rajasthan | Heritage Jaipur Travels`}
         description={`${category.intro} Explore ${category.experiences.length}+ handcrafted ${category.title.toLowerCase()} for international travellers.`}
