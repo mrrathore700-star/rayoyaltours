@@ -359,4 +359,19 @@
     padding: 1.5rem;
     color: #FFF8F0;
   }
+
+  /* Luxury navbar logo — full visibility, no cropping */
+  .logo-container { overflow: visible; min-width: max-content; }
+  .lux-logo {
+    width: 340px;
+    height: auto;
+    object-fit: contain;
+    transition: transform 0.35s ease;
+    filter: drop-shadow(0 0 10px rgba(200, 155, 60, 0.15));
+  }
+  .lux-logo:hover { transform: scale(1.02); }
+  @media (max-width: 1280px) { .lux-logo { width: 300px; } }
+  @media (max-width: 1024px) { .lux-logo { width: 280px; } }
+  @media (max-width: 768px)  { .lux-logo { width: 240px; } }
+  @media (max-width: 380px)  { .lux-logo { width: 210px; } }
 }
