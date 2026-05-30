@@ -298,15 +298,10 @@
 
   /* Cinematic luxury navbar */
   .lux-nav-top {
-    background: linear-gradient(
-      180deg,
-      rgba(20, 20, 20, 0.55) 0%,
-      rgba(40, 10, 16, 0.40) 60%,
-      rgba(0, 0, 0, 0.10) 100%
-    );
-    backdrop-filter: blur(8px) saturate(140%);
-    -webkit-backdrop-filter: blur(8px) saturate(140%);
-    border-bottom: 1px solid rgba(201, 168, 76, 0.18);
+    background: rgba(20, 12, 10, 0.34);
+    backdrop-filter: blur(14px) saturate(140%);
+    -webkit-backdrop-filter: blur(14px) saturate(140%);
+    border-bottom: 1px solid rgba(200, 155, 60, 0.15);
   }
   .lux-nav {
     background: linear-gradient(
