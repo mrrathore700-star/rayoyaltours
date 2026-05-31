@@ -298,22 +298,14 @@
 
   /* Cinematic luxury navbar */
   .lux-nav-top {
-    background: rgba(20, 12, 10, 0.34);
-    backdrop-filter: blur(14px) saturate(140%);
-    -webkit-backdrop-filter: blur(14px) saturate(140%);
-    border-bottom: 1px solid rgba(200, 155, 60, 0.15);
+    background: #2A0A12;
+    border-bottom: 1px solid rgba(201, 168, 76, 0.30);
+    box-shadow: 0 6px 24px -10px rgba(0, 0, 0, 0.5);
   }
   .lux-nav {
-    background: linear-gradient(
-      180deg,
-      rgba(20, 20, 20, 0.82) 0%,
-      rgba(40, 10, 16, 0.72) 50%,
-      rgba(0, 0, 0, 0.55) 100%
-    );
-    backdrop-filter: blur(14px) saturate(150%);
-    -webkit-backdrop-filter: blur(14px) saturate(150%);
-    border-bottom: 1px solid rgba(201, 168, 76, 0.28);
-    box-shadow: 0 10px 30px -18px rgba(0, 0, 0, 0.55);
+    background: linear-gradient(180deg, #2A0A12 0%, #1A0509 100%);
+    border-bottom: 1px solid rgba(201, 168, 76, 0.40);
+    box-shadow: 0 10px 30px -14px rgba(0, 0, 0, 0.6);
   }
   header.lux-nav-top, header.lux-nav {
     transition: background 0.5s ease, backdrop-filter 0.5s ease,
