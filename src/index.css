@@ -296,38 +296,35 @@
   .lux-cream-bg { background: #FFF8F0; }
   .lux-black-bg { background: #0F0F0F; }
 
-  /* Cinematic luxury navbar */
-  .lux-nav-top {
-    background: #2A0A12;
-    border-bottom: 1px solid rgba(201, 168, 76, 0.30);
-    box-shadow: 0 6px 24px -10px rgba(0, 0, 0, 0.5);
-  }
+  /* Boutique luxury navbar — brand-led, timeless */
+  .lux-nav-top,
   .lux-nav {
-    background: linear-gradient(180deg, #2A0A12 0%, #1A0509 100%);
-    border-bottom: 1px solid rgba(201, 168, 76, 0.40);
-    box-shadow: 0 10px 30px -14px rgba(0, 0, 0, 0.6);
+    background: #F6F1E8;
+    border-bottom: 1px solid rgba(201, 168, 76, 0.15);
+    box-shadow: none;
   }
   header.lux-nav-top, header.lux-nav {
-    transition: background 0.5s ease, backdrop-filter 0.5s ease,
-                box-shadow 0.5s ease, border-color 0.5s ease;
+    transition: background 0.4s ease, border-color 0.4s ease;
   }
   .lux-nav-link {
     position: relative;
-    color: #FFF8F0;
-    letter-spacing: 0.08em;
-    font-size: 0.82rem;
+    color: #3B2A25;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 15px;
+    letter-spacing: 1.5px;
     text-transform: uppercase;
-    transition: color 0.35s ease, opacity 0.35s ease;
+    font-weight: 500;
+    transition: color 0.35s ease;
   }
   .lux-nav-link::after {
     content: ""; position: absolute; left: 12px; right: 12px; bottom: 4px;
     height: 1px;
-    background: linear-gradient(90deg, transparent, #C9A84C, transparent);
-    box-shadow: 0 0 8px rgba(201, 168, 76, 0.6);
+    background: #C9A84C;
     transform: scaleX(0); transform-origin: center;
     transition: transform 0.45s ease;
   }
-  .lux-nav-link:hover, .lux-nav-link.is-active { color: #C9A84C; }
+  .lux-nav-link:hover { color: #C9A84C; }
+  .lux-nav-link.is-active { color: #A67C2D; }
   .lux-nav-link:hover::after, .lux-nav-link.is-active::after { transform: scaleX(1); }
 
   /* Editorial cards */
