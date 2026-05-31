@@ -88,11 +88,11 @@ const Header = () => {
 
       {/* Mobile slide menu */}
       <div
-        className={`lg:hidden fixed inset-0 top-[90px] z-40 transition-all duration-500 ${
+        className={`lg:hidden fixed inset-0 top-[76px] md:top-[80px] z-40 transition-all duration-500 ${
           open ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
         }`}
       >
-        <div className="absolute inset-0" style={{ background: "#2A0A12" }} />
+        <div className="absolute inset-0" style={{ background: "#F6F1E8" }} />
         <nav className="relative container mx-auto px-6 pt-10 pb-14 flex flex-col gap-2">
           {navLinks.map((link, i) => (
             <Link
