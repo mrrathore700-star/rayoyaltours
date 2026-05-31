@@ -71,14 +71,14 @@ const Header = () => {
           <a
             href="tel:+919887688843"
             aria-label="Call Heritage Jaipur Travels"
-            className="hidden md:inline-flex items-center gap-2 text-xs tracking-[0.18em] uppercase text-[#C9A84C] hover:text-[#FFF8F0] transition-colors"
+            className="hidden md:inline-flex items-center gap-2 font-serif text-[13px] tracking-[0.15em] uppercase text-[#3B2A25] hover:text-[#C9A84C] transition-colors"
           >
             <Phone className="h-4 w-4" />
             +91 98876 88843
           </a>
           <button
             onClick={() => setOpen(!open)}
-            className="lg:hidden p-3 min-h-11 min-w-11 text-[#FFF8F0] flex items-center justify-center"
+            className="lg:hidden p-3 min-h-11 min-w-11 text-[#3B2A25] flex items-center justify-center"
             aria-label="Toggle menu"
           >
             {open ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
