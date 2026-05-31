@@ -60,7 +60,7 @@ const Header = () => {
             <Link
               key={link.to}
               to={link.to}
-              className={`lux-nav-link px-3 py-2 ${location.pathname === link.to ? "is-active" : ""}`}
+              className={`lux-nav-link ${location.pathname === link.to ? "is-active" : ""}`}
             >
               {link.label}
             </Link>
