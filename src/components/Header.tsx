@@ -92,7 +92,7 @@ const Header = () => {
           open ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
         }`}
       >
-        <div className="absolute inset-0 lux-black-bg/95" style={{ background: "rgba(15,15,15,0.97)" }} />
+        <div className="absolute inset-0" style={{ background: "#2A0A12" }} />
         <nav className="relative container mx-auto px-6 pt-10 pb-14 flex flex-col gap-2">
           {navLinks.map((link, i) => (
             <Link
