@@ -360,5 +360,5 @@
   .lux-logo:hover { transform: scale(1.02); }
   @media (max-width: 1024px) { .lux-logo { width: 180px; } }
   @media (max-width: 768px)  { .lux-logo { width: 150px; } }
-  @media (max-width: 380px)  { .lux-logo { width: 210px; } }
+  @media (max-width: 380px)  { .lux-logo { width: 140px; } }
 }
