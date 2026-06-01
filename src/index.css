@@ -296,36 +296,72 @@
   .lux-cream-bg { background: #FFF8F0; }
   .lux-black-bg { background: #0F0F0F; }
 
-  /* Boutique luxury navbar — brand-led, timeless */
-  .lux-nav-top,
-  .lux-nav {
-    background: #F6F1E8;
-    border-bottom: 1px solid rgba(201, 168, 76, 0.15);
+  /* Luxury Navy + Gold navbar */
+  .lux-nav-top {
+    background: #FFFFFF;
+    border-bottom: 1px solid rgba(212, 175, 55, 0.18);
     box-shadow: none;
   }
+  .lux-nav {
+    background: #F8F5EF;
+    border-bottom: 1px solid rgba(212, 175, 55, 0.25);
+    box-shadow: 0 4px 20px -8px rgba(11, 28, 51, 0.12);
+  }
   header.lux-nav-top, header.lux-nav {
-    transition: background 0.4s ease, border-color 0.4s ease;
+    transition: background 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease;
   }
   .lux-nav-link {
     position: relative;
-    color: #3B2A25;
+    color: #0B1C33;
     font-family: 'Cormorant Garamond', serif;
-    font-size: 15px;
-    letter-spacing: 1.5px;
+    font-size: 14px;
+    letter-spacing: 1.6px;
     text-transform: uppercase;
-    font-weight: 500;
+    font-weight: 600;
     transition: color 0.35s ease;
   }
   .lux-nav-link::after {
-    content: ""; position: absolute; left: 12px; right: 12px; bottom: 4px;
-    height: 1px;
-    background: #C9A84C;
+    content: ""; position: absolute; left: 0; right: 0; bottom: -6px;
+    height: 1.5px;
+    background: #D4AF37;
     transform: scaleX(0); transform-origin: center;
     transition: transform 0.45s ease;
   }
-  .lux-nav-link:hover { color: #C9A84C; }
-  .lux-nav-link.is-active { color: #A67C2D; }
+  .lux-nav-link:hover { color: #D4AF37; }
+  .lux-nav-link.is-active { color: #D4AF37; }
   .lux-nav-link:hover::after, .lux-nav-link.is-active::after { transform: scaleX(1); }
+  .lux-nav-link:focus-visible {
+    outline: 2px solid #D4AF37;
+    outline-offset: 4px;
+    border-radius: 2px;
+  }
+
+  /* Enquire Now CTA */
+  .lux-enquire-btn {
+    background: #D4AF37;
+    color: #FFFFFF;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 13px;
+    letter-spacing: 1.8px;
+    text-transform: uppercase;
+    font-weight: 600;
+    padding: 10px 22px;
+    border-radius: 999px;
+    box-shadow: 0 6px 18px -6px rgba(212, 175, 55, 0.55);
+    transition: all 0.35s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .lux-enquire-btn:hover {
+    background: #E0BC4A;
+    transform: translateY(-1px);
+    box-shadow: 0 10px 24px -6px rgba(212, 175, 55, 0.7);
+  }
+  .lux-enquire-btn:focus-visible {
+    outline: 2px solid #0B1C33;
+    outline-offset: 3px;
+  }
 
   /* Editorial cards */
   .lux-edit-card {
@@ -349,16 +385,16 @@
     color: #FFF8F0;
   }
 
-  /* Luxury navbar logo — full visibility, no cropping */
-  .logo-container { overflow: visible; min-width: max-content; }
+  /* Luxury navbar logo — height-locked, sharp, no stretch */
+  .logo-container { overflow: visible; }
   .lux-logo {
-    width: 200px;
-    height: auto;
+    height: 60px;
+    width: auto;
     object-fit: contain;
+    image-rendering: -webkit-optimize-contrast;
     transition: transform 0.35s ease;
   }
   .lux-logo:hover { transform: scale(1.02); }
-  @media (max-width: 1024px) { .lux-logo { width: 180px; } }
-  @media (max-width: 768px)  { .lux-logo { width: 150px; } }
-  @media (max-width: 380px)  { .lux-logo { width: 140px; } }
+  @media (max-width: 1024px) { .lux-logo { height: 50px; } }
+  @media (max-width: 768px)  { .lux-logo { height: 45px; } }
 }
