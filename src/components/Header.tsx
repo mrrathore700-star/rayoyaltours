@@ -80,12 +80,6 @@ const Header = () => {
             <Phone className="h-4 w-4" />
             +91 98876 88843
           </a>
-          <Link
-            to="/contact"
-            className="hidden sm:inline-flex lux-enquire-btn"
-          >
-            Enquire Now
-          </Link>
           <button
             onClick={() => setOpen(!open)}
             aria-expanded={open}
@@ -122,13 +116,7 @@ const Header = () => {
             );
           })}
           <div className="mt-8 flex flex-col gap-3">
-            <Link
-              to="/contact"
-              className="lux-enquire-btn w-full"
-            >
-              Enquire Now
-            </Link>
-            <a
+            <
               href="tel:+919887688843"
               aria-label="Call Heritage Jaipur Travels"
               className="inline-flex items-center justify-center gap-2 py-3 font-serif text-[13px] tracking-[0.18em] uppercase text-[#0B1C33] border border-[#0B1C33]/20 rounded-full"
