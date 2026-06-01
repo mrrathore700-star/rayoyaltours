@@ -37,7 +37,7 @@ const Header = () => {
         scrolled ? "lux-nav" : "lux-nav-top"
       }`}
     >
-      <div className="container mx-auto flex items-center justify-between h-[76px] md:h-[80px] lg:h-[88px] px-4 md:px-8 gap-4">
+      <div className="container mx-auto flex items-center justify-between h-[64px] md:h-[70px] lg:h-20 px-4 md:px-6 lg:px-8 gap-4">
         <Link
           to="/"
           className="logo-container flex items-center shrink-0 group"
@@ -45,40 +45,52 @@ const Header = () => {
         >
           <img
             src={logo}
-            alt="Heritage Jaipur Travels Luxury Rajasthan Tours"
-            width={200}
-            height={80}
+            alt="Heritage Jaipur Travels"
+            width={180}
+            height={60}
             loading="eager"
             fetchPriority="high"
             decoding="async"
-            className="lux-logo block h-auto object-contain"
+            className="lux-logo block"
           />
         </Link>
 
-        <nav className="hidden lg:flex items-center gap-8 shrink-0">
-          {navLinks.map((link) => (
-            <Link
-              key={link.to}
-              to={link.to}
-              className={`lux-nav-link ${location.pathname === link.to ? "is-active" : ""}`}
-            >
-              {link.label}
-            </Link>
-          ))}
+        <nav aria-label="Primary" className="hidden xl:flex items-center gap-7 shrink-0">
+          {navLinks.map((link) => {
+            const active = location.pathname === link.to;
+            return (
+              <Link
+                key={link.to}
+                to={link.to}
+                aria-current={active ? "page" : undefined}
+                className={`lux-nav-link ${active ? "is-active" : ""}`}
+              >
+                {link.label}
+              </Link>
+            );
+          })}
         </nav>
 
-        <div className="flex items-center gap-3 shrink-0">
+        <div className="flex items-center gap-3 md:gap-4 shrink-0">
           <a
             href="tel:+919887688843"
             aria-label="Call Heritage Jaipur Travels"
-            className="hidden md:inline-flex items-center gap-2 font-serif text-[13px] tracking-[0.15em] uppercase text-[#3B2A25] hover:text-[#C9A84C] transition-colors"
+            className="hidden md:inline-flex items-center gap-2 font-serif text-[13px] tracking-[0.15em] uppercase text-[#0B1C33] hover:text-[#D4AF37] transition-colors"
           >
             <Phone className="h-4 w-4" />
             +91 98876 88843
           </a>
+          <Link
+            to="/contact"
+            className="hidden sm:inline-flex lux-enquire-btn"
+          >
+            Enquire Now
+          </Link>
           <button
             onClick={() => setOpen(!open)}
-            className="lg:hidden p-3 min-h-11 min-w-11 text-[#3B2A25] flex items-center justify-center"
+            aria-expanded={open}
+            aria-controls="mobile-menu"
+            className="xl:hidden p-3 min-h-11 min-w-11 text-[#0B1C33] flex items-center justify-center"
             aria-label="Toggle menu"
           >
             {open ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
@@ -88,31 +100,42 @@ const Header = () => {
 
       {/* Mobile slide menu */}
       <div
-        className={`lg:hidden fixed inset-0 top-[76px] md:top-[80px] z-40 transition-all duration-500 ${
+        id="mobile-menu"
+        className={`xl:hidden fixed inset-0 top-[64px] md:top-[70px] z-40 transition-all duration-500 ${
           open ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
         }`}
       >
-        <div className="absolute inset-0" style={{ background: "#F6F1E8" }} />
-        <nav className="relative container mx-auto px-6 pt-10 pb-14 flex flex-col gap-2">
-          {navLinks.map((link, i) => (
+        <div className="absolute inset-0 bg-white" />
+        <nav aria-label="Mobile" className="relative container mx-auto px-6 pt-8 pb-14 flex flex-col gap-1 overflow-y-auto max-h-[calc(100vh-70px)]">
+          {navLinks.map((link, i) => {
+            const active = location.pathname === link.to;
+            return (
+              <Link
+                key={link.to}
+                to={link.to}
+                aria-current={active ? "page" : undefined}
+                className={`lux-nav-link py-5 border-b border-[#D4AF37]/15 ${active ? "is-active" : ""}`}
+                style={{ animation: open ? `lux-fade-up 0.5s ease-out ${i * 0.05}s both` : "none" }}
+              >
+                {link.label}
+              </Link>
+            );
+          })}
+          <div className="mt-8 flex flex-col gap-3">
             <Link
-              key={link.to}
-              to={link.to}
-              className={`lux-nav-link py-4 border-b border-[#C9A84C]/15 ${
-                location.pathname === link.to ? "is-active" : ""
-              }`}
-              style={{ animation: open ? `lux-fade-up 0.5s ease-out ${i * 0.05}s both` : "none" }}
+              to="/contact"
+              className="lux-enquire-btn w-full"
             >
-              {link.label}
+              Enquire Now
             </Link>
-          ))}
-          <a
-            href="tel:+919887688843"
-            aria-label="Call Heritage Jaipur Travels"
-            className="mt-8 inline-flex items-center justify-center gap-2 py-3 rounded-full lux-btn-gold tracking-[0.18em] uppercase text-xs font-display"
-          >
-            <Phone className="h-4 w-4" /> +91 98876 88843
-          </a>
+            <a
+              href="tel:+919887688843"
+              aria-label="Call Heritage Jaipur Travels"
+              className="inline-flex items-center justify-center gap-2 py-3 font-serif text-[13px] tracking-[0.18em] uppercase text-[#0B1C33] border border-[#0B1C33]/20 rounded-full"
+            >
+              <Phone className="h-4 w-4" /> +91 98876 88843
+            </a>
+          </div>
         </nav>
       </div>
     </header>
