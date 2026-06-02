@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Menu, X, Phone } from "lucide-react";
+import { Menu, X, Phone, Mail } from "lucide-react";
 import logo from "@/assets/logo.png";
 
 const navLinks = [
@@ -14,6 +14,18 @@ const navLinks = [
   { label: "Journal", to: "/blog" },
   { label: "Contact", to: "/contact" },
 ];
+
+const CallNowButton = () => (
+  <a
+    href="tel:+919887688843"
+    aria-label="Call Heritage Jaipur Travels"
+    className="inline-flex items-center justify-center gap-2 w-full font-serif text-[13px] tracking-[0.18em] uppercase text-white rounded-full transition-colors hover:brightness-95"
+    style={{ backgroundColor: "#C9A84C", padding: "12px 20px" }}
+  >
+    <Phone className="h-4 w-4" />
+    Call Now · +91 98876 88843
+  </a>
+);
 
 const Header = () => {
   const [open, setOpen] = useState(false);
@@ -40,7 +52,7 @@ const Header = () => {
       <div className="container mx-auto flex items-center justify-between h-[64px] md:h-[70px] lg:h-20 px-4 md:px-6 lg:px-8 gap-4">
         <Link
           to="/"
-          className="logo-container flex items-center shrink-0 group"
+          className="logo-container flex items-center shrink-0 group min-w-0"
           aria-label="Heritage Jaipur Travels — Home"
         >
           <img
@@ -51,7 +63,7 @@ const Header = () => {
             loading="eager"
             fetchPriority="high"
             decoding="async"
-            className="lux-logo block"
+            className="lux-logo block w-auto max-h-[44px] md:max-h-[50px] lg:max-h-[60px] object-contain"
           />
         </Link>
 
@@ -75,7 +87,7 @@ const Header = () => {
           <a
             href="tel:+919887688843"
             aria-label="Call Heritage Jaipur Travels"
-            className="hidden md:inline-flex items-center gap-2 font-serif text-[13px] tracking-[0.15em] uppercase text-[#0B1C33] hover:text-[#D4AF37] transition-colors"
+            className="hidden xl:inline-flex items-center gap-2 font-serif text-[13px] tracking-[0.15em] uppercase text-[#0B1C33] hover:text-[#D4AF37] transition-colors"
           >
             <Phone className="h-4 w-4" />
             +91 98876 88843
@@ -100,7 +112,14 @@ const Header = () => {
         }`}
       >
         <div className="absolute inset-0 bg-white" />
-        <nav aria-label="Mobile" className="relative container mx-auto px-6 pt-8 pb-14 flex flex-col gap-1 overflow-y-auto max-h-[calc(100vh-70px)]">
+        <nav
+          aria-label="Mobile"
+          className="relative container mx-auto px-6 pt-6 pb-14 flex flex-col gap-1 overflow-y-auto max-h-[calc(100vh-64px)] md:max-h-[calc(100vh-70px)]"
+        >
+          <div className="pb-4">
+            <CallNowButton />
+          </div>
+
           {navLinks.map((link, i) => {
             const active = location.pathname === link.to;
             return (
@@ -115,13 +134,15 @@ const Header = () => {
               </Link>
             );
           })}
-          <div className="mt-8 flex flex-col gap-3">
+
+          <div className="mt-8 flex flex-col gap-4 items-center">
+            <CallNowButton />
             <a
-              href="tel:+919887688843"
-              aria-label="Call Heritage Jaipur Travels"
-              className="inline-flex items-center justify-center gap-2 py-3 font-serif text-[13px] tracking-[0.18em] uppercase text-[#0B1C33] border border-[#0B1C33]/20 rounded-full"
+              href="mailto:info@heritagejaipurtravels.com"
+              className="inline-flex items-center gap-2 font-serif text-[12px] tracking-[0.15em] uppercase text-[#0B1C33]/70 hover:text-[#D4AF37] transition-colors"
             >
-              <Phone className="h-4 w-4" /> +91 98876 88843
+              <Mail className="h-4 w-4" />
+              info@heritagejaipurtravels.com
             </a>
           </div>
         </nav>
