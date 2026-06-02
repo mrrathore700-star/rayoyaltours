@@ -49,17 +49,17 @@ const Header = () => {
         scrolled ? "lux-nav" : "lux-nav-top"
       }`}
     >
-      <div className="container mx-auto flex items-center justify-between h-[76px] md:h-[80px] lg:h-[84px] xl:h-[88px] px-4 md:px-6 lg:px-8 gap-4">
+      <div className="container mx-auto h-[76px] md:h-[80px] lg:h-[88px] xl:h-[96px] px-4 md:px-6 lg:px-8 flex xl:grid items-center justify-between xl:justify-stretch gap-4 xl:gap-6 xl:[grid-template-columns:22%_68%_10%]">
         <Link
           to="/"
-          className="logo-container flex items-center shrink-0 group min-w-0"
+          className="logo-container flex items-center shrink-0 group min-w-0 h-full"
           aria-label="Heritage Jaipur Travels — Home"
         >
           <img
             src={logo}
             alt="Heritage Jaipur Travels"
-            width={210}
-            height={64}
+            width={240}
+            height={76}
             loading="eager"
             fetchPriority="high"
             decoding="async"
@@ -67,7 +67,7 @@ const Header = () => {
           />
         </Link>
 
-        <nav aria-label="Primary" className="hidden xl:flex items-center xl:gap-5 2xl:gap-6 shrink-0">
+        <nav aria-label="Primary" className="hidden xl:flex items-center justify-center gap-3 2xl:gap-4 min-w-0">
           {navLinks.map((link) => {
             const active = location.pathname === link.to;
             return (
@@ -75,7 +75,7 @@ const Header = () => {
                 key={link.to}
                 to={link.to}
                 aria-current={active ? "page" : undefined}
-                className={`lux-nav-link ${active ? "is-active" : ""}`}
+                className={`lux-nav-link whitespace-nowrap ${active ? "is-active" : ""}`}
               >
                 {link.label}
               </Link>
@@ -83,15 +83,13 @@ const Header = () => {
           })}
         </nav>
 
-        <div className="flex items-center gap-3 md:gap-4 shrink-0">
+        <div className="flex items-center justify-end gap-3 md:gap-4 shrink-0 xl:min-w-0">
           <a
             href="tel:+919887688843"
             aria-label="Call Heritage Jaipur Travels"
-            className="hidden xl:inline-flex items-center gap-2 font-serif text-[13px] tracking-[0.15em] uppercase text-[#0B1C33] hover:text-[#D4AF37] transition-colors whitespace-nowrap"
+            className="hidden xl:inline-flex items-center gap-1.5 font-serif text-[12px] tracking-[0.12em] uppercase text-[#0B1C33] hover:text-[#D4AF37] transition-colors whitespace-nowrap"
           >
-            <span className="text-[#0B1C33]/60">Contact</span>
-            <span aria-hidden="true" className="text-[#D4AF37]">·</span>
-            <Phone className="h-4 w-4" />
+            <Phone className="h-4 w-4 text-[#D4AF37]" />
             +91 98876 88843
           </a>
           <button
