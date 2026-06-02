@@ -87,8 +87,10 @@ const Header = () => {
           <a
             href="tel:+919887688843"
             aria-label="Call Heritage Jaipur Travels"
-            className="hidden xl:inline-flex items-center gap-2 font-serif text-[13px] tracking-[0.15em] uppercase text-[#0B1C33] hover:text-[#D4AF37] transition-colors"
+            className="hidden xl:inline-flex items-center gap-2 font-serif text-[13px] tracking-[0.15em] uppercase text-[#0B1C33] hover:text-[#D4AF37] transition-colors whitespace-nowrap"
           >
+            <span className="text-[#0B1C33]/60">Contact</span>
+            <span aria-hidden="true" className="text-[#D4AF37]">·</span>
             <Phone className="h-4 w-4" />
             +91 98876 88843
           </a>
