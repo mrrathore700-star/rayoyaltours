@@ -49,7 +49,7 @@ const Header = () => {
         scrolled ? "lux-nav" : "lux-nav-top"
       }`}
     >
-      <div className="container mx-auto flex items-center justify-between h-[64px] md:h-[70px] lg:h-20 px-4 md:px-6 lg:px-8 gap-4">
+      <div className="container mx-auto flex items-center justify-between h-[76px] md:h-[80px] lg:h-[84px] xl:h-[88px] px-4 md:px-6 lg:px-8 gap-4">
         <Link
           to="/"
           className="logo-container flex items-center shrink-0 group min-w-0"
@@ -58,16 +58,16 @@ const Header = () => {
           <img
             src={logo}
             alt="Heritage Jaipur Travels"
-            width={180}
-            height={60}
+            width={210}
+            height={64}
             loading="eager"
             fetchPriority="high"
             decoding="async"
-            className="lux-logo block w-auto max-h-[44px] md:max-h-[50px] lg:max-h-[60px] object-contain"
+            className="lux-logo block"
           />
         </Link>
 
-        <nav aria-label="Primary" className="hidden xl:flex items-center gap-7 shrink-0">
+        <nav aria-label="Primary" className="hidden xl:flex items-center xl:gap-5 2xl:gap-6 shrink-0">
           {navLinks.map((link) => {
             const active = location.pathname === link.to;
             return (
