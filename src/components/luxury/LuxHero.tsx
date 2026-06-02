@@ -55,7 +55,7 @@ const LuxHero = ({
         ))}
       </div>
 
-      <div className={`relative z-10 px-6 md:px-10 max-w-5xl mx-auto ${align === "left" ? "md:mx-0 md:ml-[8%]" : ""} pb-12 md:pb-0 pt-8 md:pt-12`}>
+      <div className={`relative z-10 px-6 md:px-10 max-w-5xl mx-auto ${align === "left" ? "md:mx-0 md:ml-[8%]" : ""} pb-12 md:pb-0 pt-[24px] md:pt-[30px] lg:pt-[40px]`}>
         {eyebrow && (
           <div className="lux-fade-up inline-flex items-center gap-3 px-4 py-2 mb-6 rounded-full lux-glass">
             <span className="lux-eyebrow">{eyebrow}</span>
