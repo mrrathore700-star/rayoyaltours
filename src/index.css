@@ -385,16 +385,19 @@
     color: #FFF8F0;
   }
 
-  /* Luxury navbar logo — height-locked, sharp, no stretch */
+  /* Luxury navbar logo — width-capped, sharp, no stretch, always fits */
   .logo-container { overflow: visible; }
   .lux-logo {
-    height: 60px;
     width: auto;
+    height: auto;
+    max-width: 210px;
+    max-height: 64px;
     object-fit: contain;
     image-rendering: -webkit-optimize-contrast;
     transition: transform 0.35s ease;
   }
   .lux-logo:hover { transform: scale(1.02); }
-  @media (max-width: 1024px) { .lux-logo { height: 50px; } }
-  @media (max-width: 768px)  { .lux-logo { height: 45px; } }
+  @media (max-width: 1280px) { .lux-logo { max-width: 190px; max-height: 60px; } }
+  @media (max-width: 1024px) { .lux-logo { max-width: 170px; max-height: 54px; } }
+  @media (max-width: 768px)  { .lux-logo { max-width: 140px; max-height: 48px; } }
 }
