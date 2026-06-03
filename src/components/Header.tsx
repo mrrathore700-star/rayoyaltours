@@ -56,8 +56,8 @@ const Header = () => {
           <img
             src={logo}
             alt="Heritage Jaipur Travels"
-            width={220}
-            height={70}
+            width={286}
+            height={91}
             loading="eager"
             fetchPriority="high"
             decoding="async"
