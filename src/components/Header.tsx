@@ -44,7 +44,7 @@ const Header = () => {
       }}
     >
       <div
-        className="container mx-auto h-[84px] md:h-[96px] lg:h-[112px] px-4 md:px-6 lg:px-8 flex xl:grid items-center justify-between xl:justify-stretch gap-4 xl:[grid-template-columns:22%_1fr_auto]"
+        className="container mx-auto h-[84px] md:h-[96px] lg:h-[112px] px-4 md:px-6 lg:px-8 flex xl:grid items-center justify-between xl:justify-stretch gap-4 xl:[grid-template-columns:25%_65%_10%]"
       >
         {/* LOGO */}
         <Link
