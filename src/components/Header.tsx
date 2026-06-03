@@ -20,24 +20,16 @@ const CallNowButton = () => (
     href="tel:+919887688843"
     aria-label="Call Heritage Jaipur Travels"
     className="inline-flex items-center justify-center gap-2 w-full font-serif text-[13px] tracking-[0.18em] uppercase text-white rounded-full transition-colors hover:brightness-95"
-    style={{ backgroundColor: "#C9A84C", padding: "12px 20px" }}
+    style={{ backgroundColor: "#C9A84C", padding: "14px 22px" }}
   >
     <Phone className="h-4 w-4" />
-    Call Now · +91 98876 88843
+    Call Now · +91 9887688843
   </a>
 );
 
 const Header = () => {
   const [open, setOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
-
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 24);
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
 
   useEffect(() => {
     setOpen(false);
@@ -45,21 +37,27 @@ const Header = () => {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 ${
-        scrolled ? "lux-nav" : "lux-nav-top"
-      }`}
+      className="fixed top-0 left-0 right-0 z-50"
+      style={{
+        backgroundColor: "#F8F5EF",
+        borderBottom: "1px solid rgba(201,168,76,0.15)",
+      }}
     >
-      <div className="container mx-auto h-[76px] md:h-[80px] lg:h-[88px] xl:h-[96px] px-4 md:px-6 lg:px-8 flex xl:grid items-center justify-between xl:justify-stretch gap-4 xl:gap-6 xl:[grid-template-columns:22%_68%_10%]">
+      <div
+        className="container mx-auto h-[70px] md:h-[80px] lg:h-[90px] px-4 md:px-6 lg:px-8 flex xl:grid items-center justify-between xl:justify-stretch gap-4 xl:[grid-template-columns:22%_1fr_auto]"
+      >
+        {/* LOGO */}
         <Link
           to="/"
-          className="logo-container flex items-center shrink-0 group min-w-0 h-full"
+          className="flex items-center shrink-0 h-full xl:border-r xl:pr-6"
+          style={{ borderColor: "rgba(201,168,76,0.2)" }}
           aria-label="Heritage Jaipur Travels — Home"
         >
           <img
             src={logo}
             alt="Heritage Jaipur Travels"
-            width={240}
-            height={76}
+            width={220}
+            height={70}
             loading="eager"
             fetchPriority="high"
             decoding="async"
@@ -67,7 +65,12 @@ const Header = () => {
           />
         </Link>
 
-        <nav aria-label="Primary" className="hidden xl:flex items-center justify-center gap-3 2xl:gap-4 min-w-0">
+        {/* MENU */}
+        <nav
+          aria-label="Primary"
+          className="hidden xl:flex items-center justify-center flex-wrap xl:px-6 xl:border-r"
+          style={{ gap: "20px", borderColor: "rgba(201,168,76,0.2)" }}
+        >
           {navLinks.map((link) => {
             const active = location.pathname === link.to;
             return (
@@ -75,7 +78,7 @@ const Header = () => {
                 key={link.to}
                 to={link.to}
                 aria-current={active ? "page" : undefined}
-                className={`lux-nav-link whitespace-nowrap ${active ? "is-active" : ""}`}
+                className={`lux-menu-link whitespace-nowrap ${active ? "is-active" : ""}`}
               >
                 {link.label}
               </Link>
@@ -83,14 +86,22 @@ const Header = () => {
           })}
         </nav>
 
-        <div className="flex items-center justify-end gap-3 md:gap-4 shrink-0 xl:min-w-0">
+        {/* PHONE / HAMBURGER */}
+        <div className="flex items-center justify-end shrink-0 xl:pl-6">
           <a
             href="tel:+919887688843"
             aria-label="Call Heritage Jaipur Travels"
-            className="hidden xl:inline-flex items-center gap-1.5 font-serif text-[12px] tracking-[0.12em] uppercase text-[#0B1C33] hover:text-[#D4AF37] transition-colors whitespace-nowrap"
+            className="hidden xl:inline-flex items-center gap-2 whitespace-nowrap"
+            style={{
+              color: "#C9A84C",
+              fontFamily: "'Cormorant Garamond', serif",
+              fontSize: "15px",
+              fontWeight: 500,
+              letterSpacing: "0.5px",
+            }}
           >
-            <Phone className="h-4 w-4 text-[#D4AF37]" />
-            +91 98876 88843
+            <Phone className="h-4 w-4" />
+            +91 9887688843
           </a>
           <button
             onClick={() => setOpen(!open)}
@@ -107,14 +118,14 @@ const Header = () => {
       {/* Mobile slide menu */}
       <div
         id="mobile-menu"
-        className={`xl:hidden fixed inset-0 top-[76px] md:top-[80px] z-40 transition-all duration-500 ${
+        className={`xl:hidden fixed inset-0 top-[70px] md:top-[80px] z-40 transition-all duration-500 ${
           open ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
         }`}
       >
         <div className="absolute inset-0 bg-white" />
         <nav
           aria-label="Mobile"
-          className="relative container mx-auto px-6 pt-6 pb-14 flex flex-col gap-1 overflow-y-auto max-h-[calc(100vh-76px)] md:max-h-[calc(100vh-80px)]"
+          className="relative container mx-auto px-6 pt-6 pb-14 flex flex-col gap-1 overflow-y-auto max-h-[calc(100vh-70px)] md:max-h-[calc(100vh-80px)]"
         >
           <div className="pb-4">
             <CallNowButton />
@@ -127,7 +138,7 @@ const Header = () => {
                 key={link.to}
                 to={link.to}
                 aria-current={active ? "page" : undefined}
-                className={`lux-nav-link py-5 border-b border-[#D4AF37]/15 ${active ? "is-active" : ""}`}
+                className={`lux-menu-link py-5 border-b border-[#C9A84C]/15 ${active ? "is-active" : ""}`}
                 style={{ animation: open ? `lux-fade-up 0.5s ease-out ${i * 0.05}s both` : "none" }}
               >
                 {link.label}
@@ -136,10 +147,9 @@ const Header = () => {
           })}
 
           <div className="mt-8 flex flex-col gap-4 items-center">
-            <CallNowButton />
             <a
               href="mailto:info@heritagejaipurtravels.com"
-              className="inline-flex items-center gap-2 font-serif text-[12px] tracking-[0.15em] uppercase text-[#0B1C33]/70 hover:text-[#D4AF37] transition-colors"
+              className="inline-flex items-center gap-2 font-serif text-[13px] tracking-[0.15em] uppercase text-[#0B1C33]/70 hover:text-[#C9A84C] transition-colors"
             >
               <Mail className="h-4 w-4" />
               info@heritagejaipurtravels.com
