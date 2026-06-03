@@ -118,7 +118,7 @@ const Header = () => {
       {/* Mobile slide menu */}
       <div
         id="mobile-menu"
-        className={`xl:hidden fixed inset-0 top-[70px] md:top-[80px] z-40 transition-all duration-500 ${
+        className={`xl:hidden fixed inset-0 top-[84px] md:top-[96px] z-40 transition-all duration-500 ${
           open ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
         }`}
       >
