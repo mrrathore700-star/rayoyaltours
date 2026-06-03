@@ -39,7 +39,7 @@ const App = () => (
         <BrowserRouter>
           <ScrollToTop />
           <Header />
-          <div className="pt-[76px] md:pt-[80px] lg:pt-[88px] xl:pt-[96px]">
+          <div className="pt-[70px] md:pt-[80px] lg:pt-[90px]">
             <Routes>
               <Route path="/" element={<Index />} />
               <Route path="/about" element={<About />} />
