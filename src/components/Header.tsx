@@ -44,7 +44,7 @@ const Header = () => {
       }}
     >
       <div
-        className="container mx-auto h-[70px] md:h-[80px] lg:h-[90px] px-4 md:px-6 lg:px-8 flex xl:grid items-center justify-between xl:justify-stretch gap-4 xl:[grid-template-columns:22%_1fr_auto]"
+        className="container mx-auto h-[84px] md:h-[96px] lg:h-[112px] px-4 md:px-6 lg:px-8 flex xl:grid items-center justify-between xl:justify-stretch gap-4 xl:[grid-template-columns:22%_1fr_auto]"
       >
         {/* LOGO */}
         <Link
@@ -56,8 +56,8 @@ const Header = () => {
           <img
             src={logo}
             alt="Heritage Jaipur Travels"
-            width={220}
-            height={70}
+            width={286}
+            height={91}
             loading="eager"
             fetchPriority="high"
             decoding="async"
@@ -118,14 +118,14 @@ const Header = () => {
       {/* Mobile slide menu */}
       <div
         id="mobile-menu"
-        className={`xl:hidden fixed inset-0 top-[70px] md:top-[80px] z-40 transition-all duration-500 ${
+        className={`xl:hidden fixed inset-0 top-[84px] md:top-[96px] z-40 transition-all duration-500 ${
           open ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
         }`}
       >
         <div className="absolute inset-0 bg-white" />
         <nav
           aria-label="Mobile"
-          className="relative container mx-auto px-6 pt-6 pb-14 flex flex-col gap-1 overflow-y-auto max-h-[calc(100vh-70px)] md:max-h-[calc(100vh-80px)]"
+          className="relative container mx-auto px-6 pt-6 pb-14 flex flex-col gap-1 overflow-y-auto max-h-[calc(100vh-84px)] md:max-h-[calc(100vh-96px)]"
         >
           <div className="pb-4">
             <CallNowButton />
