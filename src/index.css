@@ -390,14 +390,14 @@
     width: auto;
     height: auto;
     max-width: 100%;
-    max-height: 96px;
+    max-height: 120px;
     object-fit: contain;
     image-rendering: -webkit-optimize-contrast;
     transition: transform 0.35s ease;
   }
   .lux-logo:hover { transform: scale(1.02); }
-  @media (max-width: 1919px) { .lux-logo { max-height: 90px; } }
-  @media (max-width: 1365px) { .lux-logo { max-height: 84px; } }
+  @media (max-width: 1919px) { .lux-logo { max-height: 112px; } }
+  @media (max-width: 1365px) { .lux-logo { max-height: 104px; } }
   @media (max-width: 1023px) { .lux-logo { max-height: 76px; } }
   @media (max-width: 767px)  { .lux-logo { max-height: 64px; } }
 
