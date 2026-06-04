@@ -1,9 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Menu, X, Phone, Mail } from "lucide-react";
-import logoAsset from "@/assets/logo.png.asset.json";
-
-const logo = logoAsset.url;
+const logo = "/heritage-jaipur-travels-logo.png";
 
 const navLinks = [
   { label: "Home", to: "/" },
