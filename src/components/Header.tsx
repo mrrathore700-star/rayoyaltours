@@ -44,7 +44,7 @@ const Header = () => {
       }}
     >
       <div
-        className="container mx-auto h-[70px] md:h-[78px] lg:h-[90px] xl:h-[95px] px-4 md:px-6 lg:px-8 flex xl:grid items-center justify-between xl:justify-stretch gap-4 xl:[grid-template-columns:28%_62%_10%] 2xl:[grid-template-columns:25%_65%_10%]"
+        className="container mx-auto h-[80px] md:h-[92px] lg:h-[108px] xl:h-[116px] px-4 md:px-6 lg:px-8 flex xl:grid items-center justify-between xl:justify-stretch gap-4 xl:[grid-template-columns:20%_70%_10%]"
       >
         {/* LOGO */}
         <Link
@@ -66,7 +66,7 @@ const Header = () => {
         {/* MENU */}
         <nav
           aria-label="Primary"
-          className="hidden xl:flex items-center justify-center flex-nowrap min-w-0 xl:px-4 2xl:px-6 xl:border-r xl:gap-3 2xl:gap-5"
+          className="hidden xl:flex items-center justify-center flex-nowrap min-w-0 xl:px-4 2xl:px-6 xl:border-r xl:gap-[16px] 2xl:gap-[18px]"
           style={{ borderColor: "rgba(201,168,76,0.2)" }}
         >
           {navLinks.map((link) => {
@@ -116,14 +116,14 @@ const Header = () => {
       {/* Mobile slide menu */}
       <div
         id="mobile-menu"
-        className={`xl:hidden fixed inset-0 top-[70px] md:top-[78px] z-40 transition-all duration-500 ${
+        className={`xl:hidden fixed inset-0 top-[80px] md:top-[92px] z-40 transition-all duration-500 ${
           open ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
         }`}
       >
         <div className="absolute inset-0 bg-white" />
         <nav
           aria-label="Mobile"
-          className="relative container mx-auto px-6 pt-6 pb-14 flex flex-col gap-1 overflow-y-auto max-h-[calc(100vh-70px)] md:max-h-[calc(100vh-78px)]"
+          className="relative container mx-auto px-6 pt-6 pb-14 flex flex-col gap-1 overflow-y-auto max-h-[calc(100vh-80px)] md:max-h-[calc(100vh-92px)]"
         >
           <div className="pb-4">
             <CallNowButton />
