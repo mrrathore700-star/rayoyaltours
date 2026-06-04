@@ -1,7 +1,9 @@
 import { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Menu, X, Phone, Mail } from "lucide-react";
-import logo from "@/assets/logo.png";
+import logoAsset from "@/assets/logo.png.asset.json";
+
+const logo = logoAsset.url;
 
 const navLinks = [
   { label: "Home", to: "/" },
@@ -44,20 +46,18 @@ const Header = () => {
       }}
     >
       <div
-        className="container mx-auto h-[84px] md:h-[96px] lg:h-[112px] px-4 md:px-6 lg:px-8 flex xl:grid items-center justify-between xl:justify-stretch gap-4 xl:[grid-template-columns:25%_65%_10%]"
+        className="container mx-auto h-[70px] md:h-[78px] lg:h-[90px] xl:h-[95px] px-4 md:px-6 lg:px-8 flex xl:grid items-center justify-between xl:justify-stretch gap-4 xl:[grid-template-columns:28%_62%_10%] 2xl:[grid-template-columns:25%_65%_10%]"
       >
         {/* LOGO */}
         <Link
           to="/"
-          className="flex items-center shrink-0 h-full xl:border-r xl:pr-6"
+          className="flex items-center shrink-0 h-full min-w-0 xl:border-r xl:pr-4 2xl:pr-6"
           style={{ borderColor: "rgba(201,168,76,0.2)" }}
           aria-label="Heritage Jaipur Travels — Home"
         >
           <img
             src={logo}
             alt="Heritage Jaipur Travels"
-            width={286}
-            height={91}
             loading="eager"
             fetchPriority="high"
             decoding="async"
@@ -68,8 +68,8 @@ const Header = () => {
         {/* MENU */}
         <nav
           aria-label="Primary"
-          className="hidden xl:flex items-center justify-center flex-wrap xl:px-6 xl:border-r"
-          style={{ gap: "20px", borderColor: "rgba(201,168,76,0.2)" }}
+          className="hidden xl:flex items-center justify-center flex-nowrap min-w-0 xl:px-4 2xl:px-6 xl:border-r xl:gap-3 2xl:gap-5"
+          style={{ borderColor: "rgba(201,168,76,0.2)" }}
         >
           {navLinks.map((link) => {
             const active = location.pathname === link.to;
@@ -87,7 +87,7 @@ const Header = () => {
         </nav>
 
         {/* PHONE / HAMBURGER */}
-        <div className="flex items-center justify-end shrink-0 xl:pl-6">
+        <div className="flex items-center justify-end shrink-0 min-w-0 xl:pl-4 2xl:pl-6">
           <a
             href="tel:+919887688843"
             aria-label="Call Heritage Jaipur Travels"
@@ -118,14 +118,14 @@ const Header = () => {
       {/* Mobile slide menu */}
       <div
         id="mobile-menu"
-        className={`xl:hidden fixed inset-0 top-[84px] md:top-[96px] z-40 transition-all duration-500 ${
+        className={`xl:hidden fixed inset-0 top-[70px] md:top-[78px] z-40 transition-all duration-500 ${
           open ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
         }`}
       >
         <div className="absolute inset-0 bg-white" />
         <nav
           aria-label="Mobile"
-          className="relative container mx-auto px-6 pt-6 pb-14 flex flex-col gap-1 overflow-y-auto max-h-[calc(100vh-84px)] md:max-h-[calc(100vh-96px)]"
+          className="relative container mx-auto px-6 pt-6 pb-14 flex flex-col gap-1 overflow-y-auto max-h-[calc(100vh-70px)] md:max-h-[calc(100vh-78px)]"
         >
           <div className="pb-4">
             <CallNowButton />
