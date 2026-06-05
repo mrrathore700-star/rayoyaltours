@@ -29,20 +29,20 @@ const BrandMark = () => (
       decoding="async"
       className="lux-brand-icon block"
     />
-    <span className="flex flex-col leading-none min-w-0">
+    <span className="flex flex-col items-center text-center leading-none min-w-0">
       <span
         className="lux-brand-script"
         style={{
           fontFamily: "'Cormorant Garamond', 'Playfair Display', serif",
           fontWeight: 600,
           color: "#0B1F4D",
-          lineHeight: 1,
+          lineHeight: 0.95,
           letterSpacing: "0.5px",
         }}
       >
         Heritage
       </span>
-      <span className="lux-brand-sub-row flex items-center gap-2 mt-1.5">
+      <span className="lux-brand-sub-row flex items-center justify-center gap-2 mt-1.5">
         <span aria-hidden="true" className="lux-brand-rule" />
         <span
           className="lux-brand-sub whitespace-nowrap"
@@ -90,7 +90,7 @@ const Header = () => {
       }}
     >
       <div
-        className="container mx-auto h-[80px] md:h-[92px] lg:h-[108px] xl:h-[116px] px-4 md:px-6 lg:px-8 flex xl:grid items-center justify-between xl:justify-stretch gap-4 xl:[grid-template-columns:25%_65%_10%]"
+        className="container mx-auto h-[80px] md:h-[92px] lg:h-[108px] xl:h-[116px] px-4 md:px-6 lg:px-8 flex xl:grid items-center justify-between xl:justify-stretch gap-4 xl:[grid-template-columns:22%_68%_10%]"
       >
         {/* LOGO + BRAND */}
         <BrandMark />
