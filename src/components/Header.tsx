@@ -90,7 +90,7 @@ const Header = () => {
       }}
     >
       <div
-        className="container mx-auto h-[80px] md:h-[92px] lg:h-[108px] xl:h-[116px] px-4 md:px-6 lg:px-8 flex xl:grid items-center justify-between xl:justify-stretch gap-4 xl:[grid-template-columns:22%_68%_10%]"
+        className="container mx-auto h-[72px] sm:h-[80px] md:h-[88px] lg:h-[96px] xl:h-[104px] 2xl:h-[112px] px-4 md:px-6 lg:px-8 flex xl:grid items-center justify-between xl:justify-stretch gap-3 md:gap-4 xl:[grid-template-columns:26%_62%_12%] 2xl:[grid-template-columns:22%_68%_10%]"
       >
         {/* LOGO + BRAND */}
         <BrandMark />
@@ -98,8 +98,9 @@ const Header = () => {
         {/* MENU */}
         <nav
           aria-label="Primary"
-          className="hidden xl:flex items-center justify-center flex-nowrap min-w-0 xl:gap-[14px] 2xl:gap-[18px]"
+          className="hidden xl:flex items-center justify-center flex-nowrap min-w-0 xl:gap-[10px] 2xl:gap-[16px]"
         >
+
           {navLinks.map((link) => {
             const active = location.pathname === link.to;
             return (
