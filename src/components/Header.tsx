@@ -90,7 +90,7 @@ const Header = () => {
       }}
     >
       <div
-        className="container mx-auto h-[80px] md:h-[92px] lg:h-[108px] xl:h-[116px] px-4 md:px-6 lg:px-8 flex xl:grid items-center justify-between xl:justify-stretch gap-4 xl:[grid-template-columns:22%_68%_10%]"
+        className="container mx-auto h-[72px] sm:h-[80px] md:h-[88px] lg:h-[96px] xl:h-[104px] 2xl:h-[112px] px-4 md:px-6 lg:px-8 flex xl:grid items-center justify-between xl:justify-stretch gap-3 md:gap-4 xl:[grid-template-columns:26%_62%_12%] 2xl:[grid-template-columns:22%_68%_10%]"
       >
         {/* LOGO + BRAND */}
         <BrandMark />
@@ -98,8 +98,9 @@ const Header = () => {
         {/* MENU */}
         <nav
           aria-label="Primary"
-          className="hidden xl:flex items-center justify-center flex-nowrap min-w-0 xl:gap-[14px] 2xl:gap-[18px]"
+          className="hidden xl:flex items-center justify-center flex-nowrap min-w-0 xl:gap-[10px] 2xl:gap-[16px]"
         >
+
           {navLinks.map((link) => {
             const active = location.pathname === link.to;
             return (
@@ -147,15 +148,16 @@ const Header = () => {
       {/* Mobile slide menu */}
       <div
         id="mobile-menu"
-        className={`xl:hidden fixed inset-0 top-[80px] md:top-[92px] z-40 transition-all duration-500 ${
+        className={`xl:hidden fixed inset-0 top-[72px] sm:top-[80px] md:top-[88px] lg:top-[96px] z-40 transition-all duration-500 ${
           open ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
         }`}
       >
         <div className="absolute inset-0 bg-white" />
         <nav
           aria-label="Mobile"
-          className="relative container mx-auto px-6 pt-6 pb-14 flex flex-col gap-1 overflow-y-auto max-h-[calc(100vh-80px)] md:max-h-[calc(100vh-92px)]"
+          className="relative container mx-auto px-6 pt-6 pb-14 flex flex-col gap-1 overflow-y-auto max-h-[calc(100vh-72px)] sm:max-h-[calc(100vh-80px)] md:max-h-[calc(100vh-88px)] lg:max-h-[calc(100vh-96px)]"
         >
+
           <div className="pb-4">
             <CallNowButton />
           </div>
