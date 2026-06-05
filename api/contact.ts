@@ -139,7 +139,8 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       greetingTimeout: 10000,
       socketTimeout: 15000,
       tls: {
-        rejectUnauthorized: false,
+        rejectUnauthorized: true,
+        minVersion: "TLSv1.2",
       },
     });
 
