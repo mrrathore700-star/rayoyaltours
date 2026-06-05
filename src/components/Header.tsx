@@ -33,27 +33,29 @@ const BrandMark = () => (
       <span
         className="lux-brand-script"
         style={{
-          fontFamily: "'Playfair Display', serif",
-          fontStyle: "italic",
+          fontFamily: "'Cormorant Garamond', 'Playfair Display', serif",
           fontWeight: 600,
           color: "#0B1F4D",
           lineHeight: 1,
+          letterSpacing: "0.5px",
         }}
       >
         Heritage
       </span>
-      <span
-        className="lux-brand-sub"
-        style={{
-          fontFamily: "'Cormorant Garamond', serif",
-          fontWeight: 600,
-          color: "#6E0F1F",
-          letterSpacing: "0.28em",
-          textTransform: "uppercase",
-          marginTop: "4px",
-        }}
-      >
-        Jaipur Travels
+      <span className="lux-brand-sub-row flex items-center gap-2 mt-1.5">
+        <span aria-hidden="true" className="lux-brand-rule" />
+        <span
+          className="lux-brand-sub whitespace-nowrap"
+          style={{
+            fontFamily: "'Cormorant Garamond', serif",
+            fontWeight: 600,
+            color: "#7A1E1E",
+            textTransform: "uppercase",
+          }}
+        >
+          Jaipur Travels
+        </span>
+        <span aria-hidden="true" className="lux-brand-rule" />
       </span>
     </span>
   </Link>

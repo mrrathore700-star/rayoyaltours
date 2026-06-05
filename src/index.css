@@ -400,19 +400,29 @@
   @media (max-width: 767px)  { .lux-brand-icon { height: 50px; } }
 
   /* Brand wordmark */
-  .lux-brand-script { font-size: 30px; }
-  .lux-brand-sub    { font-size: 12px; }
+  .lux-brand-script { font-size: 48px; }
+  .lux-brand-sub    { font-size: 14px; letter-spacing: 6px; }
+  .lux-brand-rule {
+    display: inline-block;
+    width: 50px;
+    height: 1.5px;
+    background: #C9A84C;
+    flex-shrink: 0;
+  }
   @media (max-width: 1365px) {
-    .lux-brand-script { font-size: 27px; }
-    .lux-brand-sub    { font-size: 11px; }
+    .lux-brand-script { font-size: 42px; }
+    .lux-brand-sub    { font-size: 13px; letter-spacing: 6px; }
+    .lux-brand-rule   { width: 44px; }
   }
   @media (max-width: 1023px) {
-    .lux-brand-script { font-size: 24px; }
-    .lux-brand-sub    { font-size: 10px; letter-spacing: 0.22em; }
+    .lux-brand-script { font-size: 36px; }
+    .lux-brand-sub    { font-size: 12px; letter-spacing: 5px; }
+    .lux-brand-rule   { width: 32px; }
   }
   @media (max-width: 767px) {
-    .lux-brand-script { font-size: 20px; }
-    .lux-brand-sub    { font-size: 9px; letter-spacing: 0.2em; }
+    .lux-brand-script { font-size: 30px; }
+    .lux-brand-sub    { font-size: 11px; letter-spacing: 4px; }
+    .lux-brand-rule   { width: 22px; }
   }
 
   /* Luxury menu links */
