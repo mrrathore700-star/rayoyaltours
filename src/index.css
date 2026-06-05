@@ -385,21 +385,35 @@
     color: #FFF8F0;
   }
 
-  /* Luxury navbar logo — height-based responsive scaling, auto width preserves aspect ratio */
-  .lux-logo {
+  /* Luxury navbar brand icon — responsive height, preserves aspect ratio */
+  .lux-brand-icon {
     width: auto;
-    height: auto;
-    max-width: 100%;
-    max-height: 120px;
+    height: 70px;
     object-fit: contain;
+    background: transparent;
     image-rendering: -webkit-optimize-contrast;
     transition: transform 0.35s ease;
   }
-  .lux-logo:hover { transform: scale(1.02); }
-  @media (max-width: 1919px) { .lux-logo { max-height: 112px; } }
-  @media (max-width: 1365px) { .lux-logo { max-height: 104px; } }
-  @media (max-width: 1023px) { .lux-logo { max-height: 76px; } }
-  @media (max-width: 767px)  { .lux-logo { max-height: 64px; } }
+  .lux-brand-icon:hover { transform: scale(1.03); }
+  @media (max-width: 1365px) { .lux-brand-icon { height: 65px; } }
+  @media (max-width: 1023px) { .lux-brand-icon { height: 60px; } }
+  @media (max-width: 767px)  { .lux-brand-icon { height: 50px; } }
+
+  /* Brand wordmark */
+  .lux-brand-script { font-size: 30px; }
+  .lux-brand-sub    { font-size: 12px; }
+  @media (max-width: 1365px) {
+    .lux-brand-script { font-size: 27px; }
+    .lux-brand-sub    { font-size: 11px; }
+  }
+  @media (max-width: 1023px) {
+    .lux-brand-script { font-size: 24px; }
+    .lux-brand-sub    { font-size: 10px; letter-spacing: 0.22em; }
+  }
+  @media (max-width: 767px) {
+    .lux-brand-script { font-size: 20px; }
+    .lux-brand-sub    { font-size: 9px; letter-spacing: 0.2em; }
+  }
 
   /* Luxury menu links */
   .lux-menu-link {

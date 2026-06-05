@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Menu, X, Phone, Mail } from "lucide-react";
-const logo = "/heritage-jaipur-travels-logo.png";
+const icon = "/heritage-jaipur-travels-icon.png";
 
 const navLinks = [
   { label: "Home", to: "/" },
@@ -14,6 +14,50 @@ const navLinks = [
   { label: "Journal", to: "/blog" },
   { label: "Contact", to: "/contact" },
 ];
+
+const BrandMark = () => (
+  <Link
+    to="/"
+    aria-label="Heritage Jaipur Travels — Home"
+    className="flex items-center gap-3 md:gap-4 shrink-0 min-w-0 h-full"
+  >
+    <img
+      src={icon}
+      alt="Heritage Jaipur Travels"
+      loading="eager"
+      fetchPriority="high"
+      decoding="async"
+      className="lux-brand-icon block"
+    />
+    <span className="flex flex-col leading-none min-w-0">
+      <span
+        className="lux-brand-script"
+        style={{
+          fontFamily: "'Playfair Display', serif",
+          fontStyle: "italic",
+          fontWeight: 600,
+          color: "#0B1F4D",
+          lineHeight: 1,
+        }}
+      >
+        Heritage
+      </span>
+      <span
+        className="lux-brand-sub"
+        style={{
+          fontFamily: "'Cormorant Garamond', serif",
+          fontWeight: 600,
+          color: "#6E0F1F",
+          letterSpacing: "0.28em",
+          textTransform: "uppercase",
+          marginTop: "4px",
+        }}
+      >
+        Jaipur Travels
+      </span>
+    </span>
+  </Link>
+);
 
 const CallNowButton = () => (
   <a
@@ -44,30 +88,15 @@ const Header = () => {
       }}
     >
       <div
-        className="container mx-auto h-[80px] md:h-[92px] lg:h-[108px] xl:h-[116px] px-4 md:px-6 lg:px-8 flex xl:grid items-center justify-between xl:justify-stretch gap-4 xl:[grid-template-columns:16%_74%_10%]"
+        className="container mx-auto h-[80px] md:h-[92px] lg:h-[108px] xl:h-[116px] px-4 md:px-6 lg:px-8 flex xl:grid items-center justify-between xl:justify-stretch gap-4 xl:[grid-template-columns:25%_65%_10%]"
       >
-        {/* LOGO */}
-        <Link
-          to="/"
-          className="flex items-center shrink-0 h-full min-w-0 xl:border-r xl:pr-4 2xl:pr-6"
-          style={{ borderColor: "rgba(201,168,76,0.2)" }}
-          aria-label="Heritage Jaipur Travels — Home"
-        >
-          <img
-            src={logo}
-            alt="Heritage Jaipur Travels"
-            loading="eager"
-            fetchPriority="high"
-            decoding="async"
-            className="lux-logo block"
-          />
-        </Link>
+        {/* LOGO + BRAND */}
+        <BrandMark />
 
         {/* MENU */}
         <nav
           aria-label="Primary"
-          className="hidden xl:flex items-center justify-center flex-nowrap min-w-0 xl:px-4 2xl:px-6 xl:border-r xl:gap-[16px] 2xl:gap-[18px]"
-          style={{ borderColor: "rgba(201,168,76,0.2)" }}
+          className="hidden xl:flex items-center justify-center flex-nowrap min-w-0 xl:gap-[14px] 2xl:gap-[18px]"
         >
           {navLinks.map((link) => {
             const active = location.pathname === link.to;
@@ -85,7 +114,7 @@ const Header = () => {
         </nav>
 
         {/* PHONE / HAMBURGER */}
-        <div className="flex items-center justify-end shrink-0 min-w-0 xl:pl-4 2xl:pl-6">
+        <div className="flex items-center justify-end shrink-0 min-w-0">
           <a
             href="tel:+919887688843"
             aria-label="Call Heritage Jaipur Travels"
