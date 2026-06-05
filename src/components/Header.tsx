@@ -148,15 +148,16 @@ const Header = () => {
       {/* Mobile slide menu */}
       <div
         id="mobile-menu"
-        className={`xl:hidden fixed inset-0 top-[80px] md:top-[92px] z-40 transition-all duration-500 ${
+        className={`xl:hidden fixed inset-0 top-[72px] sm:top-[80px] md:top-[88px] lg:top-[96px] z-40 transition-all duration-500 ${
           open ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
         }`}
       >
         <div className="absolute inset-0 bg-white" />
         <nav
           aria-label="Mobile"
-          className="relative container mx-auto px-6 pt-6 pb-14 flex flex-col gap-1 overflow-y-auto max-h-[calc(100vh-80px)] md:max-h-[calc(100vh-92px)]"
+          className="relative container mx-auto px-6 pt-6 pb-14 flex flex-col gap-1 overflow-y-auto max-h-[calc(100vh-72px)] sm:max-h-[calc(100vh-80px)] md:max-h-[calc(100vh-88px)] lg:max-h-[calc(100vh-96px)]"
         >
+
           <div className="pb-4">
             <CallNowButton />
           </div>
