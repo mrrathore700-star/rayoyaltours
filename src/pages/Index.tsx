@@ -10,6 +10,7 @@ import SEO from "@/components/SEO";
 import LuxHero from "@/components/luxury/LuxHero";
 import LuxSectionHeading from "@/components/luxury/LuxSectionHeading";
 import LuxTrustStrip from "@/components/luxury/LuxTrustStrip";
+import LuxGoogleReviews from "@/components/luxury/LuxGoogleReviews";
 import LuxCtaBand from "@/components/luxury/LuxCtaBand";
 import { LuxLinkBtn, LuxAnchorBtn } from "@/components/luxury/LuxButton";
 import { tours } from "@/data/tours";
