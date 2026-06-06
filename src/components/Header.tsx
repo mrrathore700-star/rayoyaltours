@@ -120,6 +120,7 @@ const Header = () => {
               <Link
                 key={link.to}
                 to={link.to}
+                onClick={handleNav(link.to)}
                 aria-current={active ? "page" : undefined}
                 className={`lux-menu-link whitespace-nowrap ${active ? "is-active" : ""}`}
               >
