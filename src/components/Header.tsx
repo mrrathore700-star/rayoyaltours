@@ -15,9 +15,14 @@ const navLinks = [
   { label: "Contact", to: "/contact" },
 ];
 
-const BrandMark = () => (
+const scrollToTopSmooth = () => {
+  window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+};
+
+const BrandMark = ({ onNavigate }: { onNavigate: (to: string) => (e: React.MouseEvent) => void }) => (
   <Link
     to="/"
+    onClick={onNavigate("/")}
     aria-label="Heritage Jaipur Travels — Home"
     className="flex items-center gap-3 md:gap-4 shrink-0 min-w-0 h-full"
   >
