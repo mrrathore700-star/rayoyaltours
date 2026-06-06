@@ -15,9 +15,14 @@ const navLinks = [
   { label: "Contact", to: "/contact" },
 ];
 
-const BrandMark = () => (
+const scrollToTopSmooth = () => {
+  window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+};
+
+const BrandMark = ({ onNavigate }: { onNavigate: (to: string) => (e: React.MouseEvent) => void }) => (
   <Link
     to="/"
+    onClick={onNavigate("/")}
     aria-label="Heritage Jaipur Travels — Home"
     className="flex items-center gap-3 md:gap-4 shrink-0 min-w-0 h-full"
   >
@@ -81,6 +86,14 @@ const Header = () => {
     setOpen(false);
   }, [location.pathname]);
 
+  const handleNav = (to: string) => (e: React.MouseEvent) => {
+    if (location.pathname === to) {
+      e.preventDefault();
+      scrollToTopSmooth();
+    }
+    setOpen(false);
+  };
+
   return (
     <header
       className="fixed top-0 left-0 right-0 z-50"
@@ -93,7 +106,7 @@ const Header = () => {
         className="container mx-auto h-[72px] sm:h-[80px] md:h-[88px] lg:h-[96px] xl:h-[104px] 2xl:h-[112px] px-4 md:px-6 lg:px-8 flex xl:grid items-center justify-between xl:justify-stretch gap-3 md:gap-4 xl:[grid-template-columns:26%_62%_12%] 2xl:[grid-template-columns:22%_68%_10%]"
       >
         {/* LOGO + BRAND */}
-        <BrandMark />
+        <BrandMark onNavigate={handleNav} />
 
         {/* MENU */}
         <nav
@@ -107,6 +120,7 @@ const Header = () => {
               <Link
                 key={link.to}
                 to={link.to}
+                onClick={handleNav(link.to)}
                 aria-current={active ? "page" : undefined}
                 className={`lux-menu-link whitespace-nowrap ${active ? "is-active" : ""}`}
               >
@@ -168,6 +182,7 @@ const Header = () => {
               <Link
                 key={link.to}
                 to={link.to}
+                onClick={handleNav(link.to)}
                 aria-current={active ? "page" : undefined}
                 className={`lux-menu-link py-5 border-b border-[#C9A84C]/15 ${active ? "is-active" : ""}`}
                 style={{ animation: open ? `lux-fade-up 0.5s ease-out ${i * 0.05}s both` : "none" }}
