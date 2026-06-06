@@ -86,6 +86,14 @@ const Header = () => {
     setOpen(false);
   }, [location.pathname]);
 
+  const handleNav = (to: string) => (e: React.MouseEvent) => {
+    if (location.pathname === to) {
+      e.preventDefault();
+      scrollToTopSmooth();
+    }
+    setOpen(false);
+  };
+
   return (
     <header
       className="fixed top-0 left-0 right-0 z-50"
@@ -98,7 +106,7 @@ const Header = () => {
         className="container mx-auto h-[72px] sm:h-[80px] md:h-[88px] lg:h-[96px] xl:h-[104px] 2xl:h-[112px] px-4 md:px-6 lg:px-8 flex xl:grid items-center justify-between xl:justify-stretch gap-3 md:gap-4 xl:[grid-template-columns:26%_62%_12%] 2xl:[grid-template-columns:22%_68%_10%]"
       >
         {/* LOGO + BRAND */}
-        <BrandMark />
+        <BrandMark onNavigate={handleNav} />
 
         {/* MENU */}
         <nav
