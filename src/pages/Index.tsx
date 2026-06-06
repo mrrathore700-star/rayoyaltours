@@ -115,6 +115,8 @@ const Index = () => {
         </div>
       </section>
 
+      <LuxGoogleReviews />
+
       {/* Testimonials */}
       <section className="py-24 md:py-32 lux-black-bg text-[#FFF8F0]">
         <div className="container mx-auto px-6">
