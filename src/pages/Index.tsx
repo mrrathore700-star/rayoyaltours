@@ -10,6 +10,7 @@ import SEO from "@/components/SEO";
 import LuxHero from "@/components/luxury/LuxHero";
 import LuxSectionHeading from "@/components/luxury/LuxSectionHeading";
 import LuxTrustStrip from "@/components/luxury/LuxTrustStrip";
+import LuxGoogleReviews from "@/components/luxury/LuxGoogleReviews";
 import LuxCtaBand from "@/components/luxury/LuxCtaBand";
 import { LuxLinkBtn, LuxAnchorBtn } from "@/components/luxury/LuxButton";
 import { tours } from "@/data/tours";
@@ -113,6 +114,8 @@ const Index = () => {
           </div>
         </div>
       </section>
+
+      <LuxGoogleReviews />
 
       {/* Testimonials */}
       <section className="py-24 md:py-32 lux-black-bg text-[#FFF8F0]">
