@@ -182,6 +182,7 @@ const Header = () => {
               <Link
                 key={link.to}
                 to={link.to}
+                onClick={handleNav(link.to)}
                 aria-current={active ? "page" : undefined}
                 className={`lux-menu-link py-5 border-b border-[#C9A84C]/15 ${active ? "is-active" : ""}`}
                 style={{ animation: open ? `lux-fade-up 0.5s ease-out ${i * 0.05}s both` : "none" }}
