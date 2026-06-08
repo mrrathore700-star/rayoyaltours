@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Star, ArrowRight } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import heroPalace from "@/assets/hero-palace.jpg";
 import culturalDance from "@/assets/cultural-dance.jpg";
 import localMarket from "@/assets/local-market.jpg";
