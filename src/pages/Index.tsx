@@ -159,27 +159,6 @@ const Index = () => {
         secondary={{ label: "WhatsApp Specialist", href: "https://wa.me/919887688843", external: true }}
       />
 
-      {/* Google Reviews CTA */}
-      <section className="lux-cream-bg py-16 md:py-20">
-        <div className="container mx-auto px-6 text-center">
-          <a
-            href="https://www.google.com/search?q=Heritage+Jaipur+Travels+Jaipur+reviews#lrd=0x0:0x0,1"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center justify-center gap-3 px-8 md:px-10 py-4 md:py-5 rounded-full font-display tracking-[0.18em] uppercase text-xs md:text-sm text-white transition-all duration-300 hover:brightness-95 hover:scale-[1.02] shadow-[0_8px_30px_-10px_rgba(201,168,76,0.6)]"
-            style={{ backgroundColor: "#C9A84C" }}
-            aria-label="Read our Google Reviews (opens in new tab)"
-          >
-            <svg viewBox="0 0 48 48" className="h-5 w-5 md:h-6 md:w-6 bg-white rounded-full p-0.5" aria-hidden="true">
-              <path fill="#FFC107" d="M43.6 20.5H42V20H24v8h11.3c-1.6 4.7-6.1 8-11.3 8-6.6 0-12-5.4-12-12s5.4-12 12-12c3.1 0 5.8 1.2 7.9 3.1l5.7-5.7C34 6.1 29.3 4 24 4 12.9 4 4 12.9 4 24s8.9 20 20 20 20-8.9 20-20c0-1.3-.1-2.3-.4-3.5z"/>
-              <path fill="#FF3D00" d="M6.3 14.7l6.6 4.8C14.7 16 19 13 24 13c3.1 0 5.8 1.2 7.9 3.1l5.7-5.7C34 6.1 29.3 4 24 4 16.3 4 9.7 8.3 6.3 14.7z"/>
-              <path fill="#4CAF50" d="M24 44c5.2 0 9.9-2 13.4-5.2l-6.2-5.2C29.2 35 26.7 36 24 36c-5.2 0-9.6-3.3-11.3-7.9l-6.5 5C9.5 39.6 16.2 44 24 44z"/>
-              <path fill="#1976D2" d="M43.6 20.5H42V20H24v8h11.3c-.8 2.3-2.3 4.3-4.2 5.6l6.2 5.2C41.3 35.3 44 30 44 24c0-1.3-.1-2.3-.4-3.5z"/>
-            </svg>
-            Read Our Google Reviews
-          </a>
-        </div>
-      </section>
     </main>
   );
 };
