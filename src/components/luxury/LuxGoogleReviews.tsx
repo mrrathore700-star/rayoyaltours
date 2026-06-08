@@ -1,4 +1,4 @@
-import { Star } from "lucide-react";
+import { Star, Users, Award, Phone } from "lucide-react";
 import LuxSectionHeading from "./LuxSectionHeading";
 import { LuxAnchorBtn } from "./LuxButton";
 
@@ -29,6 +29,13 @@ const GoogleLogo = () => (
   </svg>
 );
 
+const trustMetrics = [
+  { icon: Star, value: "4.8", label: "Google Rating" },
+  { icon: Users, value: "1000+", label: "Happy Guests" },
+  { icon: Award, value: "20+", label: "Years Experience" },
+  { icon: Phone, value: "24/7", label: "Travel Support" },
+];
+
 const LuxGoogleReviews = () => (
   <section className="lux-cream-bg py-24 md:py-32">
     <div className="container mx-auto px-6">
@@ -37,26 +44,25 @@ const LuxGoogleReviews = () => (
         title="Loved by Travellers Worldwide"
       />
 
-      {/* Stats */}
-      <div className="flex flex-col sm:flex-row items-center justify-center gap-8 sm:gap-14 mb-16 max-w-3xl mx-auto">
-        <div className="flex items-center gap-3">
-          <GoogleLogo />
-          <span className="font-display text-lg md:text-xl text-[#0F0F0F] font-semibold">Google</span>
-        </div>
-        <div className="text-center">
-          <div className="flex items-center justify-center gap-1 mb-1">
-            {Array.from({ length: 5 }).map((_, i) => (
-              <Star key={i} className="h-5 w-5 fill-[#C9A84C] text-[#C9A84C]" />
-            ))}
+      {/* Trust Metrics */}
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8 mb-6 max-w-5xl mx-auto">
+        {trustMetrics.map(({ icon: Icon, value, label }) => (
+          <div
+            key={label}
+            className="group text-center p-6 md:p-7 bg-white/50 backdrop-blur-sm border border-[#C9A84C]/30 rounded-sm transition-all duration-500 hover:-translate-y-1 hover:border-[#C9A84C] hover:shadow-[0_12px_32px_-12px_rgba(201,168,76,0.45)]"
+          >
+            <div className="inline-flex items-center justify-center h-12 w-12 rounded-full border border-[#C9A84C]/40 bg-[#C9A84C]/10 mb-4 transition-transform duration-500 group-hover:scale-110">
+              <Icon className="h-5 w-5 text-[#C9A84C]" strokeWidth={1.5} />
+            </div>
+            <div className="font-display text-2xl md:text-3xl text-[#6E0F1F] font-semibold">{value}</div>
+            <div className="text-[11px] md:text-xs tracking-[0.18em] uppercase text-[#0F0F0F]/60 mt-2">{label}</div>
           </div>
-          <div className="font-display text-2xl md:text-3xl text-[#6E0F1F] font-semibold">4.9 / 5</div>
-          <div className="text-xs tracking-[0.18em] uppercase text-[#0F0F0F]/55 mt-1">Average Rating</div>
-        </div>
-        <div className="text-center">
-          <div className="font-display text-2xl md:text-3xl text-[#6E0F1F] font-semibold">100+</div>
-          <div className="text-xs tracking-[0.18em] uppercase text-[#0F0F0F]/55 mt-1">Happy Travellers</div>
-        </div>
+        ))}
       </div>
+
+      <p className="text-center font-serif italic text-sm md:text-base text-[#0F0F0F]/65 max-w-2xl mx-auto mb-16">
+        Trusted by travelers exploring Rajasthan through private, heritage, and cultural experiences.
+      </p>
 
       {/* Cards */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
@@ -78,7 +84,9 @@ const LuxGoogleReviews = () => (
             </p>
             <div className="pt-5 border-t border-[#C9A84C]/25">
               <p className="font-display text-base text-[#6E0F1F] font-semibold">{r.name}</p>
-              <p className="text-xs tracking-[0.18em] uppercase text-[#0F0F0F]/55 mt-1">{r.country}</p>
+              {r.country && (
+                <p className="text-xs tracking-[0.18em] uppercase text-[#0F0F0F]/55 mt-1">{r.country}</p>
+              )}
             </div>
           </div>
         ))}
