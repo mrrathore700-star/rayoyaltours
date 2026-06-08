@@ -4,19 +4,19 @@ import { LuxAnchorBtn } from "./LuxButton";
 
 const reviews = [
   {
-    name: "Emma Richardson",
-    country: "London, UK",
-    text: "Heritage Jaipur Travels crafted the most magical Rajasthan journey for our family. Every detail was perfect — from the palace stays to the private guides. Truly a luxury experience.",
+    name: "Muriel Chaume",
+    country: "",
+    text: "A pleasure to travel with Kailash: perfect driving in all circumstances, punctual, discreet, and elegant…the perfect driver to show you the beauties of North India! 👌🏼",
   },
   {
-    name: "Hiroshi Tanaka",
-    country: "Tokyo, Japan",
-    text: "Outstanding service from start to finish. Our chauffeur was knowledgeable and the itinerary was beautifully balanced. The desert nights in Jaisalmer will stay with us forever.",
+    name: "Yuliya Masyukova",
+    country: "",
+    text: "Me and my Mom travelled through Golden Triangle and absolutely loved Kailash services! Honest, always in time, super friendly. His restaurant and places to visit recommendations worked 100%. Thank you very much for an amazing holidays!",
   },
   {
-    name: "Olivia Martin",
-    country: "Sydney, Australia",
-    text: "A boutique experience in every sense. The team understood exactly the slow, private travel we wanted. Twenty years of expertise truly shows in every thoughtful touch.",
+    name: "Janine Parmenter",
+    country: "",
+    text: "My husband and I enjoyed a fantastic experience on our 10 day tour of Rajisthan with Kailash. He is reliable, trustworthy and knowledgable. His English is great and above all I felt 100% safe in the crazy traffic! I would definitely recommend using him as your driver and navigator!!",
   },
 ];
 
