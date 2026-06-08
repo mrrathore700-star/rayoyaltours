@@ -15,11 +15,6 @@ import LuxCtaBand from "@/components/luxury/LuxCtaBand";
 import { LuxLinkBtn, LuxAnchorBtn } from "@/components/luxury/LuxButton";
 import { tours } from "@/data/tours";
 
-const testimonials = [
-  { name: "Sophie L.", origin: "London, UK", text: "From the moment we landed in Jaipur to our last sunset in Udaipur, every detail felt curated for us. A true private journey.", rating: 5 },
-  { name: "Marcus W.", origin: "Berlin, Germany", text: "The desert nights in Jaisalmer were unforgettable. Our specialist understood exactly the kind of slow, quiet travel we wanted.", rating: 5 },
-  { name: "Aiko T.", origin: "Tokyo, Japan", text: "Twenty years of local knowledge shows. Palaces, kitchens, artisans — places no guidebook would have found us.", rating: 5 },
-];
 
 const galleryImages = [
   { src: culturalDance, alt: "Rajasthani folk dance performance" },
@@ -117,37 +112,6 @@ const Index = () => {
 
       <LuxGoogleReviews />
 
-      {/* Testimonials */}
-      <section className="py-24 md:py-32 lux-black-bg text-[#FFF8F0]">
-        <div className="container mx-auto px-6">
-          <LuxSectionHeading
-            tone="dark"
-            eyebrow="From Our Travellers"
-            title="Stories From Around The World"
-          />
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-            {testimonials.map((t, i) => (
-              <div
-                key={i}
-                className="p-8 md:p-10 border border-[#C9A84C]/25 rounded-sm bg-[#FFF8F0]/[0.03] backdrop-blur-sm"
-              >
-                <div className="flex gap-1 mb-5">
-                  {Array.from({ length: t.rating }).map((_, j) => (
-                    <Star key={j} className="h-3.5 w-3.5 fill-[#C9A84C] text-[#C9A84C]" />
-                  ))}
-                </div>
-                <p className="font-serif italic text-lg leading-relaxed text-[#FFF8F0]/90 mb-6">
-                  "{t.text}"
-                </p>
-                <div>
-                  <p className="font-display text-base text-[#C9A84C]">{t.name}</p>
-                  <p className="text-xs tracking-[0.18em] uppercase text-[#FFF8F0]/55 mt-1">{t.origin}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
 
       {/* Final CTA */}
       <LuxCtaBand
