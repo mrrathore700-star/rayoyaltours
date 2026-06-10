@@ -1,4 +1,4 @@
-import { Star, Users, Award, Phone } from "lucide-react";
+import { Star, MessageSquare } from "lucide-react";
 import LuxSectionHeading from "./LuxSectionHeading";
 import { LuxAnchorBtn } from "./LuxButton";
 
