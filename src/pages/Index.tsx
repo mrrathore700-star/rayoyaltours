@@ -14,6 +14,7 @@ import LuxGoogleReviews from "@/components/luxury/LuxGoogleReviews";
 import LuxWhyChoose from "@/components/luxury/LuxWhyChoose";
 import LuxFAQ from "@/components/luxury/LuxFAQ";
 import LuxDestinations from "@/components/luxury/LuxDestinations";
+import LuxJournalPreview from "@/components/luxury/LuxJournalPreview";
 import LuxCtaBand from "@/components/luxury/LuxCtaBand";
 import { LuxLinkBtn, LuxAnchorBtn } from "@/components/luxury/LuxButton";
 import { tours } from "@/data/tours";
@@ -119,7 +120,10 @@ const Index = () => {
 
       <LuxWhyChoose />
 
+      <LuxJournalPreview />
+
       <LuxFAQ />
+
 
 
 
