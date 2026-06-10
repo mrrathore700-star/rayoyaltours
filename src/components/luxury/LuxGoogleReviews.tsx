@@ -1,4 +1,4 @@
-import { Star, Users, Award, Phone } from "lucide-react";
+import { Star, MessageSquare } from "lucide-react";
 import LuxSectionHeading from "./LuxSectionHeading";
 import { LuxAnchorBtn } from "./LuxButton";
 
@@ -31,9 +31,7 @@ const GoogleLogo = () => (
 
 const trustMetrics = [
   { icon: Star, value: "4.8", label: "Google Rating" },
-  { icon: Users, value: "1000+", label: "Happy Guests" },
-  { icon: Award, value: "20+", label: "Years Experience" },
-  { icon: Phone, value: "24/7", label: "Travel Support" },
+  { icon: MessageSquare, value: "23", label: "Verified Google Reviews" },
 ];
 
 const LuxGoogleReviews = () => (
@@ -45,7 +43,7 @@ const LuxGoogleReviews = () => (
       />
 
       {/* Trust Metrics */}
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8 mb-6 max-w-5xl mx-auto">
+      <div className="grid grid-cols-2 md:grid-cols-2 gap-6 md:gap-8 mb-4 max-w-2xl mx-auto">
         {trustMetrics.map(({ icon: Icon, value, label }) => (
           <div
             key={label}
@@ -60,8 +58,8 @@ const LuxGoogleReviews = () => (
         ))}
       </div>
 
-      <p className="text-center font-serif italic text-sm md:text-base text-[#0F0F0F]/65 max-w-2xl mx-auto mb-16">
-        Trusted by travelers exploring Rajasthan through private, heritage, and cultural experiences.
+      <p className="text-center font-serif italic text-sm md:text-base text-[#0F0F0F]/65 max-w-2xl mx-auto mb-12">
+        Verified reviews from travelers who explored Rajasthan with Heritage Jaipur Travels.
       </p>
 
       {/* Cards */}

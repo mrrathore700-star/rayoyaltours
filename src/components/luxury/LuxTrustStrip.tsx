@@ -1,5 +1,7 @@
 const pillars = [
-  { title: "20+ Years", text: "of crafting Rajasthan journeys" },
+  { title: "20+", text: "Years of crafting Rajasthan journeys" },
+  { title: "1000+", text: "Happy guests served worldwide" },
+  { title: "24/7", text: "Travel support always available" },
   { title: "Private", text: "experiences, never group" },
   { title: "International", text: "travelers across 40+ countries" },
   { title: "Local Experts", text: "born and raised in Rajasthan" },
@@ -18,7 +20,7 @@ const LuxTrustStrip = () => (
           Crafting Rajasthan Experiences for International Travelers for Over 20 Years
         </h2>
       </div>
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-5xl mx-auto">
+      <div className="grid grid-cols-2 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
         {pillars.map((p) => (
           <div key={p.title} className="text-center">
             <div className="font-display text-3xl md:text-4xl text-[#C9A84C] font-semibold">{p.title}</div>
