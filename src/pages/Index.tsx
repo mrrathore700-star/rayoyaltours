@@ -13,6 +13,7 @@ import LuxTrustStrip from "@/components/luxury/LuxTrustStrip";
 import LuxGoogleReviews from "@/components/luxury/LuxGoogleReviews";
 import LuxWhyChoose from "@/components/luxury/LuxWhyChoose";
 import LuxFAQ from "@/components/luxury/LuxFAQ";
+import LuxDestinations from "@/components/luxury/LuxDestinations";
 import LuxCtaBand from "@/components/luxury/LuxCtaBand";
 import { LuxLinkBtn, LuxAnchorBtn } from "@/components/luxury/LuxButton";
 import { tours } from "@/data/tours";
@@ -80,6 +81,8 @@ const Index = () => {
         primary={{ label: "Explore Experiences", to: "/experiences" }}
         secondary={{ label: "Speak To A Specialist", href: "https://wa.me/919887688843", external: true }}
       />
+
+      <LuxDestinations />
 
       {/* Gallery Preview */}
       <section className="py-24 md:py-32 lux-cream-bg">
