@@ -1,5 +1,7 @@
 const pillars = [
-  { title: "20+ Years", text: "of crafting Rajasthan journeys" },
+  { title: "20+", text: "Years of crafting Rajasthan journeys" },
+  { title: "1000+", text: "Happy guests served worldwide" },
+  { title: "24/7", text: "Travel support always available" },
   { title: "Private", text: "experiences, never group" },
   { title: "International", text: "travelers across 40+ countries" },
   { title: "Local Experts", text: "born and raised in Rajasthan" },
