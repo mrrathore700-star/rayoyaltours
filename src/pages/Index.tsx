@@ -11,9 +11,6 @@ import LuxHero from "@/components/luxury/LuxHero";
 import LuxSectionHeading from "@/components/luxury/LuxSectionHeading";
 import LuxTrustStrip from "@/components/luxury/LuxTrustStrip";
 import LuxGoogleReviews from "@/components/luxury/LuxGoogleReviews";
-import LuxMeetFounder from "@/components/luxury/LuxMeetFounder";
-import LuxMeetTeam from "@/components/luxury/LuxMeetTeam";
-import LuxWhyTrust from "@/components/luxury/LuxWhyTrust";
 import LuxWhyChoose from "@/components/luxury/LuxWhyChoose";
 import LuxFAQ from "@/components/luxury/LuxFAQ";
 import LuxDestinations from "@/components/luxury/LuxDestinations";
@@ -76,8 +73,6 @@ const Index = () => {
         </div>
       </section>
 
-      <LuxMeetFounder />
-
       {/* Heritage Experience Banner */}
       <LuxCtaBand
         image={culturalDance}
@@ -88,7 +83,6 @@ const Index = () => {
         secondary={{ label: "Speak To A Specialist", href: "https://wa.me/919887688843", external: true }}
       />
 
-      <LuxMeetTeam />
 
       <LuxDestinations />
 
@@ -124,8 +118,6 @@ const Index = () => {
       </section>
 
       <LuxGoogleReviews />
-
-      <LuxWhyTrust />
 
       <LuxWhyChoose />
 

@@ -5,12 +5,13 @@ const icon = "/heritage-jaipur-travels-icon.png";
 
 const navLinks = [
   { label: "Home", to: "/" },
-  { label: "About", to: "/about" },
   { label: "Packages", to: "/packages" },
+  { label: "Sightseeing", to: "/sightseeing" },
+  { label: "Transport", to: "/taxi" },
   { label: "Experiences", to: "/experiences" },
-  { label: "Gallery", to: "/gallery" },
   { label: "Reviews", to: "/reviews" },
-  { label: "Contact", to: "/contact" },
+  { label: "Contact Us", to: "/contact" },
+  { label: "About Us", to: "/about" },
 ];
 
 const scrollToTopSmooth = () => {
