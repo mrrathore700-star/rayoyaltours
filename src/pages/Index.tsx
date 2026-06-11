@@ -73,8 +73,6 @@ const Index = () => {
         </div>
       </section>
 
-      <LuxMeetFounder />
-
       {/* Heritage Experience Banner */}
       <LuxCtaBand
         image={culturalDance}
@@ -85,7 +83,6 @@ const Index = () => {
         secondary={{ label: "Speak To A Specialist", href: "https://wa.me/919887688843", external: true }}
       />
 
-      <LuxMeetTeam />
 
       <LuxDestinations />
 
