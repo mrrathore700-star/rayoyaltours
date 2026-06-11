@@ -7,11 +7,9 @@ const navLinks = [
   { label: "Home", to: "/" },
   { label: "About", to: "/about" },
   { label: "Packages", to: "/packages" },
-  { label: "Sightseeing", to: "/sightseeing" },
-  { label: "Transport", to: "/taxi" },
   { label: "Experiences", to: "/experiences" },
   { label: "Gallery", to: "/gallery" },
-  { label: "Journal", to: "/blog" },
+  { label: "Reviews", to: "/reviews" },
   { label: "Contact", to: "/contact" },
 ];
 

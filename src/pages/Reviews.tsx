@@ -18,7 +18,7 @@ const Reviews = () => (
       eyebrow="Loved By Travellers"
       title={<>Words From Our <span className="text-[#C9A84C]">Guests</span></>}
       subtitle="Twenty years of journeys, one honest review at a time."
-      height="short"
+      height="regular"
     />
 
     <LuxGoogleReviews />
