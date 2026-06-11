@@ -119,8 +119,6 @@ const Index = () => {
 
       <LuxGoogleReviews />
 
-      <LuxWhyTrust />
-
       <LuxWhyChoose />
 
       <LuxJournalPreview />
