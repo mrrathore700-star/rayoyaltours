@@ -1,17 +1,62 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Menu, X, Phone, Mail } from "lucide-react";
+import { Menu, X, Phone, Mail, ChevronDown } from "lucide-react";
 const icon = "/heritage-jaipur-travels-icon.png";
 
-const navLinks = [
+type NavItem = {
+  label: string;
+  to?: string;
+  children?: { label: string; to: string }[];
+};
+
+const navItems: NavItem[] = [
   { label: "Home", to: "/" },
-  { label: "Packages", to: "/packages" },
-  { label: "Sightseeing", to: "/sightseeing" },
-  { label: "Transport", to: "/taxi" },
-  { label: "Experiences", to: "/experiences" },
+  {
+    label: "Journeys",
+    children: [
+      { label: "Rajasthan Royal Heritage Tour", to: "/packages/rajasthan-royal" },
+      { label: "Golden Triangle Tour", to: "/packages/golden-triangle" },
+      { label: "Golden Triangle with Ranthambore", to: "/packages/golden-triangle-ranthambore" },
+      { label: "Jaipur Heritage Tour", to: "/packages/jaipur-heritage" },
+      { label: "Desert Safari Jaisalmer", to: "/packages/desert-safari" },
+      { label: "Udaipur Lake Tour", to: "/packages/udaipur-lake" },
+      { label: "View All Journeys →", to: "/packages" },
+    ],
+  },
+  {
+    label: "Experiences",
+    children: [
+      { label: "Heritage Experiences", to: "/experiences/category/royal" },
+      { label: "Cultural Experiences", to: "/experiences/category/art" },
+      { label: "Wildlife Experiences", to: "/experiences/category/wildlife" },
+      { label: "Desert Experiences", to: "/experiences/category/desert" },
+      { label: "Food Experiences", to: "/experiences/category/food" },
+      { label: "Wellness Experiences", to: "/experiences/category/wellness" },
+      { label: "View All Experiences →", to: "/experiences" },
+    ],
+  },
+  {
+    label: "Services",
+    children: [
+      { label: "Jaipur Sightseeing", to: "/sightseeing" },
+      { label: "Rajasthan Sightseeing", to: "/sightseeing" },
+      { label: "Private Car Rental", to: "/taxi" },
+      { label: "Airport Transfers", to: "/taxi" },
+      { label: "Chauffeur Driven Tours", to: "/taxi" },
+      { label: "Luxury Transport", to: "/taxi" },
+    ],
+  },
   { label: "Reviews", to: "/reviews" },
+  {
+    label: "About Us",
+    children: [
+      { label: "Meet Kailash", to: "/about#meet-kailash" },
+      { label: "Meet Our Team", to: "/about#meet-team" },
+      { label: "Why Travelers Trust Us", to: "/about#why-trust-us" },
+      { label: "Our Story", to: "/about#our-story" },
+    ],
+  },
   { label: "Contact Us", to: "/contact" },
-  { label: "About Us", to: "/about" },
 ];
 
 const scrollToTopSmooth = () => {
@@ -77,16 +122,177 @@ const CallNowButton = () => (
   </a>
 );
 
+const isItemActive = (item: NavItem, pathname: string) => {
+  if (item.to) return pathname === item.to;
+  if (item.children) return item.children.some((c) => pathname === c.to.split("#")[0]);
+  return false;
+};
+
+const DesktopDropdown = ({ item, pathname }: { item: NavItem; pathname: string }) => {
+  const [open, setOpen] = useState(false);
+  const closeTimer = useRef<number | null>(null);
+
+  const handleEnter = () => {
+    if (closeTimer.current) window.clearTimeout(closeTimer.current);
+    setOpen(true);
+  };
+  const handleLeave = () => {
+    if (closeTimer.current) window.clearTimeout(closeTimer.current);
+    closeTimer.current = window.setTimeout(() => setOpen(false), 120);
+  };
+
+  const active = isItemActive(item, pathname);
+
+  return (
+    <div
+      className="relative"
+      onMouseEnter={handleEnter}
+      onMouseLeave={handleLeave}
+    >
+      <button
+        type="button"
+        aria-haspopup="true"
+        aria-expanded={open}
+        onFocus={handleEnter}
+        onBlur={handleLeave}
+        className={`lux-menu-link whitespace-nowrap inline-flex items-center gap-1 ${active ? "is-active" : ""}`}
+      >
+        {item.label}
+        <ChevronDown
+          className={`h-3.5 w-3.5 transition-transform duration-300 ${open ? "rotate-180" : ""}`}
+          strokeWidth={2}
+        />
+      </button>
+
+      <div
+        className={`absolute left-1/2 -translate-x-1/2 top-full pt-4 z-50 ${
+          open ? "pointer-events-auto" : "pointer-events-none"
+        }`}
+      >
+        <div
+          className={`min-w-[260px] origin-top transition-all duration-300 ${
+            open ? "opacity-100 translate-y-0 scale-100" : "opacity-0 -translate-y-2 scale-[0.98]"
+          }`}
+        >
+          <div
+            className="relative rounded-sm border border-[#C9A84C]/30 shadow-[0_24px_60px_-20px_rgba(11,28,51,0.25)] overflow-hidden"
+            style={{ backgroundColor: "#FFFDF8" }}
+          >
+            {/* gold top accent */}
+            <span
+              aria-hidden="true"
+              className="absolute top-0 left-0 right-0 h-[2px]"
+              style={{ background: "linear-gradient(90deg, transparent, #C9A84C, transparent)" }}
+            />
+            <ul className="py-2">
+              {item.children!.map((child) => {
+                const childActive = pathname === child.to.split("#")[0];
+                return (
+                  <li key={child.label}>
+                    <Link
+                      to={child.to}
+                      className={`block px-5 py-3 font-serif text-[14px] tracking-[0.04em] transition-all duration-200 border-l-2 ${
+                        childActive
+                          ? "border-[#C9A84C] text-[#C9A84C] bg-[#C9A84C]/[0.06]"
+                          : "border-transparent text-[#0B1C33] hover:border-[#C9A84C] hover:text-[#C9A84C] hover:bg-[#C9A84C]/[0.05] hover:pl-6"
+                      }`}
+                    >
+                      {child.label}
+                    </Link>
+                  </li>
+                );
+              })}
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+const MobileNavItem = ({
+  item,
+  pathname,
+  onNavigate,
+  index,
+  open: menuOpen,
+}: {
+  item: NavItem;
+  pathname: string;
+  onNavigate: (to: string) => (e: React.MouseEvent) => void;
+  index: number;
+  open: boolean;
+}) => {
+  const [expanded, setExpanded] = useState(false);
+  const active = isItemActive(item, pathname);
+  const style: React.CSSProperties = {
+    animation: menuOpen ? `lux-fade-up 0.5s ease-out ${index * 0.05}s both` : "none",
+  };
+
+  if (!item.children) {
+    return (
+      <Link
+        to={item.to!}
+        onClick={onNavigate(item.to!)}
+        aria-current={active ? "page" : undefined}
+        className={`lux-menu-link py-5 border-b border-[#C9A84C]/15 ${active ? "is-active" : ""}`}
+        style={style}
+      >
+        {item.label}
+      </Link>
+    );
+  }
+
+  return (
+    <div className="border-b border-[#C9A84C]/15" style={style}>
+      <button
+        type="button"
+        aria-expanded={expanded}
+        onClick={() => setExpanded((v) => !v)}
+        className={`lux-menu-link w-full py-5 flex items-center justify-between ${active ? "is-active" : ""}`}
+      >
+        <span>{item.label}</span>
+        <ChevronDown
+          className={`h-4 w-4 transition-transform duration-300 ${expanded ? "rotate-180" : ""}`}
+          strokeWidth={2}
+        />
+      </button>
+      <div
+        className={`grid transition-all duration-400 ease-out ${
+          expanded ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"
+        }`}
+      >
+        <div className="overflow-hidden">
+          <ul className="pb-4 pl-2 flex flex-col">
+            {item.children.map((child) => (
+              <li key={child.label}>
+                <Link
+                  to={child.to}
+                  onClick={onNavigate(child.to)}
+                  className="block py-3 px-3 font-serif text-[15px] tracking-[0.03em] text-[#0B1C33]/80 hover:text-[#C9A84C] border-l border-[#C9A84C]/25 hover:border-[#C9A84C] transition-colors"
+                >
+                  {child.label}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </div>
+  );
+};
+
 const Header = () => {
   const [open, setOpen] = useState(false);
   const location = useLocation();
 
   useEffect(() => {
     setOpen(false);
-  }, [location.pathname]);
+  }, [location.pathname, location.hash]);
 
   const handleNav = (to: string) => (e: React.MouseEvent) => {
-    if (location.pathname === to) {
+    const [path] = to.split("#");
+    if (location.pathname === path && !to.includes("#")) {
       e.preventDefault();
       scrollToTopSmooth();
     }
@@ -102,34 +308,31 @@ const Header = () => {
       }}
     >
       <div
-        className="container mx-auto h-[72px] sm:h-[80px] md:h-[88px] lg:h-[96px] xl:h-[104px] 2xl:h-[112px] px-4 md:px-6 lg:px-8 flex xl:grid items-center justify-between xl:justify-stretch gap-3 md:gap-4 xl:[grid-template-columns:26%_62%_12%] 2xl:[grid-template-columns:22%_68%_10%]"
+        className="container mx-auto h-[72px] sm:h-[80px] md:h-[88px] lg:h-[96px] xl:h-[104px] 2xl:h-[112px] px-4 md:px-6 lg:px-8 flex xl:grid items-center justify-between xl:justify-stretch gap-3 md:gap-4 xl:[grid-template-columns:24%_64%_12%] 2xl:[grid-template-columns:22%_68%_10%]"
       >
-        {/* LOGO + BRAND */}
         <BrandMark onNavigate={handleNav} />
 
-        {/* MENU */}
         <nav
           aria-label="Primary"
           className="hidden xl:flex items-center justify-center flex-nowrap min-w-0 xl:gap-[10px] 2xl:gap-[16px]"
         >
-
-          {navLinks.map((link) => {
-            const active = location.pathname === link.to;
-            return (
+          {navItems.map((item) =>
+            item.children ? (
+              <DesktopDropdown key={item.label} item={item} pathname={location.pathname} />
+            ) : (
               <Link
-                key={link.to}
-                to={link.to}
-                onClick={handleNav(link.to)}
-                aria-current={active ? "page" : undefined}
-                className={`lux-menu-link whitespace-nowrap ${active ? "is-active" : ""}`}
+                key={item.label}
+                to={item.to!}
+                onClick={handleNav(item.to!)}
+                aria-current={location.pathname === item.to ? "page" : undefined}
+                className={`lux-menu-link whitespace-nowrap ${location.pathname === item.to ? "is-active" : ""}`}
               >
-                {link.label}
+                {item.label}
               </Link>
-            );
-          })}
+            ),
+          )}
         </nav>
 
-        {/* PHONE / HAMBURGER */}
         <div className="flex items-center justify-end shrink-0 min-w-0">
           <a
             href="tel:+919887688843"
@@ -158,7 +361,7 @@ const Header = () => {
         </div>
       </div>
 
-      {/* Mobile slide menu */}
+      {/* Mobile menu */}
       <div
         id="mobile-menu"
         className={`xl:hidden fixed inset-0 top-[72px] sm:top-[80px] md:top-[88px] lg:top-[96px] z-40 transition-all duration-500 ${
@@ -170,26 +373,20 @@ const Header = () => {
           aria-label="Mobile"
           className="relative container mx-auto px-6 pt-6 pb-14 flex flex-col gap-1 overflow-y-auto max-h-[calc(100vh-72px)] sm:max-h-[calc(100vh-80px)] md:max-h-[calc(100vh-88px)] lg:max-h-[calc(100vh-96px)]"
         >
-
           <div className="pb-4">
             <CallNowButton />
           </div>
 
-          {navLinks.map((link, i) => {
-            const active = location.pathname === link.to;
-            return (
-              <Link
-                key={link.to}
-                to={link.to}
-                onClick={handleNav(link.to)}
-                aria-current={active ? "page" : undefined}
-                className={`lux-menu-link py-5 border-b border-[#C9A84C]/15 ${active ? "is-active" : ""}`}
-                style={{ animation: open ? `lux-fade-up 0.5s ease-out ${i * 0.05}s both` : "none" }}
-              >
-                {link.label}
-              </Link>
-            );
-          })}
+          {navItems.map((item, i) => (
+            <MobileNavItem
+              key={item.label}
+              item={item}
+              pathname={location.pathname}
+              onNavigate={handleNav}
+              index={i}
+              open={open}
+            />
+          ))}
 
           <div className="mt-8 flex flex-col gap-4 items-center">
             <a
