@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Menu, X, Phone, Mail, ChevronDown } from "lucide-react";
+import { Menu, X, Phone, Mail, ChevronDown, Star, Award, Globe2, MessageCircle } from "lucide-react";
 const icon = "/heritage-jaipur-travels-icon.png";
 
 type NavItem = {
@@ -59,9 +59,59 @@ const navItems: NavItem[] = [
   { label: "Contact Us", to: "/contact" },
 ];
 
+const WHATSAPP_URL = "https://wa.me/919887688843?text=Hi!%20I%20want%20to%20plan%20my%20Rajasthan%20trip";
+
 const scrollToTopSmooth = () => {
   window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
 };
+
+const TrustBar = () => (
+  <div
+    className="hidden md:block w-full text-white"
+    style={{
+      background: "linear-gradient(90deg, #6B1414 0%, #7A1E1E 50%, #6B1414 100%)",
+      borderBottom: "1px solid rgba(201,168,76,0.35)",
+    }}
+  >
+    <div className="container mx-auto px-4 lg:px-8 h-[36px] flex items-center justify-between text-[12px] tracking-[0.06em]"
+      style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 500 }}
+    >
+      <div className="flex items-center gap-4 lg:gap-6">
+        <span className="inline-flex items-center gap-1.5">
+          <Star className="h-3.5 w-3.5 fill-[#C9A84C] text-[#C9A84C]" />
+          <span>4.8 Google Rating</span>
+        </span>
+        <span aria-hidden="true" className="h-3 w-px bg-[#C9A84C]/50" />
+        <span className="inline-flex items-center gap-1.5">
+          <Award className="h-3.5 w-3.5 text-[#C9A84C]" />
+          <span>20+ Years Experience</span>
+        </span>
+        <span aria-hidden="true" className="hidden lg:inline-block h-3 w-px bg-[#C9A84C]/50" />
+        <span className="hidden lg:inline-flex items-center gap-1.5">
+          <Globe2 className="h-3.5 w-3.5 text-[#C9A84C]" />
+          <span>Travelers from 40+ Countries</span>
+        </span>
+      </div>
+      <div className="flex items-center gap-4 lg:gap-6">
+        <a
+          href="mailto:info@heritagejaipurtravels.com"
+          className="hidden lg:inline-flex items-center gap-1.5 hover:text-[#C9A84C] transition-colors"
+        >
+          <Mail className="h-3.5 w-3.5 text-[#C9A84C]" />
+          info@heritagejaipurtravels.com
+        </a>
+        <span aria-hidden="true" className="hidden lg:inline-block h-3 w-px bg-[#C9A84C]/50" />
+        <a
+          href="tel:+919887688843"
+          className="inline-flex items-center gap-1.5 hover:text-[#C9A84C] transition-colors"
+        >
+          <Phone className="h-3.5 w-3.5 text-[#C9A84C]" />
+          +91 9887688843
+        </a>
+      </div>
+    </div>
+  </div>
+);
 
 const BrandMark = ({ onNavigate }: { onNavigate: (to: string) => (e: React.MouseEvent) => void }) => (
   <Link
@@ -178,7 +228,6 @@ const DesktopDropdown = ({ item, pathname }: { item: NavItem; pathname: string }
             className="relative rounded-sm border border-[#C9A84C]/30 shadow-[0_24px_60px_-20px_rgba(11,28,51,0.25)] overflow-hidden"
             style={{ backgroundColor: "#FFFDF8" }}
           >
-            {/* gold top accent */}
             <span
               aria-hidden="true"
               className="absolute top-0 left-0 right-0 h-[2px]"
@@ -284,11 +333,19 @@ const MobileNavItem = ({
 
 const Header = () => {
   const [open, setOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
 
   useEffect(() => {
     setOpen(false);
   }, [location.pathname, location.hash]);
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 12);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   const handleNav = (to: string) => (e: React.MouseEvent) => {
     const [path] = to.split("#");
@@ -301,80 +358,134 @@ const Header = () => {
 
   return (
     <header
-      className="fixed top-0 left-0 right-0 z-50"
+      className="fixed top-0 left-0 right-0 z-50 transition-shadow duration-300"
       style={{
-        backgroundColor: "#F8F5EF",
-        borderBottom: "1px solid rgba(201,168,76,0.15)",
+        boxShadow: scrolled ? "0 6px 24px -10px rgba(11,28,51,0.18)" : "none",
       }}
     >
+      <TrustBar />
       <div
-        className="container mx-auto h-[72px] sm:h-[80px] md:h-[88px] lg:h-[96px] xl:h-[104px] 2xl:h-[112px] px-4 md:px-6 lg:px-8 flex xl:grid items-center justify-between xl:justify-stretch gap-3 md:gap-4 xl:[grid-template-columns:24%_64%_12%] 2xl:[grid-template-columns:22%_68%_10%]"
+        style={{
+          backgroundColor: "#F8F5EF",
+          borderBottom: "1px solid rgba(201,168,76,0.15)",
+        }}
       >
-        <BrandMark onNavigate={handleNav} />
-
-        <nav
-          aria-label="Primary"
-          className="hidden xl:flex items-center justify-center flex-nowrap min-w-0 xl:gap-[10px] 2xl:gap-[16px]"
+        <div
+          className="container mx-auto h-[72px] sm:h-[80px] md:h-[88px] lg:h-[96px] xl:h-[100px] px-4 md:px-6 lg:px-8 flex xl:grid items-center justify-between xl:justify-stretch gap-3 md:gap-4 xl:[grid-template-columns:22%_56%_22%] 2xl:[grid-template-columns:20%_58%_22%]"
         >
-          {navItems.map((item) =>
-            item.children ? (
-              <DesktopDropdown key={item.label} item={item} pathname={location.pathname} />
-            ) : (
-              <Link
-                key={item.label}
-                to={item.to!}
-                onClick={handleNav(item.to!)}
-                aria-current={location.pathname === item.to ? "page" : undefined}
-                className={`lux-menu-link whitespace-nowrap ${location.pathname === item.to ? "is-active" : ""}`}
-              >
-                {item.label}
-              </Link>
-            ),
-          )}
-        </nav>
+          <BrandMark onNavigate={handleNav} />
 
-        <div className="flex items-center justify-end shrink-0 min-w-0">
-          <a
-            href="tel:+919887688843"
-            aria-label="Call Heritage Jaipur Travels"
-            className="hidden xl:inline-flex items-center gap-2 whitespace-nowrap"
-            style={{
-              color: "#C9A84C",
-              fontFamily: "'Cormorant Garamond', serif",
-              fontSize: "15px",
-              fontWeight: 500,
-              letterSpacing: "0.5px",
-            }}
+          <nav
+            aria-label="Primary"
+            className="hidden xl:flex items-center justify-center flex-nowrap min-w-0 xl:gap-[10px] 2xl:gap-[16px]"
           >
-            <Phone className="h-4 w-4" />
-            +91 9887688843
-          </a>
-          <button
-            onClick={() => setOpen(!open)}
-            aria-expanded={open}
-            aria-controls="mobile-menu"
-            className="xl:hidden p-3 min-h-11 min-w-11 text-[#0B1C33] flex items-center justify-center"
-            aria-label="Toggle menu"
-          >
-            {open ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
-          </button>
+            {navItems.map((item) =>
+              item.children ? (
+                <DesktopDropdown key={item.label} item={item} pathname={location.pathname} />
+              ) : (
+                <Link
+                  key={item.label}
+                  to={item.to!}
+                  onClick={handleNav(item.to!)}
+                  aria-current={location.pathname === item.to ? "page" : undefined}
+                  className={`lux-menu-link whitespace-nowrap ${location.pathname === item.to ? "is-active" : ""}`}
+                >
+                  {item.label}
+                </Link>
+              ),
+            )}
+          </nav>
+
+          <div className="flex items-center justify-end shrink-0 min-w-0 gap-2">
+            {/* Desktop CTAs */}
+            <a
+              href={WHATSAPP_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="WhatsApp Us"
+              className="hidden xl:inline-flex items-center gap-2 px-4 py-2.5 rounded-full text-white text-[12px] tracking-[0.14em] uppercase font-serif transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_8px_20px_-8px_rgba(34,139,46,0.6)]"
+              style={{ background: "linear-gradient(135deg, #1FA855 0%, #128C3E 100%)" }}
+            >
+              <MessageCircle className="h-4 w-4" />
+              WhatsApp
+            </a>
+            <Link
+              to="/contact"
+              onClick={handleNav("/contact")}
+              className="hidden xl:inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-white text-[12px] tracking-[0.16em] uppercase font-serif transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_10px_24px_-8px_rgba(201,168,76,0.7)]"
+              style={{
+                background: "linear-gradient(135deg, #D4B765 0%, #C9A84C 50%, #A8862E 100%)",
+                letterSpacing: "0.18em",
+              }}
+            >
+              Plan Your Journey
+            </Link>
+
+            {/* Mobile quick actions */}
+            <a
+              href="tel:+919887688843"
+              aria-label="Call"
+              className="xl:hidden inline-flex items-center justify-center h-10 w-10 rounded-full text-white"
+              style={{ backgroundColor: "#C9A84C" }}
+            >
+              <Phone className="h-4 w-4" />
+            </a>
+            <a
+              href={WHATSAPP_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="WhatsApp"
+              className="xl:hidden inline-flex items-center justify-center h-10 w-10 rounded-full text-white"
+              style={{ backgroundColor: "#1FA855" }}
+            >
+              <MessageCircle className="h-4 w-4" />
+            </a>
+
+            <button
+              onClick={() => setOpen(!open)}
+              aria-expanded={open}
+              aria-controls="mobile-menu"
+              className="xl:hidden p-2 min-h-10 min-w-10 text-[#0B1C33] flex items-center justify-center"
+              aria-label="Toggle menu"
+            >
+              {open ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+            </button>
+          </div>
         </div>
       </div>
 
       {/* Mobile menu */}
       <div
         id="mobile-menu"
-        className={`xl:hidden fixed inset-0 top-[72px] sm:top-[80px] md:top-[88px] lg:top-[96px] z-40 transition-all duration-500 ${
+        className={`xl:hidden fixed inset-0 top-[72px] sm:top-[80px] md:top-[124px] lg:top-[132px] z-40 transition-all duration-500 ${
           open ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
         }`}
       >
         <div className="absolute inset-0 bg-white" />
         <nav
           aria-label="Mobile"
-          className="relative container mx-auto px-6 pt-6 pb-14 flex flex-col gap-1 overflow-y-auto max-h-[calc(100vh-72px)] sm:max-h-[calc(100vh-80px)] md:max-h-[calc(100vh-88px)] lg:max-h-[calc(100vh-96px)]"
+          className="relative container mx-auto px-6 pt-6 pb-14 flex flex-col gap-1 overflow-y-auto max-h-[calc(100vh-72px)] sm:max-h-[calc(100vh-80px)] md:max-h-[calc(100vh-124px)] lg:max-h-[calc(100vh-132px)]"
         >
-          <div className="pb-4">
+          <div className="pb-4 flex flex-col gap-3">
             <CallNowButton />
+            <a
+              href={WHATSAPP_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-center gap-2 w-full font-serif text-[13px] tracking-[0.18em] uppercase text-white rounded-full"
+              style={{ background: "linear-gradient(135deg, #1FA855 0%, #128C3E 100%)", padding: "14px 22px" }}
+            >
+              <MessageCircle className="h-4 w-4" />
+              WhatsApp Us
+            </a>
+            <Link
+              to="/contact"
+              onClick={handleNav("/contact")}
+              className="inline-flex items-center justify-center w-full font-serif text-[13px] tracking-[0.18em] uppercase text-white rounded-full"
+              style={{ background: "linear-gradient(135deg, #D4B765 0%, #C9A84C 50%, #A8862E 100%)", padding: "14px 22px" }}
+            >
+              Plan Your Journey
+            </Link>
           </div>
 
           {navItems.map((item, i) => (
