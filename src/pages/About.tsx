@@ -34,13 +34,17 @@ const About = () => (
     />
 
     {/* Meet Kailash */}
-    <LuxMeetFounder />
+    <div id="meet-kailash" className="scroll-mt-32">
+      <LuxMeetFounder />
+    </div>
 
     {/* Meet Our Team */}
-    <LuxMeetTeam />
+    <div id="meet-team" className="scroll-mt-32">
+      <LuxMeetTeam />
+    </div>
 
     {/* Why Travelers Trust Us — trust cards */}
-    <section className="py-24 md:py-32" style={{ background: "linear-gradient(180deg, #FFF8F0 0%, #F5ECDC 100%)" }}>
+    <section id="why-trust-us" className="py-24 md:py-32 scroll-mt-32" style={{ background: "linear-gradient(180deg, #FFF8F0 0%, #F5ECDC 100%)" }}>
       <div className="container mx-auto px-6">
         <LuxSectionHeading
           eyebrow="Why Travellers Trust Us"
@@ -68,7 +72,7 @@ const About = () => (
     <LuxWhyTrust />
 
     {/* Our Philosophy */}
-    <section className="py-24 md:py-32 lux-black-bg text-[#FFF8F0]">
+    <section id="our-story" className="py-24 md:py-32 lux-black-bg text-[#FFF8F0] scroll-mt-32">
       <div className="container mx-auto px-6 max-w-3xl text-center">
         <LuxSectionHeading
           tone="dark"
