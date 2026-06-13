@@ -1,6 +1,5 @@
 import { Star, MessageSquare } from "lucide-react";
 import LuxSectionHeading from "./LuxSectionHeading";
-import { LuxAnchorBtn } from "./LuxButton";
 
 const reviews = [
   {
@@ -90,15 +89,6 @@ const LuxGoogleReviews = () => (
         ))}
       </div>
 
-      <div className="text-center mt-14">
-        <LuxAnchorBtn
-          href="https://www.google.com/search?q=Heritage+Jaipur+Travels+reviews"
-          external
-          variant="gold"
-        >
-          View All Reviews
-        </LuxAnchorBtn>
-      </div>
     </div>
   </section>
 );

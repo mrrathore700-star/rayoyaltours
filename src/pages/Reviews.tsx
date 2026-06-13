@@ -1,7 +1,6 @@
 import SEO from "@/components/SEO";
 import LuxHero from "@/components/luxury/LuxHero";
 import LuxGoogleReviews from "@/components/luxury/LuxGoogleReviews";
-import LuxWhyTrust from "@/components/luxury/LuxWhyTrust";
 import LuxCtaBand from "@/components/luxury/LuxCtaBand";
 import heroPalace from "@/assets/hero-palace.jpg";
 
@@ -22,7 +21,6 @@ const Reviews = () => (
     />
 
     <LuxGoogleReviews />
-    <LuxWhyTrust />
 
     <LuxCtaBand
       image={heroPalace}
