@@ -1,8 +1,7 @@
-import { Link } from "react-router-dom";
 import { Quote } from "lucide-react";
 import kailashPortrait from "@/assets/team-kailash.jpg";
 import LuxSectionHeading from "./LuxSectionHeading";
-import { LuxLinkBtn, LuxAnchorBtn } from "./LuxButton";
+import { LuxAnchorBtn } from "./LuxButton";
 
 const LuxMeetFounder = () => (
   <section className="lux-cream-bg py-24 md:py-32">

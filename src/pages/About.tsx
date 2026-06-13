@@ -1,22 +1,11 @@
-import { Clock, Users, MapPin, Sparkles, Headphones, Route } from "lucide-react";
 import SEO from "@/components/SEO";
 import heroPalace from "@/assets/hero-palace.jpg";
 import LuxHero from "@/components/luxury/LuxHero";
 import LuxSectionHeading from "@/components/luxury/LuxSectionHeading";
 import LuxCtaBand from "@/components/luxury/LuxCtaBand";
 import LuxMeetFounder from "@/components/luxury/LuxMeetFounder";
-import LuxMeetTeam from "@/components/luxury/LuxMeetTeam";
-import LuxWhyTrust from "@/components/luxury/LuxWhyTrust";
 import LuxGoogleReviews from "@/components/luxury/LuxGoogleReviews";
 
-const trustCards = [
-  { icon: Clock, title: "20+ Years Experience", desc: "Two decades guiding travellers across Rajasthan." },
-  { icon: Users, title: "1000+ Happy Guests", desc: "Families and travellers from over 40 countries." },
-  { icon: Route, title: "Private Rajasthan Tours", desc: "Never shared. Always at your pace, your rhythm." },
-  { icon: MapPin, title: "Local Expertise", desc: "Born-and-raised Rajasthani drivers and guides." },
-  { icon: Sparkles, title: "Personalised Itineraries", desc: "Every journey shaped around your taste and curiosities." },
-  { icon: Headphones, title: "24/7 Travel Support", desc: "A real person on WhatsApp, day or night." },
-];
 
 const About = () => (
   <main className="lux-cream-bg">
