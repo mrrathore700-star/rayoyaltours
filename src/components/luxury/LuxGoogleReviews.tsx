@@ -1,6 +1,5 @@
 import { Star, MessageSquare } from "lucide-react";
 import LuxSectionHeading from "./LuxSectionHeading";
-import { LuxAnchorBtn } from "./LuxButton";
 
 const reviews = [
   {

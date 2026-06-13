@@ -51,8 +51,6 @@ const navItems: NavItem[] = [
     label: "About Us",
     children: [
       { label: "Meet Kailash", to: "/about#meet-kailash" },
-      { label: "Meet Our Team", to: "/about#meet-team" },
-      { label: "Why Travelers Trust Us", to: "/about#why-trust-us" },
       { label: "Our Story", to: "/about#our-story" },
     ],
   },
