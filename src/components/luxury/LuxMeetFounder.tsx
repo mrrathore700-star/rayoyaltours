@@ -78,7 +78,6 @@ const LuxMeetFounder = () => (
           </div>
 
           <div className="flex flex-wrap gap-3">
-            <LuxLinkBtn to="/about" variant="gold">Read My Story</LuxLinkBtn>
             <LuxAnchorBtn
               href="https://wa.me/919887688843?text=Namaste%20Kailash!%20I'd%20love%20to%20plan%20my%20Rajasthan%20journey."
               external
