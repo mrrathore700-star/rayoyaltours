@@ -76,9 +76,8 @@ const Footer = () => (
       <div className="mt-16 pt-8 border-t border-[#C9A84C]/20 flex flex-col md:flex-row items-center justify-between gap-4 text-xs tracking-[0.14em] uppercase text-[#FFF8F0]/60">
         <p>© {new Date().getFullYear()} Heritage Jaipur Travels — All Rights Reserved</p>
         <nav className="flex flex-wrap items-center justify-center gap-x-8 gap-y-2">
-          <Link to="/privacy-policy" className="hover:text-[#C9A84C] transition-colors">Privacy</Link>
-          <Link to="/terms-and-conditions" className="hover:text-[#C9A84C] transition-colors">Terms</Link>
-          <Link to="/refund-policy" className="hover:text-[#C9A84C] transition-colors">Refund</Link>
+          <Link to="/privacy-policy" className="hover:text-[#C9A84C] transition-colors">Privacy Policy</Link>
+          <Link to="/terms-and-conditions" className="hover:text-[#C9A84C] transition-colors">Terms & Conditions</Link>
         </nav>
       </div>
     </div>

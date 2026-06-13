@@ -39,11 +39,7 @@ const navItems: NavItem[] = [
     label: "Services",
     children: [
       { label: "Jaipur Sightseeing", to: "/sightseeing" },
-      { label: "Rajasthan Sightseeing", to: "/sightseeing" },
-      { label: "Private Car Rental", to: "/taxi" },
-      { label: "Airport Transfers", to: "/taxi" },
-      { label: "Chauffeur Driven Tours", to: "/taxi" },
-      { label: "Luxury Transport", to: "/taxi" },
+      { label: "Transport & Transfers", to: "/taxi" },
     ],
   },
   { label: "Reviews", to: "/reviews" },
