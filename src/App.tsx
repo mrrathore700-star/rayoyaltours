@@ -29,6 +29,7 @@ import CancellationRefundPolicy from "./pages/CancellationRefundPolicy";
 import NotFound from "./pages/NotFound";
 import Unsubscribe from "./pages/Unsubscribe";
 import Reviews from "./pages/Reviews";
+import Destination from "./pages/Destination";
 
 const queryClient = new QueryClient();
 
