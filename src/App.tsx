@@ -25,7 +25,7 @@ import TourDetail from "./pages/TourDetail";
 import About from "./pages/About";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
 import TermsAndConditions from "./pages/TermsAndConditions";
-import RefundPolicy from "./pages/RefundPolicy";
+import CancellationRefundPolicy from "./pages/CancellationRefundPolicy";
 import NotFound from "./pages/NotFound";
 import Unsubscribe from "./pages/Unsubscribe";
 import Reviews from "./pages/Reviews";
@@ -60,7 +60,8 @@ const App = () => (
               <Route path="/reviews" element={<Reviews />} />
               <Route path="/privacy-policy" element={<PrivacyPolicy />} />
               <Route path="/terms-and-conditions" element={<TermsAndConditions />} />
-              <Route path="/refund-policy" element={<RefundPolicy />} />
+              <Route path="/cancellation-refund-policy" element={<CancellationRefundPolicy />} />
+              <Route path="/refund-policy" element={<Navigate to="/cancellation-refund-policy" replace />} />
               <Route path="/unsubscribe" element={<Unsubscribe />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
