@@ -43,11 +43,17 @@ const Footer = () => (
         <div>
           <h4 className="lux-eyebrow mb-5">Signature Journeys</h4>
           <ul className="space-y-3 text-sm text-[#FFF8F0]/80">
-            <li>Rajasthan Royal Heritage</li>
-            <li>The Golden Triangle</li>
-            <li>Jaisalmer Desert Nights</li>
-            <li>Udaipur Lake Sojourn</li>
-            <li>Ranthambore Wild Trails</li>
+            {[
+              { label: "Rajasthan Royal Heritage", to: "/packages/rajasthan-royal" },
+              { label: "The Golden Triangle", to: "/packages/golden-triangle" },
+              { label: "Jaisalmer Desert Nights", to: "/packages/desert-safari" },
+              { label: "Udaipur Lake Sojourn", to: "/packages/udaipur-lake" },
+              { label: "Ranthambore Wild Trails", to: "/packages/golden-triangle-ranthambore" },
+            ].map((l) => (
+              <li key={l.to}>
+                <Link to={l.to} className="hover:text-[#C9A84C] transition-colors">{l.label}</Link>
+              </li>
+            ))}
           </ul>
         </div>
         <div>
@@ -78,6 +84,7 @@ const Footer = () => (
         <nav className="flex flex-wrap items-center justify-center gap-x-8 gap-y-2">
           <Link to="/privacy-policy" className="hover:text-[#C9A84C] transition-colors">Privacy Policy</Link>
           <Link to="/terms-and-conditions" className="hover:text-[#C9A84C] transition-colors">Terms & Conditions</Link>
+          <Link to="/cancellation-refund-policy" className="hover:text-[#C9A84C] transition-colors">Cancellation & Refund Policy</Link>
         </nav>
       </div>
     </div>
