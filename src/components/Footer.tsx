@@ -15,7 +15,7 @@ const Footer = () => (
         </h3>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12">
         <div>
           <h4 className="lux-eyebrow mb-5">The House</h4>
           <p className="font-serif text-[15px] leading-relaxed text-[#FFF8F0]/80">
@@ -49,6 +49,23 @@ const Footer = () => (
               { label: "Jaisalmer Desert Nights", to: "/packages/desert-safari" },
               { label: "Udaipur Lake Sojourn", to: "/packages/udaipur-lake" },
               { label: "Ranthambore Wild Trails", to: "/packages/golden-triangle-ranthambore" },
+            ].map((l) => (
+              <li key={l.to}>
+                <Link to={l.to} className="hover:text-[#C9A84C] transition-colors">{l.label}</Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div>
+          <h4 className="lux-eyebrow mb-5">Explore Rajasthan</h4>
+          <ul className="space-y-3 text-sm text-[#FFF8F0]/80">
+            {[
+              { label: "Jaipur", to: "/destinations/jaipur" },
+              { label: "Udaipur", to: "/destinations/udaipur" },
+              { label: "Jodhpur", to: "/destinations/jodhpur" },
+              { label: "Jaisalmer", to: "/destinations/jaisalmer" },
+              { label: "Ranthambore", to: "/destinations/ranthambore" },
+              { label: "Pushkar", to: "/destinations/pushkar" },
             ].map((l) => (
               <li key={l.to}>
                 <Link to={l.to} className="hover:text-[#C9A84C] transition-colors">{l.label}</Link>
