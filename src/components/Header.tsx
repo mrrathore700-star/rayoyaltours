@@ -449,14 +449,6 @@ const Header = () => {
               <MessageCircle className="h-4 w-4" />
               WhatsApp Us
             </a>
-            <Link
-              to="/contact"
-              onClick={handleNav("/contact")}
-              className="inline-flex items-center justify-center w-full font-serif text-[13px] tracking-[0.18em] uppercase text-white rounded-full"
-              style={{ background: "linear-gradient(135deg, #D4B765 0%, #C9A84C 50%, #A8862E 100%)", padding: "14px 22px" }}
-            >
-              Plan Your Journey
-            </Link>
           </div>
 
           {navItems.map((item, i) => (
