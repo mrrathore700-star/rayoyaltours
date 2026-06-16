@@ -88,7 +88,7 @@ export const destinations: Destination[] = [
     itinerary: [
       { day: "Day 1", title: "Arrival & Old City", text: "Arrive in Jaipur, check in to your heritage hotel, afternoon walking tour of Hawa Mahal, City Palace and Jantar Mantar, sunset at Nahargarh Fort, royal dinner." },
       { day: "Day 2", title: "Amber Fort & Artisans", text: "Morning at Amber Fort and Panna Meena Stepwell, lunch at 1135 AD, afternoon block-printing workshop in Bagru, evening at Chokhi Dhani cultural village." },
-      { day: "Day 3", title: "Hidden Jaipur", text: "Optional day — visit Galta Ji 'Monkey Temple', Jaigarh Fort, gem and textile ateliers, and a vintage car drive through the Pink City." },
+      { day: "Day 3", title: "Hidden Jaipur", text: "Optional day — visit Galta Ji 'Monkey Temple', Jaigarh Fort, gem and textile workshops, and a vintage car drive through the Pink City." },
     ],
     faqs: [
       { q: "How many days do I need in Jaipur?", a: "Two days cover the highlights; three days allow time for artisan visits, hidden quarters and day trips like Samode or Abhaneri." },
