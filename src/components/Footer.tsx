@@ -11,15 +11,15 @@ const Footer = () => (
           <span className="lux-rule-gold" />
         </div>
         <h3 className="font-display text-3xl md:text-4xl font-semibold tracking-tight">
-          Crafting Royal <span className="text-[#C9A84C]">Rajasthan</span> Journeys
+          Planning Royal <span className="text-[#C9A84C]">Rajasthan</span> Journeys
         </h3>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12">
         <div>
-          <h4 className="lux-eyebrow mb-5">The House</h4>
+          <h4 className="lux-eyebrow mb-5">Our Story</h4>
           <p className="font-serif text-[15px] leading-relaxed text-[#FFF8F0]/80">
-            A boutique Rajasthan travel atelier, designing private journeys for international travelers for over two decades.
+            A family-run Rajasthan travel company planning private journeys for international travelers for over twenty years.
           </p>
         </div>
         <div>
@@ -47,7 +47,7 @@ const Footer = () => (
               { label: "Rajasthan Royal Heritage", to: "/packages/rajasthan-royal" },
               { label: "The Golden Triangle", to: "/packages/golden-triangle" },
               { label: "Jaisalmer Desert Nights", to: "/packages/desert-safari" },
-              { label: "Udaipur Lake Sojourn", to: "/packages/udaipur-lake" },
+              { label: "Udaipur Lake Tour", to: "/packages/udaipur-lake" },
               { label: "Ranthambore Wild Trails", to: "/packages/golden-triangle-ranthambore" },
             ].map((l) => (
               <li key={l.to}>
@@ -74,7 +74,7 @@ const Footer = () => (
           </ul>
         </div>
         <div>
-          <h4 className="lux-eyebrow mb-5">Atelier</h4>
+          <h4 className="lux-eyebrow mb-5">Contact</h4>
           <ul className="space-y-4 text-sm text-[#FFF8F0]/80">
             <li className="flex items-start gap-3">
               <MapPin className="h-4 w-4 mt-0.5 shrink-0 text-[#C9A84C]" />

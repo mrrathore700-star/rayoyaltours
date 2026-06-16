@@ -31,20 +31,20 @@ const Index = () => {
   return (
     <main className="lux-cream-bg">
       <SEO
-        title="Heritage Jaipur Travels | Private Rajasthan Journeys"
-        description="A boutique Rajasthan travel atelier crafting cinematic private journeys — palaces, deserts, wildlife and culture, designed by Jaipur-born specialists for over 20 years."
+        title="Heritage Jaipur Travels | Private Rajasthan Tours"
+        description="A family-run Rajasthan travel company planning private tours — palaces, deserts, wildlife and culture, designed by Jaipur-based specialists for over 20 years."
         path="/"
       />
 
       <LuxHero
         image={heroPalace}
-        eyebrow="A Boutique Rajasthan Atelier"
-        title={<>Royal Rajasthan, <span className="text-[#C9A84C]">Privately</span> Reimagined</>}
-        subtitle="Cinematic, slow, and entirely your own — journeys through palaces, deserts and living culture, crafted by Jaipur locals for over twenty years."
+        eyebrow="Rajasthan Travel Specialists"
+        title={<>Royal Rajasthan, <span className="text-[#C9A84C]">Privately</span> Planned</>}
+        subtitle="Private, unhurried journeys through palaces, deserts and living culture — planned by Jaipur locals for over twenty years."
         height="tall"
         actions={
           <>
-            <LuxLinkBtn to="/contact" variant="gold">Begin Your Journey</LuxLinkBtn>
+            <LuxLinkBtn to="/contact" variant="gold">Plan Your Journey</LuxLinkBtn>
             <LuxAnchorBtn href="https://wa.me/919887688843?text=Hi!%20I%20want%20to%20plan%20my%20Rajasthan%20trip" external variant="outline">Speak To A Specialist</LuxAnchorBtn>
           </>
         }
@@ -57,8 +57,8 @@ const Index = () => {
         <div className="container mx-auto px-6">
           <LuxSectionHeading
             eyebrow="Signature Journeys"
-            title="Handcrafted Itineraries Across Rajasthan"
-            intro="From the marble corridors of Udaipur to the dunes beyond Jaisalmer — each route is shaped around your pace, taste and curiosities."
+            title="Handpicked Itineraries Across Rajasthan"
+            intro="From the marble palaces of Udaipur to the dunes beyond Jaisalmer — each route is shaped around your pace, taste and interests."
           />
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {tours.slice(0, 6).map((tour) => (
@@ -78,7 +78,7 @@ const Index = () => {
         image={culturalDance}
         eyebrow="Beyond the Guidebook"
         title={<>Live the Royal <span className="text-[#C9A84C]">Rajasthani</span> Experience</>}
-        subtitle="Camel rides through golden dunes, candlelit dinners inside ancient forts, mornings with master artisans. The Rajasthan most travelers only read about."
+        subtitle="Camel rides through golden dunes, candlelit dinners inside ancient forts, mornings with master artisans — the Rajasthan most travelers only read about."
         primary={{ label: "Explore Experiences", to: "/experiences" }}
         secondary={{ label: "Speak To A Specialist", href: "https://wa.me/919887688843", external: true }}
       />
@@ -88,9 +88,9 @@ const Index = () => {
       <section className="py-24 md:py-32 lux-cream-bg">
         <div className="container mx-auto px-6">
           <LuxSectionHeading
-            eyebrow="A Glimpse"
+            eyebrow="Gallery"
             title="Moments From The Journey"
-            intro="Quiet portraits of Rajasthan as we know it — warmer, slower, and lit from within."
+            intro="A few favourite scenes from recent guest journeys across Rajasthan."
           />
           <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4">
             {galleryImages.map((img, i) => (
@@ -131,10 +131,10 @@ const Index = () => {
       <LuxCtaBand
         image={heroPalace}
         eyebrow="Begin"
-        title={<>Begin Your <span className="text-[#C9A84C]">Rajasthan</span> Story</>}
-        subtitle="Tell us how you love to travel — we'll quietly craft the rest."
-        primary={{ label: "Plan My Journey", to: "/contact" }}
-        secondary={{ label: "WhatsApp Specialist", href: "https://wa.me/919887688843", external: true }}
+        title={<>Plan Your <span className="text-[#C9A84C]">Rajasthan</span> Journey</>}
+        subtitle="Tell us your travel dates and what you'd like to see — we'll plan the rest."
+        primary={{ label: "Plan Your Journey", to: "/contact" }}
+        secondary={{ label: "WhatsApp A Specialist", href: "https://wa.me/919887688843", external: true }}
       />
 
     </main>

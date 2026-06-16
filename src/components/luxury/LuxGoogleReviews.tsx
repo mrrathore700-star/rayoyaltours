@@ -30,7 +30,7 @@ const GoogleLogo = () => (
 
 const trustMetrics = [
   { icon: Star, value: "4.8", label: "Google Rating" },
-  { icon: MessageSquare, value: "23", label: "Verified Google Reviews" },
+  { icon: MessageSquare, value: "23", label: "Google Reviews" },
 ];
 
 const LuxGoogleReviews = () => (
@@ -58,7 +58,7 @@ const LuxGoogleReviews = () => (
       </div>
 
       <p className="text-center font-serif italic text-sm md:text-base text-[#0F0F0F]/65 max-w-2xl mx-auto mb-12">
-        Verified reviews from travelers who explored Rajasthan with Heritage Jaipur Travels.
+        Honest Google reviews from travellers who explored Rajasthan with Heritage Jaipur Travels.
       </p>
 
       {/* Cards */}
