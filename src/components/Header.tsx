@@ -391,18 +391,6 @@ const Header = () => {
           </nav>
 
           <div className="flex items-center justify-end shrink-0 min-w-0 gap-2">
-            {/* Desktop CTA — single primary action */}
-            <Link
-              to="/contact"
-              onClick={handleNav("/contact")}
-              className="hidden xl:inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-white text-[12px] tracking-[0.16em] uppercase font-serif transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_10px_24px_-8px_rgba(201,168,76,0.7)]"
-              style={{
-                background: "linear-gradient(135deg, #D4B765 0%, #C9A84C 50%, #A8862E 100%)",
-                letterSpacing: "0.18em",
-              }}
-            >
-              Plan Your Journey
-            </Link>
 
             {/* Mobile quick actions */}
             <a
