@@ -17,9 +17,9 @@ const About = () => (
 
     <LuxHero
       image={heroPalace}
-      eyebrow="Our House"
+      eyebrow="Our Story"
       title={<>About <span className="text-[#C9A84C]">Heritage Jaipur Travels</span></>}
-      subtitle="A local Rajasthan travel company built on relationships, trust, and over twenty years of experience."
+      subtitle="A family-run Rajasthan travel company built on trust, local knowledge and over twenty years of experience."
     />
 
     {/* Meet Kailash */}
@@ -63,7 +63,7 @@ const About = () => (
       image={heroPalace}
       eyebrow="Begin"
       title={<>Let's Plan Your <span className="text-[#C9A84C]">Rajasthan</span> Journey</>}
-      subtitle="Tell us your dates and rhythm — Kailash and the team will quietly shape the rest."
+      subtitle="Share your travel dates and interests — Kailash and the team will plan the rest."
       primary={{ label: "Contact Us", to: "/contact" }}
       secondary={{ label: "WhatsApp Us", href: "https://wa.me/919887688843", external: true }}
     />

@@ -38,7 +38,7 @@ const Blog = () => {
     "@type": "Blog",
     name: "Luxury Rajasthan Travel Journal",
     description:
-      "Curated travel stories, palace stays, wildlife journeys and cultural discoveries across Rajasthan — written by Jaipur-based luxury travel specialists.",
+      "Travel stories, palace stays, wildlife journeys and cultural discoveries across Rajasthan — written by Jaipur-based travel specialists.",
     url: `${SITE_URL}/blog`,
     publisher: {
       "@type": "TravelAgency",
@@ -80,7 +80,7 @@ const Blog = () => {
         image={hawaMahal}
         eyebrow="Luxury Rajasthan Travel Journal"
         title={<>Stories, Guides &amp; Experiences From <span className="text-[#C9A84C]">Rajasthan</span></>}
-        subtitle="Luxury travel inspiration, hidden experiences, palace stays, cultural journeys, wildlife adventures and immersive Rajasthan stories for international travellers."
+        subtitle="Travel inspiration, hidden experiences, palace stays, cultural journeys, wildlife adventures and Rajasthan stories for international travellers."
       />
 
       {/* Featured Article */}

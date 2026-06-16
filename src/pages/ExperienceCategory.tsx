@@ -69,7 +69,7 @@ const ExperienceCategory = () => {
       <section className="py-10 md:py-16 container mx-auto px-4">
         <SectionHeading
           title={`All ${category.title}`}
-          subtitle={`${category.experiences.length} curated experiences — handpicked by our local Rajasthan experts`}
+          subtitle={`${category.experiences.length} experiences — handpicked by our local Rajasthan team`}
         />
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-10">

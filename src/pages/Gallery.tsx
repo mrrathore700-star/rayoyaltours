@@ -78,7 +78,7 @@ const Gallery = () => (
       image={heroPalace}
       eyebrow="Begin"
       title={<>Live The <span className="text-[#C9A84C]">Frame</span></>}
-      subtitle="Step into the moments — privately curated by our Rajasthan specialists."
+      subtitle="Scenes from recent guest journeys — handpicked by our Rajasthan team."
       primary={{ label: "Plan My Journey", to: "/contact" }}
       secondary={{ label: "WhatsApp Specialist", href: "https://wa.me/919887688843", external: true }}
     />

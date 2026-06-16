@@ -16,7 +16,7 @@ const Reviews = () => (
       image={heroPalace}
       eyebrow="Loved By Travellers"
       title={<>Words From Our <span className="text-[#C9A84C]">Guests</span></>}
-      subtitle="Twenty years of journeys, one honest review at a time."
+      subtitle="Honest Google reviews from travellers who explored Rajasthan with us."
       height="regular"
     />
 
@@ -26,8 +26,8 @@ const Reviews = () => (
       image={heroPalace}
       eyebrow="Begin"
       title={<>Become Our Next <span className="text-[#C9A84C]">Happy</span> Traveller</>}
-      subtitle="Tell us how you love to travel — we'll quietly craft the rest."
-      primary={{ label: "Plan My Journey", to: "/contact" }}
+      subtitle="Share your travel dates and interests — we'll plan the rest."
+      primary={{ label: "Plan Your Journey", to: "/contact" }}
       secondary={{ label: "WhatsApp Kailash", href: "https://wa.me/919887688843", external: true }}
     />
   </main>

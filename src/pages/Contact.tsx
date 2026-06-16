@@ -77,7 +77,7 @@ const Contact = () => {
     <main className="lux-cream-bg">
       <SEO
         title="Contact Heritage Jaipur Travels | Plan Your Private Rajasthan Journey"
-        description="Speak with a Rajasthan travel specialist at Heritage Jaipur Travels — private journeys, transfers and curated experiences. Call +91 98876 88843 or WhatsApp now."
+        description="Speak with a Rajasthan travel specialist at Heritage Jaipur Travels — private journeys, transfers and handpicked experiences. Call +91 98876 88843 or WhatsApp now."
         path="/contact"
       />
 
@@ -85,7 +85,7 @@ const Contact = () => {
         image={heroPalace}
         eyebrow="Begin"
         title={<>Speak With A <span className="text-[#C9A84C]">Rajasthan</span> Specialist</>}
-        subtitle="Tell us how you love to travel — we'll quietly craft the rest."
+        subtitle="Share your travel dates and what you'd like to see — we'll plan the rest."
       />
 
       <section className="container mx-auto px-6 py-24 md:py-32">

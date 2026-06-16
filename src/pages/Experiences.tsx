@@ -78,8 +78,8 @@ const SECTIONS: Array<{ id: string; title: string; intro: string; catIds: string
 const trustPillars = [
   { title: "Local Experts", text: "Born and raised in Rajasthan." },
   { title: "Private Experiences", text: "Designed exclusively around you." },
-  { title: "Handcrafted Journeys", text: "No templates. Every itinerary bespoke." },
-  { title: "Trusted Specialists", text: "20+ years curating for global travellers." },
+  { title: "Custom Itineraries", text: "No templates — every journey is planned for you." },
+  { title: "Trusted Specialists", text: "20+ years planning trips for international travellers." },
 ];
 
 const testimonials = [
@@ -246,7 +246,7 @@ const Experiences = () => {
     "@type": "TouristAttraction",
     name: "Experience Rajasthan Beyond The Guidebooks",
     description:
-      "A curated portfolio of luxury Rajasthan experiences — royal palace stays, desert nights, leopard safaris, spiritual rituals, artisan workshops and private cultural moments designed for international travellers.",
+      "A handpicked collection of luxury Rajasthan experiences — royal palace stays, desert nights, leopard safaris, spiritual rituals, artisan workshops and private cultural moments for international travellers.",
     image: heroPalace,
     provider: {
       "@type": "TravelAgency",
@@ -261,7 +261,7 @@ const Experiences = () => {
     <main style={{ background: "#FFF8F0" }}>
       <SEO
         title="Luxury Rajasthan Experiences | Heritage Jaipur Travels"
-        description="A curated portfolio of luxury Rajasthan experiences — royal palace stays, desert nights, leopard safaris, spiritual rituals, artisan workshops and private cultural moments for international travellers."
+        description="A handpicked collection of luxury Rajasthan experiences — royal palace stays, desert nights, leopard safaris, spiritual rituals, artisan workshops and private cultural moments for international travellers."
         path="/experiences"
         image={heroPalace}
         jsonLd={jsonLd}
@@ -311,7 +311,7 @@ const Experiences = () => {
         <div className="relative z-10 h-full container mx-auto px-5 md:px-10 flex items-center">
           <div className="max-w-2xl text-center md:text-left lux-fade-up mx-auto md:mx-0">
             <span className="lux-glass inline-block px-5 py-2 rounded-full text-[11px] md:text-[12px] tracking-[0.3em] uppercase lux-cream mb-8">
-              {totalCount} Curated Rajasthan Experiences
+              {totalCount} Rajasthan Experiences
             </span>
             <h1
               className="font-display font-medium leading-[1.05] mb-7 text-[40px] sm:text-5xl md:text-6xl lg:text-7xl"
@@ -333,7 +333,7 @@ const Experiences = () => {
             >
               From royal palaces and desert camps to hidden villages, leopard safaris,
               spiritual rituals, and private cultural moments — discover Rajasthan through
-              immersive experiences designed for international travellers.
+              private experiences planned for international travellers.
             </p>
             <div className="flex flex-wrap gap-4 justify-center md:justify-start mb-10">
               <a
@@ -346,7 +346,7 @@ const Experiences = () => {
                 to="/contact"
                 className="lux-btn-outline px-7 py-3.5 rounded-full font-medium text-sm tracking-[0.15em] uppercase inline-flex items-center gap-2"
               >
-                Plan My Rajasthan Journey
+                Plan Your Journey
               </Link>
             </div>
             <ul className="flex flex-wrap gap-x-6 gap-y-2 justify-center md:justify-start text-[11px] md:text-[12px] tracking-[0.25em] uppercase lux-cream"

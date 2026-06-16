@@ -47,7 +47,7 @@ export const destinations: Destination[] = [
     tagline: "The Pink City",
     metaTitle: "Jaipur Travel Guide — Luxury Tours, Palaces & Heritage | Heritage Jaipur Travels",
     metaDescription:
-      "Plan a luxury Jaipur journey with our complete travel guide — top attractions, royal palaces, heritage stays, best time to visit and curated itineraries for international travelers.",
+      "Plan a luxury Jaipur journey with our complete travel guide — top attractions, royal palaces, heritage stays, best time to visit and sample itineraries for international travelers.",
     heroImage: hawaMahal,
     heroEyebrow: "Destination Guide",
     heroTitle: "Jaipur — The Pink City of Royal Rajasthan",
@@ -88,7 +88,7 @@ export const destinations: Destination[] = [
     itinerary: [
       { day: "Day 1", title: "Arrival & Old City", text: "Arrive in Jaipur, check in to your heritage hotel, afternoon walking tour of Hawa Mahal, City Palace and Jantar Mantar, sunset at Nahargarh Fort, royal dinner." },
       { day: "Day 2", title: "Amber Fort & Artisans", text: "Morning at Amber Fort and Panna Meena Stepwell, lunch at 1135 AD, afternoon block-printing workshop in Bagru, evening at Chokhi Dhani cultural village." },
-      { day: "Day 3", title: "Hidden Jaipur", text: "Optional day — visit Galta Ji 'Monkey Temple', Jaigarh Fort, gem and textile ateliers, and a vintage car drive through the Pink City." },
+      { day: "Day 3", title: "Hidden Jaipur", text: "Optional day — visit Galta Ji 'Monkey Temple', Jaigarh Fort, gem and textile workshops, and a vintage car drive through the Pink City." },
     ],
     faqs: [
       { q: "How many days do I need in Jaipur?", a: "Two days cover the highlights; three days allow time for artisan visits, hidden quarters and day trips like Samode or Abhaneri." },
@@ -107,7 +107,7 @@ export const destinations: Destination[] = [
     tagline: "City of Lakes",
     metaTitle: "Udaipur Travel Guide — Lakes, Palaces & Luxury Tours | Heritage Jaipur Travels",
     metaDescription:
-      "A complete luxury travel guide to Udaipur — top attractions, lake palaces, sunset boat rides, best time to visit and curated itineraries for international travellers.",
+      "A complete luxury travel guide to Udaipur — top attractions, lake palaces, sunset boat rides, best time to visit and sample itineraries for international travellers.",
     heroImage: udaipurLake,
     heroEyebrow: "Destination Guide",
     heroTitle: "Udaipur — The Romantic City of Lakes",
@@ -167,7 +167,7 @@ export const destinations: Destination[] = [
     tagline: "The Blue City",
     metaTitle: "Jodhpur Travel Guide — Mehrangarh Fort & Blue City Tours | Heritage Jaipur Travels",
     metaDescription:
-      "Discover Jodhpur with our luxury travel guide — Mehrangarh Fort, the indigo old town, palace stays, best time to visit and curated itineraries for international travellers.",
+      "Discover Jodhpur with our luxury travel guide — Mehrangarh Fort, the indigo old town, palace stays, best time to visit and sample itineraries for international travellers.",
     heroImage: jodhpurFort,
     heroEyebrow: "Destination Guide",
     heroTitle: "Jodhpur — The Magnificent Blue City",
@@ -286,7 +286,7 @@ export const destinations: Destination[] = [
     tagline: "Wild Rajasthan",
     metaTitle: "Ranthambore Travel Guide — Luxury Tiger Safaris | Heritage Jaipur Travels",
     metaDescription:
-      "A complete luxury travel guide to Ranthambore National Park — tiger safaris, luxury jungle lodges, best time to visit and curated itineraries for international travellers.",
+      "A complete luxury travel guide to Ranthambore National Park — tiger safaris, luxury jungle lodges, best time to visit and sample itineraries for international travellers.",
     heroImage: ranthamboreTiger,
     heroEyebrow: "Destination Guide",
     heroTitle: "Ranthambore — Where Tigers Roam Royal Ruins",
@@ -346,7 +346,7 @@ export const destinations: Destination[] = [
     tagline: "Sacred Soul",
     metaTitle: "Pushkar Travel Guide — Sacred Lake, Camel Fair & Tours | Heritage Jaipur Travels",
     metaDescription:
-      "Discover Pushkar with our luxury travel guide — sacred ghats, Brahma temple, the famous camel fair, best time to visit and curated itineraries for international travellers.",
+      "Discover Pushkar with our luxury travel guide — sacred ghats, Brahma temple, the famous camel fair, best time to visit and sample itineraries for international travellers.",
     heroImage: pushkarLake,
     heroEyebrow: "Destination Guide",
     heroTitle: "Pushkar — The Sacred Soul of Rajasthan",

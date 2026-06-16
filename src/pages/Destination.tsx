@@ -149,7 +149,7 @@ const Destination = () => {
           <LuxSectionHeading
             eyebrow="Best Experiences"
             title={`Signature Experiences in ${dest.name}`}
-            intro="Hand-picked private experiences curated by our luxury travel specialists."
+            intro="Private experiences handpicked by our local Rajasthan team."
           />
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 max-w-5xl mx-auto">
             {dest.bestExperiences.map((e) => (
@@ -327,7 +327,7 @@ const Destination = () => {
         <div className="container mx-auto px-6">
           <LuxSectionHeading
             eyebrow="Related Experiences"
-            title={`Curated Experiences Across Rajasthan`}
+            title={`Signature Experiences Across Rajasthan`}
             intro={`Pair your time in ${dest.name} with our most-loved private experiences — heritage, culture, wildlife, desert, food and wellness.`}
           />
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 max-w-5xl mx-auto">
