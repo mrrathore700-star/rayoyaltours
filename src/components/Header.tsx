@@ -391,18 +391,7 @@ const Header = () => {
           </nav>
 
           <div className="flex items-center justify-end shrink-0 min-w-0 gap-2">
-            {/* Desktop CTAs */}
-            <a
-              href={WHATSAPP_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="WhatsApp Us"
-              className="hidden xl:inline-flex items-center gap-2 px-4 py-2.5 rounded-full text-white text-[12px] tracking-[0.14em] uppercase font-serif transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_8px_20px_-8px_rgba(34,139,46,0.6)]"
-              style={{ background: "linear-gradient(135deg, #1FA855 0%, #128C3E 100%)" }}
-            >
-              <MessageCircle className="h-4 w-4" />
-              WhatsApp
-            </a>
+            {/* Desktop CTA — single primary action */}
             <Link
               to="/contact"
               onClick={handleNav("/contact")}
