@@ -12,6 +12,18 @@ type NavItem = {
 const navItems: NavItem[] = [
   { label: "Home", to: "/" },
   {
+    label: "Destinations",
+    children: [
+      { label: "Jaipur", to: "/destinations/jaipur" },
+      { label: "Udaipur", to: "/destinations/udaipur" },
+      { label: "Jodhpur", to: "/destinations/jodhpur" },
+      { label: "Jaisalmer", to: "/destinations/jaisalmer" },
+      { label: "Ranthambore", to: "/destinations/ranthambore" },
+      { label: "Pushkar", to: "/destinations/pushkar" },
+      { label: "View All Destinations →", to: "/destinations/jaipur" },
+    ],
+  },
+  {
     label: "Journeys",
     children: [
       { label: "Rajasthan Royal Heritage Tour", to: "/packages/rajasthan-royal" },
@@ -35,21 +47,9 @@ const navItems: NavItem[] = [
       { label: "View All Experiences →", to: "/experiences" },
     ],
   },
-  {
-    label: "Services",
-    children: [
-      { label: "Jaipur Sightseeing", to: "/sightseeing" },
-      { label: "Transport & Transfers", to: "/taxi" },
-    ],
-  },
+  { label: "Transport & Transfers", to: "/taxi" },
   { label: "Reviews", to: "/reviews" },
-  {
-    label: "About Us",
-    children: [
-      { label: "Meet Kailash", to: "/about#meet-kailash" },
-      { label: "Our Story", to: "/about#our-story" },
-    ],
-  },
+  { label: "About Us", to: "/about" },
   { label: "Contact Us", to: "/contact" },
 ];
 
