@@ -47,7 +47,7 @@ const navItems: NavItem[] = [
       { label: "View All Experiences →", to: "/experiences" },
     ],
   },
-  { label: "Transport & Transfers", to: "/taxi" },
+  { label: "Transport", to: "/taxi" },
   { label: "Reviews", to: "/reviews" },
   { label: "About Us", to: "/about" },
   { label: "Contact Us", to: "/contact" },
