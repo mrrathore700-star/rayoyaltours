@@ -38,7 +38,7 @@ const Blog = () => {
     "@type": "Blog",
     name: "Luxury Rajasthan Travel Journal",
     description:
-      "Curated travel stories, palace stays, wildlife journeys and cultural discoveries across Rajasthan — written by Jaipur-based luxury travel specialists.",
+      "Travel stories, palace stays, wildlife journeys and cultural discoveries across Rajasthan — written by Jaipur-based travel specialists.",
     url: `${SITE_URL}/blog`,
     publisher: {
       "@type": "TravelAgency",
