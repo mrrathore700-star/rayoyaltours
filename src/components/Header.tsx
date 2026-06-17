@@ -179,6 +179,7 @@ const isItemActive = (item: NavItem, pathname: string) => {
 };
 
 const DesktopDropdown = ({ item, pathname }: { item: NavItem; pathname: string }) => {
+  const { t } = useTranslation();
   const [open, setOpen] = useState(false);
   const closeTimer = useRef<number | null>(null);
 
@@ -207,12 +208,13 @@ const DesktopDropdown = ({ item, pathname }: { item: NavItem; pathname: string }
         onBlur={handleLeave}
         className={`lux-menu-link whitespace-nowrap inline-flex items-center gap-1 ${active ? "is-active" : ""}`}
       >
-        {item.label}
+        {t(item.labelKey)}
         <ChevronDown
           className={`h-3.5 w-3.5 transition-transform duration-300 ${open ? "rotate-180" : ""}`}
           strokeWidth={2}
         />
       </button>
+
 
       <div
         className={`absolute left-1/2 -translate-x-1/2 top-full pt-4 z-50 ${
