@@ -1,18 +1,20 @@
 import { useEffect, useRef, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Menu, X, Phone, Mail, ChevronDown, Star, Award, Globe2, MessageCircle } from "lucide-react";
+import { useTranslation } from "react-i18next";
+import LanguageSwitcher from "@/components/LanguageSwitcher";
 const icon = "/heritage-jaipur-travels-icon.png";
 
 type NavItem = {
-  label: string;
+  labelKey: string;
   to?: string;
   children?: { label: string; to: string }[];
 };
 
 const navItems: NavItem[] = [
-  { label: "Home", to: "/" },
+  { labelKey: "nav.home", to: "/" },
   {
-    label: "Destinations",
+    labelKey: "nav.destinations",
     children: [
       { label: "Jaipur", to: "/destinations/jaipur" },
       { label: "Udaipur", to: "/destinations/udaipur" },
@@ -24,7 +26,7 @@ const navItems: NavItem[] = [
     ],
   },
   {
-    label: "Journeys",
+    labelKey: "nav.journeys",
     children: [
       { label: "Rajasthan Royal Heritage Tour", to: "/packages/rajasthan-royal" },
       { label: "Golden Triangle Tour", to: "/packages/golden-triangle" },
@@ -36,7 +38,7 @@ const navItems: NavItem[] = [
     ],
   },
   {
-    label: "Experiences",
+    labelKey: "nav.experiences",
     children: [
       { label: "Royal & Heritage Experiences", to: "/experiences/category/royal" },
       { label: "Desert & Adventure Experiences", to: "/experiences/category/desert" },
@@ -51,10 +53,10 @@ const navItems: NavItem[] = [
       { label: "View All Experiences →", to: "/experiences" },
     ],
   },
-  { label: "Transport", to: "/taxi" },
-  { label: "Reviews", to: "/reviews" },
-  { label: "About Us", to: "/about" },
-  { label: "Contact Us", to: "/contact" },
+  { labelKey: "nav.transport", to: "/taxi" },
+  { labelKey: "nav.reviews", to: "/reviews" },
+  { labelKey: "nav.about", to: "/about" },
+  { labelKey: "nav.contact", to: "/contact" },
 ];
 
 const WHATSAPP_URL = "https://wa.me/919887688843?text=Hi!%20I%20want%20to%20plan%20my%20Rajasthan%20trip";
