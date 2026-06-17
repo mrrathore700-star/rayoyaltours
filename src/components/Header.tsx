@@ -274,6 +274,7 @@ const MobileNavItem = ({
   index: number;
   open: boolean;
 }) => {
+  const { t } = useTranslation();
   const [expanded, setExpanded] = useState(false);
   const active = isItemActive(item, pathname);
   const style: React.CSSProperties = {
@@ -289,7 +290,7 @@ const MobileNavItem = ({
         className={`lux-menu-link py-5 border-b border-[#C9A84C]/15 ${active ? "is-active" : ""}`}
         style={style}
       >
-        {item.label}
+        {t(item.labelKey)}
       </Link>
     );
   }
@@ -302,12 +303,13 @@ const MobileNavItem = ({
         onClick={() => setExpanded((v) => !v)}
         className={`lux-menu-link w-full py-5 flex items-center justify-between ${active ? "is-active" : ""}`}
       >
-        <span>{item.label}</span>
+        <span>{t(item.labelKey)}</span>
         <ChevronDown
           className={`h-4 w-4 transition-transform duration-300 ${expanded ? "rotate-180" : ""}`}
           strokeWidth={2}
         />
       </button>
+
       <div
         className={`grid transition-all duration-400 ease-out ${
           expanded ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"
