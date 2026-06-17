@@ -336,6 +336,7 @@ const MobileNavItem = ({
 };
 
 const Header = () => {
+  const { t } = useTranslation();
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
@@ -385,19 +386,20 @@ const Header = () => {
           >
             {navItems.map((item) =>
               item.children ? (
-                <DesktopDropdown key={item.label} item={item} pathname={location.pathname} />
+                <DesktopDropdown key={item.labelKey} item={item} pathname={location.pathname} />
               ) : (
                 <Link
-                  key={item.label}
+                  key={item.labelKey}
                   to={item.to!}
                   onClick={handleNav(item.to!)}
                   aria-current={location.pathname === item.to ? "page" : undefined}
                   className={`lux-menu-link whitespace-nowrap ${location.pathname === item.to ? "is-active" : ""}`}
                 >
-                  {item.label}
+                  {t(item.labelKey)}
                 </Link>
               ),
             )}
+            <LanguageSwitcher />
           </nav>
 
           <div className="flex items-center justify-end shrink-0 min-w-0 gap-2">
@@ -457,13 +459,13 @@ const Header = () => {
               style={{ background: "linear-gradient(135deg, #1FA855 0%, #128C3E 100%)", padding: "14px 22px" }}
             >
               <MessageCircle className="h-4 w-4" />
-              WhatsApp Us
+              {t("common.whatsapp")}
             </a>
           </div>
 
           {navItems.map((item, i) => (
             <MobileNavItem
-              key={item.label}
+              key={item.labelKey}
               item={item}
               pathname={location.pathname}
               onNavigate={handleNav}
@@ -471,6 +473,8 @@ const Header = () => {
               open={open}
             />
           ))}
+
+          <LanguageSwitcher variant="mobile" />
 
           <div className="mt-8 flex flex-col gap-4 items-center">
             <a
