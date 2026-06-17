@@ -1,0 +1,49 @@
+{
+  "nav": {
+    "home": "Startseite",
+    "destinations": "Reiseziele",
+    "journeys": "Reisen",
+    "experiences": "Erlebnisse",
+    "transport": "Transport",
+    "reviews": "Bewertungen",
+    "about": "Über Uns",
+    "contact": "Kontakt",
+    "language": "Sprache"
+  },
+  "footer": {
+    "tagline": "Königliche Rajasthan-Reisen",
+    "story": "Unsere Geschichte",
+    "storyText": "Ein familiengeführtes Reiseunternehmen in Rajasthan, das seit über zwanzig Jahren private Reisen für internationale Reisende plant.",
+    "explore": "Entdecken",
+    "signatureJourneys": "Signature-Reisen",
+    "exploreRajasthan": "Rajasthan Entdecken",
+    "contact": "Kontakt",
+    "rights": "Alle Rechte Vorbehalten",
+    "privacy": "Datenschutz",
+    "terms": "AGB",
+    "refund": "Stornierungs- und Rückerstattungsrichtlinie"
+  },
+  "contact": {
+    "fullName": "Vollständiger Name",
+    "email": "E-Mail-Adresse",
+    "phone": "Telefon / WhatsApp",
+    "phonePlaceholder": "Ländercode wählen + WhatsApp-Nummer eingeben",
+    "message": "Ihre Reisepläne",
+    "messagePlaceholder": "Erzählen Sie uns von Ihrer idealen Rajasthan-Reise...",
+    "send": "Anfrage Senden",
+    "sending": "Wird gesendet...",
+    "sent": "Gesendet — Weitere senden",
+    "sendTitle": "Anfrage Senden",
+    "sendSubtitle": "Beginnen Sie Ihre private Rajasthan-Reise",
+    "thankYou": "Vielen Dank. Unser Rajasthan-Spezialist wird Sie in Kürze kontaktieren.",
+    "errorName": "Bitte geben Sie Ihren Namen ein",
+    "errorEmail": "Bitte geben Sie eine gültige E-Mail-Adresse ein",
+    "errorPhone": "Bitte geben Sie eine gültige Telefonnummer ein",
+    "errorMessage": "Bitte teilen Sie uns einige Worte zu Ihrer Reise mit",
+    "errorSend": "Anfrage kann derzeit nicht gesendet werden. Bitte später erneut versuchen."
+  },
+  "common": {
+    "whatsapp": "WhatsApp",
+    "callNow": "Rufen Sie An"
+  }
+}

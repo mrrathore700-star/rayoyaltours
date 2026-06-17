@@ -1,0 +1,49 @@
+{
+  "nav": {
+    "home": "Home",
+    "destinations": "Destinations",
+    "journeys": "Journeys",
+    "experiences": "Experiences",
+    "transport": "Transport",
+    "reviews": "Reviews",
+    "about": "About Us",
+    "contact": "Contact Us",
+    "language": "Language"
+  },
+  "footer": {
+    "tagline": "Planning Royal Rajasthan Journeys",
+    "story": "Our Story",
+    "storyText": "A family-run Rajasthan travel company planning private journeys for international travelers for over twenty years.",
+    "explore": "Explore",
+    "signatureJourneys": "Signature Journeys",
+    "exploreRajasthan": "Explore Rajasthan",
+    "contact": "Contact",
+    "rights": "All Rights Reserved",
+    "privacy": "Privacy Policy",
+    "terms": "Terms & Conditions",
+    "refund": "Cancellation & Refund Policy"
+  },
+  "contact": {
+    "fullName": "Full Name",
+    "email": "Email Address",
+    "phone": "Phone / WhatsApp",
+    "phonePlaceholder": "Select country code + enter WhatsApp number",
+    "message": "Your Travel Plans",
+    "messagePlaceholder": "Tell us about your ideal Rajasthan journey...",
+    "send": "Send Enquiry",
+    "sending": "Sending Enquiry...",
+    "sent": "Sent — Send Another",
+    "sendTitle": "Send an Enquiry",
+    "sendSubtitle": "Begin your private Rajasthan journey",
+    "thankYou": "Thank you. Our Rajasthan travel specialist will contact you shortly.",
+    "errorName": "Please enter your name",
+    "errorEmail": "Please enter a valid email address",
+    "errorPhone": "Please enter a valid phone number",
+    "errorMessage": "Please share a few words about your trip",
+    "errorSend": "Unable to send enquiry right now. Please try again later."
+  },
+  "common": {
+    "whatsapp": "WhatsApp Us",
+    "callNow": "Call Now"
+  }
+}

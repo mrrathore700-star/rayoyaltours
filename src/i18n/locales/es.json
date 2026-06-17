@@ -1,0 +1,49 @@
+{
+  "nav": {
+    "home": "Inicio",
+    "destinations": "Destinos",
+    "journeys": "Viajes",
+    "experiences": "Experiencias",
+    "transport": "Transporte",
+    "reviews": "Opiniones",
+    "about": "Nosotros",
+    "contact": "Contacto",
+    "language": "Idioma"
+  },
+  "footer": {
+    "tagline": "Viajes Reales por Rajastán",
+    "story": "Nuestra Historia",
+    "storyText": "Una agencia de viajes familiar en Rajastán que planifica viajes privados para viajeros internacionales desde hace más de veinte años.",
+    "explore": "Explorar",
+    "signatureJourneys": "Viajes Exclusivos",
+    "exploreRajasthan": "Explorar Rajastán",
+    "contact": "Contacto",
+    "rights": "Todos los Derechos Reservados",
+    "privacy": "Política de Privacidad",
+    "terms": "Términos y Condiciones",
+    "refund": "Política de Cancelación y Reembolso"
+  },
+  "contact": {
+    "fullName": "Nombre Completo",
+    "email": "Correo Electrónico",
+    "phone": "Teléfono / WhatsApp",
+    "phonePlaceholder": "Seleccione código de país + ingrese su número de WhatsApp",
+    "message": "Sus Planes de Viaje",
+    "messagePlaceholder": "Cuéntenos sobre su viaje ideal por Rajastán...",
+    "send": "Enviar Solicitud",
+    "sending": "Enviando...",
+    "sent": "Enviado — Enviar otro",
+    "sendTitle": "Enviar una Solicitud",
+    "sendSubtitle": "Comience su viaje privado por Rajastán",
+    "thankYou": "Gracias. Nuestro especialista en Rajastán se pondrá en contacto en breve.",
+    "errorName": "Por favor ingrese su nombre",
+    "errorEmail": "Por favor ingrese un correo válido",
+    "errorPhone": "Por favor ingrese un número de teléfono válido",
+    "errorMessage": "Comparta algunas palabras sobre su viaje",
+    "errorSend": "No se puede enviar la solicitud ahora. Intente más tarde."
+  },
+  "common": {
+    "whatsapp": "WhatsApp",
+    "callNow": "Llámenos"
+  }
+}
