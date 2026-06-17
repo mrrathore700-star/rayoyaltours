@@ -1,0 +1,49 @@
+{
+  "nav": {
+    "home": "Home",
+    "destinations": "Destinazioni",
+    "journeys": "Viaggi",
+    "experiences": "Esperienze",
+    "transport": "Trasporti",
+    "reviews": "Recensioni",
+    "about": "Chi Siamo",
+    "contact": "Contatti",
+    "language": "Lingua"
+  },
+  "footer": {
+    "tagline": "Viaggi Reali nel Rajasthan",
+    "story": "La Nostra Storia",
+    "storyText": "Un'agenzia di viaggi a conduzione familiare nel Rajasthan che organizza viaggi privati per viaggiatori internazionali da oltre vent'anni.",
+    "explore": "Esplora",
+    "signatureJourneys": "Viaggi Esclusivi",
+    "exploreRajasthan": "Esplora il Rajasthan",
+    "contact": "Contatti",
+    "rights": "Tutti i Diritti Riservati",
+    "privacy": "Informativa sulla Privacy",
+    "terms": "Termini e Condizioni",
+    "refund": "Politica di Cancellazione e Rimborso"
+  },
+  "contact": {
+    "fullName": "Nome Completo",
+    "email": "Indirizzo Email",
+    "phone": "Telefono / WhatsApp",
+    "phonePlaceholder": "Seleziona prefisso + inserisci il numero WhatsApp",
+    "message": "I Tuoi Piani di Viaggio",
+    "messagePlaceholder": "Raccontaci del tuo viaggio ideale in Rajasthan...",
+    "send": "Invia Richiesta",
+    "sending": "Invio in corso...",
+    "sent": "Inviato — Invia un altro",
+    "sendTitle": "Invia una Richiesta",
+    "sendSubtitle": "Inizia il tuo viaggio privato in Rajasthan",
+    "thankYou": "Grazie. Il nostro specialista del Rajasthan ti contatterà a breve.",
+    "errorName": "Inserisci il tuo nome",
+    "errorEmail": "Inserisci un indirizzo email valido",
+    "errorPhone": "Inserisci un numero di telefono valido",
+    "errorMessage": "Condividi qualche parola sul tuo viaggio",
+    "errorSend": "Impossibile inviare la richiesta ora. Riprova più tardi."
+  },
+  "common": {
+    "whatsapp": "WhatsApp",
+    "callNow": "Chiamaci"
+  }
+}

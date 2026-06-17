@@ -1,7 +1,10 @@
 import { Link } from "react-router-dom";
 import { MapPin, Phone, Mail, Instagram } from "lucide-react";
+import { useTranslation } from "react-i18next";
 
-const Footer = () => (
+const Footer = () => {
+  const { t } = useTranslation();
+  return (
   <footer className="lux-footer-bg text-[#FFF8F0]">
     <div className="container mx-auto px-6 md:px-10 py-20 md:py-24">
       <div className="text-center mb-14">
@@ -11,19 +14,19 @@ const Footer = () => (
           <span className="lux-rule-gold" />
         </div>
         <h3 className="font-display text-3xl md:text-4xl font-semibold tracking-tight">
-          Planning Royal <span className="text-[#C9A84C]">Rajasthan</span> Journeys
+          {t("footer.tagline")}
         </h3>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12">
         <div>
-          <h4 className="lux-eyebrow mb-5">Our Story</h4>
+          <h4 className="lux-eyebrow mb-5">{t("footer.story")}</h4>
           <p className="font-serif text-[15px] leading-relaxed text-[#FFF8F0]/80">
-            A family-run Rajasthan travel company planning private journeys for international travelers for over twenty years.
+            {t("footer.storyText")}
           </p>
         </div>
         <div>
-          <h4 className="lux-eyebrow mb-5">Explore</h4>
+          <h4 className="lux-eyebrow mb-5">{t("footer.explore")}</h4>
           <ul className="space-y-3 text-sm text-[#FFF8F0]/80">
             {[
               { label: "About Us", to: "/about" },
@@ -41,7 +44,7 @@ const Footer = () => (
           </ul>
         </div>
         <div>
-          <h4 className="lux-eyebrow mb-5">Signature Journeys</h4>
+          <h4 className="lux-eyebrow mb-5">{t("footer.signatureJourneys")}</h4>
           <ul className="space-y-3 text-sm text-[#FFF8F0]/80">
             {[
               { label: "Rajasthan Royal Heritage", to: "/packages/rajasthan-royal" },
@@ -57,7 +60,7 @@ const Footer = () => (
           </ul>
         </div>
         <div>
-          <h4 className="lux-eyebrow mb-5">Explore Rajasthan</h4>
+          <h4 className="lux-eyebrow mb-5">{t("footer.exploreRajasthan")}</h4>
           <ul className="space-y-3 text-sm text-[#FFF8F0]/80">
             {[
               { label: "Jaipur", to: "/destinations/jaipur" },
@@ -74,7 +77,7 @@ const Footer = () => (
           </ul>
         </div>
         <div>
-          <h4 className="lux-eyebrow mb-5">Contact</h4>
+          <h4 className="lux-eyebrow mb-5">{t("footer.contact")}</h4>
           <ul className="space-y-4 text-sm text-[#FFF8F0]/80">
             <li className="flex items-start gap-3">
               <MapPin className="h-4 w-4 mt-0.5 shrink-0 text-[#C9A84C]" />
@@ -97,15 +100,16 @@ const Footer = () => (
       </div>
 
       <div className="mt-16 pt-8 border-t border-[#C9A84C]/20 flex flex-col md:flex-row items-center justify-between gap-4 text-xs tracking-[0.14em] uppercase text-[#FFF8F0]/60">
-        <p>© {new Date().getFullYear()} Heritage Jaipur Travels — All Rights Reserved</p>
+        <p>© {new Date().getFullYear()} Heritage Jaipur Travels — {t("footer.rights")}</p>
         <nav className="flex flex-wrap items-center justify-center gap-x-8 gap-y-2">
-          <Link to="/privacy-policy" className="hover:text-[#C9A84C] transition-colors">Privacy Policy</Link>
-          <Link to="/terms-and-conditions" className="hover:text-[#C9A84C] transition-colors">Terms & Conditions</Link>
-          <Link to="/cancellation-refund-policy" className="hover:text-[#C9A84C] transition-colors">Cancellation & Refund Policy</Link>
+          <Link to="/privacy-policy" className="hover:text-[#C9A84C] transition-colors">{t("footer.privacy")}</Link>
+          <Link to="/terms-and-conditions" className="hover:text-[#C9A84C] transition-colors">{t("footer.terms")}</Link>
+          <Link to="/cancellation-refund-policy" className="hover:text-[#C9A84C] transition-colors">{t("footer.refund")}</Link>
         </nav>
       </div>
     </div>
   </footer>
-);
+  );
+};
 
 export default Footer;

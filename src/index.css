@@ -476,4 +476,40 @@
     border-radius: 2px;
   }
 
+  /* ===== Fluid typography for headings (universal scaling across all screen sizes) ===== */
+  .lux-h1 { font-size: clamp(2rem, 1.2rem + 3.2vw, 4.25rem); line-height: 1.08; }
+  .lux-h2 { font-size: clamp(1.75rem, 1rem + 2.4vw, 3.25rem); line-height: 1.12; }
+  .lux-h3 { font-size: clamp(1.375rem, 0.95rem + 1.5vw, 2.25rem); line-height: 1.2; }
+  .lux-body-lg { font-size: clamp(1rem, 0.9rem + 0.35vw, 1.175rem); line-height: 1.6; }
+
+  /* ===== Shared luxury input style (used by Contact form) ===== */
+  .hjt-input {
+    border: 1px solid rgba(201,168,76,0.4);
+    box-shadow: inset 0 1px 2px rgba(0,0,0,0.03);
+  }
+  .hjt-input:focus {
+    border-color: #C9A84C;
+    box-shadow: 0 0 0 3px rgba(201,168,76,0.18);
+  }
+
+  /* ===== react-phone-number-input — luxury skin ===== */
+  .hjt-phone-wrapper {
+    border: 1px solid rgba(201,168,76,0.4);
+    box-shadow: inset 0 1px 2px rgba(0,0,0,0.03);
+  }
+  .hjt-phone-wrapper:focus-within {
+    border-color: #C9A84C;
+    box-shadow: 0 0 0 3px rgba(201,168,76,0.18);
+  }
+  .PhoneInput { display: flex; align-items: center; gap: 0.5rem; }
+  .PhoneInputCountry { display: flex; align-items: center; gap: 0.35rem; padding-right: 0.5rem; border-right: 1px solid rgba(201,168,76,0.25); }
+  .PhoneInputCountryIcon { width: 1.5rem; height: 1.1rem; box-shadow: none; }
+  .PhoneInputCountrySelectArrow { color: #8B1A1A; opacity: 0.6; margin-left: 0.25rem; }
+  .PhoneInputInput {
+    flex: 1; min-width: 0;
+    border: 0; outline: none; background: transparent;
+    font-size: 0.875rem; color: hsl(var(--foreground));
+    padding: 0.5rem 0.25rem;
+  }
+  .PhoneInputInput::placeholder { color: hsl(var(--muted-foreground)); }
 }

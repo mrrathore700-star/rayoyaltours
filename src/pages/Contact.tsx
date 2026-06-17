@@ -2,37 +2,46 @@ import { useRef, useState } from "react";
 import SEO from "@/components/SEO";
 import { MapPin, Phone, Mail, MessageCircle, Instagram, Loader2, CheckCircle2 } from "lucide-react";
 import { toast } from "sonner";
+import { useTranslation } from "react-i18next";
+import PhoneInput, { isValidPhoneNumber } from "react-phone-number-input";
+import "react-phone-number-input/style.css";
 import LuxHero from "@/components/luxury/LuxHero";
 import LuxCtaBand from "@/components/luxury/LuxCtaBand";
 
 import heroPalace from "@/assets/hero-palace.jpg";
 
-// Submissions are POSTed to the Vercel serverless API route (/api/contact),
-// which uses SMTP environment variables on the server. No SMTP credentials live
-// in the client.
-
 const isValidEmail = (email: string) => /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email);
 
 const Contact = () => {
+  const { t, i18n } = useTranslation();
   const formRef = useRef<HTMLFormElement>(null);
-  const [form, setForm] = useState({ name: "", email: "", phone: "", message: "" });
+  const [form, setForm] = useState({ name: "", email: "", message: "" });
+  const [phone, setPhone] = useState<string | undefined>(undefined);
   const [submitting, setSubmitting] = useState(false);
   const [sent, setSent] = useState(false);
-  // Honeypot: bots tend to fill every field. Real users won't see this.
   const [website, setWebsite] = useState("");
   const lastSubmitRef = useRef(0);
 
+  const defaultCountry = (() => {
+    const lng = i18n.language?.split("-")[0];
+    const map: Record<string, "IN" | "US" | "GB" | "FR" | "DE" | "ES" | "IT"> = {
+      en: "GB", fr: "FR", de: "DE", es: "ES", it: "IT",
+    };
+    return map[lng ?? "en"] ?? "IN";
+  })();
+
   const validate = () => {
-    if (!form.name.trim()) return "Please enter your name";
-    if (!isValidEmail(form.email.trim())) return "Please enter a valid email address";
-    if (form.message.trim().length < 5) return "Please share a few words about your trip";
+    if (!form.name.trim()) return t("contact.errorName");
+    if (!isValidEmail(form.email.trim())) return t("contact.errorEmail");
+    if (phone && !isValidPhoneNumber(phone)) return t("contact.errorPhone");
+    if (form.message.trim().length < 5) return t("contact.errorMessage");
     return null;
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (submitting) return;
-    if (website) return; // honeypot tripped
+    if (website) return;
     if (Date.now() - lastSubmitRef.current < 3000) return;
 
     const err = validate();
@@ -50,7 +59,7 @@ const Contact = () => {
         body: JSON.stringify({
           name: form.name.trim(),
           email: form.email.trim(),
-          phone: form.phone.trim(),
+          phone: phone ?? "",
           message: form.message.trim(),
           website,
         }),
@@ -62,12 +71,13 @@ const Contact = () => {
       }
 
       setSent(true);
-      toast.success("Thank you. Our Rajasthan travel specialist will contact you shortly.");
-      setForm({ name: "", email: "", phone: "", message: "" });
+      toast.success(t("contact.thankYou"));
+      setForm({ name: "", email: "", message: "" });
+      setPhone(undefined);
       formRef.current?.reset();
     } catch (error) {
       console.error("Contact form error:", error);
-      toast.error("Unable to send enquiry right now. Please try again later.");
+      toast.error(t("contact.errorSend"));
     } finally {
       setSubmitting(false);
     }
@@ -135,7 +145,6 @@ const Contact = () => {
             </div>
           </div>
 
-          {/* Premium luxury inquiry form */}
           <form
             ref={formRef}
             onSubmit={handleSubmit}
@@ -149,11 +158,10 @@ const Contact = () => {
             <div className="absolute inset-x-0 top-0 h-1 rounded-t-2xl" style={{ background: "linear-gradient(90deg, #C9A84C 0%, #8B1A1A 50%, #C9A84C 100%)" }} />
 
             <div>
-              <h3 className="font-display text-2xl md:text-3xl font-bold" style={{ color: "#8B1A1A" }}>Send an Enquiry</h3>
-              <p className="text-sm mt-1" style={{ color: "#8B1A1A99" }}>Begin your private Rajasthan journey</p>
+              <h3 className="font-display text-2xl md:text-3xl font-bold" style={{ color: "#8B1A1A" }}>{t("contact.sendTitle")}</h3>
+              <p className="text-sm mt-1" style={{ color: "#8B1A1A99" }}>{t("contact.sendSubtitle")}</p>
             </div>
 
-            {/* Honeypot — hidden from users */}
             <input
               type="text"
               tabIndex={-1}
@@ -164,41 +172,56 @@ const Contact = () => {
               aria-hidden="true"
             />
 
-            {[
-              { name: "name" as const, label: "Full Name *", type: "text", placeholder: "John Smith", maxLength: 100 },
-              { name: "email" as const, label: "Email Address *", type: "email", placeholder: "john@example.com", maxLength: 255 },
-              { name: "phone" as const, label: "Phone / WhatsApp", type: "tel", placeholder: "+1 234 567 8900", maxLength: 30 },
-            ].map((field) => (
-              <div key={field.name}>
-                <label className="block text-sm font-semibold mb-1.5" style={{ color: "#8B1A1A" }}>{field.label}</label>
-                <input
-                  type={field.type}
-                  required={field.label.includes("*")}
-                  placeholder={field.placeholder}
-                  value={form[field.name]}
-                  onChange={(e) => setForm({ ...form, [field.name]: e.target.value })}
-                  maxLength={field.maxLength}
-                  className="w-full px-4 py-3 rounded-xl bg-white text-sm text-foreground placeholder:text-muted-foreground transition-all duration-200 focus:outline-none"
-                  style={{ border: "1px solid rgba(201,168,76,0.4)", boxShadow: "inset 0 1px 2px rgba(0,0,0,0.03)" }}
-                  onFocus={(e) => { e.currentTarget.style.borderColor = "#C9A84C"; e.currentTarget.style.boxShadow = "0 0 0 3px rgba(201,168,76,0.18)"; }}
-                  onBlur={(e) => { e.currentTarget.style.borderColor = "rgba(201,168,76,0.4)"; e.currentTarget.style.boxShadow = "inset 0 1px 2px rgba(0,0,0,0.03)"; }}
-                />
-              </div>
-            ))}
+            <div>
+              <label className="block text-sm font-semibold mb-1.5" style={{ color: "#8B1A1A" }}>{t("contact.fullName")} *</label>
+              <input
+                type="text"
+                required
+                placeholder="John Smith"
+                value={form.name}
+                onChange={(e) => setForm({ ...form, name: e.target.value })}
+                maxLength={100}
+                className="hjt-input w-full px-4 py-3 rounded-xl bg-white text-sm text-foreground placeholder:text-muted-foreground transition-all duration-200 focus:outline-none"
+              />
+            </div>
+            <div>
+              <label className="block text-sm font-semibold mb-1.5" style={{ color: "#8B1A1A" }}>{t("contact.email")} *</label>
+              <input
+                type="email"
+                required
+                placeholder="john@example.com"
+                value={form.email}
+                onChange={(e) => setForm({ ...form, email: e.target.value })}
+                maxLength={255}
+                className="hjt-input w-full px-4 py-3 rounded-xl bg-white text-sm text-foreground placeholder:text-muted-foreground transition-all duration-200 focus:outline-none"
+              />
+            </div>
 
             <div>
-              <label className="block text-sm font-semibold mb-1.5" style={{ color: "#8B1A1A" }}>Your Travel Plans *</label>
+              <label className="block text-sm font-semibold mb-1.5" style={{ color: "#8B1A1A" }}>{t("contact.phone")}</label>
+              <div className="hjt-phone-wrapper rounded-xl bg-white px-3 py-2.5 transition-all duration-200">
+                <PhoneInput
+                  international
+                  defaultCountry={defaultCountry}
+                  value={phone}
+                  onChange={setPhone}
+                  placeholder={t("contact.phonePlaceholder")}
+                  countryCallingCodeEditable={false}
+                  className="hjt-phone"
+                />
+              </div>
+            </div>
+
+            <div>
+              <label className="block text-sm font-semibold mb-1.5" style={{ color: "#8B1A1A" }}>{t("contact.message")} *</label>
               <textarea
                 required
-                placeholder="Tell us about your ideal Rajasthan journey..."
+                placeholder={t("contact.messagePlaceholder")}
                 value={form.message}
                 onChange={(e) => setForm({ ...form, message: e.target.value })}
                 rows={4}
                 maxLength={1500}
-                className="w-full px-4 py-3 rounded-xl bg-white text-sm text-foreground placeholder:text-muted-foreground resize-none transition-all duration-200 focus:outline-none"
-                style={{ border: "1px solid rgba(201,168,76,0.4)" }}
-                onFocus={(e) => { e.currentTarget.style.borderColor = "#C9A84C"; e.currentTarget.style.boxShadow = "0 0 0 3px rgba(201,168,76,0.18)"; }}
-                onBlur={(e) => { e.currentTarget.style.borderColor = "rgba(201,168,76,0.4)"; e.currentTarget.style.boxShadow = "none"; }}
+                className="hjt-input w-full px-4 py-3 rounded-xl bg-white text-sm text-foreground placeholder:text-muted-foreground resize-none transition-all duration-200 focus:outline-none"
               />
             </div>
 
@@ -213,17 +236,17 @@ const Contact = () => {
               }}
             >
               {submitting ? (
-                <><Loader2 className="h-4 w-4 animate-spin" /> Sending Enquiry...</>
+                <><Loader2 className="h-4 w-4 animate-spin" /> {t("contact.sending")}</>
               ) : sent ? (
-                <><CheckCircle2 className="h-4 w-4" /> Sent — Send Another</>
+                <><CheckCircle2 className="h-4 w-4" /> {t("contact.sent")}</>
               ) : (
-                "Send Enquiry"
+                t("contact.send")
               )}
             </button>
 
             {sent && (
               <p className="text-xs text-center font-medium" style={{ color: "#8B1A1A" }}>
-                Thank you. Our Rajasthan travel specialist will contact you shortly.
+                {t("contact.thankYou")}
               </p>
             )}
           </form>

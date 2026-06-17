@@ -1,18 +1,20 @@
 import { useEffect, useRef, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Menu, X, Phone, Mail, ChevronDown, Star, Award, Globe2, MessageCircle } from "lucide-react";
+import { useTranslation } from "react-i18next";
+import LanguageSwitcher from "@/components/LanguageSwitcher";
 const icon = "/heritage-jaipur-travels-icon.png";
 
 type NavItem = {
-  label: string;
+  labelKey: string;
   to?: string;
   children?: { label: string; to: string }[];
 };
 
 const navItems: NavItem[] = [
-  { label: "Home", to: "/" },
+  { labelKey: "nav.home", to: "/" },
   {
-    label: "Destinations",
+    labelKey: "nav.destinations",
     children: [
       { label: "Jaipur", to: "/destinations/jaipur" },
       { label: "Udaipur", to: "/destinations/udaipur" },
@@ -24,7 +26,7 @@ const navItems: NavItem[] = [
     ],
   },
   {
-    label: "Journeys",
+    labelKey: "nav.journeys",
     children: [
       { label: "Rajasthan Royal Heritage Tour", to: "/packages/rajasthan-royal" },
       { label: "Golden Triangle Tour", to: "/packages/golden-triangle" },
@@ -36,7 +38,7 @@ const navItems: NavItem[] = [
     ],
   },
   {
-    label: "Experiences",
+    labelKey: "nav.experiences",
     children: [
       { label: "Royal & Heritage Experiences", to: "/experiences/category/royal" },
       { label: "Desert & Adventure Experiences", to: "/experiences/category/desert" },
@@ -51,10 +53,10 @@ const navItems: NavItem[] = [
       { label: "View All Experiences →", to: "/experiences" },
     ],
   },
-  { label: "Transport", to: "/taxi" },
-  { label: "Reviews", to: "/reviews" },
-  { label: "About Us", to: "/about" },
-  { label: "Contact Us", to: "/contact" },
+  { labelKey: "nav.transport", to: "/taxi" },
+  { labelKey: "nav.reviews", to: "/reviews" },
+  { labelKey: "nav.about", to: "/about" },
+  { labelKey: "nav.contact", to: "/contact" },
 ];
 
 const WHATSAPP_URL = "https://wa.me/919887688843?text=Hi!%20I%20want%20to%20plan%20my%20Rajasthan%20trip";
@@ -177,6 +179,7 @@ const isItemActive = (item: NavItem, pathname: string) => {
 };
 
 const DesktopDropdown = ({ item, pathname }: { item: NavItem; pathname: string }) => {
+  const { t } = useTranslation();
   const [open, setOpen] = useState(false);
   const closeTimer = useRef<number | null>(null);
 
@@ -205,12 +208,13 @@ const DesktopDropdown = ({ item, pathname }: { item: NavItem; pathname: string }
         onBlur={handleLeave}
         className={`lux-menu-link whitespace-nowrap inline-flex items-center gap-1 ${active ? "is-active" : ""}`}
       >
-        {item.label}
+        {t(item.labelKey)}
         <ChevronDown
           className={`h-3.5 w-3.5 transition-transform duration-300 ${open ? "rotate-180" : ""}`}
           strokeWidth={2}
         />
       </button>
+
 
       <div
         className={`absolute left-1/2 -translate-x-1/2 top-full pt-4 z-50 ${
@@ -270,6 +274,7 @@ const MobileNavItem = ({
   index: number;
   open: boolean;
 }) => {
+  const { t } = useTranslation();
   const [expanded, setExpanded] = useState(false);
   const active = isItemActive(item, pathname);
   const style: React.CSSProperties = {
@@ -285,7 +290,7 @@ const MobileNavItem = ({
         className={`lux-menu-link py-5 border-b border-[#C9A84C]/15 ${active ? "is-active" : ""}`}
         style={style}
       >
-        {item.label}
+        {t(item.labelKey)}
       </Link>
     );
   }
@@ -298,12 +303,13 @@ const MobileNavItem = ({
         onClick={() => setExpanded((v) => !v)}
         className={`lux-menu-link w-full py-5 flex items-center justify-between ${active ? "is-active" : ""}`}
       >
-        <span>{item.label}</span>
+        <span>{t(item.labelKey)}</span>
         <ChevronDown
           className={`h-4 w-4 transition-transform duration-300 ${expanded ? "rotate-180" : ""}`}
           strokeWidth={2}
         />
       </button>
+
       <div
         className={`grid transition-all duration-400 ease-out ${
           expanded ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"
@@ -330,6 +336,7 @@ const MobileNavItem = ({
 };
 
 const Header = () => {
+  const { t } = useTranslation();
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
@@ -379,19 +386,20 @@ const Header = () => {
           >
             {navItems.map((item) =>
               item.children ? (
-                <DesktopDropdown key={item.label} item={item} pathname={location.pathname} />
+                <DesktopDropdown key={item.labelKey} item={item} pathname={location.pathname} />
               ) : (
                 <Link
-                  key={item.label}
+                  key={item.labelKey}
                   to={item.to!}
                   onClick={handleNav(item.to!)}
                   aria-current={location.pathname === item.to ? "page" : undefined}
                   className={`lux-menu-link whitespace-nowrap ${location.pathname === item.to ? "is-active" : ""}`}
                 >
-                  {item.label}
+                  {t(item.labelKey)}
                 </Link>
               ),
             )}
+            <LanguageSwitcher />
           </nav>
 
           <div className="flex items-center justify-end shrink-0 min-w-0 gap-2">
@@ -451,13 +459,13 @@ const Header = () => {
               style={{ background: "linear-gradient(135deg, #1FA855 0%, #128C3E 100%)", padding: "14px 22px" }}
             >
               <MessageCircle className="h-4 w-4" />
-              WhatsApp Us
+              {t("common.whatsapp")}
             </a>
           </div>
 
           {navItems.map((item, i) => (
             <MobileNavItem
-              key={item.label}
+              key={item.labelKey}
               item={item}
               pathname={location.pathname}
               onNavigate={handleNav}
@@ -465,6 +473,8 @@ const Header = () => {
               open={open}
             />
           ))}
+
+          <LanguageSwitcher variant="mobile" />
 
           <div className="mt-8 flex flex-col gap-4 items-center">
             <a
