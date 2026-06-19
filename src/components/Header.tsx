@@ -376,13 +376,14 @@ const Header = () => {
         }}
       >
         <div
-          className="container mx-auto h-[72px] sm:h-[80px] md:h-[88px] lg:h-[96px] xl:h-[100px] px-4 md:px-6 lg:px-8 flex xl:grid items-center justify-between xl:justify-stretch gap-3 md:gap-4 xl:[grid-template-columns:22%_56%_22%] 2xl:[grid-template-columns:20%_58%_22%]"
+          className="mx-auto h-[72px] sm:h-[80px] md:h-[88px] lg:h-[96px] xl:h-[100px] px-4 md:px-6 lg:px-10 xl:px-12 flex items-center justify-between gap-6 lg:gap-10 xl:gap-14"
+          style={{ maxWidth: "1400px" }}
         >
           <BrandMark onNavigate={handleNav} />
 
           <nav
             aria-label="Primary"
-            className="hidden xl:flex items-center justify-center flex-nowrap min-w-0 xl:gap-[10px] 2xl:gap-[16px]"
+            className="hidden xl:flex items-center justify-center flex-1 flex-nowrap min-w-0 gap-[22px] 2xl:gap-[32px]"
           >
             {navItems.map((item) =>
               item.children ? (
@@ -399,7 +400,6 @@ const Header = () => {
                 </Link>
               ),
             )}
-            <LanguageSwitcher />
           </nav>
 
           <div className="flex items-center justify-end shrink-0 min-w-0 gap-2">

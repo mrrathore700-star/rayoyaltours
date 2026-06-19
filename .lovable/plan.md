@@ -1,30 +1,40 @@
-## Final Navbar + Hero Responsive Polish
+Plan: Final Navbar Balance Fix
 
-Scope: header sizing/spacing, logo cap, hero top padding. No SEO/content/URL/schema changes.
+Objective
+Remove the language selector and rebalance the desktop navbar so it feels premium, centered, and uncluttered with proper breathing room across all screen sizes.
 
-### `src/index.css` (.lux-logo block, lines 388–399)
-Replace fixed heights with width-capped, height-auto, `object-contain`:
-- Default: `max-width: 210px; max-height: 64px;`
-- ≤1280px (laptop): `max-width: 190px; max-height: 60px;`
-- ≤1024px (tablet): `max-width: 170px; max-height: 54px;`
-- ≤768px (mobile): `max-width: 140px; max-height: 48px;`
-- All: `width: auto; height: auto; object-fit: contain;`
+Files to modify
+- src/components/Header.tsx
+- src/index.css (small spacing utility additions if needed)
 
-### `src/components/Header.tsx`
-- Navbar wrapper heights: `h-[76px] md:h-[80px] lg:h-[84px] xl:h-[88px]` (mobile 76 / tablet 80 / laptop 84 / desktop 88), flex center keeps logo vertically centered.
-- Logo `<img>` class: drop hard `max-h-*` overrides; rely on CSS above (still `w-auto object-contain`).
-- Desktop nav `gap`: replace `gap-7` with responsive `lg:gap-4 xl:gap-5 2xl:gap-6` (≈16/20/24px).
-- Phone block (desktop): keep on far right, ensure single line — add `whitespace-nowrap`, label prefix `CONTACT` separator: `CONTACT · ☎ +91 98876 88843`, vertically centered via flex items-center.
-- Mobile (<1024px): hamburger + logo only; phone number stays hidden in navbar (already moved into the slide-in menu). Mobile menu top offsets updated to `top-[76px] md:top-[80px]` and `max-h-[calc(100vh-76px)] md:max-h-[calc(100vh-80px)]`.
+Changes
 
-### `src/App.tsx` (line 42)
-Update top padding to match new navbar heights: `pt-[76px] md:pt-[80px] lg:pt-[84px] xl:pt-[88px]`.
+1. Remove language switching from the navbar
+   - Remove the <LanguageSwitcher /> component from the desktop primary navigation.
+   - Remove the <LanguageSwitcher variant="mobile" /> entry from the mobile menu.
+   - Keep the LanguageSwitcher component file itself untouched in case it is reused later.
 
-### `src/components/luxury/LuxHero.tsx` (line 58)
-Add explicit safety margin on eyebrow/content wrapper so badge never sits under navbar:
-- Wrapper: change `pt-8 md:pt-12` → `pt-[24px] md:pt-[30px] lg:pt-[40px]` (matches spec: 24/30/40px) while keeping `pb-12 md:pb-0`.
-- Eyebrow `mb-6` retained; no other content changes.
+2. Constrain and center the header content
+   - Wrap the main header bar (below the TrustBar) in a centered container.
+   - Apply max-width: 1400px and responsive horizontal padding.
+   - Remove full-width stretching so the navbar reads as a contained luxury bar rather than a wide ribbon.
 
-### Not changing
-- SEO, JSON-LD, meta, page copy, routes, hero copy/CTAs, footer, WhatsApp button.
-- Memory/index.
+3. Rebalance logo / nav proportions
+   - Increase the gap between the logo area and the navigation group.
+   - Center the navigation group visually within the available space.
+   - Avoid a tight grid that compresses menu links; prefer a flexible layout that lets the nav group breathe while keeping the logo aligned left.
+
+4. Increase spacing between nav items
+   - Desktop (>= 1280px / xl): 24–36px between items, scaling with available width.
+   - Laptop (1024–1279px / lg): 18–28px between items.
+   - Preserve the existing lux-menu-link hover/active gold underline styling.
+
+5. Responsive behavior
+   - Maintain existing mobile/tablet hamburger menu behavior.
+   - Keep TrustBar, mobile quick-action icons, and Call/WhatsApp buttons unchanged.
+   - Ensure dropdown hover behavior on desktop and tap behavior on mobile remain intact.
+
+Verification
+   - Inspect the preview at desktop, laptop, tablet, and mobile widths to confirm the navbar is centered, uncrowded, and visually balanced.
+   - Confirm the language selector no longer appears in either desktop or mobile menus.
+   - Confirm all existing nav items remain: Home, Destinations, Journeys, Experiences, Transport, Reviews, About Us, Contact Us.
