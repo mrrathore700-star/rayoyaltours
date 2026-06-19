@@ -4,8 +4,29 @@ import royalTour from "@/assets/royal-tour.jpg";
 import desertSafari from "@/assets/desert-safari.jpg";
 import udaipurLake from "@/assets/udaipur-lake.jpg";
 import ranthamboreTiger from "@/assets/ranthambore-tiger.jpg";
+import heroPalace from "@/assets/hero-palace.jpg";
 
-export const tours = [
+
+export interface TourSummary {
+  image: string;
+  title: string;
+  duration: string;
+  highlights: string[];
+  price?: string;
+  slug?: string;
+  badge?: string;
+}
+
+export const tours: TourSummary[] = [
+  {
+    image: heroPalace,
+    title: "Grand Rajasthan Heritage Tour with Taj Mahal",
+    duration: "12 Nights / 13 Days",
+    highlights: ["Delhi", "Jaisalmer", "Udaipur", "Jaipur", "Agra"],
+    price: "Contact Us",
+    slug: "grand-rajasthan-heritage-tour",
+    badge: "Best Seller",
+  },
   {
     image: royalTour,
     title: "Rajasthan Royal Heritage Tour",
@@ -14,6 +35,7 @@ export const tours = [
     price: "Contact Us",
     slug: "rajasthan-royal",
   },
+
   {
     image: goldenTriangle,
     title: "Golden Triangle Tour",
