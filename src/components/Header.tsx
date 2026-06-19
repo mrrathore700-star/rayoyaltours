@@ -474,7 +474,7 @@ const Header = () => {
             />
           ))}
 
-          <LanguageSwitcher variant="mobile" />
+          
 
           <div className="mt-8 flex flex-col gap-4 items-center">
             <a
