@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Menu, X, Phone, Mail, ChevronDown, Star, Award, Globe2, MessageCircle } from "lucide-react";
 import { useTranslation } from "react-i18next";
-import LanguageSwitcher from "@/components/LanguageSwitcher";
+
 const icon = "/heritage-jaipur-travels-icon.png";
 
 type NavItem = {
