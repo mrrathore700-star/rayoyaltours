@@ -8,14 +8,21 @@ interface TourCardProps {
   highlights: string[];
   price?: string;
   slug?: string;
+  badge?: string;
 }
 
-const TourCard = ({ image, title, duration, highlights, slug }: TourCardProps) => (
+const TourCard = ({ image, title, duration, highlights, slug, badge }: TourCardProps) => (
   <Link
     to={slug ? `/packages/${slug}` : "/contact"}
-    className="lux-edit-card group block"
+    className="lux-edit-card group block relative"
   >
+    {badge && (
+      <span className="absolute top-4 left-4 z-20 px-3 py-1 rounded-full bg-[#C9A84C] text-[#0F0F0F] font-display text-[10px] tracking-[0.18em] uppercase shadow-md">
+        {badge}
+      </span>
+    )}
     <img src={image} alt={title} loading="lazy" className="lux-edit-img" />
+
     <div className="lux-edit-overlay" />
     <div className="lux-edit-body">
       <div className="flex items-center gap-3 mb-3">

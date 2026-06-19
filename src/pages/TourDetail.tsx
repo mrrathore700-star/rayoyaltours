@@ -95,12 +95,18 @@ const TourDetail = () => {
             <Link to="/packages" className="inline-flex items-center gap-2 text-[#C9A84C] hover:text-[#FFF8F0] mb-6 text-xs tracking-[0.18em] uppercase transition-colors">
               <ArrowLeft className="h-4 w-4" /> All Journeys
             </Link>
-            <div className="inline-flex items-center gap-3 mb-5">
+            <div className="inline-flex items-center gap-3 mb-5 flex-wrap">
               <span className="lux-rule-gold" />
               <span className="lux-eyebrow">Signature Journey</span>
+              {tours.find((t) => t.slug === slug)?.badge && (
+                <span className="px-3 py-1 rounded-full bg-[#C9A84C] text-[#0F0F0F] font-display text-[10px] tracking-[0.18em] uppercase shadow-md">
+                  {tours.find((t) => t.slug === slug)?.badge}
+                </span>
+              )}
             </div>
             <p className="font-serif italic text-lg md:text-xl text-[#C9A84C] mb-3">"{tour.tagline}"</p>
             <h1 className="font-display text-4xl md:text-6xl lg:text-7xl font-semibold leading-[1.05] tracking-tight mb-6 max-w-4xl">{tour.title}</h1>
+
             <div className="flex flex-wrap gap-6 text-sm text-[#FFF8F0]/80">
               <span className="flex items-center gap-2"><Calendar className="h-4 w-4 text-[#C9A84C]" /> {tour.duration}</span>
               <span className="flex items-center gap-2"><MapPin className="h-4 w-4 text-[#C9A84C]" /> {tours.find((t) => t.slug === slug)?.highlights.join(" · ") || "Rajasthan"}</span>
