@@ -28,6 +28,15 @@ export const tours: TourSummary[] = [
     badge: "Best Seller",
   },
   {
+    image: goldenTriangle,
+    title: "Golden Triangle & Royal Rajasthan Tour",
+    duration: "9 Nights / 10 Days",
+    highlights: ["Delhi", "Agra", "Jaipur", "Pushkar", "Jodhpur", "Udaipur"],
+    price: "Contact Us",
+    slug: "golden-triangle-royal-rajasthan-tour",
+    badge: "Most Popular",
+  },
+  {
     image: royalTour,
     title: "Rajasthan Royal Heritage Tour",
     duration: "6 Days / 5 Nights",
