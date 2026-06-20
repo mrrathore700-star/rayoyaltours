@@ -22,6 +22,7 @@ import Blog from "./pages/Blog";
 import BlogPost from "./pages/BlogPost";
 import Contact from "./pages/Contact";
 import TourDetail from "./pages/TourDetail";
+import DayTourDetail from "./pages/DayTourDetail";
 import About from "./pages/About";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
 import TermsAndConditions from "./pages/TermsAndConditions";
@@ -48,6 +49,7 @@ const App = () => (
               <Route path="/about" element={<About />} />
               <Route path="/packages" element={<Packages />} />
               <Route path="/packages/:slug" element={<TourDetail />} />
+              <Route path="/day-tours/:slug" element={<DayTourDetail />} />
               <Route path="/sightseeing" element={<Sightseeing />} />
               <Route path="/taxi" element={<Taxi />} />
               <Route path="/experiences" element={<Experiences />} />
