@@ -180,7 +180,31 @@ const TourDetail = () => {
                         </li>
                       ))}
                     </ul>
-                    {day.overnight && (
+                    {day.note && (
+                      <div className="mt-5 rounded-lg border border-[#C9A84C]/40 bg-[#FFF8F0] p-5">
+                        <p className="font-display text-sm tracking-[0.16em] uppercase text-[#7A5C1E] mb-3">
+                          {day.note.title}
+                        </p>
+                        <div className="grid sm:grid-cols-2 gap-4">
+                          {day.note.options.map((opt, oi) => (
+                            <div key={oi} className="bg-card rounded-md p-4 border border-border">
+                              <p className="font-semibold text-foreground mb-2">{opt.label}</p>
+                              <ul className="space-y-1">
+                                {opt.details.map((d, di) => (
+                                  <li key={di} className="text-sm text-muted-foreground flex items-start gap-2">
+                                    <CheckCircle className="h-4 w-4 text-[#C9A84C] shrink-0 mt-0.5" /> {d}
+                                  </li>
+                                ))}
+                              </ul>
+                            </div>
+                          ))}
+                        </div>
+                        {day.note.footer && (
+                          <p className="mt-3 text-xs italic text-muted-foreground">{day.note.footer}</p>
+                        )}
+                      </div>
+                    )}
+                    {day.overnight && day.overnight !== "—" && (
                       <p className="mt-4 text-sm font-semibold text-foreground flex items-center gap-2">
                         <Hotel className="h-4 w-4 text-secondary" /> Overnight stay in {day.overnight}
                       </p>
