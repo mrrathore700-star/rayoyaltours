@@ -3,6 +3,11 @@ export interface DayItinerary {
   title: string;
   activities: string[];
   overnight: string;
+  note?: {
+    title: string;
+    options: { label: string; details: string[] }[];
+    footer?: string;
+  };
 }
 
 export interface TourDetail {
