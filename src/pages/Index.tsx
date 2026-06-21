@@ -16,6 +16,7 @@ import LuxFAQ from "@/components/luxury/LuxFAQ";
 
 import LuxJournalPreview from "@/components/luxury/LuxJournalPreview";
 import LuxCtaBand from "@/components/luxury/LuxCtaBand";
+import LuxCustomJourney from "@/components/luxury/LuxCustomJourney";
 import { LuxLinkBtn, LuxAnchorBtn } from "@/components/luxury/LuxButton";
 import { tours } from "@/data/tours";
 
@@ -126,6 +127,8 @@ const Index = () => {
 
 
 
+
+      <LuxCustomJourney />
 
       {/* Final CTA */}
       <LuxCtaBand
