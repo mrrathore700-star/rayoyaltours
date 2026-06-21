@@ -2,6 +2,7 @@ import SEO from "@/components/SEO";
 import TourCard from "@/components/TourCard";
 import LuxHero from "@/components/luxury/LuxHero";
 import LuxCtaBand from "@/components/luxury/LuxCtaBand";
+import LuxCustomJourney from "@/components/luxury/LuxCustomJourney";
 import LuxSectionHeading from "@/components/luxury/LuxSectionHeading";
 import { LuxLinkBtn, LuxAnchorBtn } from "@/components/luxury/LuxButton";
 import { tours } from "@/data/tours";
@@ -93,6 +94,8 @@ const Packages = () => (
         ))}
       </div>
     </section>
+
+    <LuxCustomJourney />
 
     <LuxCtaBand
       image={royalTour}
