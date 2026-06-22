@@ -331,17 +331,29 @@ const MobileNavItem = ({
       >
         <div className="overflow-hidden">
           <ul className="pb-4 pl-2 flex flex-col">
-            {item.children.map((child) => (
-              <li key={child.label}>
-                <Link
-                  to={child.to}
-                  onClick={onNavigate(child.to)}
-                  className="block py-3 px-3 font-serif text-[15px] tracking-[0.03em] text-[#0B1C33]/80 hover:text-[#C9A84C] border-l border-[#C9A84C]/25 hover:border-[#C9A84C] transition-colors"
-                >
-                  {child.label}
-                </Link>
-              </li>
-            ))}
+            {item.children.map((child, idx) => {
+              if (child.section) {
+                return (
+                  <li
+                    key={`m-section-${idx}`}
+                    className={`px-3 ${idx === 0 ? "pt-2" : "pt-4"} pb-1 font-serif text-[11px] tracking-[0.22em] uppercase text-[#C9A84C]`}
+                  >
+                    {child.label}
+                  </li>
+                );
+              }
+              return (
+                <li key={child.label}>
+                  <Link
+                    to={child.to}
+                    onClick={onNavigate(child.to)}
+                    className="block py-3 px-3 font-serif text-[15px] tracking-[0.03em] text-[#0B1C33]/80 hover:text-[#C9A84C] border-l border-[#C9A84C]/25 hover:border-[#C9A84C] transition-colors"
+                  >
+                    {child.label}
+                  </Link>
+                </li>
+              );
+            })}
           </ul>
         </div>
       </div>
