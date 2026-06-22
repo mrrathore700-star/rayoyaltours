@@ -30,9 +30,11 @@ const navItems: NavItem[] = [
   {
     labelKey: "nav.journeys",
     children: [
+      { label: "Signature Rajasthan Tours", to: "", section: true },
       { label: "Grand Rajasthan Heritage Tour", to: "/packages/grand-rajasthan-heritage-tour" },
       { label: "Rajasthan Royal Heritage Tour", to: "/packages/rajasthan-royal" },
       { label: "Golden Triangle & Royal Rajasthan Tour", to: "/packages/golden-triangle-royal-rajasthan-tour" },
+      { label: "Day Tours", to: "", section: true },
       { label: "Jaipur Full Day Tour", to: "/day-tours/jaipur-full-day-sightseeing" },
       { label: "Pushkar Day Trip", to: "/day-tours/pushkar-day-trip-from-jaipur" },
       { label: "Ranthambore Day Trip", to: "/day-tours/ranthambore-tiger-safari-day-trip" },
