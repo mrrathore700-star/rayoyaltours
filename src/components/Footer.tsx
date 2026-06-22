@@ -47,11 +47,26 @@ const Footer = () => {
           <h4 className="lux-eyebrow mb-5">{t("footer.signatureJourneys")}</h4>
           <ul className="space-y-3 text-sm text-[#FFF8F0]/80">
             {[
-              { label: "Rajasthan Royal Heritage", to: "/packages/rajasthan-royal" },
-              { label: "The Golden Triangle", to: "/packages/golden-triangle" },
-              { label: "Jaisalmer Desert Nights", to: "/packages/desert-safari" },
-              { label: "Udaipur Lake Tour", to: "/packages/udaipur-lake" },
-              { label: "Ranthambore Wild Trails", to: "/packages/golden-triangle-ranthambore" },
+              { label: "Grand Rajasthan Heritage Tour", to: "/packages/grand-rajasthan-heritage-tour" },
+              { label: "Rajasthan Royal Heritage Tour", to: "/packages/rajasthan-royal" },
+              { label: "Golden Triangle & Royal Rajasthan Tour", to: "/packages/golden-triangle-royal-rajasthan-tour" },
+              { label: "Golden Triangle Tour", to: "/packages/golden-triangle" },
+            ].map((l) => (
+              <li key={l.to}>
+                <Link to={l.to} className="hover:text-[#C9A84C] transition-colors">{l.label}</Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div>
+          <h4 className="lux-eyebrow mb-5">Day Tours</h4>
+          <ul className="space-y-3 text-sm text-[#FFF8F0]/80">
+            {[
+              { label: "Jaipur Full Day Tour", to: "/day-tours/jaipur-full-day-sightseeing" },
+              { label: "Jaipur Night Tour", to: "/sightseeing" },
+              { label: "Pushkar Day Trip", to: "/day-tours/pushkar-day-trip-from-jaipur" },
+              { label: "Abhaneri Day Trip", to: "/day-tours/abhaneri-chand-baori-day-trip" },
+              { label: "Ranthambore Day Trip", to: "/day-tours/ranthambore-tiger-safari-day-trip" },
             ].map((l) => (
               <li key={l.to}>
                 <Link to={l.to} className="hover:text-[#C9A84C] transition-colors">{l.label}</Link>
