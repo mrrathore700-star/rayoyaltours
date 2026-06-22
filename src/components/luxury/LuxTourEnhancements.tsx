@@ -71,6 +71,7 @@ const LuxTourEnhancements = ({
   priceLabel,
   isDayTour = false,
   faqs,
+  hideFaqs = false,
   relatedBasePath = "/packages",
   relatedTours,
 }: Props) => {
