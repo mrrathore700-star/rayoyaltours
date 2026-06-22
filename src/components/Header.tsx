@@ -240,13 +240,23 @@ const DesktopDropdown = ({ item, pathname }: { item: NavItem; pathname: string }
               style={{ background: "linear-gradient(90deg, transparent, #C9A84C, transparent)" }}
             />
             <ul className="py-2">
-              {item.children!.map((child) => {
+              {item.children!.map((child, idx) => {
+                if (child.section) {
+                  return (
+                    <li
+                      key={`section-${idx}`}
+                      className={`px-5 ${idx === 0 ? "pt-2" : "pt-3"} pb-1 font-serif text-[10px] tracking-[0.22em] uppercase text-[#C9A84C]`}
+                    >
+                      {child.label}
+                    </li>
+                  );
+                }
                 const childActive = pathname === child.to.split("#")[0];
                 return (
                   <li key={child.label}>
                     <Link
                       to={child.to}
-                      className={`block px-5 py-3 font-serif text-[14px] tracking-[0.04em] transition-all duration-200 border-l-2 ${
+                      className={`block px-5 py-2.5 font-serif text-[14px] tracking-[0.04em] transition-all duration-200 border-l-2 ${
                         childActive
                           ? "border-[#C9A84C] text-[#C9A84C] bg-[#C9A84C]/[0.06]"
                           : "border-transparent text-[#0B1C33] hover:border-[#C9A84C] hover:text-[#C9A84C] hover:bg-[#C9A84C]/[0.05] hover:pl-6"
