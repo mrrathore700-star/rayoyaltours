@@ -5,10 +5,12 @@ import { useTranslation } from "react-i18next";
 
 const icon = "/heritage-jaipur-travels-icon.png";
 
+type NavChild = { label: string; to: string; section?: boolean };
+
 type NavItem = {
   labelKey: string;
   to?: string;
-  children?: { label: string; to: string }[];
+  children?: NavChild[];
 };
 
 const navItems: NavItem[] = [
@@ -28,12 +30,14 @@ const navItems: NavItem[] = [
   {
     labelKey: "nav.journeys",
     children: [
+      { label: "Signature Rajasthan Tours", to: "", section: true },
+      { label: "Grand Rajasthan Heritage Tour", to: "/packages/grand-rajasthan-heritage-tour" },
       { label: "Rajasthan Royal Heritage Tour", to: "/packages/rajasthan-royal" },
-      { label: "Golden Triangle Tour", to: "/packages/golden-triangle" },
-      { label: "Golden Triangle with Ranthambore", to: "/packages/golden-triangle-ranthambore" },
-      { label: "Jaipur Heritage Tour", to: "/packages/jaipur-heritage" },
-      { label: "Desert Safari Jaisalmer", to: "/packages/desert-safari" },
-      { label: "Udaipur Lake Tour", to: "/packages/udaipur-lake" },
+      { label: "Golden Triangle & Royal Rajasthan Tour", to: "/packages/golden-triangle-royal-rajasthan-tour" },
+      { label: "Day Tours", to: "", section: true },
+      { label: "Jaipur Full Day Tour", to: "/day-tours/jaipur-full-day-sightseeing" },
+      { label: "Pushkar Day Trip", to: "/day-tours/pushkar-day-trip-from-jaipur" },
+      { label: "Ranthambore Day Trip", to: "/day-tours/ranthambore-tiger-safari-day-trip" },
       { label: "View All Journeys →", to: "/packages" },
     ],
   },
@@ -236,13 +240,23 @@ const DesktopDropdown = ({ item, pathname }: { item: NavItem; pathname: string }
               style={{ background: "linear-gradient(90deg, transparent, #C9A84C, transparent)" }}
             />
             <ul className="py-2">
-              {item.children!.map((child) => {
+              {item.children!.map((child, idx) => {
+                if (child.section) {
+                  return (
+                    <li
+                      key={`section-${idx}`}
+                      className={`px-5 ${idx === 0 ? "pt-2" : "pt-3"} pb-1 font-serif text-[10px] tracking-[0.22em] uppercase text-[#C9A84C]`}
+                    >
+                      {child.label}
+                    </li>
+                  );
+                }
                 const childActive = pathname === child.to.split("#")[0];
                 return (
                   <li key={child.label}>
                     <Link
                       to={child.to}
-                      className={`block px-5 py-3 font-serif text-[14px] tracking-[0.04em] transition-all duration-200 border-l-2 ${
+                      className={`block px-5 py-2.5 font-serif text-[14px] tracking-[0.04em] transition-all duration-200 border-l-2 ${
                         childActive
                           ? "border-[#C9A84C] text-[#C9A84C] bg-[#C9A84C]/[0.06]"
                           : "border-transparent text-[#0B1C33] hover:border-[#C9A84C] hover:text-[#C9A84C] hover:bg-[#C9A84C]/[0.05] hover:pl-6"
@@ -317,17 +331,29 @@ const MobileNavItem = ({
       >
         <div className="overflow-hidden">
           <ul className="pb-4 pl-2 flex flex-col">
-            {item.children.map((child) => (
-              <li key={child.label}>
-                <Link
-                  to={child.to}
-                  onClick={onNavigate(child.to)}
-                  className="block py-3 px-3 font-serif text-[15px] tracking-[0.03em] text-[#0B1C33]/80 hover:text-[#C9A84C] border-l border-[#C9A84C]/25 hover:border-[#C9A84C] transition-colors"
-                >
-                  {child.label}
-                </Link>
-              </li>
-            ))}
+            {item.children.map((child, idx) => {
+              if (child.section) {
+                return (
+                  <li
+                    key={`m-section-${idx}`}
+                    className={`px-3 ${idx === 0 ? "pt-2" : "pt-4"} pb-1 font-serif text-[11px] tracking-[0.22em] uppercase text-[#C9A84C]`}
+                  >
+                    {child.label}
+                  </li>
+                );
+              }
+              return (
+                <li key={child.label}>
+                  <Link
+                    to={child.to}
+                    onClick={onNavigate(child.to)}
+                    className="block py-3 px-3 font-serif text-[15px] tracking-[0.03em] text-[#0B1C33]/80 hover:text-[#C9A84C] border-l border-[#C9A84C]/25 hover:border-[#C9A84C] transition-colors"
+                  >
+                    {child.label}
+                  </Link>
+                </li>
+              );
+            })}
           </ul>
         </div>
       </div>
