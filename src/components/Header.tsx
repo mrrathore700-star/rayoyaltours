@@ -5,10 +5,12 @@ import { useTranslation } from "react-i18next";
 
 const icon = "/heritage-jaipur-travels-icon.png";
 
+type NavChild = { label: string; to: string; section?: boolean };
+
 type NavItem = {
   labelKey: string;
   to?: string;
-  children?: { label: string; to: string }[];
+  children?: NavChild[];
 };
 
 const navItems: NavItem[] = [
