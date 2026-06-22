@@ -3,6 +3,7 @@ import { Helmet } from "react-helmet-async";
 import { ArrowLeft, CheckCircle, XCircle, MapPin, Calendar, Users, Star, Plane, Hotel, Send } from "lucide-react";
 import { tourDetails } from "@/data/tourDetails";
 import { tours } from "@/data/tours";
+import LuxTourEnhancements from "@/components/luxury/LuxTourEnhancements";
 import SectionHeading from "@/components/SectionHeading";
 import { useState } from "react";
 import { useToast } from "@/hooks/use-toast";
@@ -396,6 +397,18 @@ const TourDetail = () => {
             </form>
           </div>
         </section>
+
+        <LuxTourEnhancements
+          tourTitle={tour.title}
+          slug={slug}
+          duration={tour.duration}
+          destinations={tours.find((t) => t.slug === slug)?.highlights || []}
+          tourType="Multi-Day Private Tour"
+          startLocation={tour.arrivalOptions[0] || "Jaipur"}
+          endLocation={tour.departureOptions[0] || "Jaipur"}
+          priceLabel="Custom Pricing Available"
+          relatedBasePath="/packages"
+        />
       </main>
     </>
   );

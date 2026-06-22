@@ -15,6 +15,7 @@ import { useState } from "react";
 import { dayTours } from "@/data/dayTours";
 import { useToast } from "@/hooks/use-toast";
 import SectionHeading from "@/components/SectionHeading";
+import LuxTourEnhancements from "@/components/luxury/LuxTourEnhancements";
 import {
   Accordion,
   AccordionContent,
@@ -440,6 +441,19 @@ const DayTourDetail = () => {
             </form>
           </div>
         </section>
+
+        <LuxTourEnhancements
+          tourTitle={tour.title}
+          slug={slug}
+          duration={tour.duration}
+          destinations={tour.places.map((p) => p.name)}
+          tourType="Private Day Tour"
+          startLocation="Jaipur"
+          endLocation="Jaipur"
+          isDayTour
+          hideFaqs
+          relatedBasePath="/packages"
+        />
       </main>
     </>
   );
