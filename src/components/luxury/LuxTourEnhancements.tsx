@@ -31,13 +31,14 @@ interface Props {
   slug?: string;
   duration: string;
   destinations: string[];
-  tourType: string;         // "Multi-Day Private Tour" | "Private Day Tour"
+  tourType: string;
   startLocation: string;
   endLocation: string;
-  priceLabel?: string;       // "Starting From ₹2,500" or "Custom Pricing Available"
+  priceLabel?: string;
   isDayTour?: boolean;
-  faqs?: FAQ[];              // optional override; otherwise defaults
-  relatedBasePath?: string;  // "/packages" or "/day-tours"
+  faqs?: FAQ[];
+  hideFaqs?: boolean;
+  relatedBasePath?: string;
   relatedTours?: { slug: string; title: string; image: string; duration: string; href?: string }[];
 }
 
