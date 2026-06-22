@@ -18,7 +18,7 @@ const Footer = () => {
         </h3>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-12">
         <div>
           <h4 className="lux-eyebrow mb-5">{t("footer.story")}</h4>
           <p className="font-serif text-[15px] leading-relaxed text-[#FFF8F0]/80">
