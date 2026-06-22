@@ -28,12 +28,12 @@ const navItems: NavItem[] = [
   {
     labelKey: "nav.journeys",
     children: [
+      { label: "Grand Rajasthan Heritage Tour", to: "/packages/grand-rajasthan-heritage-tour" },
       { label: "Rajasthan Royal Heritage Tour", to: "/packages/rajasthan-royal" },
-      { label: "Golden Triangle Tour", to: "/packages/golden-triangle" },
-      { label: "Golden Triangle with Ranthambore", to: "/packages/golden-triangle-ranthambore" },
-      { label: "Jaipur Heritage Tour", to: "/packages/jaipur-heritage" },
-      { label: "Desert Safari Jaisalmer", to: "/packages/desert-safari" },
-      { label: "Udaipur Lake Tour", to: "/packages/udaipur-lake" },
+      { label: "Golden Triangle & Royal Rajasthan Tour", to: "/packages/golden-triangle-royal-rajasthan-tour" },
+      { label: "Jaipur Full Day Tour", to: "/day-tours/jaipur-full-day-sightseeing" },
+      { label: "Pushkar Day Trip", to: "/day-tours/pushkar-day-trip-from-jaipur" },
+      { label: "Ranthambore Day Trip", to: "/day-tours/ranthambore-tiger-safari-day-trip" },
       { label: "View All Journeys →", to: "/packages" },
     ],
   },
