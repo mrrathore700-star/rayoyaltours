@@ -226,7 +226,7 @@ const LuxTourEnhancements = ({
       </section>
 
       {/* FAQs (only render if caller didn't already render one) */}
-      {faqs !== null && (
+      {!hideFaqs && (
         <section className="py-16 sand-gradient">
           <div className="container mx-auto px-4 max-w-3xl">
             <SectionHeading title="Frequently Asked Questions" />
