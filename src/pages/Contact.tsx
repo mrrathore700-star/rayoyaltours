@@ -93,9 +93,9 @@ const Contact = () => {
 
       <LuxHero
         image={heroPalace}
-        eyebrow="Begin"
-        title={<>Speak With A <span className="text-[#C9A84C]">Rajasthan</span> Specialist</>}
-        subtitle="Share your travel dates and what you'd like to see — we'll plan the rest."
+        eyebrow="Contact Us"
+        title={<>Contact Our <span className="text-[#C9A84C]">Jaipur</span> Travel Team</>}
+        subtitle="Share your travel dates, destinations, number of travelers and any special requirements — we'll get back to you with a plan and a personalized quote."
       />
 
       <section className="container mx-auto px-6 py-24 md:py-32">

@@ -17,9 +17,9 @@ const About = () => (
 
     <LuxHero
       image={heroPalace}
-      eyebrow="Our Story"
+      eyebrow="About Us"
       title={<>About <span className="text-[#C9A84C]">Heritage Jaipur Travels</span></>}
-      subtitle="A family-run Rajasthan travel company built on trust, local knowledge and over twenty years of experience."
+      subtitle="A Jaipur-based, family-run travel company planning private Rajasthan tours and chauffeur services for over 20 years."
     />
 
     {/* Meet Kailash */}
@@ -33,23 +33,27 @@ const About = () => (
       <div className="container mx-auto px-6 max-w-3xl text-center">
         <LuxSectionHeading
           tone="dark"
-          eyebrow="Our Philosophy"
-          title={<>Travel Slowly. <span className="text-[#C9A84C]">Travel Deeply.</span></>}
+          eyebrow="How We Work"
+          title={<>Comfortable Travel, <span className="text-[#C9A84C]">Honestly</span> Planned</>}
         />
         <div className="font-serif text-lg md:text-xl leading-[1.9] text-[#FFF8F0]/80 space-y-6 text-left md:text-center">
           <p>
-            Rajasthan is not a checklist. It is a slow unfolding — of courtyards opened
-            quietly at sunrise, of conversations with artisans whose hands have worked the
-            same craft for six generations, of evenings on a rooftop where the only sound
-            is the call to prayer drifting across the old city.
+            We plan private Rajasthan tours the way we would plan a trip for a friend visiting
+            us in Jaipur. Comfortable cars, experienced drivers, hotels you can actually relax in,
+            and an itinerary that has room to breathe.
           </p>
           <p>
-            We design journeys that leave room for these moments. Fewer monuments, more
-            mornings. Fewer transfers, more time. The Rajasthan we love is the one you'll
-            remember in ten years — not the one you'll forget by the next flight.
+            Every trip is customized. We ask about your dates, how you like to travel, what you
+            want to see, and what you'd rather skip. Then we suggest a route that makes sense —
+            with honest advice on hotels, distances and timings.
+          </p>
+          <p>
+            We don't oversell. If a city needs only one night, we'll say so. If a longer drive
+            isn't worth it, we'll tell you. The goal is a trip you enjoy and would recommend to
+            someone else.
           </p>
           <p className="font-display italic text-[#C9A84C] text-xl md:text-2xl">
-            "Travel with us, and travel with friends."
+            "Real local knowledge, honest advice, and people you can reach when you need them."
           </p>
         </div>
       </div>
@@ -61,10 +65,10 @@ const About = () => (
     {/* Final CTA */}
     <LuxCtaBand
       image={heroPalace}
-      eyebrow="Begin"
-      title={<>Let's Plan Your <span className="text-[#C9A84C]">Rajasthan</span> Journey</>}
-      subtitle="Share your travel dates and interests — Kailash and the team will plan the rest."
-      primary={{ label: "Contact Us", to: "/contact" }}
+      eyebrow="Start Planning"
+      title={<>Plan Your <span className="text-[#C9A84C]">Rajasthan</span> Tour With Us</>}
+      subtitle="Share your travel dates and what you'd like to see — our Jaipur team will put together a plan."
+      primary={{ label: "Contact Our Jaipur Team", to: "/contact" }}
       secondary={{ label: "WhatsApp Us", href: "https://wa.me/919887688843", external: true }}
     />
   </main>

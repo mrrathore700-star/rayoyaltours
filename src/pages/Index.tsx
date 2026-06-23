@@ -39,14 +39,14 @@ const Index = () => {
 
       <LuxHero
         image={heroPalace}
-        eyebrow="Rajasthan Travel Specialists"
-        title={<>Royal Rajasthan, <span className="text-[#C9A84C]">Privately</span> Planned</>}
-        subtitle="Private, unhurried journeys through palaces, deserts and living culture — planned by Jaipur locals for over twenty years."
+        eyebrow="Jaipur-Based Rajasthan Travel Company"
+        title={<>Private <span className="text-[#C9A84C]">Rajasthan</span> Tours, Planned in Jaipur</>}
+        subtitle="A family-run Rajasthan travel company with 20+ years of experience. Private tours, chauffeur services and customized itineraries for travelers from India and around the world."
         height="tall"
         actions={
           <>
-            <LuxLinkBtn to="/contact" variant="gold">Plan Your Journey</LuxLinkBtn>
-            <LuxAnchorBtn href="https://wa.me/919887688843?text=Hi!%20I%20want%20to%20plan%20my%20Rajasthan%20trip" external variant="outline">Speak To A Specialist</LuxAnchorBtn>
+            <LuxLinkBtn to="/contact" variant="gold">Plan Your Rajasthan Tour</LuxLinkBtn>
+            <LuxAnchorBtn href="https://wa.me/919887688843?text=Hi!%20I%20want%20to%20plan%20my%20Rajasthan%20trip" external variant="outline">WhatsApp Our Jaipur Team</LuxAnchorBtn>
           </>
         }
       />
@@ -57,9 +57,9 @@ const Index = () => {
       <section className="lux-cream-bg py-24 md:py-32">
         <div className="container mx-auto px-6">
           <LuxSectionHeading
-            eyebrow="Signature Journeys"
-            title="Handpicked Itineraries Across Rajasthan"
-            intro="From the marble palaces of Udaipur to the dunes beyond Jaisalmer — each route is shaped around your pace, taste and interests."
+            eyebrow="Our Tours"
+            title="Popular Rajasthan Tour Packages"
+            intro="A selection of our most-booked private Rajasthan tours. Every itinerary can be customized to your dates, interests and budget."
           />
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {tours.slice(0, 6).map((tour) => (
@@ -68,7 +68,7 @@ const Index = () => {
           </div>
           <div className="text-center mt-14">
             <LuxLinkBtn to="/packages" variant="outline">
-              View All Journeys <ArrowRight className="h-4 w-4" />
+              View All Tour Packages <ArrowRight className="h-4 w-4" />
             </LuxLinkBtn>
           </div>
         </div>
@@ -77,11 +77,11 @@ const Index = () => {
       {/* Heritage Experience Banner */}
       <LuxCtaBand
         image={culturalDance}
-        eyebrow="Beyond the Guidebook"
-        title={<>Live the Royal <span className="text-[#C9A84C]">Rajasthani</span> Experience</>}
-        subtitle="Camel rides through golden dunes, candlelit dinners inside ancient forts, mornings with master artisans — the Rajasthan most travelers only read about."
-        primary={{ label: "Explore Experiences", to: "/experiences" }}
-        secondary={{ label: "Speak To A Specialist", href: "https://wa.me/919887688843", external: true }}
+        eyebrow="Experiences"
+        title={<>Cultural & Heritage <span className="text-[#C9A84C]">Experiences</span> in Rajasthan</>}
+        subtitle="Heritage walks, camel safaris, village visits, cooking sessions, evening folk performances — add experiences to any tour."
+        primary={{ label: "View Experiences", to: "/experiences" }}
+        secondary={{ label: "Speak With Our Team", href: "https://wa.me/919887688843", external: true }}
       />
 
 
@@ -90,8 +90,8 @@ const Index = () => {
         <div className="container mx-auto px-6">
           <LuxSectionHeading
             eyebrow="Gallery"
-            title="Moments From The Journey"
-            intro="A few favourite scenes from recent guest journeys across Rajasthan."
+            title="Photos from Our Recent Trips"
+            intro="A few photos from recent Rajasthan trips planned by our Jaipur team."
           />
           <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4">
             {galleryImages.map((img, i) => (
@@ -133,11 +133,11 @@ const Index = () => {
       {/* Final CTA */}
       <LuxCtaBand
         image={heroPalace}
-        eyebrow="Begin"
-        title={<>Plan Your <span className="text-[#C9A84C]">Rajasthan</span> Journey</>}
-        subtitle="Tell us your travel dates and what you'd like to see — we'll plan the rest."
-        primary={{ label: "Plan Your Journey", to: "/contact" }}
-        secondary={{ label: "WhatsApp A Specialist", href: "https://wa.me/919887688843", external: true }}
+        eyebrow="Start Planning"
+        title={<>Plan Your <span className="text-[#C9A84C]">Rajasthan</span> Trip With Our Jaipur Team</>}
+        subtitle="Share your travel dates, destinations and what you'd like to do — we'll send a personalized plan and quote."
+        primary={{ label: "Request A Custom Itinerary", to: "/contact" }}
+        secondary={{ label: "WhatsApp Our Jaipur Team", href: "https://wa.me/919887688843", external: true }}
       />
 
     </main>
