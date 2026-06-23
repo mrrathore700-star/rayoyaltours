@@ -1,10 +1,10 @@
 const pillars = [
-  { title: "20+", text: "Years of crafting Rajasthan journeys" },
-  { title: "1000+", text: "Happy guests served worldwide" },
-  { title: "24/7", text: "Travel support always available" },
-  { title: "Private", text: "experiences, never group" },
-  { title: "International", text: "travelers across 40+ countries" },
-  { title: "Local Experts", text: "born and raised in Rajasthan" },
+  { title: "20+", text: "Years planning Rajasthan tours" },
+  { title: "1000+", text: "Travelers from India and abroad" },
+  { title: "24/7", text: "WhatsApp and phone support" },
+  { title: "Private", text: "tours and chauffeur service" },
+  { title: "Jaipur", text: "based, family-run team" },
+  { title: "Local", text: "Rajasthan experts and drivers" },
 ];
 
 const LuxTrustStrip = () => (
@@ -13,11 +13,11 @@ const LuxTrustStrip = () => (
       <div className="text-center mb-10">
         <div className="inline-flex items-center gap-3 mb-4">
           <span className="lux-rule-gold" />
-          <span className="lux-eyebrow">Trusted Worldwide</span>
+          <span className="lux-eyebrow">A Trusted Jaipur Travel Company</span>
           <span className="lux-rule-gold" />
         </div>
         <h2 className="font-display text-2xl md:text-3xl text-[#6E0F1F] font-semibold leading-snug max-w-2xl mx-auto">
-          Crafting Rajasthan Experiences for International Travelers for Over 20 Years
+          A Jaipur-Based Family Business Planning Private Rajasthan Tours for Over 20 Years
         </h2>
       </div>
       <div className="grid grid-cols-2 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
