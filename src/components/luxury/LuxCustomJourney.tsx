@@ -4,12 +4,12 @@ import { toast } from "sonner";
 import royalTour from "@/assets/royal-tour.jpg";
 
 const features = [
-  "Fully Customized Itineraries",
-  "Private Tours",
-  "Luxury & Heritage Hotels",
+  "Customized Itineraries",
+  "Private Tours & Drivers",
+  "Heritage & Premium Hotels",
   "Flexible Travel Dates",
   "Local Rajasthan Experts",
-  "24/7 Travel Support",
+  "WhatsApp & Phone Support",
 ];
 
 const WA_NUMBER = "919887688843";
@@ -75,14 +75,14 @@ const LuxCustomJourney = () => {
           <div>
             <div className="inline-flex items-center gap-3 mb-6">
               <span className="lux-rule-gold" />
-              <span className="lux-eyebrow">Bespoke Travel</span>
+              <span className="lux-eyebrow">Customized Tours</span>
             </div>
             <h2 className="font-display font-semibold text-[#FFF8F0] text-3xl md:text-5xl leading-[1.1]">
-              Create Your Own <span className="text-[#C9A84C]">Rajasthan</span> Journey
+              Plan Your Own <span className="text-[#C9A84C]">Rajasthan</span> Tour
             </h2>
             <p className="font-serif italic text-[#FFF8F0]/80 text-lg md:text-xl mt-6 leading-relaxed">
-              Every traveler is unique. Share your travel dates, interests, destinations and preferences,
-              and our Rajasthan specialists will design a personalized itinerary tailored exclusively for you.
+              Share your travel dates, destinations and preferences. Our Jaipur-based team will
+              put together a private itinerary built around how you want to travel.
             </p>
 
             <ul className="mt-10 grid sm:grid-cols-2 gap-x-6 gap-y-4">
@@ -96,13 +96,13 @@ const LuxCustomJourney = () => {
 
             <div className="mt-10 hidden lg:block">
               <a
-                href={`https://wa.me/${WA_NUMBER}?text=${encodeURIComponent("Hi! I'd like to plan a custom Rajasthan journey.")}`}
+                href={`https://wa.me/${WA_NUMBER}?text=${encodeURIComponent("Hi! I'd like to plan a custom Rajasthan tour.")}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 text-[#C9A84C] hover:text-[#FFF8F0] transition-colors font-display tracking-[0.18em] uppercase text-xs"
               >
                 <MessageCircle className="h-4 w-4" />
-                WhatsApp a Travel Specialist
+                WhatsApp Our Jaipur Team
               </a>
             </div>
           </div>
@@ -112,9 +112,9 @@ const LuxCustomJourney = () => {
             onSubmit={handleSubmit}
             className="bg-[#FFF8F0] rounded-sm p-7 md:p-10 heritage-shadow border border-[#C9A84C]/40"
           >
-            <h3 className="font-display text-2xl text-[#0F0F0F] mb-1">Plan My Custom Tour</h3>
+            <h3 className="font-display text-2xl text-[#0F0F0F] mb-1">Request A Custom Itinerary</h3>
             <p className="text-sm text-[#0F0F0F]/65 mb-6">
-              Tell us a little about your trip — we'll reply within 24 hours.
+              Share a few details about your trip — our Jaipur team usually replies within a few hours.
             </p>
 
             <div className="grid sm:grid-cols-2 gap-4">
@@ -134,7 +134,7 @@ const LuxCustomJourney = () => {
                 value={form.requirements}
                 onChange={update("requirements")}
                 rows={3}
-                placeholder="Heritage hotels, dietary needs, photography focus…"
+                placeholder="Heritage hotels, dietary needs, accessibility, special occasions…"
                 className="w-full bg-transparent border border-[#C9A84C]/40 rounded-sm px-3 py-2.5 text-sm text-[#0F0F0F] focus:border-[#C9A84C] focus:outline-none focus:ring-1 focus:ring-[#C9A84C]/40 transition"
               />
             </div>
@@ -144,15 +144,15 @@ const LuxCustomJourney = () => {
                 type="submit"
                 className="lux-btn-gold inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-full font-display tracking-[0.18em] uppercase text-xs flex-1"
               >
-                <Send className="h-4 w-4" /> Plan My Custom Tour
+                <Send className="h-4 w-4" /> Request Itinerary
               </button>
               <a
-                href={`https://wa.me/${WA_NUMBER}?text=${encodeURIComponent("Hi! I'd like to plan a custom Rajasthan journey.")}`}
+                href={`https://wa.me/${WA_NUMBER}?text=${encodeURIComponent("Hi! I'd like to plan a custom Rajasthan tour.")}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="lux-btn-outline inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-full font-display tracking-[0.18em] uppercase text-xs flex-1"
               >
-                <MessageCircle className="h-4 w-4" /> WhatsApp Specialist
+                <MessageCircle className="h-4 w-4" /> WhatsApp Our Team
               </a>
             </div>
           </form>

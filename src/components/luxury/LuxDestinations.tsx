@@ -12,42 +12,42 @@ const destinations = [
   {
     name: "Jaipur",
     tagline: "The Pink City",
-    description: "Royal palaces, bustling bazaars and the rose-hued architecture of Rajasthan's regal capital.",
+    description: "Forts, palaces and bazaars — Rajasthan's capital and the starting point for most of our tours.",
     image: hawaMahal,
     to: "/contact?destination=Jaipur",
   },
   {
     name: "Udaipur",
     tagline: "City of Lakes",
-    description: "Marble palaces mirrored in shimmering waters — a romantic dream framed by the Aravalli hills.",
+    description: "Palaces, lakes and the Aravalli hills — a relaxed stop popular with couples and families.",
     image: udaipurLake,
     to: "/contact?destination=Udaipur",
   },
   {
     name: "Jodhpur",
     tagline: "The Blue City",
-    description: "The mighty Mehrangarh Fort presides over a sea of indigo houses and timeless desert charm.",
+    description: "Mehrangarh Fort, the blue old town and easy day trips into the desert and Bishnoi villages.",
     image: jodhpurFort,
     to: "/contact?destination=Jodhpur",
   },
   {
     name: "Jaisalmer",
     tagline: "The Golden City",
-    description: "Sandstone ramparts glow at sunset above the Thar's endless dunes and silent caravans.",
+    description: "The sandstone fort, Thar Desert dunes and overnight camel and jeep safaris.",
     image: jaisalmerFort,
     to: "/contact?destination=Jaisalmer",
   },
   {
     name: "Ranthambore",
-    tagline: "Wild Rajasthan",
-    description: "Track majestic Bengal tigers through ancient jungle ruins on a luxury wildlife safari.",
+    tagline: "Tiger Country",
+    description: "Bengal tiger safaris in one of India's most well-known national parks, easy to combine with Jaipur.",
     image: ranthamboreTiger,
     to: "/contact?destination=Ranthambore",
   },
   {
     name: "Pushkar",
-    tagline: "Sacred Soul",
-    description: "Holy ghats, whitewashed temples and the mystic spirit of Rajasthan's most sacred lake town.",
+    tagline: "Lake Town",
+    description: "Ghats, the Brahma temple and the annual Camel Fair — a short drive from Jaipur.",
     image: pushkarLake,
     to: "/contact?destination=Pushkar",
   },
@@ -59,8 +59,8 @@ const LuxDestinations = () => {
       <div className="container mx-auto px-6">
         <LuxSectionHeading
           eyebrow="Destinations"
-          title="Explore Rajasthan's Most Iconic Destinations"
-          intro="Discover royal cities, desert landscapes, wildlife reserves, and timeless heritage across Rajasthan."
+          title="Popular Places to Visit in Rajasthan"
+          intro="Cities, forts, desert towns and wildlife parks our Jaipur team can include in your tour."
         />
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">

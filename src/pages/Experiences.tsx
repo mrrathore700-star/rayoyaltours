@@ -23,23 +23,23 @@ const waLink = (msg: string) =>
 // Unique theme-level descriptions for each category (do NOT repeat experience copy)
 const CATEGORY_THEME: Record<string, string> = {
   royal:
-    "Sleep inside working palaces, dine in royal courtyards and travel through Rajasthan the way its maharajas once did.",
+    "Heritage hotel stays, palace tours and royal dining experiences across Rajasthan's former princely cities.",
   wildlife:
-    "Tigers in Ranthambore, leopards in Jawai and rare birds in Bharatpur — Rajasthan's wild kingdoms, explored with private naturalists.",
+    "Tiger safaris in Ranthambore, leopard tracking in Jawai and birding in Bharatpur — arranged with experienced local naturalists.",
   desert:
-    "Golden dunes, candle-lit luxury camps and dark desert skies — slow, soulful encounters with the Thar.",
+    "Camel safaris, desert camps and overnight stays in the Thar — from Jaisalmer and Bikaner.",
   food:
-    "From royal seven-course thalis to hidden street-food alleys — taste Rajasthan in homes, havelis and family kitchens.",
+    "Rajasthani thalis, family-run kitchens, cooking classes and street-food walks in Jaipur and Jodhpur.",
   wellness:
-    "Sunrise yoga, temple aarti and authentic Ayurveda — quiet rituals that slow the rhythm of your journey.",
+    "Morning yoga, temple aartis and Ayurveda sessions — easy add-ons to slow down your trip.",
   art:
-    "Sit beside master artisans — block printers, blue potters, puppet makers and folk dancers — and learn Rajasthan's living crafts.",
+    "Block printing, blue pottery, puppet making and folk dance sessions with Rajasthani artisans.",
   local:
-    "Bishnoi villages, working farms and bazaar walks — see Rajasthan through the eyes of the people who call it home.",
+    "Bishnoi village visits, farm walks and bazaar tours — get a feel of everyday life in Rajasthan.",
   festivals:
-    "Time your journey with Pushkar Camel Fair, Holi, Teej and Gangaur — Rajasthan's most colourful living traditions.",
+    "Plan your trip around Pushkar Camel Fair, Holi, Teej or Gangaur — Rajasthan's biggest festivals.",
   photography:
-    "Cinematic portraits, golden-hour palaces and street stories — Rajasthan framed by photographers who know its light.",
+    "Portrait sessions, golden-hour palace shoots and street photography walks with local photographers.",
 };
 
 // Curated featured slugs (most loved across categories)
@@ -53,30 +53,30 @@ const FEATURED_SLUGS = [
 ];
 
 const trustPillars = [
-  { icon: Shield, title: "Private & Authentic", text: "Every experience is hosted privately for you — no large tour groups, ever." },
-  { icon: Users, title: "Small Group & Personal", text: "Travelling as a couple, family or close friends? You'll be looked after one to one." },
-  { icon: MapPin, title: "Hosted By Local Experts", text: "Born in Rajasthan, fluent in its stories — our guides open doors visitors rarely see." },
-  { icon: Sparkles, title: "Handpicked Experiences", text: "Each experience is personally vetted by our team for quality, ethics and authenticity." },
-  { icon: Heart, title: "Cultural Depth", text: "Beyond sightseeing — meet artisans, families and storytellers behind every place." },
-  { icon: Award, title: "Safe For International Travellers", text: "20+ years hosting guests from the UK, Europe, USA, Australia and Japan." },
+  { icon: Shield, title: "Private, Not Group Tours", text: "Every experience is hosted privately — just you, your family or your friends." },
+  { icon: Users, title: "Personal Service", text: "Whether you're a couple, family or small group, you'll have one point of contact throughout." },
+  { icon: MapPin, title: "Local Rajasthan Guides", text: "Our guides are from Rajasthan and have years of experience showing visitors around." },
+  { icon: Sparkles, title: "Tried & Tested", text: "We only recommend experiences our team has personally checked." },
+  { icon: Heart, title: "Real Cultural Contact", text: "Meet artisans, cooks and families — not just monuments." },
+  { icon: Award, title: "20+ Years in Rajasthan Travel", text: "Trusted by travelers from India and over 30 countries." },
 ];
 
 const STYLES = [
-  { title: "Royal Rajasthan", text: "Palace stays, vintage car drives and seven-course royal dining inside heritage havelis.", image: royalTour },
-  { title: "Food & Culinary", text: "Hands-on cooking in family homes, street-food walks and aromatic spice-market discoveries.", image: rajasthaniFood },
-  { title: "Arts & Crafts", text: "Block printing, blue pottery, puppet making and turban tying with master artisans.", image: culturalDance },
-  { title: "Wildlife & Nature", text: "Tiger safaris in Ranthambore, leopard tracking in Jawai and birding in Bharatpur.", image: ranthamboreTiger },
-  { title: "Spiritual & Wellness", text: "Sunrise yoga, temple aartis, guided meditation and authentic Ayurvedic healing.", image: udaipurLake },
-  { title: "Desert Adventures", text: "Camel safaris, luxury Swiss camps, dune jeep rides and Thar stargazing nights.", image: desertSafari },
+  { title: "Heritage & Palaces", text: "Stay in heritage hotels, tour royal palaces and visit Rajasthan's historic forts.", image: royalTour },
+  { title: "Food & Cooking", text: "Family-run kitchens, cooking classes, street-food walks and spice market visits.", image: rajasthaniFood },
+  { title: "Arts & Crafts", text: "Block printing, blue pottery, puppet making and turban tying with local artisans.", image: culturalDance },
+  { title: "Wildlife & Safaris", text: "Tiger safaris in Ranthambore, leopard tracking in Jawai and birding in Bharatpur.", image: ranthamboreTiger },
+  { title: "Yoga & Wellness", text: "Morning yoga, temple aartis, meditation and Ayurveda sessions.", image: udaipurLake },
+  { title: "Desert & Camel Safaris", text: "Camel rides, desert camps, jeep safaris and stargazing in the Thar.", image: desertSafari },
 ];
 
 const CITIES = [
-  { slug: "jaipur", name: "Jaipur", tagline: "The Pink City", image: hawaMahal, signature: "Palace tours, block printing, royal dining and Old City bazaar walks." },
-  { slug: "udaipur", name: "Udaipur", tagline: "City of Lakes", image: udaipurLake, signature: "Lake Pichola sunset cruises, vintage car drives and palace stays." },
-  { slug: "jodhpur", name: "Jodhpur", tagline: "The Blue City", image: jodhpurFort, signature: "Mehrangarh storytelling tours, Bishnoi village walks and rooftop dining." },
-  { slug: "jaisalmer", name: "Jaisalmer", tagline: "The Golden City", image: jaisalmerFort, signature: "Camel safaris, luxury desert camps and Thar Desert stargazing." },
-  { slug: "pushkar", name: "Pushkar", tagline: "Sacred Lake Town", image: pushkarLake, signature: "Temple aartis, the Camel Fair and Holi celebrations." },
-  { slug: "ranthambore", name: "Ranthambore", tagline: "Tiger Country", image: ranthamboreTiger, signature: "Bengal tiger safaris in one of India's most iconic national parks." },
+  { slug: "jaipur", name: "Jaipur", tagline: "The Pink City", image: hawaMahal, signature: "Palace tours, block printing, Rajasthani food and Old City bazaar walks." },
+  { slug: "udaipur", name: "Udaipur", tagline: "City of Lakes", image: udaipurLake, signature: "Lake Pichola boat rides, vintage car tours and heritage hotel stays." },
+  { slug: "jodhpur", name: "Jodhpur", tagline: "The Blue City", image: jodhpurFort, signature: "Mehrangarh Fort tours, Bishnoi village visits and rooftop dining." },
+  { slug: "jaisalmer", name: "Jaisalmer", tagline: "The Golden City", image: jaisalmerFort, signature: "Camel safaris, desert camps and stargazing in the Thar." },
+  { slug: "pushkar", name: "Pushkar", tagline: "Lake Town", image: pushkarLake, signature: "Temple visits, the Brahma temple and the annual Camel Fair." },
+  { slug: "ranthambore", name: "Ranthambore", tagline: "Tiger Country", image: ranthamboreTiger, signature: "Bengal tiger safaris in one of India's most well-known national parks." },
 ];
 
 const Experiences = () => {
@@ -91,9 +91,9 @@ const Experiences = () => {
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "TouristAttraction",
-    name: "Authentic Experiences Across Rajasthan",
+    name: "Rajasthan Experiences & Activities",
     description:
-      "Private Rajasthan experiences for international travellers — royal stays, desert nights, wildlife safaris, artisan workshops, food journeys and wellness retreats.",
+      "Private Rajasthan experiences and activities — heritage stays, desert camps, wildlife safaris, artisan workshops, food tours and wellness sessions, planned by our Jaipur-based team.",
     image: heroPalace,
     provider: {
       "@type": "TravelAgency",
@@ -107,8 +107,8 @@ const Experiences = () => {
   return (
     <main style={{ background: "#FFF8F0" }}>
       <SEO
-        title="Authentic Rajasthan Experiences | Heritage Jaipur Travels"
-        description="Discover Rajasthan beyond the guidebooks — private cultural encounters, artisan workshops, wildlife adventures, food journeys, wellness retreats, desert nights and royal heritage moments."
+        title="Rajasthan Experiences & Activities | Heritage Jaipur Travels"
+        description="Private Rajasthan experiences — heritage stays, desert camps, wildlife safaris, artisan workshops, food tours, wellness sessions and more, arranged by our Jaipur-based team."
         path="/experiences"
         image={heroPalace}
         jsonLd={jsonLd}
@@ -130,20 +130,19 @@ const Experiences = () => {
               className="font-display font-medium leading-[1.05] mb-7 text-[40px] sm:text-5xl md:text-6xl lg:text-7xl"
               style={{ color: "#FFF8F0", textShadow: "0 4px 30px rgba(0,0,0,0.6)", letterSpacing: "-0.015em", maxWidth: 720 }}
             >
-              Authentic Experiences
-              <span className="block lux-gold italic font-serif font-normal">Across Rajasthan</span>
+              Rajasthan Experiences
+              <span className="block lux-gold italic font-serif font-normal">& Activities</span>
             </h1>
             <p className="font-serif text-base md:text-lg lg:text-xl leading-[1.7] mb-9 mx-auto md:mx-0" style={{ color: "rgba(255,248,240,0.88)", maxWidth: 620 }}>
-              Discover Rajasthan beyond the guidebooks through private cultural encounters,
-              artisan workshops, wildlife adventures, food journeys, wellness retreats, desert
-              experiences and royal heritage moments.
+              Heritage walks, cooking classes, artisan workshops, wildlife safaris, desert camps and
+              village visits — add any of these to your Rajasthan tour.
             </p>
             <div className="flex flex-wrap gap-4 justify-center md:justify-start">
               <a href="#categories" className="lux-btn-gold px-7 py-3.5 rounded-full font-medium text-sm tracking-[0.15em] uppercase inline-flex items-center gap-2">
-                Explore Categories <ArrowRight className="h-4 w-4" />
+                Browse Categories <ArrowRight className="h-4 w-4" />
               </a>
               <Link to="/contact" className="lux-btn-outline px-7 py-3.5 rounded-full font-medium text-sm tracking-[0.15em] uppercase inline-flex items-center gap-2">
-                Plan Your Journey
+                Plan Your Rajasthan Tour
               </Link>
             </div>
           </div>
@@ -160,10 +159,10 @@ const Experiences = () => {
               <span className="h-px w-12 lux-bg-gold" />
             </div>
             <h2 className="font-display text-3xl md:text-5xl font-medium leading-[1.1]" style={{ color: "#0F0F0F", letterSpacing: "-0.01em" }}>
-              Choose Your Style of Rajasthan
+              Browse Experiences by Category
             </h2>
             <p className="font-serif italic text-lg md:text-xl mt-5 leading-relaxed" style={{ color: "#5a4a3a" }}>
-              Nine handpicked collections, each one a different way to experience the soul of Rajasthan.
+              Nine categories of Rajasthan experiences — pick what interests you and we'll add it to your tour.
             </p>
           </div>
 
@@ -204,14 +203,14 @@ const Experiences = () => {
           <div className="text-center max-w-3xl mx-auto mb-14 md:mb-20">
             <div className="flex items-center justify-center gap-3 mb-5">
               <span className="h-px w-12 lux-bg-gold" />
-              <span className="text-[11px] tracking-[0.35em] uppercase lux-gold">Most Loved</span>
+              <span className="text-[11px] tracking-[0.35em] uppercase lux-gold">Popular</span>
               <span className="h-px w-12 lux-bg-gold" />
             </div>
             <h2 className="font-display text-3xl md:text-5xl font-medium leading-[1.1]" style={{ color: "#0F0F0F", letterSpacing: "-0.01em" }}>
-              Featured Rajasthan Experiences
+              Popular Rajasthan Experiences
             </h2>
             <p className="font-serif italic text-lg md:text-xl mt-5 leading-relaxed" style={{ color: "#5a4a3a" }}>
-              The signature moments most travellers ask for — handpicked from across our collections.
+              A few of the experiences travelers ask us for most often.
             </p>
           </div>
 
@@ -249,11 +248,11 @@ const Experiences = () => {
           <div className="text-center max-w-3xl mx-auto mb-14 md:mb-20">
             <div className="flex items-center justify-center gap-3 mb-5">
               <span className="h-px w-12 lux-bg-gold" />
-              <span className="text-[11px] tracking-[0.35em] uppercase lux-gold">Our Promise</span>
+              <span className="text-[11px] tracking-[0.35em] uppercase lux-gold">How We Work</span>
               <span className="h-px w-12 lux-bg-gold" />
             </div>
             <h2 className="font-display text-3xl md:text-5xl font-medium leading-[1.1]" style={{ color: "#0F0F0F", letterSpacing: "-0.01em" }}>
-              Why Our Experiences Are Different
+              What You Can Expect
             </h2>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10">
@@ -276,14 +275,14 @@ const Experiences = () => {
           <div className="text-center max-w-3xl mx-auto mb-14 md:mb-20">
             <div className="flex items-center justify-center gap-3 mb-5">
               <span className="h-px w-12 lux-bg-gold" />
-              <span className="text-[11px] tracking-[0.35em] uppercase lux-gold">Experience Styles</span>
+              <span className="text-[11px] tracking-[0.35em] uppercase lux-gold">Travel Styles</span>
               <span className="h-px w-12 lux-bg-gold" />
             </div>
             <h2 className="font-display text-3xl md:text-5xl font-medium leading-[1.1]" style={{ color: "#FFF8F0", letterSpacing: "-0.01em" }}>
-              Six Ways To Travel Rajasthan
+              Six Ways to Travel Rajasthan
             </h2>
             <p className="font-serif italic text-lg md:text-xl mt-5 leading-relaxed" style={{ color: "rgba(255,248,240,0.75)" }}>
-              Tell us your style — we'll shape an experience around it.
+              Tell us what kind of trip you'd like — we'll build it around that.
             </p>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-7 md:gap-9">
@@ -313,10 +312,10 @@ const Experiences = () => {
               <span className="h-px w-12 lux-bg-gold" />
             </div>
             <h2 className="font-display text-3xl md:text-5xl font-medium leading-[1.1]" style={{ color: "#0F0F0F", letterSpacing: "-0.01em" }}>
-              The Rajasthan Experience Map
+              Experiences by City
             </h2>
             <p className="font-serif italic text-lg md:text-xl mt-5 leading-relaxed" style={{ color: "#5a4a3a" }}>
-              Each city offers its own signature experiences — combine them into one private journey.
+              Every Rajasthan city has its own experiences — combine them into a single private tour.
             </p>
           </div>
 
@@ -344,19 +343,19 @@ const Experiences = () => {
           <div className="text-center max-w-3xl mx-auto mb-12">
             <div className="flex items-center justify-center gap-3 mb-5">
               <span className="h-px w-12 lux-bg-gold" />
-              <span className="text-[11px] tracking-[0.35em] uppercase lux-gold">Social Proof</span>
+              <span className="text-[11px] tracking-[0.35em] uppercase lux-gold">Trusted By Travelers</span>
               <span className="h-px w-12 lux-bg-gold" />
             </div>
             <h2 className="font-display text-3xl md:text-5xl font-medium leading-[1.1]" style={{ color: "#0F0F0F", letterSpacing: "-0.01em" }}>
-              Loved By Travellers Worldwide
+              Trusted by Travelers From India and Abroad
             </h2>
           </div>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-10 text-center">
             {[
               { n: "4.9★", l: "Google Reviews" },
               { n: "30+", l: "Countries Hosted" },
-              { n: "20+", l: "Years of Experience" },
-              { n: "5,000+", l: "Happy Travellers" },
+              { n: "20+", l: "Years in Rajasthan Travel" },
+              { n: "5,000+", l: "Happy Travelers" },
             ].map((s) => (
               <div key={s.l}>
                 <div className="font-display text-3xl md:text-5xl font-medium lux-gold mb-2">{s.n}</div>
@@ -375,29 +374,29 @@ const Experiences = () => {
           <div className="absolute inset-0" style={{ background: "linear-gradient(180deg, rgba(15,15,15,0.85) 0%, rgba(110,15,31,0.7) 100%)" }} />
         </div>
         <div className="relative z-10 container mx-auto px-5 md:px-8 py-28 md:py-36 text-center max-w-3xl">
-          <span className="text-[11px] tracking-[0.35em] uppercase lux-gold">Begin Here</span>
+          <span className="text-[11px] tracking-[0.35em] uppercase lux-gold">Start Planning</span>
           <h2 className="font-display text-4xl md:text-6xl font-medium leading-[1.05] mt-5 mb-7" style={{ color: "#FFF8F0", letterSpacing: "-0.015em" }}>
-            Let's Create Your Rajasthan Experience
+            Plan Your Rajasthan Tour
           </h2>
           <p className="font-serif italic text-lg md:text-xl leading-relaxed mb-10" style={{ color: "rgba(255,248,240,0.88)" }}>
-            Tell us your interests and travel style. We'll help you build a private Rajasthan
-            experience tailored to you.
+            Tell our Jaipur team what you'd like to see and do — we'll put together a private
+            Rajasthan tour built around your dates and interests.
           </p>
           <div className="flex flex-wrap gap-4 justify-center">
             <Link to="/contact" className="lux-btn-gold px-8 py-4 rounded-full font-medium text-sm tracking-[0.2em] uppercase inline-flex items-center gap-2">
-              Plan Your Journey <ArrowRight className="h-4 w-4" />
+              Plan Your Rajasthan Tour <ArrowRight className="h-4 w-4" />
             </Link>
             <a
-              href={waLink("Hi! I'd like to speak with a Rajasthan specialist about a private experience.")}
+              href={waLink("Hi! I'd like to plan a Rajasthan tour with your team.")}
               target="_blank"
               rel="noopener noreferrer"
               className="lux-btn-outline px-8 py-4 rounded-full font-medium text-sm tracking-[0.2em] uppercase inline-flex items-center gap-2"
             >
-              Speak To A Specialist
+              WhatsApp Our Jaipur Team
             </a>
           </div>
           <ul className="flex flex-wrap gap-x-6 gap-y-2 justify-center text-[11px] tracking-[0.25em] uppercase mt-10" style={{ color: "rgba(255,248,240,0.7)" }}>
-            {["Private Experiences", "Local Experts", "20+ Years", "5,000+ Travellers"].map((t) => (
+            {["Private Tours", "Local Rajasthan Team", "20+ Years Experience", "5,000+ Travelers"].map((t) => (
               <li key={t} className="flex items-center gap-2">
                 <Star className="h-3 w-3 lux-gold fill-current" /> {t}
               </li>

@@ -8,7 +8,7 @@ const LuxMeetFounder = () => (
     <div className="container mx-auto px-6">
       <LuxSectionHeading
         eyebrow="Meet The Founder"
-        title={<>The Man Behind <span className="text-[#C9A84C]">Heritage Jaipur Travels</span></>}
+        title={<>The Family Behind <span className="text-[#C9A84C]">Heritage Jaipur Travels</span></>}
       />
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center max-w-6xl mx-auto">
@@ -28,7 +28,7 @@ const LuxMeetFounder = () => (
           </div>
           <div className="absolute -bottom-5 left-1/2 -translate-x-1/2 bg-[#F8F5EF] px-5 py-2 border border-[#C9A84C]/40 rounded-full whitespace-nowrap">
             <span className="font-display text-xs tracking-[0.22em] uppercase text-[#6E0F1F]">
-              Kailash · Founder & Lead Specialist
+              Kailash · Founder
             </span>
           </div>
         </div>
@@ -44,20 +44,21 @@ const LuxMeetFounder = () => (
 
           <div className="space-y-5 font-serif text-[16px] md:text-[17px] leading-[1.85] text-[#0F0F0F]/80">
             <p>
-              I was born and raised in the lanes of Jaipur, where every wall tells a story
-              and every courtyard holds a memory. For more than <strong className="text-[#6E0F1F] font-semibold">twenty years</strong>,
-              I have had the quiet privilege of driving travellers from around the world
-              across the deserts, palaces and villages of Rajasthan.
+              I'm from Jaipur, and I started Heritage Jaipur Travels over
+              <strong className="text-[#6E0F1F] font-semibold"> twenty years ago</strong> with
+              a single car and a simple idea — to help travelers see Rajasthan the way locals do,
+              with someone they could trust behind the wheel.
             </p>
             <p>
-              What began as a single car and a deep love for my homeland has grown into a
-              small, trusted family of drivers, guides and travel planners — all of us
-              Rajasthani, all of us proud to call this land home.
+              Today we're still a family-run business based in Jaipur. Our team of drivers,
+              guides and travel planners are all from Rajasthan, and most have been with us for
+              years. We plan private tours for families, couples, solo travelers and small groups
+              from India and across the world.
             </p>
             <p>
-              I don't believe in rushed itineraries or scripted tours. I believe in slow
-              mornings at the chai stall, sunsets over the dunes, and conversations that
-              outlast the journey. When you travel with us, you travel with friends.
+              We don't use fixed group itineraries. We listen to what you want, suggest what works,
+              and plan a comfortable trip around your dates, budget and pace. If something needs
+              to change during the trip, we're a phone call away.
             </p>
           </div>
 

@@ -99,11 +99,11 @@ const Packages = () => (
 
     <LuxCtaBand
       image={royalTour}
-      eyebrow="Custom Journeys"
-      title={<>Design Your Own <span className="text-[#C9A84C]">Rajasthan</span> Itinerary</>}
-      subtitle="Looking for something different? We plan fully custom itineraries — palace stays, desert nights, wildlife trails."
-      primary={{ label: "Plan Your Journey", to: "/contact" }}
-      secondary={{ label: "WhatsApp A Specialist", href: "https://wa.me/919887688843", external: true }}
+      eyebrow="Customized Tours"
+      title={<>Don't See What You're Looking For?</>}
+      subtitle="Tell our Jaipur team your travel dates, destinations and interests — we'll plan a custom Rajasthan tour for you."
+      primary={{ label: "Request A Custom Itinerary", to: "/contact" }}
+      secondary={{ label: "WhatsApp Our Jaipur Team", href: "https://wa.me/919887688843", external: true }}
     />
   </main>
 );

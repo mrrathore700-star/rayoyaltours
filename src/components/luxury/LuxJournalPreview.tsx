@@ -19,9 +19,9 @@ const LuxJournalPreview = () => {
     <section className="lux-cream-bg py-24 md:py-32">
       <div className="container mx-auto px-6">
         <LuxSectionHeading
-          eyebrow="Travel Journal"
-          title="Stories, Guides & Inspiration"
-          intro="Expert Rajasthan travel insights, destination guides, and luxury journey inspiration."
+          eyebrow="Travel Blog"
+          title="Rajasthan Travel Guides & Tips"
+          intro="Practical Rajasthan travel guides, itinerary ideas and destination tips from our Jaipur team."
         />
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10">

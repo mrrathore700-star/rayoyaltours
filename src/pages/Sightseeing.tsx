@@ -36,13 +36,13 @@ const Sightseeing = () => (
 
     <LuxHero
       image={amberFort}
-      eyebrow="Pink City"
-      title={<>Jaipur, <span className="text-[#C9A84C]">Slowly</span> Discovered</>}
-      subtitle="Forts before the crowds, palaces behind closed doors, bazaars known only to locals."
+      eyebrow="Jaipur Sightseeing"
+      title={<>Jaipur Sightseeing with a <span className="text-[#C9A84C]">Local</span> Team</>}
+      subtitle="Forts, palaces, stepwells and bazaars — explored at your own pace with experienced Jaipur-based drivers and guides."
       actions={
         <>
-          <LuxLinkBtn to="/contact" variant="gold">Design My Day</LuxLinkBtn>
-          <LuxAnchorBtn href="https://wa.me/919887688843" external variant="outline">WhatsApp Specialist</LuxAnchorBtn>
+          <LuxLinkBtn to="/contact" variant="gold">Plan My Jaipur Day</LuxLinkBtn>
+          <LuxAnchorBtn href="https://wa.me/919887688843" external variant="outline">WhatsApp Our Jaipur Team</LuxAnchorBtn>
         </>
       }
     />
@@ -66,17 +66,17 @@ const Sightseeing = () => (
               <div className="w-full md:w-1/2">
                 <div className="flex items-center gap-3 mb-5">
                   <span className="lux-rule-gold" />
-                  <span className="lux-eyebrow">Chapter {String(i + 1).padStart(2, "0")}</span>
+                  <span className="lux-eyebrow">Stop {String(i + 1).padStart(2, "0")}</span>
                 </div>
                 <h3 className="font-display text-3xl md:text-4xl font-semibold text-[#0F0F0F] mb-5 leading-tight">{spot.title}</h3>
                 <p className="font-serif text-lg text-[#0F0F0F]/75 mb-7 leading-relaxed">{spot.desc}</p>
                 <a
-                  href={`https://wa.me/919887688843?text=${encodeURIComponent(`I would like to arrange a private visit to ${spot.title}. Please share details.`)}`}
+                  href={`https://wa.me/919887688843?text=${encodeURIComponent(`I'd like to include ${spot.title} in my Jaipur sightseeing. Please share details.`)}`}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-3 text-xs tracking-[0.22em] uppercase text-[#C9A84C] hover:text-[#6E0F1F] transition-colors"
                 >
-                  <span className="lux-rule-gold" /> Plan This Visit
+                  <span className="lux-rule-gold" /> Add To My Trip
                 </a>
               </div>
             </div>
@@ -87,11 +87,11 @@ const Sightseeing = () => (
 
     <LuxCtaBand
       image={cityPalace}
-      eyebrow="Begin"
-      title={<>Craft Your Private <span className="text-[#C9A84C]">Jaipur</span> Day</>}
-      subtitle="Tell us what moves you — we'll arrange the rest, from chauffeur to chai."
+      eyebrow="Plan Your Day"
+      title={<>Plan a Private <span className="text-[#C9A84C]">Jaipur</span> Sightseeing Tour</>}
+      subtitle="Tell us which places you'd like to see — we'll arrange the car, driver and timings."
       primary={{ label: "Plan My Day", to: "/contact" }}
-      secondary={{ label: "WhatsApp Specialist", href: "https://wa.me/919887688843", external: true }}
+      secondary={{ label: "WhatsApp Our Jaipur Team", href: "https://wa.me/919887688843", external: true }}
     />
   </main>
 );

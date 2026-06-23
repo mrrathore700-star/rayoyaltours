@@ -14,9 +14,9 @@ const Reviews = () => (
 
     <LuxHero
       image={heroPalace}
-      eyebrow="Loved By Travellers"
-      title={<>Words From Our <span className="text-[#C9A84C]">Guests</span></>}
-      subtitle="Honest Google reviews from travellers who explored Rajasthan with us."
+      eyebrow="Guest Reviews"
+      title={<>What Our <span className="text-[#C9A84C]">Travelers</span> Say</>}
+      subtitle="Verified Google reviews from travelers who toured Rajasthan with our Jaipur-based team."
       height="regular"
     />
 
@@ -24,11 +24,11 @@ const Reviews = () => (
 
     <LuxCtaBand
       image={heroPalace}
-      eyebrow="Begin"
-      title={<>Become Our Next <span className="text-[#C9A84C]">Happy</span> Traveller</>}
-      subtitle="Share your travel dates and interests — we'll plan the rest."
-      primary={{ label: "Plan Your Journey", to: "/contact" }}
-      secondary={{ label: "WhatsApp Kailash", href: "https://wa.me/919887688843", external: true }}
+      eyebrow="Start Planning"
+      title={<>Plan Your Own <span className="text-[#C9A84C]">Rajasthan</span> Trip</>}
+      subtitle="Share your travel dates and interests — our Jaipur team will put together a plan."
+      primary={{ label: "Plan Your Rajasthan Tour", to: "/contact" }}
+      secondary={{ label: "WhatsApp Our Jaipur Team", href: "https://wa.me/919887688843", external: true }}
     />
   </main>
 );

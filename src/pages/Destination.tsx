@@ -39,7 +39,7 @@ const Destination = () => {
     name: `${dest.name}, Rajasthan, India`,
     description: dest.metaDescription,
     image: typeof dest.heroImage === "string" ? dest.heroImage : undefined,
-    touristType: ["Luxury Travellers", "International Travellers", "Heritage Travellers"],
+    touristType: ["Families", "Couples", "Solo Travelers", "Heritage Travelers"],
   };
 
   const breadcrumbSchema = {
@@ -124,7 +124,7 @@ const Destination = () => {
           <LuxSectionHeading
             eyebrow="Top Attractions"
             title={`Must-See Places in ${dest.name}`}
-            intro="The landmarks every international traveller should experience."
+            intro="The main attractions to include in your trip."
           />
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 max-w-6xl mx-auto">
             {dest.topAttractions.map((a, i) => (
@@ -147,9 +147,9 @@ const Destination = () => {
       <section className="py-20 md:py-28 bg-white border-t" style={{ borderColor: "rgba(110,15,31,0.10)" }}>
         <div className="container mx-auto px-6">
           <LuxSectionHeading
-            eyebrow="Best Experiences"
-            title={`Signature Experiences in ${dest.name}`}
-            intro="Private experiences handpicked by our local Rajasthan team."
+            eyebrow="Things To Do"
+            title={`Top Experiences in ${dest.name}`}
+            intro="Private experiences recommended by our Jaipur-based team."
           />
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 max-w-5xl mx-auto">
             {dest.bestExperiences.map((e) => (
@@ -226,8 +226,8 @@ const Destination = () => {
         <div className="container mx-auto px-6">
           <LuxSectionHeading
             eyebrow="Sample Itinerary"
-            title={`A Suggested ${dest.name} Journey`}
-            intro="A flexible framework — every itinerary is fully customised to your interests, pace and dates."
+            title={`A Suggested ${dest.name} Itinerary`}
+            intro="A flexible starting point — we'll customize it around your dates, interests and pace."
           />
           <div className="max-w-3xl mx-auto space-y-6">
             {dest.itinerary.map((d) => (
@@ -256,9 +256,9 @@ const Destination = () => {
       <section className="lux-cream-bg py-20 md:py-28">
         <div className="container mx-auto px-6">
           <LuxSectionHeading
-            eyebrow="FAQs"
+            eyebrow="Travel Information"
             title={`${dest.name} Travel Questions`}
-            intro={`Everything international travellers ask before visiting ${dest.name}.`}
+            intro={`Practical answers to help you plan your trip to ${dest.name}.`}
           />
           <div className="max-w-3xl mx-auto">
             <Accordion type="single" collapsible className="space-y-4">
@@ -287,8 +287,8 @@ const Destination = () => {
           <div className="container mx-auto px-6">
             <LuxSectionHeading
               eyebrow="Tour Packages"
-              title={`Journeys Featuring ${dest.name}`}
-              intro="Hand-crafted tours that include this destination."
+              title={`Tours Featuring ${dest.name}`}
+              intro="Multi-day Rajasthan tours from our team that include this destination."
             />
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {relatedTours.map((t) => (
@@ -312,7 +312,7 @@ const Destination = () => {
                     </h3>
                     <p className="text-sm text-[#0F0F0F]/65 mb-4">{t.highlights.join(" · ")}</p>
                     <span className="inline-flex items-center gap-2 text-[11px] tracking-[0.3em] uppercase text-[#6E0F1F]">
-                      View Journey <ArrowRight className="h-4 w-4" />
+                      View Tour <ArrowRight className="h-4 w-4" />
                     </span>
                   </div>
                 </Link>
@@ -326,9 +326,9 @@ const Destination = () => {
       <section className="lux-cream-bg py-20 md:py-28">
         <div className="container mx-auto px-6">
           <LuxSectionHeading
-            eyebrow="Related Experiences"
-            title={`Signature Experiences Across Rajasthan`}
-            intro={`Pair your time in ${dest.name} with our most-loved private experiences — heritage, culture, wildlife, desert, food and wellness.`}
+            eyebrow="More Experiences"
+            title={`Experiences to Add to Your ${dest.name} Trip`}
+            intro={`Browse experiences our team can add to your time in ${dest.name} — heritage, culture, wildlife, desert, food and wellness.`}
           />
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 max-w-5xl mx-auto">
             {[
@@ -361,8 +361,8 @@ const Destination = () => {
         <section className="py-20 md:py-28 bg-white border-t" style={{ borderColor: "rgba(110,15,31,0.10)" }}>
           <div className="container mx-auto px-6">
             <LuxSectionHeading
-              eyebrow="Travel Journal"
-              title={`Read More About ${dest.name} & Rajasthan`}
+              eyebrow="Travel Blog"
+              title={`Read More About ${dest.name}`}
             />
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               {relatedPosts.map((post) => (

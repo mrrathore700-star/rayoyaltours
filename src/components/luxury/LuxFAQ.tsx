@@ -10,36 +10,36 @@ import { LuxLinkBtn } from "./LuxButton";
 
 const faqs = [
   {
-    q: "Is Rajasthan safe for international travelers?",
-    a: "Yes. Rajasthan is one of India's most popular destinations for international travelers. We assist guests throughout their journey and provide reliable transportation, local expertise, and travel support.",
+    q: "Is Rajasthan safe for travelers?",
+    a: "Yes. Rajasthan is one of India's most visited states and is considered safe for families, couples, solo travelers and groups. Our team supports you throughout the trip with reliable transport, local guidance and WhatsApp assistance whenever you need it.",
   },
   {
     q: "What is the best time to visit Rajasthan?",
-    a: "The most comfortable travel season is from October to March, when the weather is pleasant for sightseeing, cultural experiences, wildlife safaris, and heritage stays.",
+    a: "October to March is the most comfortable season, with pleasant weather for sightseeing, heritage walks, wildlife safaris and desert stays. We can also plan trips during other months — just share your dates and we'll suggest the best routes.",
   },
   {
     q: "Do you provide private drivers?",
-    a: "Yes. We offer professional chauffeur-driven vehicles for individuals, couples, families, and private groups throughout Rajasthan.",
+    a: "Yes. We provide our own chauffeur-driven cars, SUVs and tempo travellers across Rajasthan. Our drivers are experienced, local, and have worked with us for years.",
   },
   {
     q: "Can itineraries be customized?",
-    a: "Absolutely. Every itinerary can be tailored according to your interests, travel dates, preferred destinations, accommodation style, and pace of travel.",
+    a: "Yes. Every itinerary is built around your travel dates, interests, destinations, hotels and pace. You can change the number of days, add or remove cities, and choose between heritage, budget or premium hotels.",
   },
   {
     q: "Do you arrange airport transfers?",
-    a: "Yes. We provide airport and railway station transfers in Jaipur and across Rajasthan for a smooth arrival and departure experience.",
+    a: "Yes. We arrange airport and railway station pickups and drop-offs in Jaipur and across Rajasthan, including late-night arrivals.",
   },
   {
-    q: "Do you offer luxury Rajasthan tours?",
-    a: "Yes. We specialize in luxury Rajasthan experiences including heritage hotels, palace stays, private guides, exclusive cultural experiences, and personalized travel planning.",
+    q: "Do you offer heritage and premium hotel bookings?",
+    a: "Yes. We can book heritage hotels, palace stays, boutique properties, mid-range hotels or budget accommodations — based on what suits your trip.",
   },
   {
     q: "Do you organize Golden Triangle tours?",
-    a: "Yes. We offer customized Golden Triangle tours covering Delhi, Agra, and Jaipur, with optional extensions to Ranthambore, Udaipur, Jodhpur, Jaisalmer, and other destinations.",
+    a: "Yes. We arrange Delhi–Agra–Jaipur tours, with optional add-ons to Ranthambore, Udaipur, Jodhpur, Jaisalmer, Pushkar and other destinations.",
   },
   {
-    q: "How many days are recommended for Rajasthan?",
-    a: "A well-planned Rajasthan trip typically ranges from 7 to 14 days depending on the destinations and experiences you wish to include.",
+    q: "How many days do I need for Rajasthan?",
+    a: "Most travelers spend 7 to 14 days in Rajasthan, depending on how many cities they want to cover. Shorter 4–6 day trips around Jaipur are also popular. Share your dates and we'll suggest a route that fits.",
   },
 ];
 
@@ -63,7 +63,7 @@ const LuxFAQ = () => {
         <LuxSectionHeading
           eyebrow="FAQs"
           title="Frequently Asked Questions"
-          intro="Everything you need to know before planning your Rajasthan journey."
+          intro="Practical answers to help you plan your Rajasthan trip with our Jaipur-based team."
         />
 
         <div className="max-w-3xl mx-auto">
@@ -87,10 +87,10 @@ const LuxFAQ = () => {
 
         <div className="text-center mt-14 max-w-2xl mx-auto">
           <p className="font-serif italic text-base md:text-lg text-[#0F0F0F]/65 mb-6">
-            Still have questions? Contact Heritage Jaipur Travels and our team will be happy to help plan your Rajasthan journey.
+            Have another question? Message our Jaipur office and we'll get back to you with practical advice for your trip.
           </p>
           <LuxLinkBtn to="/contact" variant="gold">
-            Contact Our Team
+            Contact Our Jaipur Team
           </LuxLinkBtn>
         </div>
       </div>

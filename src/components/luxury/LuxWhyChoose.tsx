@@ -4,33 +4,33 @@ import LuxSectionHeading from "./LuxSectionHeading";
 const features = [
   {
     icon: Award,
-    title: "20+ Years Experience",
-    text: "Over two decades of expertise creating memorable Rajasthan journeys for travelers from around the world.",
+    title: "20+ Years in Rajasthan Travel",
+    text: "A Jaipur-based family business planning private Rajasthan tours for travelers from India and around the world since 2003.",
   },
   {
     icon: UserCheck,
-    title: "Private Rajasthan Specialists",
-    text: "Dedicated private tours designed around your interests, travel style, and pace.",
+    title: "Private Tours, Not Group Tours",
+    text: "Every tour is private — just you, your family or your friends, with your own driver and itinerary.",
   },
   {
     icon: Route,
-    title: "Personalized Itineraries",
-    text: "Every itinerary is carefully tailored to match your preferences, schedule, and travel goals.",
+    title: "Customized Itineraries",
+    text: "We plan each itinerary around your dates, interests, budget and pace — not a fixed schedule.",
   },
   {
     icon: Car,
-    title: "Local Expert Drivers",
-    text: "Travel with experienced local drivers who know Rajasthan's roads, culture, and hidden gems.",
+    title: "Experienced Local Drivers",
+    text: "Our drivers are from Rajasthan, know every route, and have looked after travelers on our team for years.",
   },
   {
     icon: Sparkles,
-    title: "Authentic Cultural Experiences",
-    text: "Go beyond sightseeing with heritage walks, village visits, artisan encounters, and local traditions.",
+    title: "Real Local Knowledge",
+    text: "Heritage walks, village visits, food stops and artisan meetings recommended by people who actually live here.",
   },
   {
     icon: Headphones,
-    title: "24/7 Travel Support",
-    text: "Enjoy peace of mind with dedicated assistance before, during, and throughout your journey.",
+    title: "Direct WhatsApp Support",
+    text: "Reach our Jaipur office anytime on phone or WhatsApp — before, during and after your trip.",
   },
 ];
 
@@ -38,9 +38,9 @@ const LuxWhyChoose = () => (
   <section className="lux-cream-bg py-24 md:py-32 border-t" style={{ borderColor: "rgba(110,15,31,0.10)" }}>
     <div className="container mx-auto px-6">
       <LuxSectionHeading
-        eyebrow="Why Choose Us"
+        eyebrow="Why Travel With Us"
         title="Why Choose Heritage Jaipur Travels"
-        intro="Discover Rajasthan with a trusted local travel specialist offering personalized journeys, authentic experiences, and seamless travel planning."
+        intro="A Jaipur-based, family-run travel company offering private Rajasthan tours, chauffeur services and customized itineraries — for travelers from India and around the world."
       />
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
@@ -63,7 +63,7 @@ const LuxWhyChoose = () => (
       </div>
 
       <p className="text-center font-serif italic text-base md:text-lg text-[#0F0F0F]/65 max-w-3xl mx-auto mt-16">
-        Trusted by international travelers seeking authentic, private, and unforgettable Rajasthan experiences.
+        Trusted by families, couples, friends and solo travelers from India and around the world.
       </p>
     </div>
   </section>
