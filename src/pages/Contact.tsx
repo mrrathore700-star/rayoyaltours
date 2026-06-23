@@ -255,10 +255,10 @@ const Contact = () => {
 
       <LuxCtaBand
         image={heroPalace}
-        eyebrow="Or Simply"
+        eyebrow="Or WhatsApp"
         title={<>Message Us Directly On <span className="text-[#C9A84C]">WhatsApp</span></>}
-        subtitle="A specialist will reply within a few hours."
-        primary={{ label: "WhatsApp Specialist", href: "https://wa.me/919887688843", external: true }}
+        subtitle="Our Jaipur team usually replies within a few hours."
+        primary={{ label: "WhatsApp Our Jaipur Team", href: "https://wa.me/919887688843", external: true }}
         secondary={{ label: "Call +91 98876 88843", href: "tel:+919887688843" }}
       />
     </main>

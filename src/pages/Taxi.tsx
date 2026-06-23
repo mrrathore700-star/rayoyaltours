@@ -23,20 +23,20 @@ const fleet = [
 const Taxi = () => (
   <main className="lux-cream-bg">
     <SEO
-      title="Private Transport in Jaipur | Chauffeured Cars & Tempo Travellers"
-      description="Private chauffeur-driven cars, SUVs and tempo travellers across Jaipur, Rajasthan and India — quiet, punctual and seamless."
+      title="Private Transport in Jaipur | Chauffeur-Driven Cars & Tempo Travellers"
+      description="Reliable private transportation across Rajasthan — chauffeur-driven cars, SUVs and tempo travellers for sightseeing, airport transfers and multi-day tours."
       path="/taxi"
     />
 
     <LuxHero
       image={luxuryCar}
-      eyebrow="Transport & Transfers"
-      title={<>Private <span className="text-[#C9A84C]">Chauffeured</span> Journeys</>}
-      subtitle="Quiet, punctual, and seamless. From a Jaipur airport pickup to a multi-week Rajasthan loop."
+      eyebrow="Private Transport"
+      title={<>Chauffeur-Driven <span className="text-[#C9A84C]">Cars</span> & Tempo Travellers</>}
+      subtitle="Reliable transportation across Rajasthan — airport transfers, full-day sightseeing and multi-day tours, with experienced local drivers."
       actions={
         <>
-          <LuxLinkBtn to="/contact" variant="gold">Request A Quote</LuxLinkBtn>
-          <LuxAnchorBtn href="https://wa.me/919887688843?text=I%20need%20a%20private%20transfer" external variant="outline">WhatsApp Specialist</LuxAnchorBtn>
+          <LuxLinkBtn to="/contact" variant="gold">Get A Personalized Quote</LuxLinkBtn>
+          <LuxAnchorBtn href="https://wa.me/919887688843?text=I%20need%20a%20private%20transfer" external variant="outline">WhatsApp Our Jaipur Team</LuxAnchorBtn>
         </>
       }
     />
