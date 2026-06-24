@@ -4,6 +4,7 @@ import { ArrowRight, Sparkles, Star, MapPin, Clock, Users, Shield, Heart, Award 
 import SEO from "@/components/SEO";
 import { categories, allExperiences, type Experience } from "@/data/experiences";
 import LuxGoogleReviews from "@/components/luxury/LuxGoogleReviews";
+import LuxInlineCta from "@/components/luxury/LuxInlineCta";
 import heroPalace from "@/assets/hero-palace.jpg";
 import desertSafari from "@/assets/desert-safari.jpg";
 import hawaMahal from "@/assets/hawa-mahal.jpg";
