@@ -75,6 +75,15 @@ const Index = () => {
         </div>
       </section>
 
+      <LuxInlineCta
+        eyebrow="Interested In This Itinerary?"
+        heading={<>Tell us what you'd like to see — we'll send a personalized plan.</>}
+        primary={{ label: "Request A Quote", to: "/contact", icon: "send" }}
+        secondary={{ label: "WhatsApp Us", href: "https://wa.me/919887688843", external: true, icon: "wa" }}
+        compact
+      />
+
+
       {/* Heritage Experience Banner */}
       <LuxCtaBand
         image={culturalDance}
@@ -125,9 +134,25 @@ const Index = () => {
 
       <LuxFAQ />
 
+      <LuxInlineCta
+        tone="white"
+        eyebrow="Plan A Similar Tour"
+        heading={<>Loved what you read? Plan a trip like this with our Jaipur team.</>}
+        primary={{ label: "Plan My Rajasthan Tour", to: "/contact", icon: "send" }}
+        secondary={{ label: "WhatsApp Us", href: "https://wa.me/919887688843", external: true, icon: "wa" }}
+        compact
+      />
 
+      <LuxFAQ />
 
-
+      <LuxInlineCta
+        eyebrow="Have Questions?"
+        heading={<>Speak with a real person on our Jaipur team.</>}
+        subtitle="Our team usually replies within a few hours — by WhatsApp, email or phone."
+        primary={{ label: "Contact Our Team", to: "/contact", icon: "send" }}
+        secondary={{ label: "WhatsApp Us", href: "https://wa.me/919887688843", external: true, icon: "wa" }}
+        compact
+      />
 
       <LuxCustomJourney />
 
@@ -135,10 +160,10 @@ const Index = () => {
       <LuxCtaBand
         image={heroPalace}
         eyebrow="Start Planning"
-        title={<>Plan Your <span className="text-[#C9A84C]">Rajasthan</span> Trip With Our Jaipur Team</>}
+        title={<>Ready To Explore <span className="text-[#C9A84C]">Rajasthan</span>?</>}
         subtitle="Share your travel dates, destinations and what you'd like to do — we'll send a personalized plan and quote."
-        primary={{ label: "Request A Custom Itinerary", to: "/contact" }}
-        secondary={{ label: "WhatsApp Our Jaipur Team", href: "https://wa.me/919887688843", external: true }}
+        primary={{ label: "Plan My Rajasthan Tour", to: "/contact" }}
+        secondary={{ label: "Request A Quote", href: "https://wa.me/919887688843?text=Hi!%20I'd%20like%20a%20quote%20for%20a%20Rajasthan%20tour", external: true }}
       />
 
     </main>
