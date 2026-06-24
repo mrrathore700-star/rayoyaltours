@@ -252,6 +252,15 @@ const Experiences = () => {
         </div>
       </section>
 
+      <LuxInlineCta
+        tone="white"
+        eyebrow="Customize Your Experience"
+        heading={<>Mix experiences across cities into one private tour.</>}
+        primary={{ label: "Customize Experience", to: "/contact", icon: "send" }}
+        secondary={{ label: "WhatsApp Us", href: "https://wa.me/919887688843", external: true, icon: "wa" }}
+        compact
+      />
+
       {/* WHY OUR EXPERIENCES ARE DIFFERENT */}
       <section className="py-20 md:py-28">
         <div className="container mx-auto px-5 md:px-8 max-w-6xl">
