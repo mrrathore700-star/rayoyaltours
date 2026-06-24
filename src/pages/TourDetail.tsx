@@ -4,6 +4,7 @@ import { ArrowLeft, CheckCircle, XCircle, MapPin, Calendar, Users, Star, Plane, 
 import { tourDetails } from "@/data/tourDetails";
 import { tours } from "@/data/tours";
 import LuxTourEnhancements from "@/components/luxury/LuxTourEnhancements";
+import LuxInlineCta from "@/components/luxury/LuxInlineCta";
 import SectionHeading from "@/components/SectionHeading";
 import { useState } from "react";
 import { useToast } from "@/hooks/use-toast";
@@ -108,10 +109,20 @@ const TourDetail = () => {
             <p className="font-serif italic text-lg md:text-xl text-[#C9A84C] mb-3">"{tour.tagline}"</p>
             <h1 className="font-display text-4xl md:text-6xl lg:text-7xl font-semibold leading-[1.05] tracking-tight mb-6 max-w-4xl">{tour.title}</h1>
 
-            <div className="flex flex-wrap gap-6 text-sm text-[#FFF8F0]/80">
-              <span className="flex items-center gap-2"><Calendar className="h-4 w-4 text-[#C9A84C]" /> {tour.duration}</span>
-              <span className="flex items-center gap-2"><MapPin className="h-4 w-4 text-[#C9A84C]" /> {tours.find((t) => t.slug === slug)?.highlights.join(" · ") || "Rajasthan"}</span>
-              <a href="#book" className="inline-flex items-center px-5 py-2 rounded-full lux-btn-gold tracking-[0.18em] uppercase text-xs font-display">Inquire</a>
+            <div className="flex flex-wrap gap-3 items-center">
+              <span className="flex items-center gap-2 text-sm text-[#FFF8F0]/80"><Calendar className="h-4 w-4 text-[#C9A84C]" /> {tour.duration}</span>
+              <span className="flex items-center gap-2 text-sm text-[#FFF8F0]/80"><MapPin className="h-4 w-4 text-[#C9A84C]" /> {tours.find((t) => t.slug === slug)?.highlights.join(" · ") || "Rajasthan"}</span>
+              <a
+                href={`https://wa.me/919887688843?text=${encodeURIComponent(`Hi! Please check availability for the ${tour.title}.`)}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center px-5 py-2 rounded-full lux-btn-gold tracking-[0.18em] uppercase text-xs font-display"
+              >
+                Check Availability
+              </a>
+              <a href="#book" className="inline-flex items-center px-5 py-2 rounded-full lux-btn-outline tracking-[0.18em] uppercase text-xs font-display text-[#FFF8F0] border-[#C9A84C]/60">
+                Request Quote
+              </a>
             </div>
           </div>
         </section>
