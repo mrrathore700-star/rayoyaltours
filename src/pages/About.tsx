@@ -5,6 +5,7 @@ import LuxSectionHeading from "@/components/luxury/LuxSectionHeading";
 import LuxCtaBand from "@/components/luxury/LuxCtaBand";
 import LuxMeetFounder from "@/components/luxury/LuxMeetFounder";
 import LuxGoogleReviews from "@/components/luxury/LuxGoogleReviews";
+import LuxInlineCta from "@/components/luxury/LuxInlineCta";
 
 
 const About = () => (
