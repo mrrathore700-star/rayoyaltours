@@ -95,8 +95,10 @@
     @apply border-border;
   }
 
+  /* Native scroll only — smooth scrolling is opt-in per element/anchor.
+     Global smooth-scroll breaks route changes and back/forward restoration. */
   html {
-    scroll-behavior: smooth;
+    scroll-behavior: auto;
   }
 
   body {
