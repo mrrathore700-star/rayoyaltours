@@ -44,7 +44,7 @@ const App = () => (
         <BrowserRouter>
           <ScrollToTop />
           <Header />
-          <div className="pt-[80px] md:pt-[124px] lg:pt-[132px] xl:pt-[136px] pb-[72px] md:pb-0">
+          <div className="pt-[80px] md:pt-[124px] lg:pt-[132px] xl:pt-[136px]">
             <Routes>
               <Route path="/" element={<Index />} />
               <Route path="/about" element={<About />} />
@@ -72,6 +72,7 @@ const App = () => (
             </Routes>
           </div>
           <Footer />
+          <div className="md:hidden h-[72px]" aria-hidden="true" />
           <BackToTop />
           <WhatsAppButton />
           <MobileCtaBar />
