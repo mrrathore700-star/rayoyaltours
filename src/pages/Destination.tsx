@@ -287,6 +287,15 @@ const Destination = () => {
         </div>
       </section>
 
+      <LuxInlineCta
+        tone="cream"
+        eyebrow="Still Have Questions?"
+        heading={<>Speak with a {dest.name} specialist on our Jaipur team.</>}
+        primary={{ label: "Ask A Question", href: "https://wa.me/919461069858", external: true, icon: "wa" }}
+        secondary={{ label: "Plan My Rajasthan Tour", to: `/contact?destination=${encodeURIComponent(dest.name)}`, icon: "send" }}
+        compact
+      />
+
       {/* Related Tours */}
       {relatedTours.length > 0 && (
         <section className="py-20 md:py-28 bg-white border-t" style={{ borderColor: "rgba(110,15,31,0.10)" }}>
