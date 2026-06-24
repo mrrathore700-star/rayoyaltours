@@ -136,6 +136,16 @@ const TourDetail = () => {
           </div>
         </section>
 
+        <LuxInlineCta
+          tone="cream"
+          eyebrow="Like This Itinerary?"
+          heading={<>Customize this tour to your dates and pace.</>}
+          primary={{ label: "Customize This Tour", to: "/contact", icon: "send" }}
+          secondary={{ label: "WhatsApp Us", href: `https://wa.me/919887688843?text=${encodeURIComponent(`Hi! I'd like to customize the ${tour.title}.`)}`, external: true, icon: "wa" }}
+          compact
+        />
+
+
         {/* Arrival & Departure */}
         <section className="py-16 sand-gradient">
           <div className="container mx-auto px-4 max-w-4xl">
@@ -242,6 +252,16 @@ const TourDetail = () => {
             </div>
           </div>
         </section>
+
+        <LuxInlineCta
+          tone="white"
+          eyebrow="Planning A Similar Rajasthan Tour?"
+          heading={<>Get pricing and a custom itinerary for your dates.</>}
+          primary={{ label: "Request Pricing", to: "/contact", icon: "send" }}
+          secondary={{ label: "Contact Our Team", href: `https://wa.me/919887688843?text=${encodeURIComponent(`Hi! I have a few questions about the ${tour.title}.`)}`, external: true, icon: "wa" }}
+          compact
+        />
+
 
         {/* Accommodation, Inclusions, Exclusions */}
         <section className="py-16 bg-background">
