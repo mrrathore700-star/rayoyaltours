@@ -2,18 +2,21 @@ import { useEffect, useLayoutEffect, useRef } from "react";
 import { useLocation, useNavigationType } from "react-router-dom";
 
 /**
- * Global scroll restoration.
+ * True scroll restoration for React Router.
  *
- *  - PUSH / REPLACE (new navigation): instantly scroll to top (or #hash target).
- *  - POP (browser Back / Forward): restore the exact previous scroll position
- *    for that history entry. Never force scroll to top.
+ *  - PUSH / REPLACE  → scroll to top (or to #hash target).
+ *  - POP (Back/Fwd)  → restore exact saved pixel position for that URL.
  *
- * Positions are keyed by `location.key`, which is stable per history entry,
- * and persisted in sessionStorage so they survive full reloads within the tab.
+ * Positions are keyed by `pathname + search` (URL), so Back from any page
+ * always lands on the exact previous position regardless of history.key
+ * changes (full reloads, new tabs reusing sessionStorage, etc.).
+ * Persisted in sessionStorage so positions survive reloads within the tab.
  */
-const STORAGE_KEY = "hjt:scroll-positions:v1";
+const STORAGE_KEY = "hjt:scroll-positions:v2";
 
-const loadPositions = (): Record<string, number> => {
+type PositionMap = Record<string, number>;
+
+const loadPositions = (): PositionMap => {
   try {
     const raw = sessionStorage.getItem(STORAGE_KEY);
     return raw ? JSON.parse(raw) : {};
@@ -22,16 +25,27 @@ const loadPositions = (): Record<string, number> => {
   }
 };
 
+const savePositions = (map: PositionMap) => {
+  try {
+    sessionStorage.setItem(STORAGE_KEY, JSON.stringify(map));
+  } catch {
+    /* ignore quota / privacy mode */
+  }
+};
+
+const urlKey = (pathname: string, search: string) => `${pathname}${search}`;
+
 const ScrollToTop = () => {
-  const { pathname, hash, key } = useLocation();
+  const { pathname, search, hash, key } = useLocation();
   const navType = useNavigationType(); // "POP" | "PUSH" | "REPLACE"
-  const positions = useRef<Record<string, number>>(loadPositions());
-  const activeKey = useRef<string>(key);
-  // While true, the scroll listener will NOT overwrite the saved position
-  // for the active key (prevents clobbering during programmatic restore).
+
+  const positions = useRef<PositionMap>(loadPositions());
+  const activeUrl = useRef<string>(urlKey(pathname, search));
+  // While true, the scroll listener will NOT overwrite saved positions
+  // (prevents clobbering during programmatic restore as content reflows).
   const suppressSave = useRef<boolean>(false);
 
-  // Take full control away from the browser's native scroll restoration.
+  // Take control away from the browser's native scroll restoration.
   useEffect(() => {
     if ("scrollRestoration" in window.history) {
       const prev = window.history.scrollRestoration;
@@ -42,20 +56,13 @@ const ScrollToTop = () => {
     }
   }, []);
 
-  // Continuously remember the scroll position for the active history entry.
+  // Continuously remember the scroll position of the active URL.
   useEffect(() => {
-    const persist = () => {
-      try {
-        sessionStorage.setItem(STORAGE_KEY, JSON.stringify(positions.current));
-      } catch {
-        /* ignore quota / privacy mode */
-      }
-    };
-
     const onScroll = () => {
       if (suppressSave.current) return;
-      positions.current[activeKey.current] = window.scrollY;
+      positions.current[activeUrl.current] = window.scrollY;
     };
+    const persist = () => savePositions(positions.current);
 
     window.addEventListener("scroll", onScroll, { passive: true });
     window.addEventListener("pagehide", persist);
@@ -69,15 +76,16 @@ const ScrollToTop = () => {
     };
   }, []);
 
-  // useLayoutEffect runs before the browser paints — no visible scroll flash.
   useLayoutEffect(() => {
-    // Save the position of the entry we're leaving.
-    if (activeKey.current !== key) {
-      // Don't overwrite with 0 if we're mid-restore on the previous key.
+    const nextUrl = urlKey(pathname, search);
+
+    // Save the position of the URL we're leaving (unless mid-restore).
+    if (activeUrl.current !== nextUrl) {
       if (!suppressSave.current) {
-        positions.current[activeKey.current] = window.scrollY;
+        positions.current[activeUrl.current] = window.scrollY;
+        savePositions(positions.current);
       }
-      activeKey.current = key;
+      activeUrl.current = nextUrl;
     }
 
     // Hash anchors — scroll to the element once it mounts.
@@ -90,7 +98,7 @@ const ScrollToTop = () => {
         if (el) {
           el.scrollIntoView({ behavior: "auto", block: "start" });
           window.clearInterval(interval);
-        } else if (attempts > 20) {
+        } else if (attempts > 40) {
           window.clearInterval(interval);
         }
       }, 50);
@@ -98,31 +106,48 @@ const ScrollToTop = () => {
     }
 
     if (navType === "POP") {
-      // Browser Back / Forward — restore the saved position for this entry.
-      const saved = positions.current[key] ?? 0;
+      // Browser Back / Forward — restore the saved position for this URL.
+      const saved = positions.current[nextUrl] ?? 0;
       suppressSave.current = true;
-      // Restore after the new route's DOM is laid out but before paint.
-      const raf1 = window.requestAnimationFrame(() => {
-        window.scrollTo({ top: saved, left: 0, behavior: "auto" });
-        // Re-assert on the next frame in case content shifted (images, fonts).
-        const raf2 = window.requestAnimationFrame(() => {
-          window.scrollTo({ top: saved, left: 0, behavior: "auto" });
+
+      let cancelled = false;
+      let rafId = 0;
+      let timeoutId = 0;
+      const start = performance.now();
+      // Wait until the document is tall enough to actually reach `saved`,
+      // re-asserting each frame so late-loading images/fonts don't shift us off.
+      const tryRestore = () => {
+        if (cancelled) return;
+        const maxScroll =
+          document.documentElement.scrollHeight - window.innerHeight;
+        const target = Math.min(saved, Math.max(0, maxScroll));
+        window.scrollTo(0, target);
+
+        const elapsed = performance.now() - start;
+        // Keep re-asserting for up to 1.2s to absorb image/font reflow.
+        if (elapsed < 1200) {
+          rafId = window.requestAnimationFrame(tryRestore);
+        } else {
           suppressSave.current = false;
-        });
-        // Store for cleanup
-        (raf1 as unknown as { _next?: number })._next = raf2;
-      });
-      return () => {
+        }
+      };
+      rafId = window.requestAnimationFrame(tryRestore);
+      // Hard release of the suppress flag as a safety net.
+      timeoutId = window.setTimeout(() => {
         suppressSave.current = false;
-        window.cancelAnimationFrame(raf1);
-        const next = (raf1 as unknown as { _next?: number })._next;
-        if (next) window.cancelAnimationFrame(next);
+      }, 1400);
+
+      return () => {
+        cancelled = true;
+        window.cancelAnimationFrame(rafId);
+        window.clearTimeout(timeoutId);
+        suppressSave.current = false;
       };
     }
 
     // Fresh navigation (PUSH / REPLACE) — always start at the top, instantly.
-    window.scrollTo({ top: 0, left: 0, behavior: "auto" });
-  }, [pathname, hash, key, navType]);
+    window.scrollTo(0, 0);
+  }, [pathname, search, hash, key, navType]);
 
   return null;
 };
