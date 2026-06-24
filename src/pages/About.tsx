@@ -87,8 +87,8 @@ const About = () => (
       eyebrow="Start Planning"
       title={<>Plan Your <span className="text-[#C9A84C]">Rajasthan</span> Tour With Us</>}
       subtitle="Share your travel dates and what you'd like to see — our Jaipur team will put together a plan."
-      primary={{ label: "Contact Our Jaipur Team", to: "/contact" }}
-      secondary={{ label: "WhatsApp Us", href: "https://wa.me/919887688843", external: true }}
+      primary={{ label: "Contact Our Team", to: "/contact" }}
+      secondary={{ label: "Plan My Tour", href: "https://wa.me/919887688843?text=Hi!%20I'd%20like%20to%20plan%20a%20Rajasthan%20tour.", external: true }}
     />
   </main>
 );
