@@ -307,6 +307,16 @@ const TourDetail = () => {
           </div>
         </section>
 
+        <LuxInlineCta
+          tone="cream"
+          eyebrow="Have A Question About This Tour?"
+          heading={<>Ask about availability, hotels or anything else.</>}
+          primary={{ label: "Check Availability", href: `https://wa.me/919887688843?text=${encodeURIComponent(`Hi! Please check availability for the ${tour.title}.`)}`, external: true, icon: "wa" }}
+          secondary={{ label: "Ask A Question", to: "/contact", icon: "send" }}
+          compact
+        />
+
+
         {/* Ideal For & Why Choose */}
         <section className="py-16 sand-gradient">
           <div className="container mx-auto px-4 max-w-4xl">
