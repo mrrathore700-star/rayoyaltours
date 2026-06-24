@@ -107,6 +107,15 @@ const Taxi = () => (
       </div>
     </section>
 
+    <LuxInlineCta
+      tone="cream"
+      eyebrow="Pick The Right Vehicle"
+      heading={<>Request a quote for the vehicle you need.</>}
+      primary={{ label: "Request Vehicle Quote", to: "/contact", icon: "send" }}
+      secondary={{ label: "WhatsApp Us", href: "https://wa.me/919887688843", external: true, icon: "wa" }}
+      compact
+    />
+
     {/* Why */}
     <section className="py-24 lux-black-bg text-[#FFF8F0]">
       <div className="container mx-auto px-6">
@@ -133,8 +142,8 @@ const Taxi = () => (
       eyebrow="Get A Quote"
       title={<>Book A <span className="text-[#C9A84C]">Private</span> Car or Tempo Traveller</>}
       subtitle="Share your dates, route and number of travelers — our Jaipur team will send you a personalized quote."
-      primary={{ label: "Get A Personalized Quote", to: "/contact" }}
-      secondary={{ label: "WhatsApp Our Jaipur Team", href: "https://wa.me/919887688843", external: true }}
+      primary={{ label: "Book Private Transport", to: "/contact" }}
+      secondary={{ label: "WhatsApp Specialist", href: "https://wa.me/919887688843", external: true }}
     />
   </main>
 );
