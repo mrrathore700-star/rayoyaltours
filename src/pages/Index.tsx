@@ -12,6 +12,7 @@ import LuxSectionHeading from "@/components/luxury/LuxSectionHeading";
 import LuxTrustStrip from "@/components/luxury/LuxTrustStrip";
 import LuxGoogleReviews from "@/components/luxury/LuxGoogleReviews";
 import LuxWhyChoose from "@/components/luxury/LuxWhyChoose";
+import LuxInlineCta from "@/components/luxury/LuxInlineCta";
 import LuxFAQ from "@/components/luxury/LuxFAQ";
 
 import LuxJournalPreview from "@/components/luxury/LuxJournalPreview";
@@ -45,8 +46,8 @@ const Index = () => {
         height="tall"
         actions={
           <>
-            <LuxLinkBtn to="/contact" variant="gold">Plan Your Rajasthan Tour</LuxLinkBtn>
-            <LuxAnchorBtn href="https://wa.me/919887688843?text=Hi!%20I%20want%20to%20plan%20my%20Rajasthan%20trip" external variant="outline">WhatsApp Our Jaipur Team</LuxAnchorBtn>
+            <LuxAnchorBtn href="https://wa.me/919887688843?text=Hi!%20I%20want%20to%20plan%20my%20Rajasthan%20trip" external variant="gold">WhatsApp Us</LuxAnchorBtn>
+            <LuxLinkBtn to="/contact" variant="outline">Request A Quote</LuxLinkBtn>
           </>
         }
       />
