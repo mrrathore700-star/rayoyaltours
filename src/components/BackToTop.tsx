@@ -23,15 +23,14 @@ const BackToTop = () => {
     <button
       onClick={scrollToTop}
       aria-label="Back to top"
-      className={`fixed right-6 z-50 flex items-center justify-center rounded-full shadow-lg transition-all duration-500 ease-out focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[#C9A84C] ${
+      className={`fixed right-4 md:right-6 z-40 flex items-center justify-center rounded-full shadow-lg transition-all duration-500 ease-out focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[#C9A84C] bottom-[92px] md:bottom-[96px] ${
         visible
           ? "opacity-100 translate-y-0 pointer-events-auto"
           : "opacity-0 translate-y-4 pointer-events-none"
       }`}
       style={{
-        bottom: "96px",
-        width: "48px",
-        height: "48px",
+        width: "44px",
+        height: "44px",
         backgroundColor: "#C9A84C",
         color: "#FFFFFF",
         boxShadow: "0 8px 24px -6px rgba(201, 168, 76, 0.55)",

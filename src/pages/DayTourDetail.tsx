@@ -16,6 +16,7 @@ import { dayTours } from "@/data/dayTours";
 import { useToast } from "@/hooks/use-toast";
 import SectionHeading from "@/components/SectionHeading";
 import LuxTourEnhancements from "@/components/luxury/LuxTourEnhancements";
+import LuxInlineCta from "@/components/luxury/LuxInlineCta";
 import {
   Accordion,
   AccordionContent,
@@ -150,19 +151,27 @@ const DayTourDetail = () => {
             <h1 className="font-display text-4xl md:text-6xl lg:text-7xl font-semibold leading-[1.05] tracking-tight mb-6 max-w-4xl">
               {tour.title}
             </h1>
-            <div className="flex flex-wrap gap-6 text-sm text-[#FFF8F0]/80">
-              <span className="flex items-center gap-2">
+            <div className="flex flex-wrap gap-3 items-center">
+              <span className="flex items-center gap-2 text-sm text-[#FFF8F0]/80">
                 <Calendar className="h-4 w-4 text-[#C9A84C]" /> {tour.duration}
               </span>
-              <span className="flex items-center gap-2">
+              <span className="flex items-center gap-2 text-sm text-[#FFF8F0]/80">
                 <MapPin className="h-4 w-4 text-[#C9A84C]" />{" "}
                 {tour.places.slice(0, 4).map((p) => p.name).join(" · ")}
               </span>
               <a
-                href="#enquire"
+                href={`https://wa.me/919887688843?text=${encodeURIComponent(`Hi! Please check availability for the ${tour.title}.`)}`}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="inline-flex items-center px-5 py-2 rounded-full lux-btn-gold tracking-[0.18em] uppercase text-xs font-display"
               >
-                Enquire
+                Check Availability
+              </a>
+              <a
+                href="#enquire"
+                className="inline-flex items-center px-5 py-2 rounded-full lux-btn-outline tracking-[0.18em] uppercase text-xs font-display text-[#FFF8F0] border-[#C9A84C]/60"
+              >
+                Request Quote
               </a>
             </div>
           </div>
@@ -177,6 +186,16 @@ const DayTourDetail = () => {
             </p>
           </div>
         </section>
+
+        <LuxInlineCta
+          tone="cream"
+          eyebrow="Like This Day Tour?"
+          heading={<>Customize the route, pickup or pace to suit you.</>}
+          primary={{ label: "Customize This Tour", to: "/contact", icon: "send" }}
+          secondary={{ label: "WhatsApp Us", href: `https://wa.me/919887688843?text=${encodeURIComponent(`Hi! I'd like to customize the ${tour.title}.`)}`, external: true, icon: "wa" }}
+          compact
+        />
+
 
         {/* Places Covered */}
         <section className="py-20 sand-gradient">
@@ -303,6 +322,16 @@ const DayTourDetail = () => {
             </div>
           </div>
         </section>
+
+        <LuxInlineCta
+          tone="white"
+          eyebrow="Ready To Book?"
+          heading={<>Check availability and get a quick price.</>}
+          primary={{ label: "Check Availability", href: `https://wa.me/919887688843?text=${encodeURIComponent(`Hi! Please check availability for the ${tour.title}.`)}`, external: true, icon: "wa" }}
+          secondary={{ label: "Request Quote", to: "/contact", icon: "send" }}
+          compact
+        />
+
 
         {/* FAQ */}
         <section className="py-20 bg-background">

@@ -4,6 +4,7 @@ import { ArrowRight, Sparkles, Star, MapPin, Clock, Users, Shield, Heart, Award 
 import SEO from "@/components/SEO";
 import { categories, allExperiences, type Experience } from "@/data/experiences";
 import LuxGoogleReviews from "@/components/luxury/LuxGoogleReviews";
+import LuxInlineCta from "@/components/luxury/LuxInlineCta";
 import heroPalace from "@/assets/hero-palace.jpg";
 import desertSafari from "@/assets/desert-safari.jpg";
 import hawaMahal from "@/assets/hawa-mahal.jpg";
@@ -197,6 +198,15 @@ const Experiences = () => {
         </div>
       </section>
 
+      <LuxInlineCta
+        tone="cream"
+        eyebrow="Found Something You Like?"
+        heading={<>Add any experience to your Rajasthan tour.</>}
+        primary={{ label: "Request Quote", to: "/contact", icon: "send" }}
+        secondary={{ label: "WhatsApp Us", href: "https://wa.me/919887688843?text=Hi!%20I'd%20like%20to%20add%20an%20experience%20to%20my%20Rajasthan%20tour.", external: true, icon: "wa" }}
+        compact
+      />
+
       {/* FEATURED EXPERIENCES */}
       <section className="py-20 md:py-28" style={{ background: "#FAF1E2" }}>
         <div className="container mx-auto px-5 md:px-8">
@@ -241,6 +251,15 @@ const Experiences = () => {
           </div>
         </div>
       </section>
+
+      <LuxInlineCta
+        tone="white"
+        eyebrow="Customize Your Experience"
+        heading={<>Mix experiences across cities into one private tour.</>}
+        primary={{ label: "Customize Experience", to: "/contact", icon: "send" }}
+        secondary={{ label: "WhatsApp Us", href: "https://wa.me/919887688843", external: true, icon: "wa" }}
+        compact
+      />
 
       {/* WHY OUR EXPERIENCES ARE DIFFERENT */}
       <section className="py-20 md:py-28">

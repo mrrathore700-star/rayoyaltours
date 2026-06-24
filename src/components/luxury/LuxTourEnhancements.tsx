@@ -253,29 +253,29 @@ const LuxTourEnhancements = ({
       {/* Booking CTA */}
       <section className="py-20 lux-black-bg text-[#FFF8F0]">
         <div className="container mx-auto px-4 max-w-3xl text-center">
-          <span className="lux-eyebrow text-[#C9A84C]">Begin Your Journey</span>
+          <span className="lux-eyebrow text-[#C9A84C]">Ready To Book This Tour?</span>
           <h2 className="font-display text-3xl md:text-5xl font-semibold mt-4 mb-5">
-            Ready to Experience Rajasthan?
+            Plan This Tour With Our Jaipur Team
           </h2>
           <p className="text-[#FFF8F0]/75 mb-8 max-w-xl mx-auto">
-            Speak with a Heritage Jaipur Travels specialist to tailor every detail of your private Rajasthan journey.
+            Share your dates and we'll send a personalized quote with hotel options, pricing and a day-by-day plan.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a
-              href={quote(`Hello, I would like a custom quote for the ${tourTitle}.`)}
+              href={quote(`Hello, I would like a quote for the ${tourTitle}. Please share availability and pricing.`)}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-full lux-btn-gold tracking-[0.18em] uppercase text-xs font-display"
             >
-              <Send className="h-4 w-4" /> Get Custom Quote
+              <Send className="h-4 w-4" /> Request Quote
             </a>
             <a
-              href={quote(`Hello, I would like to speak with a travel specialist about the ${tourTitle}.`)}
+              href={quote(`Hi! I'd like to plan a Rajasthan tour similar to ${tourTitle}.`)}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-full lux-btn-outline tracking-[0.18em] uppercase text-xs font-display"
             >
-              <MessageCircle className="h-4 w-4" /> WhatsApp a Travel Specialist
+              <MessageCircle className="h-4 w-4" /> Plan My Rajasthan Tour
             </a>
           </div>
         </div>

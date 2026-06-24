@@ -5,6 +5,7 @@ import LuxSectionHeading from "@/components/luxury/LuxSectionHeading";
 import LuxCtaBand from "@/components/luxury/LuxCtaBand";
 import LuxMeetFounder from "@/components/luxury/LuxMeetFounder";
 import LuxGoogleReviews from "@/components/luxury/LuxGoogleReviews";
+import LuxInlineCta from "@/components/luxury/LuxInlineCta";
 
 
 const About = () => (
@@ -26,6 +27,15 @@ const About = () => (
     <div id="meet-kailash" className="scroll-mt-32">
       <LuxMeetFounder />
     </div>
+
+    <LuxInlineCta
+      tone="cream"
+      eyebrow="Speak With Kailash"
+      heading={<>Have a question? Talk to Kailash directly.</>}
+      primary={{ label: "Talk To Kailash", href: "https://wa.me/919887688843?text=Namaste%20Kailash!%20I'd%20like%20to%20plan%20a%20Rajasthan%20tour.", external: true, icon: "wa" }}
+      secondary={{ label: "WhatsApp Us", href: "https://wa.me/919887688843", external: true, icon: "wa" }}
+      compact
+    />
 
 
     {/* Our Philosophy */}
@@ -62,14 +72,23 @@ const About = () => (
     {/* Reviews Preview */}
     <LuxGoogleReviews />
 
+    <LuxInlineCta
+      tone="white"
+      eyebrow="Plan Your Trip"
+      heading={<>Loved by travelers — plan your Rajasthan tour with us.</>}
+      primary={{ label: "Plan Your Rajasthan Tour", to: "/contact", icon: "send" }}
+      secondary={{ label: "Request Quote", href: "https://wa.me/919887688843?text=Hi!%20I'd%20like%20a%20quote%20for%20a%20Rajasthan%20tour.", external: true, icon: "wa" }}
+      compact
+    />
+
     {/* Final CTA */}
     <LuxCtaBand
       image={heroPalace}
       eyebrow="Start Planning"
       title={<>Plan Your <span className="text-[#C9A84C]">Rajasthan</span> Tour With Us</>}
       subtitle="Share your travel dates and what you'd like to see — our Jaipur team will put together a plan."
-      primary={{ label: "Contact Our Jaipur Team", to: "/contact" }}
-      secondary={{ label: "WhatsApp Us", href: "https://wa.me/919887688843", external: true }}
+      primary={{ label: "Contact Our Team", to: "/contact" }}
+      secondary={{ label: "Plan My Tour", href: "https://wa.me/919887688843?text=Hi!%20I'd%20like%20to%20plan%20a%20Rajasthan%20tour.", external: true }}
     />
   </main>
 );

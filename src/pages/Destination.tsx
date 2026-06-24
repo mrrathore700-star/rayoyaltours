@@ -4,6 +4,7 @@ import SEO from "@/components/SEO";
 import LuxHero from "@/components/luxury/LuxHero";
 import LuxSectionHeading from "@/components/luxury/LuxSectionHeading";
 import { LuxLinkBtn, LuxAnchorBtn } from "@/components/luxury/LuxButton";
+import LuxInlineCta from "@/components/luxury/LuxInlineCta";
 import {
   Accordion,
   AccordionContent,
@@ -70,16 +71,12 @@ const Destination = () => {
         height="regular"
         actions={
           <>
-            <LuxLinkBtn to={`/contact?destination=${encodeURIComponent(dest.name)}`} variant="gold">
-              Plan Your {dest.name} Journey
-            </LuxLinkBtn>
-            <LuxAnchorBtn
-              href="https://wa.me/919461069858"
-              variant="outline"
-              external
-            >
+            <LuxAnchorBtn href="https://wa.me/919461069858" variant="gold" external>
               WhatsApp Us
             </LuxAnchorBtn>
+            <LuxLinkBtn to={`/contact?destination=${encodeURIComponent(dest.name)}`} variant="outline">
+              Plan {dest.name} Tour
+            </LuxLinkBtn>
           </>
         }
       />
@@ -142,6 +139,15 @@ const Destination = () => {
           </div>
         </div>
       </section>
+
+      <LuxInlineCta
+        tone="white"
+        eyebrow={`Visiting ${dest.name}?`}
+        heading={<>Get a personalized {dest.name} itinerary.</>}
+        primary={{ label: "Request Itinerary", to: `/contact?destination=${encodeURIComponent(dest.name)}`, icon: "send" }}
+        secondary={{ label: "Contact Team", href: "https://wa.me/919461069858", external: true, icon: "wa" }}
+        compact
+      />
 
       {/* Best Experiences */}
       <section className="py-20 md:py-28 bg-white border-t" style={{ borderColor: "rgba(110,15,31,0.10)" }}>
@@ -280,6 +286,15 @@ const Destination = () => {
           </div>
         </div>
       </section>
+
+      <LuxInlineCta
+        tone="cream"
+        eyebrow="Still Have Questions?"
+        heading={<>Speak with a {dest.name} specialist on our Jaipur team.</>}
+        primary={{ label: "Ask A Question", href: "https://wa.me/919461069858", external: true, icon: "wa" }}
+        secondary={{ label: "Plan My Rajasthan Tour", to: `/contact?destination=${encodeURIComponent(dest.name)}`, icon: "send" }}
+        compact
+      />
 
       {/* Related Tours */}
       {relatedTours.length > 0 && (
