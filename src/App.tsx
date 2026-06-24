@@ -8,6 +8,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import BackToTop from "@/components/BackToTop";
+import MobileCtaBar from "@/components/MobileCtaBar";
 import ScrollToTop from "@/components/ScrollToTop";
 import Index from "./pages/Index";
 import Packages from "./pages/Packages";
@@ -73,6 +74,7 @@ const App = () => (
           <Footer />
           <BackToTop />
           <WhatsAppButton />
+          <MobileCtaBar />
         </BrowserRouter>
       </TooltipProvider>
     </HelmetProvider>
