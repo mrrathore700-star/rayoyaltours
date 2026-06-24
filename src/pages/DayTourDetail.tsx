@@ -187,6 +187,16 @@ const DayTourDetail = () => {
           </div>
         </section>
 
+        <LuxInlineCta
+          tone="cream"
+          eyebrow="Like This Day Tour?"
+          heading={<>Customize the route, pickup or pace to suit you.</>}
+          primary={{ label: "Customize This Tour", to: "/contact", icon: "send" }}
+          secondary={{ label: "WhatsApp Us", href: `https://wa.me/919887688843?text=${encodeURIComponent(`Hi! I'd like to customize the ${tour.title}.`)}`, external: true, icon: "wa" }}
+          compact
+        />
+
+
         {/* Places Covered */}
         <section className="py-20 sand-gradient">
           <div className="container mx-auto px-4 max-w-6xl">
@@ -312,6 +322,16 @@ const DayTourDetail = () => {
             </div>
           </div>
         </section>
+
+        <LuxInlineCta
+          tone="white"
+          eyebrow="Ready To Book?"
+          heading={<>Check availability and get a quick price.</>}
+          primary={{ label: "Check Availability", href: `https://wa.me/919887688843?text=${encodeURIComponent(`Hi! Please check availability for the ${tour.title}.`)}`, external: true, icon: "wa" }}
+          secondary={{ label: "Request Quote", to: "/contact", icon: "send" }}
+          compact
+        />
+
 
         {/* FAQ */}
         <section className="py-20 bg-background">
