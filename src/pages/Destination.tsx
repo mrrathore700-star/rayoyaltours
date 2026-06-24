@@ -4,6 +4,7 @@ import SEO from "@/components/SEO";
 import LuxHero from "@/components/luxury/LuxHero";
 import LuxSectionHeading from "@/components/luxury/LuxSectionHeading";
 import { LuxLinkBtn, LuxAnchorBtn } from "@/components/luxury/LuxButton";
+import LuxInlineCta from "@/components/luxury/LuxInlineCta";
 import {
   Accordion,
   AccordionContent,
@@ -70,16 +71,12 @@ const Destination = () => {
         height="regular"
         actions={
           <>
-            <LuxLinkBtn to={`/contact?destination=${encodeURIComponent(dest.name)}`} variant="gold">
-              Plan Your {dest.name} Journey
-            </LuxLinkBtn>
-            <LuxAnchorBtn
-              href="https://wa.me/919461069858"
-              variant="outline"
-              external
-            >
+            <LuxAnchorBtn href="https://wa.me/919461069858" variant="gold" external>
               WhatsApp Us
             </LuxAnchorBtn>
+            <LuxLinkBtn to={`/contact?destination=${encodeURIComponent(dest.name)}`} variant="outline">
+              Plan {dest.name} Tour
+            </LuxLinkBtn>
           </>
         }
       />
