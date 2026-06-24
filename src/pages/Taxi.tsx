@@ -6,6 +6,7 @@ import LuxHero from "@/components/luxury/LuxHero";
 import LuxSectionHeading from "@/components/luxury/LuxSectionHeading";
 import LuxCtaBand from "@/components/luxury/LuxCtaBand";
 import { LuxLinkBtn, LuxAnchorBtn } from "@/components/luxury/LuxButton";
+import LuxInlineCta from "@/components/luxury/LuxInlineCta";
 
 const services = [
   { icon: MapPin, title: "Jaipur Sightseeing Cabs", desc: "Private cars and SUVs for a full day of Jaipur sightseeing with an experienced local driver." },
@@ -35,8 +36,8 @@ const Taxi = () => (
       subtitle="Reliable transportation across Rajasthan — airport transfers, full-day sightseeing and multi-day tours, with experienced local drivers."
       actions={
         <>
-          <LuxLinkBtn to="/contact" variant="gold">Get A Personalized Quote</LuxLinkBtn>
-          <LuxAnchorBtn href="https://wa.me/919887688843?text=I%20need%20a%20private%20transfer" external variant="outline">WhatsApp Our Jaipur Team</LuxAnchorBtn>
+          <LuxAnchorBtn href="https://wa.me/919887688843?text=I%20need%20a%20private%20transfer" external variant="gold">WhatsApp Us</LuxAnchorBtn>
+          <LuxLinkBtn to="/contact" variant="outline">Request Transport Quote</LuxLinkBtn>
         </>
       }
     />
@@ -71,6 +72,15 @@ const Taxi = () => (
         </div>
       </div>
     </section>
+
+    <LuxInlineCta
+      tone="cream"
+      eyebrow="Need Pricing?"
+      heading={<>Get a transport quote for your route and dates.</>}
+      primary={{ label: "Get Pricing", to: "/contact", icon: "send" }}
+      secondary={{ label: "Contact Team", href: "https://wa.me/919887688843", external: true, icon: "wa" }}
+      compact
+    />
 
     {/* Fleet */}
     <section className="py-24 md:py-32" style={{ background: "linear-gradient(180deg, #FFF8F0 0%, #F5ECDC 100%)" }}>
