@@ -28,6 +28,15 @@ const About = () => (
       <LuxMeetFounder />
     </div>
 
+    <LuxInlineCta
+      tone="cream"
+      eyebrow="Speak With Kailash"
+      heading={<>Have a question? Talk to Kailash directly.</>}
+      primary={{ label: "Talk To Kailash", href: "https://wa.me/919887688843?text=Namaste%20Kailash!%20I'd%20like%20to%20plan%20a%20Rajasthan%20tour.", external: true, icon: "wa" }}
+      secondary={{ label: "WhatsApp Us", href: "https://wa.me/919887688843", external: true, icon: "wa" }}
+      compact
+    />
+
 
     {/* Our Philosophy */}
     <section id="our-story" className="py-24 md:py-32 lux-black-bg text-[#FFF8F0] scroll-mt-32">
@@ -62,6 +71,15 @@ const About = () => (
 
     {/* Reviews Preview */}
     <LuxGoogleReviews />
+
+    <LuxInlineCta
+      tone="white"
+      eyebrow="Plan Your Trip"
+      heading={<>Loved by travelers — plan your Rajasthan tour with us.</>}
+      primary={{ label: "Plan Your Rajasthan Tour", to: "/contact", icon: "send" }}
+      secondary={{ label: "Request Quote", href: "https://wa.me/919887688843?text=Hi!%20I'd%20like%20a%20quote%20for%20a%20Rajasthan%20tour.", external: true, icon: "wa" }}
+      compact
+    />
 
     {/* Final CTA */}
     <LuxCtaBand
