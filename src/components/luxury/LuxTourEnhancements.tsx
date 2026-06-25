@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+
 import {
   CheckCircle,
   Plane,
@@ -94,6 +95,15 @@ const LuxTourEnhancements = ({
   const quote = (msg: string) =>
     `https://wa.me/919887688843?text=${encodeURIComponent(msg)}`;
 
+  const enquireHref = (() => {
+    const p = new URLSearchParams();
+    p.set("tour", tourTitle);
+    if (duration) p.set("duration", duration);
+    if (destinations?.length) p.set("destination", destinations.join(", "));
+    if (tourType) p.set("type", tourType);
+    return `/enquire?${p.toString()}`;
+  })();
+
   return (
     <>
       {/* Pickup Information */}
@@ -175,14 +185,12 @@ const LuxTourEnhancements = ({
                   ))}
                 </ul>
               )}
-              <a
-                href={quote(`Hello, I would like a custom quote for the ${tourTitle}.`)}
-                target="_blank"
-                rel="noopener noreferrer"
+              <Link
+                to={enquireHref}
                 className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full lux-btn-gold tracking-[0.18em] uppercase text-xs font-display"
               >
                 <Send className="h-4 w-4" /> Get Custom Quote
-              </a>
+              </Link>
             </div>
           </div>
         </div>
@@ -261,21 +269,19 @@ const LuxTourEnhancements = ({
             Share your dates and we'll send a personalized quote with hotel options, pricing and a day-by-day plan.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a
-              href={quote(`Hello, I would like a quote for the ${tourTitle}. Please share availability and pricing.`)}
-              target="_blank"
-              rel="noopener noreferrer"
+            <Link
+              to={enquireHref}
               className="inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-full lux-btn-gold tracking-[0.18em] uppercase text-xs font-display"
             >
               <Send className="h-4 w-4" /> Request Quote
-            </a>
+            </Link>
             <a
-              href={quote(`Hi! I'd like to plan a Rajasthan tour similar to ${tourTitle}.`)}
+              href={quote(`Hello Heritage Jaipur Travels,\n\nI am interested in ${tourTitle}.\n\nTravel Dates:\nNumber of Travelers:\n\nPlease share details.`)}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-full lux-btn-outline tracking-[0.18em] uppercase text-xs font-display"
             >
-              <MessageCircle className="h-4 w-4" /> Plan My Rajasthan Tour
+              <MessageCircle className="h-4 w-4" /> WhatsApp Specialist
             </a>
           </div>
         </div>

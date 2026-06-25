@@ -30,7 +30,7 @@ const MobileCtaBar = () => {
         WhatsApp Us
       </a>
       <Link
-        to="/contact"
+        to="/enquire"
         className="inline-flex items-center justify-center gap-2 py-3 rounded-full lux-btn-gold font-display tracking-[0.16em] uppercase text-[11px]"
       >
         <Send className="h-4 w-4" />
