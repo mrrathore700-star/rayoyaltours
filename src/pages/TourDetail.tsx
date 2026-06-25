@@ -143,7 +143,7 @@ const TourDetail = () => {
           tone="cream"
           eyebrow="Like This Itinerary?"
           heading={<>Customize this tour to your dates and pace.</>}
-          primary={{ label: "Customize This Tour", to: "/contact", icon: "send" }}
+          primary={{ label: "Customize This Tour", to: `/enquire?tour=${encodeURIComponent(tour.title)}&duration=${encodeURIComponent(tour.duration)}`, icon: "send" }}
           secondary={{ label: "WhatsApp Us", href: `https://wa.me/919887688843?text=${encodeURIComponent(`Hi! I'd like to customize the ${tour.title}.`)}`, external: true, icon: "wa" }}
           compact
         />
@@ -260,7 +260,7 @@ const TourDetail = () => {
           tone="white"
           eyebrow="Planning A Similar Rajasthan Tour?"
           heading={<>Get pricing and a custom itinerary for your dates.</>}
-          primary={{ label: "Request Pricing", to: "/contact", icon: "send" }}
+          primary={{ label: "Request Pricing", to: `/enquire?tour=${encodeURIComponent(tour.title)}&duration=${encodeURIComponent(tour.duration)}`, icon: "send" }}
           secondary={{ label: "Contact Our Team", href: `https://wa.me/919887688843?text=${encodeURIComponent(`Hi! I have a few questions about the ${tour.title}.`)}`, external: true, icon: "wa" }}
           compact
         />
