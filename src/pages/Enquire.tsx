@@ -97,18 +97,17 @@ const Enquire = () => {
     setSubmitting(true);
     lastSubmit.current = Date.now();
 
-    const composed = [
-      context.length ? "Inquiry Context:" : null,
-      ...context.map((c) => `- ${c.label}: ${c.value}`),
-      context.length ? "" : null,
-      form.dates && `Travel Dates: ${form.dates}`,
-      form.travelers && `Number of Travelers: ${form.travelers}`,
-      (form.dates || form.travelers) ? "" : null,
-      "Message:",
-      form.message.trim(),
-    ]
-      .filter((v) => v !== null && v !== undefined && v !== false)
-      .join("\n");
+    const parts: string[] = [];
+    if (context.length) {
+      parts.push("Inquiry Context:");
+      context.forEach((c) => parts.push(`- ${c.label}: ${c.value}`));
+      parts.push("");
+    }
+    if (form.dates) parts.push(`Travel Dates: ${form.dates}`);
+    if (form.travelers) parts.push(`Number of Travelers: ${form.travelers}`);
+    if (form.dates || form.travelers) parts.push("");
+    parts.push("Message:", form.message.trim());
+    const composed = parts.join("\n");
 
     try {
       const res = await fetch("/api/contact", {
