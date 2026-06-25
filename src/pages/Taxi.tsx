@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { Car, Plane, MapPin, Navigation, Bus, Clock, Shield } from "lucide-react";
 import SEO from "@/components/SEO";
 import luxuryCar from "@/assets/luxury-car.jpg";
