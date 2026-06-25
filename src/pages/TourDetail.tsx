@@ -113,16 +113,19 @@ const TourDetail = () => {
               <span className="flex items-center gap-2 text-sm text-[#FFF8F0]/80"><Calendar className="h-4 w-4 text-[#C9A84C]" /> {tour.duration}</span>
               <span className="flex items-center gap-2 text-sm text-[#FFF8F0]/80"><MapPin className="h-4 w-4 text-[#C9A84C]" /> {tours.find((t) => t.slug === slug)?.highlights.join(" · ") || "Rajasthan"}</span>
               <a
-                href={`https://wa.me/919887688843?text=${encodeURIComponent(`Hi! Please check availability for the ${tour.title}.`)}`}
+                href={`https://wa.me/919887688843?text=${encodeURIComponent(`Hello Heritage Jaipur Travels,\n\nI am interested in ${tour.title}.\n\nTravel Dates:\nNumber of Travelers:\n\nPlease share details.`)}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center px-5 py-2 rounded-full lux-btn-gold tracking-[0.18em] uppercase text-xs font-display"
               >
-                Check Availability
+                WhatsApp Specialist
               </a>
-              <a href="#book" className="inline-flex items-center px-5 py-2 rounded-full lux-btn-outline tracking-[0.18em] uppercase text-xs font-display text-[#FFF8F0] border-[#C9A84C]/60">
+              <Link
+                to={`/enquire?tour=${encodeURIComponent(tour.title)}&duration=${encodeURIComponent(tour.duration)}`}
+                className="inline-flex items-center px-5 py-2 rounded-full lux-btn-outline tracking-[0.18em] uppercase text-xs font-display text-[#FFF8F0] border-[#C9A84C]/60"
+              >
                 Request Quote
-              </a>
+              </Link>
             </div>
           </div>
         </section>
