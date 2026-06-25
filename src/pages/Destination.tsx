@@ -74,7 +74,7 @@ const Destination = () => {
             <LuxAnchorBtn href="https://wa.me/919461069858" variant="gold" external>
               WhatsApp Us
             </LuxAnchorBtn>
-            <LuxLinkBtn to={`/contact?destination=${encodeURIComponent(dest.name)}`} variant="outline">
+            <LuxLinkBtn to={`/enquire?destination=${encodeURIComponent(dest.name)}`} variant="outline">
               Plan {dest.name} Tour
             </LuxLinkBtn>
           </>
@@ -144,7 +144,7 @@ const Destination = () => {
         tone="white"
         eyebrow={`Visiting ${dest.name}?`}
         heading={<>Get a personalized {dest.name} itinerary.</>}
-        primary={{ label: "Request Itinerary", to: `/contact?destination=${encodeURIComponent(dest.name)}`, icon: "send" }}
+        primary={{ label: "Request Itinerary", to: `/enquire?destination=${encodeURIComponent(dest.name)}`, icon: "send" }}
         secondary={{ label: "Contact Team", href: "https://wa.me/919461069858", external: true, icon: "wa" }}
         compact
       />
@@ -251,7 +251,7 @@ const Destination = () => {
             ))}
           </div>
           <div className="text-center mt-12">
-            <LuxLinkBtn to={`/contact?destination=${encodeURIComponent(dest.name)}`} variant="gold">
+            <LuxLinkBtn to={`/enquire?destination=${encodeURIComponent(dest.name)}`} variant="gold">
               Request a Custom Itinerary
             </LuxLinkBtn>
           </div>
@@ -292,7 +292,7 @@ const Destination = () => {
         eyebrow="Still Have Questions?"
         heading={<>Speak with a {dest.name} specialist on our Jaipur team.</>}
         primary={{ label: "Ask A Question", href: "https://wa.me/919461069858", external: true, icon: "wa" }}
-        secondary={{ label: "Plan My Rajasthan Tour", to: `/contact?destination=${encodeURIComponent(dest.name)}`, icon: "send" }}
+        secondary={{ label: "Plan My Rajasthan Tour", to: `/enquire?destination=${encodeURIComponent(dest.name)}`, icon: "send" }}
         compact
       />
 

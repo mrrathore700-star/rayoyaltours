@@ -37,7 +37,7 @@ const Taxi = () => (
       actions={
         <>
           <LuxAnchorBtn href="https://wa.me/919887688843?text=I%20need%20a%20private%20transfer" external variant="gold">WhatsApp Us</LuxAnchorBtn>
-          <LuxLinkBtn to="/contact" variant="outline">Request Transport Quote</LuxLinkBtn>
+          <LuxLinkBtn to="/enquire?service=Private+Transport" variant="outline">Request Transport Quote</LuxLinkBtn>
         </>
       }
     />
@@ -58,14 +58,12 @@ const Taxi = () => (
               <div className="flex-1">
                 <h3 className="font-display text-xl font-semibold text-[#0F0F0F] mb-2">{s.title}</h3>
                 <p className="font-serif text-[15px] text-[#0F0F0F]/70 leading-relaxed mb-4">{s.desc}</p>
-                <a
-                  href="https://wa.me/919887688843?text=I%20need%20private%20transport"
-                  target="_blank"
-                  rel="noopener noreferrer"
+                <Link
+                  to={`/enquire?service=${encodeURIComponent(s.title)}`}
                   className="text-xs tracking-[0.18em] uppercase text-[#C9A84C] hover:text-[#6E0F1F] transition-colors"
                 >
                   Request Quote →
-                </a>
+                </Link>
               </div>
             </div>
           ))}
@@ -77,7 +75,7 @@ const Taxi = () => (
       tone="cream"
       eyebrow="Need Pricing?"
       heading={<>Get a transport quote for your route and dates.</>}
-      primary={{ label: "Get Pricing", to: "/contact", icon: "send" }}
+      primary={{ label: "Get Pricing", to: "/enquire?service=Private+Transport", icon: "send" }}
       secondary={{ label: "Contact Team", href: "https://wa.me/919887688843", external: true, icon: "wa" }}
       compact
     />
@@ -111,7 +109,7 @@ const Taxi = () => (
       tone="cream"
       eyebrow="Pick The Right Vehicle"
       heading={<>Request a quote for the vehicle you need.</>}
-      primary={{ label: "Request Vehicle Quote", to: "/contact", icon: "send" }}
+      primary={{ label: "Request Vehicle Quote", to: "/enquire?service=Private+Transport", icon: "send" }}
       secondary={{ label: "WhatsApp Us", href: "https://wa.me/919887688843", external: true, icon: "wa" }}
       compact
     />
@@ -142,7 +140,7 @@ const Taxi = () => (
       eyebrow="Get A Quote"
       title={<>Book A <span className="text-[#C9A84C]">Private</span> Car or Tempo Traveller</>}
       subtitle="Share your dates, route and number of travelers — our Jaipur team will send you a personalized quote."
-      primary={{ label: "Book Private Transport", to: "/contact" }}
+      primary={{ label: "Book Private Transport", to: "/enquire?service=Private+Transport" }}
       secondary={{ label: "WhatsApp Specialist", href: "https://wa.me/919887688843", external: true }}
     />
   </main>
