@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+
 import {
   CheckCircle,
   Plane,
@@ -93,6 +94,15 @@ const LuxTourEnhancements = ({
 
   const quote = (msg: string) =>
     `https://wa.me/919887688843?text=${encodeURIComponent(msg)}`;
+
+  const enquireHref = (() => {
+    const p = new URLSearchParams();
+    p.set("tour", tourTitle);
+    if (duration) p.set("duration", duration);
+    if (destinations?.length) p.set("destination", destinations.join(", "));
+    if (tourType) p.set("type", tourType);
+    return `/enquire?${p.toString()}`;
+  })();
 
   return (
     <>
