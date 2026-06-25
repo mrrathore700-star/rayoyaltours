@@ -32,6 +32,7 @@ import NotFound from "./pages/NotFound";
 import Unsubscribe from "./pages/Unsubscribe";
 import Reviews from "./pages/Reviews";
 import Destination from "./pages/Destination";
+import Enquire from "./pages/Enquire";
 
 const queryClient = new QueryClient();
 
@@ -61,6 +62,8 @@ const App = () => (
               <Route path="/blog" element={<Blog />} />
               <Route path="/blog/:slug" element={<BlogPost />} />
               <Route path="/contact" element={<Contact />} />
+              <Route path="/enquire" element={<Enquire />} />
+              <Route path="/quote" element={<Navigate to="/enquire" replace />} />
               <Route path="/reviews" element={<Reviews />} />
               <Route path="/destinations/:slug" element={<Destination />} />
               <Route path="/privacy-policy" element={<PrivacyPolicy />} />
