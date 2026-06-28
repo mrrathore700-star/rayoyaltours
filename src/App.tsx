@@ -19,6 +19,7 @@ import ExperienceDetail from "./pages/ExperienceDetail";
 import ExperienceCategory from "./pages/ExperienceCategory";
 import { Navigate } from "react-router-dom";
 import Gallery from "./pages/Gallery";
+import GalleryAdmin from "./pages/GalleryAdmin";
 import Blog from "./pages/Blog";
 import BlogPost from "./pages/BlogPost";
 import Contact from "./pages/Contact";
@@ -59,6 +60,7 @@ const App = () => (
               <Route path="/experiences/:slug" element={<ExperienceDetail />} />
               <Route path="/live-experiences" element={<Navigate to="/experiences" replace />} />
               <Route path="/gallery" element={<Gallery />} />
+              <Route path="/gallery/admin" element={<GalleryAdmin />} />
               <Route path="/blog" element={<Blog />} />
               <Route path="/blog/:slug" element={<BlogPost />} />
               <Route path="/contact" element={<Contact />} />
