@@ -1,40 +1,48 @@
-Plan: Final Navbar Balance Fix
 
-Objective
-Remove the language selector and rebalance the desktop navbar so it feels premium, centered, and uncluttered with proper breathing room across all screen sizes.
+# Luxury Gallery Rebuild — Cloud-Managed
 
-Files to modify
-- src/components/Header.tsx
-- src/index.css (small spacing utility additions if needed)
+## Goal
+Replace the current hardcoded `src/pages/Gallery.tsx` with a world-class luxury gallery whose images are stored in Lovable Cloud (database + storage bucket), so you can add/remove/replace/reorder images from a built-in admin screen — no code editing.
 
-Changes
+## Architecture
 
-1. Remove language switching from the navbar
-   - Remove the <LanguageSwitcher /> component from the desktop primary navigation.
-   - Remove the <LanguageSwitcher variant="mobile" /> entry from the mobile menu.
-   - Keep the LanguageSwitcher component file itself untouched in case it is reused later.
+**Backend (Lovable Cloud)**
+- New storage bucket `gallery` (public read).
+- New table `public.gallery_images`:
+  - `id uuid pk`, `image_path text` (storage path), `title text`, `location text`, `description text`, `alt_text text`, `category text`, `sort_order int`, `created_at timestamptz`.
+  - RLS: public `SELECT`; `INSERT/UPDATE/DELETE` restricted to authenticated admins via `user_roles` + `has_role(auth.uid(),'admin')` (follows existing role pattern).
+- `app_role` enum + `user_roles` table + `has_role` security-definer function (if not already present).
+- Proper `GRANT`s on every new public table.
 
-2. Constrain and center the header content
-   - Wrap the main header bar (below the TrustBar) in a centered container.
-   - Apply max-width: 1400px and responsive horizontal padding.
-   - Remove full-width stretching so the navbar reads as a contained luxury bar rather than a wide ribbon.
+**Frontend**
+- `src/pages/Gallery.tsx` — rebuilt:
+  - `LuxHero` preserved (same branding, fonts, colors).
+  - Filter chip bar (All, Jaipur, Amber Fort, Hawa Mahal, City Palace, Jodhpur, Udaipur, Jaisalmer, Pushkar, Ranthambore, Luxury Hotels, Vehicles, Airport Pickup, Guest Experiences, Culture, Food, Festivals, Nature). Chips only render for categories that contain images.
+  - CSS columns masonry: 1 col mobile / 2 tablet / 3 lg / 4 xl. Ivory bg, 16–20px radii, soft shadows, hover zoom, fade-in on scroll via existing `useReveal`.
+  - `<img loading="lazy" decoding="async" width height>` with intrinsic dimensions to prevent CLS; Supabase public URLs (already WebP/JPG/PNG as uploaded).
+  - Click → fullscreen lightbox (new `LuxLightbox.tsx`): dark blurred overlay, prev/next, ←/→/Esc keyboard, swipe (touch), close button, ARIA `role="dialog"`, focus trap, alt text + title/location caption.
+- `src/components/gallery/GalleryAdmin.tsx` — drawer/page at `/gallery/admin`:
+  - Sign-in gate (uses existing Supabase auth; only `admin` role can mutate).
+  - Multi-file uploader (drag & drop), inline edit of title/location/description/alt/category, reorder via up/down arrows (writes `sort_order`), delete with confirm, replace via re-upload.
+  - Link entry shown in Gallery page footer only when the signed-in user is an admin.
+- Seed: the 3 uploaded images (`elephant-jaipur`, `hawa-mahal-jaipur`, `manna-peena-kund-jaipur`) inserted via a one-time admin upload after deploy — categorised as Culture, Hawa Mahal, Jaipur respectively, with SEO alt text.
 
-3. Rebalance logo / nav proportions
-   - Increase the gap between the logo area and the navigation group.
-   - Center the navigation group visually within the available space.
-   - Avoid a tight grid that compresses menu links; prefer a flexible layout that lets the nav group breathe while keeping the logo aligned left.
+**Preserved**: logo, navbar, footer, colors, fonts, SEO meta, LuxHero, LuxCtaBand.
 
-4. Increase spacing between nav items
-   - Desktop (>= 1280px / xl): 24–36px between items, scaling with available width.
-   - Laptop (1024–1279px / lg): 18–28px between items.
-   - Preserve the existing lux-menu-link hover/active gold underline styling.
+## Files
+- New migration: tables, bucket, RLS, grants.
+- New: `src/components/gallery/LuxLightbox.tsx`, `src/components/gallery/GalleryGrid.tsx`, `src/components/gallery/GalleryAdmin.tsx`, `src/hooks/useGalleryImages.ts`, `src/data/galleryCategories.ts`.
+- Rewrite: `src/pages/Gallery.tsx`.
+- Update: `src/App.tsx` (add `/gallery/admin` route).
 
-5. Responsive behavior
-   - Maintain existing mobile/tablet hamburger menu behavior.
-   - Keep TrustBar, mobile quick-action icons, and Call/WhatsApp buttons unchanged.
-   - Ensure dropdown hover behavior on desktop and tap behavior on mobile remain intact.
+## After completion — how you manage images
+1. **Where stored**: Lovable Cloud → Storage bucket `gallery` (binary files) + DB table `gallery_images` (metadata + order).
+2. **Upload**: Sign in as admin → visit `/gallery/admin` → drag images into the uploader → fill title/location/category → Save.
+3. **Replace**: In `/gallery/admin`, click an image row → "Replace file" → pick new file.
+4. **Delete**: Row menu → Delete (removes DB row + storage file).
+5. **Reorder**: Use ↑ / ↓ arrows on each row; order persists via `sort_order`.
+6. **Add 100+**: Multi-select in the uploader handles bulk; the masonry expands automatically.
+7. **No code edits needed** for any of the above.
 
-Verification
-   - Inspect the preview at desktop, laptop, tablet, and mobile widths to confirm the navbar is centered, uncrowded, and visually balanced.
-   - Confirm the language selector no longer appears in either desktop or mobile menus.
-   - Confirm all existing nav items remain: Home, Destinations, Journeys, Experiences, Transport, Reviews, About Us, Contact Us.
+## Open question
+Only 3 images are attached. I'll seed those automatically; you can bulk-upload the rest via `/gallery/admin` after deploy. Confirm this is fine, or upload the full set now and I'll seed all of them.
