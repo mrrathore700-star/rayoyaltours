@@ -112,7 +112,10 @@ const GalleryAdmin = () => {
     [images, reload],
   );
 
-  const update = async (id: string, patch: Partial<GalleryImage>) => {
+  const update = async (
+    id: string,
+    patch: Partial<Pick<GalleryImage, "title" | "location" | "description" | "alt_text" | "category" | "sort_order" | "image_path">>,
+  ) => {
     const { error } = await supabase.from("gallery_images").update(patch).eq("id", id);
     if (error) toast.error(error.message);
     else reload();
