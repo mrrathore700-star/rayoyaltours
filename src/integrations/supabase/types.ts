@@ -140,6 +140,101 @@ export type Database = {
         }
         Relationships: []
       }
+      media_assets: {
+        Row: {
+          alt_text: string
+          bucket: string
+          category: string
+          created_at: string
+          created_by: string | null
+          description: string
+          focal_x: number | null
+          focal_y: number | null
+          height: number | null
+          id: string
+          image_path: string
+          mime_type: string | null
+          tags: string[]
+          title: string
+          updated_at: string
+          width: number | null
+        }
+        Insert: {
+          alt_text?: string
+          bucket?: string
+          category?: string
+          created_at?: string
+          created_by?: string | null
+          description?: string
+          focal_x?: number | null
+          focal_y?: number | null
+          height?: number | null
+          id?: string
+          image_path: string
+          mime_type?: string | null
+          tags?: string[]
+          title?: string
+          updated_at?: string
+          width?: number | null
+        }
+        Update: {
+          alt_text?: string
+          bucket?: string
+          category?: string
+          created_at?: string
+          created_by?: string | null
+          description?: string
+          focal_x?: number | null
+          focal_y?: number | null
+          height?: number | null
+          id?: string
+          image_path?: string
+          mime_type?: string | null
+          tags?: string[]
+          title?: string
+          updated_at?: string
+          width?: number | null
+        }
+        Relationships: []
+      }
+      media_slots: {
+        Row: {
+          alt_override: string | null
+          asset_id: string | null
+          created_at: string
+          notes: string | null
+          slot_key: string
+          updated_at: string
+          updated_by: string | null
+        }
+        Insert: {
+          alt_override?: string | null
+          asset_id?: string | null
+          created_at?: string
+          notes?: string | null
+          slot_key: string
+          updated_at?: string
+          updated_by?: string | null
+        }
+        Update: {
+          alt_override?: string | null
+          asset_id?: string | null
+          created_at?: string
+          notes?: string | null
+          slot_key?: string
+          updated_at?: string
+          updated_by?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "media_slots_asset_id_fkey"
+            columns: ["asset_id"]
+            isOneToOne: false
+            referencedRelation: "media_assets"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       suppressed_emails: {
         Row: {
           created_at: string
