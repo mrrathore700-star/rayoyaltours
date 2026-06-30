@@ -1,10 +1,6 @@
-import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
 import heroPalace from "@/assets/hero-palace.jpg";
 import culturalDance from "@/assets/cultural-dance.jpg";
-import localMarket from "@/assets/local-market.jpg";
-import desertSafari from "@/assets/desert-safari.jpg";
-import jaisalmerFort from "@/assets/jaisalmer-fort.jpg";
 import TourCard from "@/components/TourCard";
 import SEO from "@/components/SEO";
 import LuxHero from "@/components/luxury/LuxHero";
@@ -14,20 +10,13 @@ import LuxGoogleReviews from "@/components/luxury/LuxGoogleReviews";
 import LuxWhyChoose from "@/components/luxury/LuxWhyChoose";
 import LuxInlineCta from "@/components/luxury/LuxInlineCta";
 import LuxFAQ from "@/components/luxury/LuxFAQ";
+import LuxHomeGallery from "@/components/luxury/LuxHomeGallery";
 
 import LuxJournalPreview from "@/components/luxury/LuxJournalPreview";
 import LuxCtaBand from "@/components/luxury/LuxCtaBand";
 import LuxCustomJourney from "@/components/luxury/LuxCustomJourney";
 import { LuxLinkBtn, LuxAnchorBtn } from "@/components/luxury/LuxButton";
 import { tours } from "@/data/tours";
-
-
-const galleryImages = [
-  { src: culturalDance, alt: "Rajasthani folk dance performance" },
-  { src: localMarket, alt: "Colorful Jaipur bazaar" },
-  { src: desertSafari, alt: "Desert camel safari at sunset" },
-  { src: jaisalmerFort, alt: "Jaisalmer Golden Fort" },
-];
 
 const Index = () => {
   return (
