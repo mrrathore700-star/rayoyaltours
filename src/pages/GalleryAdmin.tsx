@@ -157,7 +157,7 @@ const GalleryAdmin = () => {
     [assets, refreshAll],
   );
 
-  const update = async (id: string, patch: Partial<MediaAsset>) => {
+  const update = async (id: string, patch: Partial<Omit<MediaAsset, "id" | "url">>) => {
     const { error } = await supabase.from("media_assets").update(patch).eq("id", id);
     if (error) toast.error(error.message);
     else refreshAll();
@@ -209,7 +209,7 @@ const GalleryAdmin = () => {
   };
 
   const toggleFlag = (a: MediaAsset, flag: FeaturedFlag) => {
-    update(a.id, { [flag]: !a[flag] } as Partial<MediaAsset>);
+    update(a.id, { [flag]: !a[flag] } as Partial<Omit<MediaAsset, "id" | "url">>);
   };
 
   const filtered = useMemo(() => {
