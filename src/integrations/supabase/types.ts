@@ -148,12 +148,21 @@ export type Database = {
           created_at: string
           created_by: string | null
           description: string
+          featured_blog: boolean
+          featured_destination: boolean
+          featured_experience: boolean
+          featured_gallery: boolean
+          featured_homepage: boolean
+          featured_package: boolean
+          featured_vehicle: boolean
           focal_x: number | null
           focal_y: number | null
           height: number | null
           id: string
           image_path: string
+          location: string
           mime_type: string | null
+          sort_order: number
           tags: string[]
           title: string
           updated_at: string
@@ -166,12 +175,21 @@ export type Database = {
           created_at?: string
           created_by?: string | null
           description?: string
+          featured_blog?: boolean
+          featured_destination?: boolean
+          featured_experience?: boolean
+          featured_gallery?: boolean
+          featured_homepage?: boolean
+          featured_package?: boolean
+          featured_vehicle?: boolean
           focal_x?: number | null
           focal_y?: number | null
           height?: number | null
           id?: string
           image_path: string
+          location?: string
           mime_type?: string | null
+          sort_order?: number
           tags?: string[]
           title?: string
           updated_at?: string
@@ -184,12 +202,21 @@ export type Database = {
           created_at?: string
           created_by?: string | null
           description?: string
+          featured_blog?: boolean
+          featured_destination?: boolean
+          featured_experience?: boolean
+          featured_gallery?: boolean
+          featured_homepage?: boolean
+          featured_package?: boolean
+          featured_vehicle?: boolean
           focal_x?: number | null
           focal_y?: number | null
           height?: number | null
           id?: string
           image_path?: string
+          location?: string
           mime_type?: string | null
+          sort_order?: number
           tags?: string[]
           title?: string
           updated_at?: string
