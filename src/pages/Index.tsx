@@ -1,10 +1,6 @@
-import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
 import heroPalace from "@/assets/hero-palace.jpg";
 import culturalDance from "@/assets/cultural-dance.jpg";
-import localMarket from "@/assets/local-market.jpg";
-import desertSafari from "@/assets/desert-safari.jpg";
-import jaisalmerFort from "@/assets/jaisalmer-fort.jpg";
 import TourCard from "@/components/TourCard";
 import SEO from "@/components/SEO";
 import LuxHero from "@/components/luxury/LuxHero";
@@ -14,20 +10,13 @@ import LuxGoogleReviews from "@/components/luxury/LuxGoogleReviews";
 import LuxWhyChoose from "@/components/luxury/LuxWhyChoose";
 import LuxInlineCta from "@/components/luxury/LuxInlineCta";
 import LuxFAQ from "@/components/luxury/LuxFAQ";
+import LuxHomeGallery from "@/components/luxury/LuxHomeGallery";
 
 import LuxJournalPreview from "@/components/luxury/LuxJournalPreview";
 import LuxCtaBand from "@/components/luxury/LuxCtaBand";
 import LuxCustomJourney from "@/components/luxury/LuxCustomJourney";
 import { LuxLinkBtn, LuxAnchorBtn } from "@/components/luxury/LuxButton";
 import { tours } from "@/data/tours";
-
-
-const galleryImages = [
-  { src: culturalDance, alt: "Rajasthani folk dance performance" },
-  { src: localMarket, alt: "Colorful Jaipur bazaar" },
-  { src: desertSafari, alt: "Desert camel safari at sunset" },
-  { src: jaisalmerFort, alt: "Jaisalmer Golden Fort" },
-];
 
 const Index = () => {
   return (
@@ -96,35 +85,7 @@ const Index = () => {
 
 
       {/* Gallery Preview */}
-      <section className="py-24 md:py-32 lux-cream-bg">
-        <div className="container mx-auto px-6">
-          <LuxSectionHeading
-            eyebrow="Gallery"
-            title="Photos from Our Recent Trips"
-            intro="A few photos from recent Rajasthan trips planned by our Jaipur team."
-          />
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4">
-            {galleryImages.map((img, i) => (
-              <Link
-                key={i}
-                to="/gallery"
-                className="relative overflow-hidden aspect-square group cursor-pointer rounded-sm"
-              >
-                <img
-                  src={img.src}
-                  alt={img.alt}
-                  className="w-full h-full object-cover transition-transform duration-[1200ms] group-hover:scale-110"
-                  loading="lazy"
-                />
-                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-colors duration-500" />
-              </Link>
-            ))}
-          </div>
-          <div className="text-center mt-12">
-            <LuxLinkBtn to="/gallery" variant="outline">View Full Gallery <ArrowRight className="h-4 w-4" /></LuxLinkBtn>
-          </div>
-        </div>
-      </section>
+      <LuxHomeGallery />
 
       <LuxGoogleReviews />
 

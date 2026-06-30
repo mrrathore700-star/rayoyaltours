@@ -1,5 +1,6 @@
 import { useState } from "react";
 import LuxLightbox from "./LuxLightbox";
+import SmartImage from "@/components/media/SmartImage";
 import type { GalleryImage } from "@/hooks/useGalleryImages";
 
 interface Props {
@@ -27,11 +28,9 @@ const GalleryGrid = ({ images }: Props) => {
             className="group relative block w-full break-inside-avoid overflow-hidden rounded-2xl bg-[#0F0F0F]/5 shadow-[0_8px_24px_-12px_rgba(0,0,0,0.25)] hover:shadow-[0_20px_40px_-12px_rgba(0,0,0,0.35)] transition-shadow duration-500 cursor-pointer text-left animate-fade-in"
             aria-label={`Open ${img.alt_text || img.title || "gallery image"}`}
           >
-            <img
-              src={img.url}
+            <SmartImage
+              fallback={img.url}
               alt={img.alt_text || img.title}
-              loading="lazy"
-              decoding="async"
               className="w-full h-auto object-cover transition-transform duration-[1200ms] ease-out group-hover:scale-[1.06]"
             />
             <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/75 via-black/0 to-black/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
