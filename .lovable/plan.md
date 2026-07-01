@@ -1,48 +1,53 @@
+# Destinations Index Page (`/destinations`)
 
-# Luxury Gallery Rebuild — Cloud-Managed
+Create a new hub page that lists every destination and links into the existing `/destinations/:slug` detail pages. Reuses existing typography, cards, section headings, buttons and animations — no redesign.
 
-## Goal
-Replace the current hardcoded `src/pages/Gallery.tsx` with a world-class luxury gallery whose images are stored in Lovable Cloud (database + storage bucket), so you can add/remove/replace/reorder images from a built-in admin screen — no code editing.
+## 1. Data model extension
+File: `src/data/destinations.ts`
 
-## Architecture
+Add lightweight card-only fields to each destination in the existing array so the grid is fully data-driven:
 
-**Backend (Lovable Cloud)**
-- New storage bucket `gallery` (public read).
-- New table `public.gallery_images`:
-  - `id uuid pk`, `image_path text` (storage path), `title text`, `location text`, `description text`, `alt_text text`, `category text`, `sort_order int`, `created_at timestamptz`.
-  - RLS: public `SELECT`; `INSERT/UPDATE/DELETE` restricted to authenticated admins via `user_roles` + `has_role(auth.uid(),'admin')` (follows existing role pattern).
-- `app_role` enum + `user_roles` table + `has_role` security-definer function (if not already present).
-- Proper `GRANT`s on every new public table.
+- `shortDescription: string` — one-line teaser (from the samples in the brief)
+- `highlights: string[]` — 3 short bullets pulled from existing `topAttractions`
+- `suggestedDuration: string` — reuse existing `recommendedDuration`
+- `bestFor: string[]` — e.g. ["Heritage", "Luxury"] used both for display and filtering
+- `categories: ("City" | "Wildlife" | "Heritage" | "Desert" | "Spiritual" | "Luxury" | "Nature")[]`
 
-**Frontend**
-- `src/pages/Gallery.tsx` — rebuilt:
-  - `LuxHero` preserved (same branding, fonts, colors).
-  - Filter chip bar (All, Jaipur, Amber Fort, Hawa Mahal, City Palace, Jodhpur, Udaipur, Jaisalmer, Pushkar, Ranthambore, Luxury Hotels, Vehicles, Airport Pickup, Guest Experiences, Culture, Food, Festivals, Nature). Chips only render for categories that contain images.
-  - CSS columns masonry: 1 col mobile / 2 tablet / 3 lg / 4 xl. Ivory bg, 16–20px radii, soft shadows, hover zoom, fade-in on scroll via existing `useReveal`.
-  - `<img loading="lazy" decoding="async" width height>` with intrinsic dimensions to prevent CLS; Supabase public URLs (already WebP/JPG/PNG as uploaded).
-  - Click → fullscreen lightbox (new `LuxLightbox.tsx`): dark blurred overlay, prev/next, ←/→/Esc keyboard, swipe (touch), close button, ARIA `role="dialog"`, focus trap, alt text + title/location caption.
-- `src/components/gallery/GalleryAdmin.tsx` — drawer/page at `/gallery/admin`:
-  - Sign-in gate (uses existing Supabase auth; only `admin` role can mutate).
-  - Multi-file uploader (drag & drop), inline edit of title/location/description/alt/category, reorder via up/down arrows (writes `sort_order`), delete with confirm, replace via re-upload.
-  - Link entry shown in Gallery page footer only when the signed-in user is an admin.
-- Seed: the 3 uploaded images (`elephant-jaipur`, `hawa-mahal-jaipur`, `manna-peena-kund-jaipur`) inserted via a one-time admin upload after deploy — categorised as Culture, Hawa Mahal, Jaipur respectively, with SEO alt text.
+Populate for the 6 existing destinations (Jaipur, Udaipur, Jodhpur, Jaisalmer, Ranthambore, Pushkar). No changes to detail-page fields.
 
-**Preserved**: logo, navbar, footer, colors, fonts, SEO meta, LuxHero, LuxCtaBand.
+Additional destinations mentioned in the brief (Mount Abu, Bikaner, Ajmer, Abhaneri, Bharatpur, Jawai, Shekhawati) do NOT currently have detail pages or images. They will NOT be added in this task — the page is driven off `destinations` so any future entry appears automatically ("future ready"). I'll flag this in the completion note so you can commission those detail pages separately.
 
-## Files
-- New migration: tables, bucket, RLS, grants.
-- New: `src/components/gallery/LuxLightbox.tsx`, `src/components/gallery/GalleryGrid.tsx`, `src/components/gallery/GalleryAdmin.tsx`, `src/hooks/useGalleryImages.ts`, `src/data/galleryCategories.ts`.
-- Rewrite: `src/pages/Gallery.tsx`.
-- Update: `src/App.tsx` (add `/gallery/admin` route).
+## 2. New page: `src/pages/Destinations.tsx`
 
-## After completion — how you manage images
-1. **Where stored**: Lovable Cloud → Storage bucket `gallery` (binary files) + DB table `gallery_images` (metadata + order).
-2. **Upload**: Sign in as admin → visit `/gallery/admin` → drag images into the uploader → fill title/location/category → Save.
-3. **Replace**: In `/gallery/admin`, click an image row → "Replace file" → pick new file.
-4. **Delete**: Row menu → Delete (removes DB row + storage file).
-5. **Reorder**: Use ↑ / ↓ arrows on each row; order persists via `sort_order`.
-6. **Add 100+**: Multi-select in the uploader handles bulk; the masonry expands automatically.
-7. **No code edits needed** for any of the above.
+Sections top → bottom, all using existing components (`LuxHero` variant styling, `LuxSectionHeading`, `LuxLinkBtn`/`LuxAnchorBtn`, `TourCard`, `SmartImage`, existing `.lux-*` classes):
 
-## Open question
-Only 3 images are attached. I'll seed those automatically; you can bulk-upload the rest via `/gallery/admin` after deploy. Confirm this is fine, or upload the full set now and I'll seed all of them.
+1. **Hero band** — eyebrow "Destinations", H1 "Explore Rajasthan Destinations", subtitle from brief, two CTAs: `Plan My Rajasthan Tour` → `/enquire?type=Destinations`, `WhatsApp Us` → existing wa.me link with pre-filled message.
+2. **Filters + Search** — search input (name/description) + category chips (All, City, Wildlife, Heritage, Desert, Spiritual, Luxury, Nature). Filter state in `useState`; chips reuse the styling used on `Experiences.tsx`/`Gallery.tsx`.
+3. **Destination grid** — responsive 1/2/3 cols, cards restyled from `LuxDestinations.tsx` but with the requested fields: image, name, one-liner, highlights (3 bullets), duration, "Best For" tag row, and a `View Destination` button linking to `/destinations/{slug}`. Empty state when filters return nothing.
+4. **Popular Rajasthan Tours** — 3 featured `TourCard`s (reuse existing tour data + section pattern from `Packages.tsx`).
+5. **Popular Experiences** — 3 experience cards using the existing pattern from `Experiences.tsx`.
+6. **Final CTA band** — `LuxCtaBand`-style section with the two CTAs.
+7. **SEO** via `<SEO>`: title `Rajasthan Destinations | Jaipur, Udaipur, Jodhpur, Jaisalmer & More`, tailored description, and `ItemList` + `BreadcrumbList` JSON-LD generated from the destinations array.
+
+## 3. Routing
+File: `src/App.tsx`
+- Add `<Route path="/destinations" element={<Destinations />} />` above the existing `/destinations/:slug` route.
+
+## 4. Link audit — point every "View All Destinations" to `/destinations`
+Update the following (verified via ripgrep):
+- `src/components/Footer.tsx` — "Explore Rajasthan" column header links to `/destinations`
+- `src/components/Header.tsx` — add "View All Destinations" entry at the top of the Destinations dropdown
+- `src/components/luxury/LuxDestinations.tsx` — add a "View All Destinations" button under the grid (component itself is no longer used on the homepage but kept for potential reuse); leave existing per-card links intact
+- Any homepage "View All" CTA related to destinations, if present
+
+Individual `/destinations/:slug` links are untouched.
+
+## 5. Non-goals
+- No visual redesign; strictly reuses tokens, spacing, radii, and existing components.
+- No new detail pages, no image sourcing for new destinations, no CMS changes.
+- No changes to the Media Library / SmartImage plumbing beyond consuming existing imported images.
+
+## Technical notes
+- Filtering: `useMemo` over `destinations` with case-insensitive name/description match + category intersection.
+- Categories stored on each destination let filters remain data-driven.
+- JSON-LD `ItemList` items reference absolute `https://www.heritagejaipurtravels.com/destinations/{slug}` URLs.
