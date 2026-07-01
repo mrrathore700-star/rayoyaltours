@@ -24,7 +24,7 @@ const navItems: NavItem[] = [
       { label: "Jaisalmer", to: "/destinations/jaisalmer" },
       { label: "Ranthambore", to: "/destinations/ranthambore" },
       { label: "Pushkar", to: "/destinations/pushkar" },
-      { label: "View All Destinations →", to: "/destinations/jaipur" },
+      { label: "View All Destinations →", to: "/destinations" },
     ],
   },
   {

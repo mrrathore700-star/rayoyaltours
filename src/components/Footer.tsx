@@ -75,7 +75,11 @@ const Footer = () => {
           </ul>
         </div>
         <div>
-          <h4 className="lux-eyebrow mb-5">{t("footer.exploreRajasthan")}</h4>
+          <h4 className="lux-eyebrow mb-5">
+            <Link to="/destinations" className="hover:text-[#C9A84C] transition-colors">
+              {t("footer.exploreRajasthan")}
+            </Link>
+          </h4>
           <ul className="space-y-3 text-sm text-[#FFF8F0]/80">
             {[
               { label: "Jaipur", to: "/destinations/jaipur" },
@@ -84,6 +88,7 @@ const Footer = () => {
               { label: "Jaisalmer", to: "/destinations/jaisalmer" },
               { label: "Ranthambore", to: "/destinations/ranthambore" },
               { label: "Pushkar", to: "/destinations/pushkar" },
+              { label: "View All Destinations →", to: "/destinations" },
             ].map((l) => (
               <li key={l.to}>
                 <Link to={l.to} className="hover:text-[#C9A84C] transition-colors">{l.label}</Link>
