@@ -35,6 +35,20 @@ const savePositions = (map: PositionMap) => {
 
 const urlKey = (pathname: string, search: string) => `${pathname}${search}`;
 
+const getCurrentUrlKey = () => `${window.location.pathname}${window.location.search}`;
+
+const isModifiedClick = (event: MouseEvent) =>
+  event.metaKey || event.altKey || event.ctrlKey || event.shiftKey || event.button !== 0;
+
+const isSameOriginNavigation = (anchor: HTMLAnchorElement) => {
+  try {
+    const url = new URL(anchor.href);
+    return url.origin === window.location.origin;
+  } catch {
+    return false;
+  }
+};
+
 const ScrollToTop = () => {
   const { pathname, search, hash, key } = useLocation();
   const navType = useNavigationType(); // "POP" | "PUSH" | "REPLACE"
@@ -44,6 +58,12 @@ const ScrollToTop = () => {
   // While true, the scroll listener will NOT overwrite saved positions
   // (prevents clobbering during programmatic restore as content reflows).
   const suppressSave = useRef<boolean>(false);
+
+  const rememberCurrentPosition = () => {
+    if (suppressSave.current) return;
+    positions.current[activeUrl.current] = window.scrollY;
+    savePositions(positions.current);
+  };
 
   // Take control away from the browser's native scroll restoration.
   useEffect(() => {
@@ -62,29 +82,52 @@ const ScrollToTop = () => {
       if (suppressSave.current) return;
       positions.current[activeUrl.current] = window.scrollY;
     };
+
+    const onClickCapture = (event: MouseEvent) => {
+      if (isModifiedClick(event)) return;
+      const target = event.target instanceof Element ? event.target : null;
+      const anchor = target?.closest<HTMLAnchorElement>("a[href]");
+      if (!anchor || anchor.target || anchor.hasAttribute("download")) return;
+      if (!isSameOriginNavigation(anchor)) return;
+
+      const url = new URL(anchor.href);
+      const currentUrl = getCurrentUrlKey();
+      const nextUrl = `${url.pathname}${url.search}`;
+
+      if (nextUrl !== currentUrl) {
+        rememberCurrentPosition();
+      }
+    };
+
+    const onPopState = () => {
+      rememberCurrentPosition();
+    };
+
     const persist = () => savePositions(positions.current);
 
     window.addEventListener("scroll", onScroll, { passive: true });
+    document.addEventListener("click", onClickCapture, true);
+    window.addEventListener("popstate", onPopState);
     window.addEventListener("pagehide", persist);
     window.addEventListener("beforeunload", persist);
 
     return () => {
       window.removeEventListener("scroll", onScroll);
+      document.removeEventListener("click", onClickCapture, true);
+      window.removeEventListener("popstate", onPopState);
       window.removeEventListener("pagehide", persist);
       window.removeEventListener("beforeunload", persist);
-      persist();
+      rememberCurrentPosition();
     };
   }, []);
 
   useLayoutEffect(() => {
     const nextUrl = urlKey(pathname, search);
 
-    // Save the position of the URL we're leaving (unless mid-restore).
+    // Switch the active URL after React Router changes routes. Do not save here:
+    // by this point the new route may already have changed document height and
+    // clamped scrollY, which would overwrite the exact pre-navigation value.
     if (activeUrl.current !== nextUrl) {
-      if (!suppressSave.current) {
-        positions.current[activeUrl.current] = window.scrollY;
-        savePositions(positions.current);
-      }
       activeUrl.current = nextUrl;
     }
 
@@ -113,6 +156,8 @@ const ScrollToTop = () => {
       let cancelled = false;
       let rafId = 0;
       let timeoutId = 0;
+      let stableFrames = 0;
+      let lastHeight = 0;
       const start = performance.now();
       // Wait until the document is tall enough to actually reach `saved`,
       // re-asserting each frame so late-loading images/fonts don't shift us off.
@@ -120,22 +165,34 @@ const ScrollToTop = () => {
         if (cancelled) return;
         const maxScroll =
           document.documentElement.scrollHeight - window.innerHeight;
-        const target = Math.min(saved, Math.max(0, maxScroll));
+        const pageHeight = document.documentElement.scrollHeight;
+        const canReachSavedPosition = saved <= Math.max(0, maxScroll);
+        const target = canReachSavedPosition ? saved : Math.max(0, maxScroll);
         window.scrollTo(0, target);
 
+        if (pageHeight === lastHeight && Math.abs(window.scrollY - target) <= 1) {
+          stableFrames += 1;
+        } else {
+          stableFrames = 0;
+          lastHeight = pageHeight;
+        }
+
         const elapsed = performance.now() - start;
-        // Keep re-asserting for up to 1.2s to absorb image/font reflow.
-        if (elapsed < 1200) {
+        // Keep re-asserting until the exact pixel position is stable, while
+        // allowing late-loading images/fonts to expand the page enough first.
+        if (elapsed < 2500 && (!canReachSavedPosition || stableFrames < 8)) {
           rafId = window.requestAnimationFrame(tryRestore);
         } else {
           suppressSave.current = false;
+          positions.current[nextUrl] = window.scrollY;
+          savePositions(positions.current);
         }
       };
       rafId = window.requestAnimationFrame(tryRestore);
       // Hard release of the suppress flag as a safety net.
       timeoutId = window.setTimeout(() => {
         suppressSave.current = false;
-      }, 1400);
+      }, 2800);
 
       return () => {
         cancelled = true;

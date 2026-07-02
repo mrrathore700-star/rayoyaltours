@@ -1,53 +1,50 @@
-# Destinations Index Page (`/destinations`)
+## Plan: True React Router scroll restoration
 
-Create a new hub page that lists every destination and links into the existing `/destinations/:slug` detail pages. Reuses existing typography, cards, section headings, buttons and animations — no redesign.
+### Goal
+Fix the existing scroll restoration behavior so browser Back/Forward returns to the exact saved pixel position, while normal link navigation still opens pages at the top.
 
-## 1. Data model extension
-File: `src/data/destinations.ts`
+### Files to change
+- `src/components/ScrollToTop.tsx` only.
 
-Add lightweight card-only fields to each destination in the existing array so the grid is fully data-driven:
+### Implementation steps
+1. **Replace the current restoration timing logic**
+   - Keep using React Router navigation type detection.
+   - Keep `PUSH` / `REPLACE` behavior as immediate `window.scrollTo(0, 0)`.
+   - Improve `POP` behavior so it restores only the saved scroll value for the destination URL.
 
-- `shortDescription: string` — one-line teaser (from the samples in the brief)
-- `highlights: string[]` — 3 short bullets pulled from existing `topAttractions`
-- `suggestedDuration: string` — reuse existing `recommendedDuration`
-- `bestFor: string[]` — e.g. ["Heritage", "Luxury"] used both for display and filtering
-- `categories: ("City" | "Wildlife" | "Heritage" | "Desert" | "Spiritual" | "Luxury" | "Nature")[]`
+2. **Save scroll positions more reliably before navigation**
+   - Track the active URL as `pathname + search`.
+   - Persist the latest scroll position continuously during scrolling.
+   - Explicitly save the current URL’s scroll position before the route changes.
+   - Also persist on page hide/unload.
 
-Populate for the 6 existing destinations (Jaipur, Udaipur, Jodhpur, Jaisalmer, Ranthambore, Pushkar). No changes to detail-page fields.
+3. **Prevent saved values from being overwritten during restoration**
+   - Keep a restoration lock/suppression flag.
+   - While restoration is running, ignore scroll events so the saved footer position cannot be replaced by intermediate values.
 
-Additional destinations mentioned in the brief (Mount Abu, Bikaner, Ajmer, Abhaneri, Bharatpur, Jawai, Shekhawati) do NOT currently have detail pages or images. They will NOT be added in this task — the page is driven off `destinations` so any future entry appears automatically ("future ready"). I'll flag this in the completion note so you can commission those detail pages separately.
+4. **Restore exact pixel position on POP**
+   - Read the saved scroll value for the target URL.
+   - Wait until the page is tall enough to support that scroll position.
+   - Re-apply the exact saved `scrollY` over a short stabilization window to counter late-loading images/layout shifts.
+   - Do not use an estimated or proportional position.
 
-## 2. New page: `src/pages/Destinations.tsx`
+5. **Add defensive route/content stabilization**
+   - Use `requestAnimationFrame` plus a bounded retry window.
+   - Stop once the target pixel position has been reached and the document height is stable, or after a safety timeout.
+   - Keep restoration instant, not smooth.
 
-Sections top → bottom, all using existing components (`LuxHero` variant styling, `LuxSectionHeading`, `LuxLinkBtn`/`LuxAnchorBtn`, `TourCard`, `SmartImage`, existing `.lux-*` classes):
+6. **Validate the required success test**
+   - Use Playwright to reproduce:
+     - Home → scroll to footer → record `window.scrollY`
+     - Click Terms & Conditions
+     - Confirm Terms opens at `0`
+     - Browser Back
+     - Confirm restored `window.scrollY` matches the original footer pixel position within browser rounding tolerance.
+   - Also sanity-check at least one additional route such as About or Destinations.
 
-1. **Hero band** — eyebrow "Destinations", H1 "Explore Rajasthan Destinations", subtitle from brief, two CTAs: `Plan My Rajasthan Tour` → `/enquire?type=Destinations`, `WhatsApp Us` → existing wa.me link with pre-filled message.
-2. **Filters + Search** — search input (name/description) + category chips (All, City, Wildlife, Heritage, Desert, Spiritual, Luxury, Nature). Filter state in `useState`; chips reuse the styling used on `Experiences.tsx`/`Gallery.tsx`.
-3. **Destination grid** — responsive 1/2/3 cols, cards restyled from `LuxDestinations.tsx` but with the requested fields: image, name, one-liner, highlights (3 bullets), duration, "Best For" tag row, and a `View Destination` button linking to `/destinations/{slug}`. Empty state when filters return nothing.
-4. **Popular Rajasthan Tours** — 3 featured `TourCard`s (reuse existing tour data + section pattern from `Packages.tsx`).
-5. **Popular Experiences** — 3 experience cards using the existing pattern from `Experiences.tsx`.
-6. **Final CTA band** — `LuxCtaBand`-style section with the two CTAs.
-7. **SEO** via `<SEO>`: title `Rajasthan Destinations | Jaipur, Udaipur, Jodhpur, Jaisalmer & More`, tailored description, and `ItemList` + `BreadcrumbList` JSON-LD generated from the destinations array.
-
-## 3. Routing
-File: `src/App.tsx`
-- Add `<Route path="/destinations" element={<Destinations />} />` above the existing `/destinations/:slug` route.
-
-## 4. Link audit — point every "View All Destinations" to `/destinations`
-Update the following (verified via ripgrep):
-- `src/components/Footer.tsx` — "Explore Rajasthan" column header links to `/destinations`
-- `src/components/Header.tsx` — add "View All Destinations" entry at the top of the Destinations dropdown
-- `src/components/luxury/LuxDestinations.tsx` — add a "View All Destinations" button under the grid (component itself is no longer used on the homepage but kept for potential reuse); leave existing per-card links intact
-- Any homepage "View All" CTA related to destinations, if present
-
-Individual `/destinations/:slug` links are untouched.
-
-## 5. Non-goals
-- No visual redesign; strictly reuses tokens, spacing, radii, and existing components.
-- No new detail pages, no image sourcing for new destinations, no CMS changes.
-- No changes to the Media Library / SmartImage plumbing beyond consuming existing imported images.
-
-## Technical notes
-- Filtering: `useMemo` over `destinations` with case-insensitive name/description match + category intersection.
-- Categories stored on each destination let filters remain data-driven.
-- JSON-LD `ItemList` items reference absolute `https://www.heritagejaipurtravels.com/destinations/{slug}` URLs.
+### Behavior after fix
+- New page clicks: top of page.
+- Browser Back/Forward: exact saved scroll position for that URL.
+- Positions stored per URL/path.
+- Saved positions are not overwritten during restoration.
+- No layout, styling, typography, route, or page-content changes.
