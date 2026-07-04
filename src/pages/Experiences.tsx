@@ -1,8 +1,11 @@
-import { useMemo } from "react";
+import { useMemo, useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { ArrowRight, Sparkles, Star, MapPin, Clock, Users, Shield, Heart, Award } from "lucide-react";
+import { ArrowRight, Sparkles, Star, MapPin, Clock, Users, Shield, Heart, Award, Search } from "lucide-react";
 import SEO from "@/components/SEO";
 import { categories, allExperiences, type Experience } from "@/data/experiences";
+import TourCard from "@/components/TourCard";
+import { tours } from "@/data/tours";
+import { LuxLinkBtn } from "@/components/luxury/LuxButton";
 import LuxGoogleReviews from "@/components/luxury/LuxGoogleReviews";
 import LuxInlineCta from "@/components/luxury/LuxInlineCta";
 import heroPalace from "@/assets/hero-palace.jpg";
