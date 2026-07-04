@@ -92,6 +92,38 @@ const Experiences = () => {
     [],
   );
 
+  // Discovery Hub state
+  const [search, setSearch] = useState("");
+  const [activeCat, setActiveCat] = useState<string>("All");
+  const [visibleCount, setVisibleCount] = useState(12);
+
+  const uniqueCategories = useMemo(
+    () => ["All", ...Array.from(new Set(allExperiences.map((e) => e.category)))],
+    [],
+  );
+
+  const filteredExperiences = useMemo(() => {
+    const q = search.trim().toLowerCase();
+    return allExperiences.filter((e) => {
+      if (activeCat !== "All" && e.category !== activeCat) return false;
+      if (!q) return true;
+      const hay = [
+        e.title,
+        e.category,
+        e.location,
+        e.shortDesc,
+        ...(e.highlights ?? []),
+      ]
+        .join(" ")
+        .toLowerCase();
+      return hay.includes(q);
+    });
+  }, [search, activeCat]);
+
+  useEffect(() => {
+    setVisibleCount(12);
+  }, [search, activeCat]);
+
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "TouristAttraction",
@@ -111,8 +143,8 @@ const Experiences = () => {
   return (
     <main style={{ background: "#FFF8F0" }}>
       <SEO
-        title="Rajasthan Experiences & Activities | Heritage Jaipur Travels"
-        description="Private Rajasthan experiences — heritage stays, desert camps, wildlife safaris, artisan workshops, food tours, wellness sessions and more, arranged by our Jaipur-based team."
+        title="Rajasthan Experiences | Camel Safari, Heritage Walks, Food Tours & More"
+        description="Discover authentic Rajasthan experiences including camel safaris, village visits, food walks, heritage tours, wildlife adventures, cultural workshops and more with Heritage Jaipur Travels."
         path="/experiences"
         image={heroPalace}
         jsonLd={jsonLd}
@@ -120,6 +152,7 @@ const Experiences = () => {
 
       {/* HERO */}
       <section className="relative w-full overflow-hidden" style={{ height: "82vh", minHeight: 600 }}>
+
         <div className="absolute inset-0">
           <img src={heroPalace} alt="Luxury Rajasthan palace at golden hour" className="w-full h-full object-cover lux-ken-burns" />
           <div className="absolute inset-0" style={{ background: "linear-gradient(90deg, rgba(15,15,15,0.78) 0%, rgba(15,15,15,0.55) 45%, rgba(15,15,15,0.25) 100%)" }} />
