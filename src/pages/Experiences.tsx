@@ -1,8 +1,11 @@
-import { useMemo } from "react";
+import { useMemo, useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { ArrowRight, Sparkles, Star, MapPin, Clock, Users, Shield, Heart, Award } from "lucide-react";
+import { ArrowRight, Sparkles, Star, MapPin, Clock, Users, Shield, Heart, Award, Search } from "lucide-react";
 import SEO from "@/components/SEO";
 import { categories, allExperiences, type Experience } from "@/data/experiences";
+import TourCard from "@/components/TourCard";
+import { tours } from "@/data/tours";
+import { LuxLinkBtn } from "@/components/luxury/LuxButton";
 import LuxGoogleReviews from "@/components/luxury/LuxGoogleReviews";
 import LuxInlineCta from "@/components/luxury/LuxInlineCta";
 import heroPalace from "@/assets/hero-palace.jpg";
@@ -89,6 +92,38 @@ const Experiences = () => {
     [],
   );
 
+  // Discovery Hub state
+  const [search, setSearch] = useState("");
+  const [activeCat, setActiveCat] = useState<string>("All");
+  const [visibleCount, setVisibleCount] = useState(12);
+
+  const uniqueCategories = useMemo(
+    () => ["All", ...Array.from(new Set(allExperiences.map((e) => e.category)))],
+    [],
+  );
+
+  const filteredExperiences = useMemo(() => {
+    const q = search.trim().toLowerCase();
+    return allExperiences.filter((e) => {
+      if (activeCat !== "All" && e.category !== activeCat) return false;
+      if (!q) return true;
+      const hay = [
+        e.title,
+        e.category,
+        e.location,
+        e.shortDesc,
+        ...(e.highlights ?? []),
+      ]
+        .join(" ")
+        .toLowerCase();
+      return hay.includes(q);
+    });
+  }, [search, activeCat]);
+
+  useEffect(() => {
+    setVisibleCount(12);
+  }, [search, activeCat]);
+
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "TouristAttraction",
@@ -108,8 +143,8 @@ const Experiences = () => {
   return (
     <main style={{ background: "#FFF8F0" }}>
       <SEO
-        title="Rajasthan Experiences & Activities | Heritage Jaipur Travels"
-        description="Private Rajasthan experiences — heritage stays, desert camps, wildlife safaris, artisan workshops, food tours, wellness sessions and more, arranged by our Jaipur-based team."
+        title="Rajasthan Experiences | Camel Safari, Heritage Walks, Food Tours & More"
+        description="Discover authentic Rajasthan experiences including camel safaris, village visits, food walks, heritage tours, wildlife adventures, cultural workshops and more with Heritage Jaipur Travels."
         path="/experiences"
         image={heroPalace}
         jsonLd={jsonLd}
@@ -117,6 +152,7 @@ const Experiences = () => {
 
       {/* HERO */}
       <section className="relative w-full overflow-hidden" style={{ height: "82vh", minHeight: 600 }}>
+
         <div className="absolute inset-0">
           <img src={heroPalace} alt="Luxury Rajasthan palace at golden hour" className="w-full h-full object-cover lux-ken-burns" />
           <div className="absolute inset-0" style={{ background: "linear-gradient(90deg, rgba(15,15,15,0.78) 0%, rgba(15,15,15,0.55) 45%, rgba(15,15,15,0.25) 100%)" }} />
@@ -207,50 +243,148 @@ const Experiences = () => {
         compact
       />
 
-      {/* FEATURED EXPERIENCES */}
+      {/* DISCOVERY HUB — every experience, searchable & filterable */}
       <section className="py-20 md:py-28" style={{ background: "#FAF1E2" }}>
         <div className="container mx-auto px-5 md:px-8">
-          <div className="text-center max-w-3xl mx-auto mb-14 md:mb-20">
+          <div className="text-center max-w-3xl mx-auto mb-12 md:mb-14">
             <div className="flex items-center justify-center gap-3 mb-5">
               <span className="h-px w-12 lux-bg-gold" />
-              <span className="text-[11px] tracking-[0.35em] uppercase lux-gold">Popular</span>
+              <span className="text-[11px] tracking-[0.35em] uppercase lux-gold">Discover</span>
               <span className="h-px w-12 lux-bg-gold" />
             </div>
             <h2 className="font-display text-3xl md:text-5xl font-medium leading-[1.1]" style={{ color: "#0F0F0F", letterSpacing: "-0.01em" }}>
-              Popular Rajasthan Experiences
+              Every Rajasthan Experience We Offer
             </h2>
             <p className="font-serif italic text-lg md:text-xl mt-5 leading-relaxed" style={{ color: "#5a4a3a" }}>
-              A few of the experiences travelers ask us for most often.
+              Search by name, filter by experience type, then open any experience to learn more and include it in your private Rajasthan itinerary.
+            </p>
+          </div>
+
+          {/* Search */}
+          <div className="max-w-2xl mx-auto mb-8">
+            <div className="relative">
+              <Search className="absolute left-5 top-1/2 -translate-y-1/2 h-4 w-4 lux-gold pointer-events-none" />
+              <input
+                type="text"
+                value={search}
+                onChange={(e) => setSearch(e.target.value)}
+                placeholder="Search experiences..."
+                aria-label="Search experiences"
+                className="w-full pl-12 pr-5 py-4 rounded-full font-serif text-[15px] bg-white border transition-all focus:outline-none"
+                style={{
+                  color: "#0F0F0F",
+                  borderColor: "rgba(201,168,76,0.4)",
+                  boxShadow: "0 2px 12px rgba(15,15,15,0.04)",
+                }}
+              />
+            </div>
+          </div>
+
+          {/* Category chips */}
+          <div className="flex flex-wrap gap-2.5 md:gap-3 justify-center mb-12 md:mb-14">
+            {uniqueCategories.map((cat) => {
+              const active = cat === activeCat;
+              return (
+                <button
+                  key={cat}
+                  type="button"
+                  onClick={() => setActiveCat(cat)}
+                  aria-pressed={active}
+                  className={`${active ? "lux-btn-gold" : "lux-btn-outline"} px-5 py-2 rounded-full font-medium text-[11px] tracking-[0.2em] uppercase transition-all`}
+                >
+                  {cat}
+                </button>
+              );
+            })}
+          </div>
+
+          {/* Results grid */}
+          {filteredExperiences.length === 0 ? (
+            <div className="text-center py-16 font-serif italic text-lg" style={{ color: "#5a4a3a" }} role="status" aria-live="polite">
+              No experiences match your search. Try a different keyword or category.
+            </div>
+          ) : (
+            <>
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-7 md:gap-9">
+                {filteredExperiences.slice(0, visibleCount).map((exp) => (
+                  <article key={exp.slug} className="lux-card group block relative overflow-hidden bg-white">
+                    <Link to={`/experiences/${exp.slug}`} className="block relative aspect-[4/3] overflow-hidden">
+                      <img src={exp.image} alt={exp.title} loading="lazy" className="lux-card-img w-full h-full object-cover" />
+                    </Link>
+                    <div className="p-6 md:p-7">
+                      <span className="text-[10px] tracking-[0.3em] uppercase lux-gold">{exp.category}</span>
+                      <h3 className="font-display text-xl md:text-2xl font-medium mt-3 mb-3 leading-snug" style={{ color: "#0F0F0F" }}>
+                        <Link to={`/experiences/${exp.slug}`} className="hover:opacity-80 transition">{exp.title}</Link>
+                      </h3>
+                      <p className="font-serif italic text-[15px] leading-relaxed mb-5 line-clamp-2" style={{ color: "#5a4a3a" }}>
+                        {exp.shortDesc}
+                      </p>
+                      <div className="flex flex-wrap items-center gap-x-5 gap-y-2 text-[12px] tracking-[0.1em] mb-5" style={{ color: "#7a6a5a" }}>
+                        <span className="inline-flex items-center gap-1.5"><Clock className="h-3.5 w-3.5 lux-gold" />{exp.duration}</span>
+                        <span className="inline-flex items-center gap-1.5"><MapPin className="h-3.5 w-3.5 lux-gold" />{exp.location}</span>
+                      </div>
+                      <Link
+                        to={`/experiences/${exp.slug}`}
+                        className="lux-btn-outline inline-flex items-center gap-2 px-5 py-2.5 rounded-full font-medium text-[11px] tracking-[0.2em] uppercase"
+                      >
+                        View Experience <ArrowRight className="h-3.5 w-3.5" />
+                      </Link>
+                    </div>
+                  </article>
+                ))}
+              </div>
+
+              {visibleCount < filteredExperiences.length && (
+                <div className="flex justify-center mt-12 md:mt-14">
+                  <button
+                    type="button"
+                    onClick={() => setVisibleCount((n) => n + 12)}
+                    className="lux-btn-gold px-8 py-3.5 rounded-full font-medium text-sm tracking-[0.2em] uppercase inline-flex items-center gap-2"
+                  >
+                    Load More Experiences <ArrowRight className="h-4 w-4" />
+                  </button>
+                </div>
+              )}
+
+              <p className="text-center mt-6 text-[12px] tracking-[0.2em] uppercase" style={{ color: "#7a6a5a" }}>
+                Showing {Math.min(visibleCount, filteredExperiences.length)} of {filteredExperiences.length}
+              </p>
+            </>
+          )}
+        </div>
+      </section>
+
+      {/* POPULAR RAJASTHAN TOURS */}
+      <section className="py-20 md:py-28">
+        <div className="container mx-auto px-5 md:px-8">
+          <div className="text-center max-w-3xl mx-auto mb-14 md:mb-16">
+            <div className="flex items-center justify-center gap-3 mb-5">
+              <span className="h-px w-12 lux-bg-gold" />
+              <span className="text-[11px] tracking-[0.35em] uppercase lux-gold">Ready-Made Journeys</span>
+              <span className="h-px w-12 lux-bg-gold" />
+            </div>
+            <h2 className="font-display text-3xl md:text-5xl font-medium leading-[1.1]" style={{ color: "#0F0F0F", letterSpacing: "-0.01em" }}>
+              Popular Rajasthan Tours
+            </h2>
+            <p className="font-serif italic text-lg md:text-xl mt-5 leading-relaxed" style={{ color: "#5a4a3a" }}>
+              Prefer a curated itinerary? Start with one of our most-loved private tours and add any experiences above.
             </p>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-7 md:gap-9">
-            {featured.map((exp) => (
-              <article key={exp.slug} className="lux-card group block relative overflow-hidden bg-white">
-                <Link to={`/experiences/${exp.slug}`} className="block relative aspect-[4/3] overflow-hidden">
-                  <img src={exp.image} alt={exp.title} loading="lazy" className="lux-card-img w-full h-full object-cover" />
-                </Link>
-                <div className="p-6 md:p-7">
-                  <span className="text-[10px] tracking-[0.3em] uppercase lux-gold">{exp.category}</span>
-                  <h3 className="font-display text-xl md:text-2xl font-medium mt-3 mb-3 leading-snug" style={{ color: "#0F0F0F" }}>
-                    <Link to={`/experiences/${exp.slug}`} className="hover:opacity-80 transition">{exp.title}</Link>
-                  </h3>
-                  <p className="font-serif italic text-[15px] leading-relaxed mb-5 line-clamp-2" style={{ color: "#5a4a3a" }}>
-                    {exp.shortDesc}
-                  </p>
-                  <div className="flex flex-wrap items-center gap-x-5 gap-y-2 text-[12px] tracking-[0.1em] mb-5" style={{ color: "#7a6a5a" }}>
-                    <span className="inline-flex items-center gap-1.5"><Clock className="h-3.5 w-3.5 lux-gold" />{exp.duration}</span>
-                    <span className="inline-flex items-center gap-1.5"><MapPin className="h-3.5 w-3.5 lux-gold" />{exp.location}</span>
-                  </div>
-                  <Link to={`/experiences/${exp.slug}`} className="inline-flex items-center gap-2 text-[12px] tracking-[0.25em] uppercase lux-gold lux-cta-underline">
-                    View Experience <ArrowRight className="h-3.5 w-3.5" />
-                  </Link>
-                </div>
-              </article>
+            {tours.slice(0, 3).map((t) => (
+              <TourCard key={t.slug ?? t.title} {...t} />
             ))}
+          </div>
+
+          <div className="flex justify-center mt-12 md:mt-14">
+            <LuxLinkBtn to="/packages" variant="gold">
+              View All Tour Packages <ArrowRight className="h-4 w-4" />
+            </LuxLinkBtn>
           </div>
         </div>
       </section>
+
 
       <LuxInlineCta
         tone="white"
