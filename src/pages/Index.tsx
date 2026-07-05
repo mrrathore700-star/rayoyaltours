@@ -104,7 +104,6 @@ const Index = () => {
         compact
       />
 
-      <LuxFAQ />
 
       <LuxInlineCta
         eyebrow="Have Questions?"
