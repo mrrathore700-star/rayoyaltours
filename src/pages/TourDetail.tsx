@@ -4,7 +4,9 @@ import { ArrowLeft, CheckCircle, XCircle, MapPin, Calendar, Users, Star, Plane, 
 import { tourDetails } from "@/data/tourDetails";
 import { tours } from "@/data/tours";
 import LuxTourEnhancements from "@/components/luxury/LuxTourEnhancements";
-import LuxInlineCta from "@/components/luxury/LuxInlineCta";
+import LuxGoogleReviews from "@/components/luxury/LuxGoogleReviews";
+import LuxCtaBand from "@/components/luxury/LuxCtaBand";
+import { LuxLinkBtn, LuxAnchorBtn } from "@/components/luxury/LuxButton";
 import SectionHeading from "@/components/SectionHeading";
 import { useState } from "react";
 import { useToast } from "@/hooks/use-toast";
@@ -109,23 +111,25 @@ const TourDetail = () => {
             <p className="font-serif italic text-lg md:text-xl text-[#C9A84C] mb-3">"{tour.tagline}"</p>
             <h1 className="font-display text-4xl md:text-6xl lg:text-7xl font-semibold leading-[1.05] tracking-tight mb-6 max-w-4xl">{tour.title}</h1>
 
-            <div className="flex flex-wrap gap-3 items-center">
+            <div className="flex flex-wrap gap-3 items-center mb-6">
               <span className="flex items-center gap-2 text-sm text-[#FFF8F0]/80"><Calendar className="h-4 w-4 text-[#C9A84C]" /> {tour.duration}</span>
               <span className="flex items-center gap-2 text-sm text-[#FFF8F0]/80"><MapPin className="h-4 w-4 text-[#C9A84C]" /> {tours.find((t) => t.slug === slug)?.highlights.join(" · ") || "Rajasthan"}</span>
-              <a
-                href={`https://wa.me/919887688843?text=${encodeURIComponent(`Hello Heritage Jaipur Travels,\n\nI am interested in ${tour.title}.\n\nTravel Dates:\nNumber of Travelers:\n\nPlease share details.`)}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center px-5 py-2 rounded-full lux-btn-gold tracking-[0.18em] uppercase text-xs font-display"
-              >
-                WhatsApp Specialist
-              </a>
-              <Link
+            </div>
+
+            <div className="flex flex-col sm:flex-row gap-4">
+              <LuxLinkBtn
                 to={`/enquire?tour=${encodeURIComponent(tour.title)}&duration=${encodeURIComponent(tour.duration)}`}
-                className="inline-flex items-center px-5 py-2 rounded-full lux-btn-outline tracking-[0.18em] uppercase text-xs font-display text-[#FFF8F0] border-[#C9A84C]/60"
+                variant="gold"
               >
-                Request Quote
-              </Link>
+                Plan My {tour.title.split(" ").slice(0, 3).join(" ")} Tour
+              </LuxLinkBtn>
+              <LuxAnchorBtn
+                href={`https://wa.me/919887688843?text=${encodeURIComponent(`Hi! I'd like to enquire about ${tour.title}.`)}`}
+                external
+                variant="outline"
+              >
+                WhatsApp Us
+              </LuxAnchorBtn>
             </div>
           </div>
         </section>
@@ -139,14 +143,8 @@ const TourDetail = () => {
           </div>
         </section>
 
-        <LuxInlineCta
-          tone="cream"
-          eyebrow="Like This Itinerary?"
-          heading={<>Customize this tour to your dates and pace.</>}
-          primary={{ label: "Customize This Tour", to: `/enquire?tour=${encodeURIComponent(tour.title)}&duration=${encodeURIComponent(tour.duration)}`, icon: "send" }}
-          secondary={{ label: "WhatsApp Us", href: `https://wa.me/919887688843?text=${encodeURIComponent(`Hi! I'd like to customize the ${tour.title}.`)}`, external: true, icon: "wa" }}
-          compact
-        />
+
+
 
 
         {/* Arrival & Departure */}
@@ -256,14 +254,8 @@ const TourDetail = () => {
           </div>
         </section>
 
-        <LuxInlineCta
-          tone="white"
-          eyebrow="Planning A Similar Rajasthan Tour?"
-          heading={<>Get pricing and a custom itinerary for your dates.</>}
-          primary={{ label: "Request Pricing", to: `/enquire?tour=${encodeURIComponent(tour.title)}&duration=${encodeURIComponent(tour.duration)}`, icon: "send" }}
-          secondary={{ label: "Contact Our Team", href: `https://wa.me/919887688843?text=${encodeURIComponent(`Hi! I have a few questions about the ${tour.title}.`)}`, external: true, icon: "wa" }}
-          compact
-        />
+
+
 
 
         {/* Accommodation, Inclusions, Exclusions */}
@@ -310,14 +302,8 @@ const TourDetail = () => {
           </div>
         </section>
 
-        <LuxInlineCta
-          tone="cream"
-          eyebrow="Have A Question About This Tour?"
-          heading={<>Ask about availability, hotels or anything else.</>}
-          primary={{ label: "Check Availability", href: `https://wa.me/919887688843?text=${encodeURIComponent(`Hi! Please check availability for the ${tour.title}.`)}`, external: true, icon: "wa" }}
-          secondary={{ label: "Ask A Question", to: "/contact", icon: "send" }}
-          compact
-        />
+
+
 
 
         {/* Ideal For & Why Choose */}
@@ -421,23 +407,13 @@ const TourDetail = () => {
                   onChange={(e) => setForm({ ...form, message: e.target.value })}
                 />
               </div>
-              <div className="flex flex-col sm:flex-row gap-3">
-                <button
-                  type="submit"
-                  disabled={submitting}
-                  className="flex-1 inline-flex items-center justify-center gap-2 py-3 rounded-md heritage-gradient text-primary-foreground font-bold hover:opacity-90 transition-opacity"
-                >
-                  <Send className="h-4 w-4" /> Enquire via WhatsApp
-                </button>
-                <a
-                  href={`https://wa.me/919887688843?text=${encodeURIComponent(`Hello, I would like to enquire about the ${tour.title}. Please share details.`)}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex-1 inline-flex items-center justify-center gap-2 py-3 rounded-md gold-gradient text-foreground font-bold hover:opacity-90 transition-opacity"
-                >
-                  Get a Quick Quote
-                </a>
-              </div>
+              <button
+                type="submit"
+                disabled={submitting}
+                className="w-full inline-flex items-center justify-center gap-2 py-3.5 rounded-full lux-btn-gold font-display tracking-[0.18em] uppercase text-xs md:text-sm disabled:opacity-60"
+              >
+                <Send className="h-4 w-4" /> Send Enquiry
+              </button>
             </form>
           </div>
         </section>
@@ -452,6 +428,17 @@ const TourDetail = () => {
           endLocation={tour.departureOptions[0] || "Jaipur"}
           priceLabel="Custom Pricing Available"
           relatedBasePath="/packages"
+        />
+
+        <LuxGoogleReviews />
+
+        <LuxCtaBand
+          image={tours.find((t) => t.slug === slug)?.image || ""}
+          eyebrow="Start Planning"
+          title="Ready to Explore Rajasthan?"
+          subtitle="Tell us your travel dates and preferred journey — our Jaipur team will craft a private itinerary just for you."
+          primary={{ label: "Plan My Rajasthan Tour", to: `/enquire?tour=${encodeURIComponent(tour.title)}&duration=${encodeURIComponent(tour.duration)}` }}
+          secondary={{ label: "WhatsApp Us", href: `https://wa.me/919887688843?text=${encodeURIComponent(`Hi! I'd like to plan the ${tour.title}.`)}`, external: true }}
         />
       </main>
     </>

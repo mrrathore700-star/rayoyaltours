@@ -5,6 +5,7 @@ import SEO from "@/components/SEO";
 import LuxSectionHeading from "@/components/luxury/LuxSectionHeading";
 import { LuxLinkBtn, LuxAnchorBtn } from "@/components/luxury/LuxButton";
 import LuxCtaBand from "@/components/luxury/LuxCtaBand";
+import LuxWhyChoose from "@/components/luxury/LuxWhyChoose";
 import TourCard from "@/components/TourCard";
 import { destinations } from "@/data/destinations";
 import { tours } from "@/data/tours";
@@ -368,6 +369,10 @@ const Destinations = () => {
           </div>
         </div>
       </section>
+
+      <LuxWhyChoose />
+
+
 
       {/* Final CTA */}
       <LuxCtaBand
