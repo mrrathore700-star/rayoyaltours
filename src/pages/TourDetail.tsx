@@ -4,7 +4,9 @@ import { ArrowLeft, CheckCircle, XCircle, MapPin, Calendar, Users, Star, Plane, 
 import { tourDetails } from "@/data/tourDetails";
 import { tours } from "@/data/tours";
 import LuxTourEnhancements from "@/components/luxury/LuxTourEnhancements";
-import LuxInlineCta from "@/components/luxury/LuxInlineCta";
+import LuxGoogleReviews from "@/components/luxury/LuxGoogleReviews";
+import LuxCtaBand from "@/components/luxury/LuxCtaBand";
+import { LuxLinkBtn, LuxAnchorBtn } from "@/components/luxury/LuxButton";
 import SectionHeading from "@/components/SectionHeading";
 import { useState } from "react";
 import { useToast } from "@/hooks/use-toast";
