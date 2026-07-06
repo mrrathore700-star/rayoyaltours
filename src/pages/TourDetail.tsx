@@ -407,23 +407,13 @@ const TourDetail = () => {
                   onChange={(e) => setForm({ ...form, message: e.target.value })}
                 />
               </div>
-              <div className="flex flex-col sm:flex-row gap-3">
-                <button
-                  type="submit"
-                  disabled={submitting}
-                  className="flex-1 inline-flex items-center justify-center gap-2 py-3 rounded-md heritage-gradient text-primary-foreground font-bold hover:opacity-90 transition-opacity"
-                >
-                  <Send className="h-4 w-4" /> Enquire via WhatsApp
-                </button>
-                <a
-                  href={`https://wa.me/919887688843?text=${encodeURIComponent(`Hello, I would like to enquire about the ${tour.title}. Please share details.`)}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex-1 inline-flex items-center justify-center gap-2 py-3 rounded-md gold-gradient text-foreground font-bold hover:opacity-90 transition-opacity"
-                >
-                  Get a Quick Quote
-                </a>
-              </div>
+              <button
+                type="submit"
+                disabled={submitting}
+                className="w-full inline-flex items-center justify-center gap-2 py-3.5 rounded-full lux-btn-gold font-display tracking-[0.18em] uppercase text-xs md:text-sm disabled:opacity-60"
+              >
+                <Send className="h-4 w-4" /> Send Enquiry
+              </button>
             </form>
           </div>
         </section>
@@ -438,6 +428,17 @@ const TourDetail = () => {
           endLocation={tour.departureOptions[0] || "Jaipur"}
           priceLabel="Custom Pricing Available"
           relatedBasePath="/packages"
+        />
+
+        <LuxGoogleReviews />
+
+        <LuxCtaBand
+          image={tours.find((t) => t.slug === slug)?.image || ""}
+          eyebrow="Start Planning"
+          title="Ready to Explore Rajasthan?"
+          subtitle="Tell us your travel dates and preferred journey — our Jaipur team will craft a private itinerary just for you."
+          primary={{ label: "Plan My Rajasthan Tour", to: `/enquire?tour=${encodeURIComponent(tour.title)}&duration=${encodeURIComponent(tour.duration)}` }}
+          secondary={{ label: "WhatsApp Us", href: `https://wa.me/919887688843?text=${encodeURIComponent(`Hi! I'd like to plan the ${tour.title}.`)}`, external: true }}
         />
       </main>
     </>
