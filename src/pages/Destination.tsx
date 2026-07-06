@@ -141,14 +141,7 @@ const Destination = () => {
         </div>
       </section>
 
-      <LuxInlineCta
-        tone="white"
-        eyebrow={`Visiting ${dest.name}?`}
-        heading={<>Get a personalized {dest.name} itinerary.</>}
-        primary={{ label: "Request Itinerary", to: `/enquire?destination=${encodeURIComponent(dest.name)}`, icon: "send" }}
-        secondary={{ label: "Contact Team", href: "https://wa.me/919461069858", external: true, icon: "wa" }}
-        compact
-      />
+
 
       {/* Best Experiences */}
       <section className="py-20 md:py-28 bg-white border-t" style={{ borderColor: "rgba(110,15,31,0.10)" }}>
