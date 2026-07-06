@@ -370,6 +370,10 @@ const Destinations = () => {
         </div>
       </section>
 
+      <LuxWhyChoose />
+
+
+
       {/* Final CTA */}
       <LuxCtaBand
         image={heroPalace}
