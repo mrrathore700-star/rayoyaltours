@@ -143,14 +143,8 @@ const TourDetail = () => {
           </div>
         </section>
 
-        <LuxInlineCta
-          tone="cream"
-          eyebrow="Like This Itinerary?"
-          heading={<>Customize this tour to your dates and pace.</>}
-          primary={{ label: "Customize This Tour", to: `/enquire?tour=${encodeURIComponent(tour.title)}&duration=${encodeURIComponent(tour.duration)}`, icon: "send" }}
-          secondary={{ label: "WhatsApp Us", href: `https://wa.me/919887688843?text=${encodeURIComponent(`Hi! I'd like to customize the ${tour.title}.`)}`, external: true, icon: "wa" }}
-          compact
-        />
+
+
 
 
         {/* Arrival & Departure */}
