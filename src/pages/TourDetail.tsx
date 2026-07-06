@@ -111,23 +111,25 @@ const TourDetail = () => {
             <p className="font-serif italic text-lg md:text-xl text-[#C9A84C] mb-3">"{tour.tagline}"</p>
             <h1 className="font-display text-4xl md:text-6xl lg:text-7xl font-semibold leading-[1.05] tracking-tight mb-6 max-w-4xl">{tour.title}</h1>
 
-            <div className="flex flex-wrap gap-3 items-center">
+            <div className="flex flex-wrap gap-3 items-center mb-6">
               <span className="flex items-center gap-2 text-sm text-[#FFF8F0]/80"><Calendar className="h-4 w-4 text-[#C9A84C]" /> {tour.duration}</span>
               <span className="flex items-center gap-2 text-sm text-[#FFF8F0]/80"><MapPin className="h-4 w-4 text-[#C9A84C]" /> {tours.find((t) => t.slug === slug)?.highlights.join(" · ") || "Rajasthan"}</span>
-              <a
-                href={`https://wa.me/919887688843?text=${encodeURIComponent(`Hello Heritage Jaipur Travels,\n\nI am interested in ${tour.title}.\n\nTravel Dates:\nNumber of Travelers:\n\nPlease share details.`)}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center px-5 py-2 rounded-full lux-btn-gold tracking-[0.18em] uppercase text-xs font-display"
-              >
-                WhatsApp Specialist
-              </a>
-              <Link
+            </div>
+
+            <div className="flex flex-col sm:flex-row gap-4">
+              <LuxLinkBtn
                 to={`/enquire?tour=${encodeURIComponent(tour.title)}&duration=${encodeURIComponent(tour.duration)}`}
-                className="inline-flex items-center px-5 py-2 rounded-full lux-btn-outline tracking-[0.18em] uppercase text-xs font-display text-[#FFF8F0] border-[#C9A84C]/60"
+                variant="gold"
               >
-                Request Quote
-              </Link>
+                Plan My {tour.title.split(" ").slice(0, 3).join(" ")} Tour
+              </LuxLinkBtn>
+              <LuxAnchorBtn
+                href={`https://wa.me/919887688843?text=${encodeURIComponent(`Hi! I'd like to enquire about ${tour.title}.`)}`}
+                external
+                variant="outline"
+              >
+                WhatsApp Us
+              </LuxAnchorBtn>
             </div>
           </div>
         </section>
