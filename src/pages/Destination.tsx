@@ -1,10 +1,11 @@
 import { useParams, Link, Navigate } from "react-router-dom";
-import { ArrowRight, Calendar, Clock, MapPin, Phone } from "lucide-react";
+import { ArrowRight, Calendar, Clock, MapPin } from "lucide-react";
 import SEO from "@/components/SEO";
 import LuxHero from "@/components/luxury/LuxHero";
 import LuxSectionHeading from "@/components/luxury/LuxSectionHeading";
 import { LuxLinkBtn, LuxAnchorBtn } from "@/components/luxury/LuxButton";
-import LuxInlineCta from "@/components/luxury/LuxInlineCta";
+import LuxGoogleReviews from "@/components/luxury/LuxGoogleReviews";
+import LuxEnquiryForm from "@/components/luxury/LuxEnquiryForm";
 import {
   Accordion,
   AccordionContent,
