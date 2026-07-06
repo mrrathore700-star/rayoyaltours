@@ -254,14 +254,8 @@ const TourDetail = () => {
           </div>
         </section>
 
-        <LuxInlineCta
-          tone="white"
-          eyebrow="Planning A Similar Rajasthan Tour?"
-          heading={<>Get pricing and a custom itinerary for your dates.</>}
-          primary={{ label: "Request Pricing", to: `/enquire?tour=${encodeURIComponent(tour.title)}&duration=${encodeURIComponent(tour.duration)}`, icon: "send" }}
-          secondary={{ label: "Contact Our Team", href: `https://wa.me/919887688843?text=${encodeURIComponent(`Hi! I have a few questions about the ${tour.title}.`)}`, external: true, icon: "wa" }}
-          compact
-        />
+
+
 
 
         {/* Accommodation, Inclusions, Exclusions */}
