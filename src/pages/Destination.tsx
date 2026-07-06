@@ -416,6 +416,17 @@ const Destination = () => {
         </div>
       </section>
 
+      <LuxGoogleReviews />
+
+      <LuxEnquiryForm
+        subject={`${dest.name} tour`}
+        eyebrow="Plan Your Trip"
+        title={`Enquire About ${dest.name}`}
+        intro={`Share your travel dates and preferences — our Jaipur team will craft a private ${dest.name} itinerary for you.`}
+        tone="white"
+        contextLine={`I'd like to plan a private trip to ${dest.name}.`}
+      />
+
       {/* Final CTA */}
       <section className="relative py-24 md:py-32 lux-black-bg overflow-hidden">
         <div className="absolute inset-0 opacity-30">
@@ -429,20 +440,17 @@ const Destination = () => {
             <span className="lux-rule-gold" />
           </div>
           <h2 className="font-display font-semibold text-3xl md:text-5xl text-[#FFF8F0] mb-6 leading-tight">
-            Ready to Experience {dest.name}?
+            Ready to Explore {dest.name}?
           </h2>
           <p className="font-serif italic text-lg md:text-xl text-[#FFF8F0]/80 mb-10">
-            Speak with our luxury Rajasthan specialists and we will design a personalised {dest.name} journey for you — itineraries, palace stays, private guides and chauffeur-driven transfers.
+            Tell us your travel dates and preferences — we'll design a private {dest.name} journey with palace stays, private guides and chauffeur-driven transfers.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <LuxLinkBtn to={`/contact?destination=${encodeURIComponent(dest.name)}`} variant="gold">
-              Plan Your {dest.name} Journey
+            <LuxLinkBtn to={`/enquire?destination=${encodeURIComponent(dest.name)}`} variant="gold">
+              Plan My {dest.name} Tour
             </LuxLinkBtn>
             <LuxAnchorBtn href="https://wa.me/919461069858" variant="outline" external>
               WhatsApp Us
-            </LuxAnchorBtn>
-            <LuxAnchorBtn href="tel:+919461069858" variant="outline">
-              <Phone className="h-4 w-4" /> +91 94610 69858
             </LuxAnchorBtn>
           </div>
         </div>
