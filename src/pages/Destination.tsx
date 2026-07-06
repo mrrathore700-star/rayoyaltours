@@ -244,11 +244,6 @@ const Destination = () => {
               </div>
             ))}
           </div>
-          <div className="text-center mt-12">
-            <LuxLinkBtn to={`/enquire?destination=${encodeURIComponent(dest.name)}`} variant="gold">
-              Request a Custom Itinerary
-            </LuxLinkBtn>
-          </div>
         </div>
       </section>
 
