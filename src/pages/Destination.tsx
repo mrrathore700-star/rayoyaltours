@@ -72,12 +72,12 @@ const Destination = () => {
         height="regular"
         actions={
           <>
-            <LuxAnchorBtn href="https://wa.me/919461069858" variant="gold" external>
+            <LuxLinkBtn to={`/enquire?destination=${encodeURIComponent(dest.name)}`} variant="gold">
+              Plan My {dest.name} Tour
+            </LuxLinkBtn>
+            <LuxAnchorBtn href="https://wa.me/919461069858" variant="outline" external>
               WhatsApp Us
             </LuxAnchorBtn>
-            <LuxLinkBtn to={`/enquire?destination=${encodeURIComponent(dest.name)}`} variant="outline">
-              Plan {dest.name} Tour
-            </LuxLinkBtn>
           </>
         }
       />
