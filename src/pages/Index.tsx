@@ -35,8 +35,8 @@ const Index = () => {
         height="tall"
         actions={
           <>
-            <LuxAnchorBtn href="https://wa.me/919887688843?text=Hi!%20I%20want%20to%20plan%20my%20Rajasthan%20trip" external variant="gold">WhatsApp Us</LuxAnchorBtn>
-            <LuxLinkBtn to="/contact" variant="outline">Request A Quote</LuxLinkBtn>
+            <LuxLinkBtn to="/contact" variant="gold">Plan My Rajasthan Journey</LuxLinkBtn>
+            <LuxAnchorBtn href="https://wa.me/919887688843?text=Hi!%20I%20want%20to%20plan%20my%20Rajasthan%20trip" external variant="outline">WhatsApp Us</LuxAnchorBtn>
           </>
         }
       />
@@ -64,13 +64,6 @@ const Index = () => {
         </div>
       </section>
 
-      <LuxInlineCta
-        eyebrow="Interested In This Itinerary?"
-        heading={<>Tell us what you'd like to see — we'll send a personalized plan.</>}
-        primary={{ label: "Request A Quote", to: "/contact", icon: "send" }}
-        secondary={{ label: "WhatsApp Us", href: "https://wa.me/919887688843", external: true, icon: "wa" }}
-        compact
-      />
 
 
       {/* Heritage Experience Banner */}
@@ -95,25 +88,6 @@ const Index = () => {
 
       <LuxFAQ />
 
-      <LuxInlineCta
-        tone="white"
-        eyebrow="Plan A Similar Tour"
-        heading={<>Loved what you read? Plan a trip like this with our Jaipur team.</>}
-        primary={{ label: "Plan My Rajasthan Tour", to: "/contact", icon: "send" }}
-        secondary={{ label: "WhatsApp Us", href: "https://wa.me/919887688843", external: true, icon: "wa" }}
-        compact
-      />
-
-
-      <LuxInlineCta
-        eyebrow="Have Questions?"
-        heading={<>Speak with a real person on our Jaipur team.</>}
-        subtitle="Our team usually replies within a few hours — by WhatsApp, email or phone."
-        primary={{ label: "Contact Our Team", to: "/contact", icon: "send" }}
-        secondary={{ label: "WhatsApp Us", href: "https://wa.me/919887688843", external: true, icon: "wa" }}
-        compact
-      />
-
       <LuxCustomJourney />
 
       {/* Final CTA */}
@@ -122,8 +96,8 @@ const Index = () => {
         eyebrow="Start Planning"
         title={<>Ready To Explore <span className="text-[#C9A84C]">Rajasthan</span>?</>}
         subtitle="Share your travel dates, destinations and what you'd like to do — we'll send a personalized plan and quote."
-        primary={{ label: "Plan My Rajasthan Tour", to: "/contact" }}
-        secondary={{ label: "Request A Quote", href: "https://wa.me/919887688843?text=Hi!%20I'd%20like%20a%20quote%20for%20a%20Rajasthan%20tour", external: true }}
+        primary={{ label: "Plan My Rajasthan Journey", to: "/contact" }}
+        secondary={{ label: "WhatsApp Us", href: "https://wa.me/919887688843?text=Hi!%20I'd%20like%20a%20quote%20for%20a%20Rajasthan%20tour", external: true }}
       />
 
     </main>
