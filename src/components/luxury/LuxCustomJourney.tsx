@@ -81,8 +81,8 @@ const LuxCustomJourney = () => {
               Plan Your Own <span className="text-[#C9A84C]">Rajasthan</span> Tour
             </h2>
             <p className="font-serif italic text-[#FFF8F0]/80 text-lg md:text-xl mt-6 leading-relaxed">
-              Share your travel dates, destinations and preferences. Our Jaipur-based team will
-              put together a private itinerary built around how you want to travel.
+              Have questions or ready to plan? Share your travel dates, destinations and preferences —
+              our Jaipur-based team will put together a private itinerary and usually reply within a few hours.
             </p>
 
             <ul className="mt-10 grid sm:grid-cols-2 gap-x-6 gap-y-4">
