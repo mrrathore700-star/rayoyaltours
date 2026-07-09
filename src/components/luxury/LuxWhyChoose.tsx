@@ -62,7 +62,7 @@ const LuxWhyChoose = () => (
         ))}
       </div>
 
-      <p className="text-center font-serif italic text-base md:text-lg text-[#0F0F0F]/65 max-w-3xl mx-auto mt-16">
+      <p className="text-center font-serif italic text-base md:text-lg text-[#0F0F0F]/65 max-w-3xl mx-auto mt-12">
         Trusted by families, couples, friends and solo travelers from India and around the world.
       </p>
     </div>
