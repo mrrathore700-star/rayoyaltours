@@ -71,7 +71,7 @@ const LuxJournalPreview = () => {
           ))}
         </div>
 
-        <div className="text-center mt-14">
+        <div className="text-center mt-12">
           <LuxLinkBtn to="/blog" variant="outline">
             View All Articles <ArrowRight className="h-4 w-4" />
           </LuxLinkBtn>
