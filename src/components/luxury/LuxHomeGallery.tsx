@@ -36,7 +36,7 @@ const LuxHomeGallery = () => {
   });
 
   return (
-    <section className="py-24 md:py-32 lux-cream-bg">
+    <section className="py-20 md:py-24 lux-cream-bg">
       <div className="container mx-auto px-6">
         <LuxSectionHeading
           eyebrow="Gallery"
