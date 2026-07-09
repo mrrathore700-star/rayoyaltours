@@ -55,7 +55,7 @@ const LuxFAQ = () => {
   };
 
   return (
-    <section className="lux-cream-bg py-24 md:py-32 border-t" style={{ borderColor: "rgba(110,15,31,0.10)" }}>
+    <section className="lux-cream-bg py-20 md:py-24 border-t" style={{ borderColor: "rgba(110,15,31,0.10)" }}>
       <Helmet>
         <script type="application/ld+json">{JSON.stringify(faqSchema)}</script>
       </Helmet>
