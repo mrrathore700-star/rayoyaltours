@@ -16,7 +16,7 @@ const SectionHeading = ({
   const titleColor = tone === "dark" ? "text-[#FFF8F0]" : "text-[#0F0F0F]";
   const subColor = tone === "dark" ? "text-[#FFF8F0]/75" : "text-[#0F0F0F]/65";
   return (
-    <div className={`mb-14 md:mb-16 ${centered ? "text-center" : ""}`}>
+    <div className={`mb-12 md:mb-14 ${centered ? "text-center" : ""}`}>
       <div className={`flex items-center gap-3 mb-5 ${centered ? "justify-center" : ""}`}>
         <span className="lux-rule-gold" />
         <span className="lux-eyebrow">{eyebrow ?? "Heritage Jaipur"}</span>
