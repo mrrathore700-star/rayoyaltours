@@ -42,7 +42,7 @@ const LuxGoogleReviews = () => (
       />
 
       {/* Trust Metrics */}
-      <div className="grid grid-cols-2 md:grid-cols-2 gap-6 md:gap-8 mb-4 max-w-2xl mx-auto">
+      <div className="grid grid-cols-2 md:grid-cols-2 gap-6 md:gap-8 mb-8 max-w-2xl mx-auto">
         {trustMetrics.map(({ icon: Icon, value, label }) => (
           <div
             key={label}
