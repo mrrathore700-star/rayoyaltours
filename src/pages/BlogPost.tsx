@@ -84,7 +84,7 @@ const BlogPost = () => {
         subtitle={`${post.date} · ${post.readTime} · By Heritage Jaipur Travels`}
       />
 
-      <article className="py-24 md:py-32">
+      <article className="py-20 md:py-24">
         <div className="container mx-auto px-6 max-w-3xl">
           {/* Breadcrumb */}
           <nav aria-label="Breadcrumb" className="mb-10 text-[10px] tracking-[0.22em] uppercase text-[#0F0F0F]/50 text-center">

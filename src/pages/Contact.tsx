@@ -98,7 +98,7 @@ const Contact = () => {
         subtitle="Share your travel dates, destinations, number of travelers and any special requirements — we'll get back to you with a plan and a personalized quote."
       />
 
-      <section className="container mx-auto px-6 py-24 md:py-32">
+      <section className="container mx-auto px-6 py-20 md:py-24">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 max-w-6xl mx-auto">
           <div>
             <div className="space-y-6 mb-8">

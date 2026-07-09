@@ -44,7 +44,7 @@ const Index = () => {
       <LuxTrustStrip />
 
       {/* Signature Journeys */}
-      <section className="lux-cream-bg py-24 md:py-32">
+      <section className="lux-cream-bg py-20 md:py-24">
         <div className="container mx-auto px-6">
           <LuxSectionHeading
             eyebrow="Our Tours"
