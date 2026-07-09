@@ -13,7 +13,7 @@ const LuxSectionHeading = ({ eyebrow, title, intro, tone = "light", align = "cen
   const introColor = tone === "dark" ? "text-[#FFF8F0]/75" : "text-[#0F0F0F]/65";
   const alignCls = align === "center" ? "text-center mx-auto" : "text-left";
   return (
-    <div className={`mb-14 md:mb-16 max-w-3xl ${alignCls}`}>
+    <div className={`mb-12 md:mb-14 max-w-3xl ${alignCls}`}>
       {eyebrow && (
         <div className={`inline-flex items-center gap-3 mb-5 ${align === "center" ? "" : ""}`}>
           <span className="lux-rule-gold" />
