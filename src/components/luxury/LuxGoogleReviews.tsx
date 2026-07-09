@@ -57,7 +57,7 @@ const LuxGoogleReviews = () => (
         ))}
       </div>
 
-      <p className="text-center font-serif italic text-sm md:text-base text-[#0F0F0F]/65 max-w-2xl mx-auto mb-12">
+      <p className="text-center font-serif italic text-sm md:text-base text-[#0F0F0F]/65 max-w-2xl mx-auto mb-10">
         Honest Google reviews from travellers who explored Rajasthan with Heritage Jaipur Travels.
       </p>
 
