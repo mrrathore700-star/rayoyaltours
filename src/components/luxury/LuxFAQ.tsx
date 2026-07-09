@@ -85,7 +85,7 @@ const LuxFAQ = () => {
           </Accordion>
         </div>
 
-        <div className="text-center mt-14 max-w-2xl mx-auto">
+        <div className="text-center mt-12 max-w-2xl mx-auto">
           <p className="font-serif italic text-base md:text-lg text-[#0F0F0F]/65 mb-6">
             Have another question? Message our Jaipur office and we'll get back to you with practical advice for your trip.
           </p>
