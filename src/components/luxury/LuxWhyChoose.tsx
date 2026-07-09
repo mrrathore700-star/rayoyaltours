@@ -35,7 +35,7 @@ const features = [
 ];
 
 const LuxWhyChoose = () => (
-  <section className="lux-cream-bg py-24 md:py-32 border-t" style={{ borderColor: "rgba(110,15,31,0.10)" }}>
+  <section className="lux-cream-bg py-20 md:py-24 border-t" style={{ borderColor: "rgba(110,15,31,0.10)" }}>
     <div className="container mx-auto px-6">
       <LuxSectionHeading
         eyebrow="Why Travel With Us"
