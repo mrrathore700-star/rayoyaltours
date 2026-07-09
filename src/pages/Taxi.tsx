@@ -318,7 +318,7 @@ const Taxi = () => (
     </section>
 
     {/* Services */}
-    <section className="py-24 md:py-32 lux-cream-bg">
+    <section className="py-20 md:py-24 lux-cream-bg">
       <div className="container mx-auto px-6">
         <LuxSectionHeading
           eyebrow="What We Offer"
@@ -342,7 +342,7 @@ const Taxi = () => (
     </section>
 
     {/* Fleet */}
-    <section className="py-24 md:py-32" style={{ background: "linear-gradient(180deg, #FFF8F0 0%, #F5ECDC 100%)" }}>
+    <section className="py-20 md:py-24" style={{ background: "linear-gradient(180deg, #FFF8F0 0%, #F5ECDC 100%)" }}>
       <div className="container mx-auto px-6">
         <LuxSectionHeading
           eyebrow="Our Fleet"
@@ -401,7 +401,7 @@ const Taxi = () => (
     </section>
 
     {/* Airport Transfer */}
-    <section className="py-24 md:py-32 lux-cream-bg">
+    <section className="py-20 md:py-24 lux-cream-bg">
       <div className="container mx-auto px-6">
         <LuxSectionHeading
           eyebrow="Airport Transfers"
@@ -432,7 +432,7 @@ const Taxi = () => (
     />
 
     {/* Popular Routes */}
-    <section className="py-24 md:py-32" style={{ background: "linear-gradient(180deg, #FFF8F0 0%, #F5ECDC 100%)" }}>
+    <section className="py-20 md:py-24" style={{ background: "linear-gradient(180deg, #FFF8F0 0%, #F5ECDC 100%)" }}>
       <div className="container mx-auto px-6">
         <LuxSectionHeading
           eyebrow="Popular Routes"
@@ -467,7 +467,7 @@ const Taxi = () => (
     </section>
 
     {/* Why Choose Us */}
-    <section className="py-24 md:py-32 lux-cream-bg">
+    <section className="py-20 md:py-24 lux-cream-bg">
       <div className="container mx-auto px-6">
         <LuxSectionHeading
           eyebrow="Why Choose Us"
@@ -488,7 +488,7 @@ const Taxi = () => (
     </section>
 
     {/* Drivers */}
-    <section className="py-24 md:py-32" style={{ background: "linear-gradient(180deg, #FFF8F0 0%, #F5ECDC 100%)" }}>
+    <section className="py-20 md:py-24" style={{ background: "linear-gradient(180deg, #FFF8F0 0%, #F5ECDC 100%)" }}>
       <div className="container mx-auto px-6">
         <LuxSectionHeading
           eyebrow="Our Chauffeurs"
@@ -534,7 +534,7 @@ const Taxi = () => (
     </section>
 
     {/* Booking Process */}
-    <section className="py-24 md:py-32 lux-cream-bg">
+    <section className="py-20 md:py-24 lux-cream-bg">
       <div className="container mx-auto px-6">
         <LuxSectionHeading
           eyebrow="How It Works"
@@ -558,7 +558,7 @@ const Taxi = () => (
     </section>
 
     {/* Reviews */}
-    <section className="py-24 md:py-32" style={{ background: "linear-gradient(180deg, #FFF8F0 0%, #F5ECDC 100%)" }}>
+    <section className="py-20 md:py-24" style={{ background: "linear-gradient(180deg, #FFF8F0 0%, #F5ECDC 100%)" }}>
       <div className="container mx-auto px-6">
         <LuxSectionHeading
           eyebrow="Customer Reviews"
@@ -600,7 +600,7 @@ const Taxi = () => (
     </section>
 
     {/* FAQ */}
-    <section className="py-24 md:py-32 lux-cream-bg">
+    <section className="py-20 md:py-24 lux-cream-bg">
       <Helmet>
         <script type="application/ld+json">{JSON.stringify(faqSchema)}</script>
       </Helmet>

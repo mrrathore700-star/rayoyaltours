@@ -127,7 +127,7 @@ const LuxCustomJourney = () => {
             </div>
 
             <div className="mt-4">
-              <label className="block text-xs tracking-[0.18em] uppercase text-[#0F0F0F]/70 mb-1.5">
+              <label className="block text-xs tracking-[0.18em] uppercase text-[#0F0F0F]/70 mb-2">
                 Special Requirements
               </label>
               <textarea
@@ -167,7 +167,7 @@ interface FieldProps extends React.InputHTMLAttributes<HTMLInputElement> {
 }
 const Field = ({ label, ...props }: FieldProps) => (
   <div>
-    <label className="block text-xs tracking-[0.18em] uppercase text-[#0F0F0F]/70 mb-1.5">{label}</label>
+    <label className="block text-xs tracking-[0.18em] uppercase text-[#0F0F0F]/70 mb-2">{label}</label>
     <input
       {...props}
       className="w-full bg-transparent border border-[#C9A84C]/40 rounded-sm px-3 py-2.5 text-sm text-[#0F0F0F] focus:border-[#C9A84C] focus:outline-none focus:ring-1 focus:ring-[#C9A84C]/40 transition"

@@ -34,7 +34,7 @@ const trustMetrics = [
 ];
 
 const LuxGoogleReviews = () => (
-  <section className="lux-cream-bg py-24 md:py-32">
+  <section className="lux-cream-bg py-20 md:py-24">
     <div className="container mx-auto px-6">
       <LuxSectionHeading
         eyebrow="Google Reviews"
@@ -42,7 +42,7 @@ const LuxGoogleReviews = () => (
       />
 
       {/* Trust Metrics */}
-      <div className="grid grid-cols-2 md:grid-cols-2 gap-6 md:gap-8 mb-4 max-w-2xl mx-auto">
+      <div className="grid grid-cols-2 md:grid-cols-2 gap-6 md:gap-8 mb-8 max-w-2xl mx-auto">
         {trustMetrics.map(({ icon: Icon, value, label }) => (
           <div
             key={label}
@@ -57,7 +57,7 @@ const LuxGoogleReviews = () => (
         ))}
       </div>
 
-      <p className="text-center font-serif italic text-sm md:text-base text-[#0F0F0F]/65 max-w-2xl mx-auto mb-12">
+      <p className="text-center font-serif italic text-sm md:text-base text-[#0F0F0F]/65 max-w-2xl mx-auto mb-10">
         Honest Google reviews from travellers who explored Rajasthan with Heritage Jaipur Travels.
       </p>
 

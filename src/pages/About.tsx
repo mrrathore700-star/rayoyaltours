@@ -39,7 +39,7 @@ const About = () => (
 
 
     {/* Our Philosophy */}
-    <section id="our-story" className="py-24 md:py-32 lux-black-bg text-[#FFF8F0] scroll-mt-32">
+    <section id="our-story" className="py-20 md:py-24 lux-black-bg text-[#FFF8F0] scroll-mt-32">
       <div className="container mx-auto px-6 max-w-3xl text-center">
         <LuxSectionHeading
           tone="dark"

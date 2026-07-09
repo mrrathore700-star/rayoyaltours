@@ -98,7 +98,7 @@ const Contact = () => {
         subtitle="Share your travel dates, destinations, number of travelers and any special requirements — we'll get back to you with a plan and a personalized quote."
       />
 
-      <section className="container mx-auto px-6 py-24 md:py-32">
+      <section className="container mx-auto px-6 py-20 md:py-24">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 max-w-6xl mx-auto">
           <div>
             <div className="space-y-6 mb-8">
@@ -173,7 +173,7 @@ const Contact = () => {
             />
 
             <div>
-              <label className="block text-sm font-semibold mb-1.5" style={{ color: "#8B1A1A" }}>{t("contact.fullName")} *</label>
+              <label className="block text-sm font-semibold mb-2" style={{ color: "#8B1A1A" }}>{t("contact.fullName")} *</label>
               <input
                 type="text"
                 required
@@ -185,7 +185,7 @@ const Contact = () => {
               />
             </div>
             <div>
-              <label className="block text-sm font-semibold mb-1.5" style={{ color: "#8B1A1A" }}>{t("contact.email")} *</label>
+              <label className="block text-sm font-semibold mb-2" style={{ color: "#8B1A1A" }}>{t("contact.email")} *</label>
               <input
                 type="email"
                 required
@@ -198,7 +198,7 @@ const Contact = () => {
             </div>
 
             <div>
-              <label className="block text-sm font-semibold mb-1.5" style={{ color: "#8B1A1A" }}>{t("contact.phone")}</label>
+              <label className="block text-sm font-semibold mb-2" style={{ color: "#8B1A1A" }}>{t("contact.phone")}</label>
               <div className="hjt-phone-wrapper rounded-xl bg-white px-3 py-2.5 transition-all duration-200">
                 <PhoneInput
                   international
@@ -213,7 +213,7 @@ const Contact = () => {
             </div>
 
             <div>
-              <label className="block text-sm font-semibold mb-1.5" style={{ color: "#8B1A1A" }}>{t("contact.message")} *</label>
+              <label className="block text-sm font-semibold mb-2" style={{ color: "#8B1A1A" }}>{t("contact.message")} *</label>
               <textarea
                 required
                 placeholder={t("contact.messagePlaceholder")}

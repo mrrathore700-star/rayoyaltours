@@ -16,7 +16,7 @@ const LuxJournalPreview = () => {
     .filter(Boolean) as typeof blogPosts;
 
   return (
-    <section className="lux-cream-bg py-24 md:py-32">
+    <section className="lux-cream-bg py-20 md:py-24">
       <div className="container mx-auto px-6">
         <LuxSectionHeading
           eyebrow="Travel Blog"
@@ -71,7 +71,7 @@ const LuxJournalPreview = () => {
           ))}
         </div>
 
-        <div className="text-center mt-14">
+        <div className="text-center mt-12">
           <LuxLinkBtn to="/blog" variant="outline">
             View All Articles <ArrowRight className="h-4 w-4" />
           </LuxLinkBtn>

@@ -292,8 +292,18 @@
     height: 1px;
     background: linear-gradient(90deg, transparent, #C9A84C, transparent);
   }
-  .lux-section { padding-top: 6rem; padding-bottom: 6rem; }
-  @media (min-width: 768px) { .lux-section { padding-top: 8rem; padding-bottom: 8rem; } }
+  /* === Site-wide spacing rhythm tokens ===
+     Use these classes instead of ad-hoc py-* values so every page shares
+     the same vertical rhythm. Adjustments made here propagate globally. */
+  .lux-section { padding-top: 5rem; padding-bottom: 5rem; }         /* content sections: 80px */
+  @media (min-width: 768px) { .lux-section { padding-top: 6rem; padding-bottom: 6rem; } } /* 96px */
+  .lux-section-lg { padding-top: 6rem; padding-bottom: 6rem; }      /* hero/CTA bands: 96px */
+  @media (min-width: 768px) { .lux-section-lg { padding-top: 8rem; padding-bottom: 8rem; } } /* 128px */
+  .lux-section-sm { padding-top: 3.5rem; padding-bottom: 3.5rem; }  /* trust strips: 56px */
+  @media (min-width: 768px) { .lux-section-sm { padding-top: 5rem; padding-bottom: 5rem; } } /* 80px */
+  /* Section heading → content gap */
+  .lux-heading-gap { margin-bottom: 3rem; }                          /* 48px */
+  @media (min-width: 768px) { .lux-heading-gap { margin-bottom: 3.5rem; } } /* 56px */
 
   .lux-footer-bg { background: #2A0A12; }
   .lux-cream-bg { background: #FFF8F0; }

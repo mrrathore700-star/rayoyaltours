@@ -47,7 +47,7 @@ const Sightseeing = () => (
       }
     />
 
-    <section className="py-24 md:py-32">
+    <section className="py-20 md:py-24">
       <div className="container mx-auto px-6 max-w-6xl">
         <div className="space-y-24 md:space-y-32">
           {spots.map((spot, i) => (

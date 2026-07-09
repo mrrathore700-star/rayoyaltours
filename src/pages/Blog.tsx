@@ -84,7 +84,7 @@ const Blog = () => {
       />
 
       {/* Featured Article */}
-      <section className="py-24 md:py-32">
+      <section className="py-20 md:py-24">
         <div className="container mx-auto px-6">
           <div className="flex items-center gap-3 justify-center mb-12">
             <span className="lux-rule-gold" />
