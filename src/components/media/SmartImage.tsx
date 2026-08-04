@@ -90,7 +90,9 @@ const SmartImage = ({
       className={className}
       style={imgStyle}
       {...imgProps}
+      srcSet={srcSet}
     />
+
   );
 
   if (!aspectRatio) return img;
