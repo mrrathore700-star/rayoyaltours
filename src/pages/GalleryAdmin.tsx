@@ -226,21 +226,42 @@ const GalleryAdmin = () => {
 
   const replaceFile = async (file: File) => {
     if (!replaceTarget) return;
-    const ext = file.name.split(".").pop()?.toLowerCase() || "jpg";
-    const path = `${Date.now()}-${Math.random().toString(36).slice(2, 8)}-${slugify(file.name)}.${ext}`;
-    const { error: upErr } = await supabase.storage
-      .from(replaceTarget.bucket || "gallery")
-      .upload(path, file, { cacheControl: "31536000", contentType: file.type });
-    if (upErr) {
-      toast.error(upErr.message);
-      return;
+    const bucket = replaceTarget.bucket || "gallery";
+    setUploading(true);
+    try {
+      const taken = await loadTakenSlugs(bucket);
+      const up = await uploadOptimized(file, taken, {
+        bucket,
+        onStep: (label, pct) => setProgress({ name: file.name, label, pct, index: 1, total: 1 }),
+      });
+      await supabase.storage.from(bucket).remove(assetPaths(replaceTarget));
+      await supabase
+        .from("media_assets")
+        .update({
+          image_path: up.imagePath,
+          path_hero: up.paths.hero,
+          path_standard: up.paths.standard,
+          path_thumb: up.paths.thumb,
+          width: up.width,
+          height: up.height,
+          bytes_original: up.bytesOriginal,
+          bytes_optimized: up.bytesOptimized,
+        })
+        .eq("id", replaceTarget.id);
+      setReplaceTarget(null);
+      toast.success("Image replaced & optimized", {
+        description: "✓ Optimized · ✓ WebP · ✓ Compressed · ✓ Ready for website",
+      });
+      refreshAll();
+    } catch (err) {
+      const msg = err instanceof ImageValidationError ? err.message : (err as Error).message;
+      toast.error(msg);
+    } finally {
+      setProgress(null);
+      setUploading(false);
     }
-    await supabase.storage.from(replaceTarget.bucket || "gallery").remove([replaceTarget.image_path]);
-    await supabase.from("media_assets").update({ image_path: path }).eq("id", replaceTarget.id);
-    setReplaceTarget(null);
-    toast.success("Image replaced — every page using it now shows the new file.");
-    refreshAll();
   };
+
 
   const toggleFlag = (a: MediaAsset, flag: FeaturedFlag) => {
     update(a.id, { [flag]: !a[flag] } as Partial<Omit<MediaAsset, "id" | "url">>);
