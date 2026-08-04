@@ -57,7 +57,7 @@ export function useGalleryImages() {
     const { data: mediaRows, error: mediaErr } = await supabase
       .from("media_assets")
       .select(
-        "id, image_path, title, location, description, alt_text, category, sort_order, bucket",
+        "id, image_path, path_hero, path_standard, path_thumb, title, location, description, alt_text, category, sort_order, bucket",
       )
       .eq("featured_gallery", true)
       .order("sort_order", { ascending: true })
@@ -70,24 +70,47 @@ export function useGalleryImages() {
     }
 
     if (mediaRows && mediaRows.length > 0) {
-      const paths = mediaRows.map((r) => r.image_path);
+      const paths = Array.from(
+        new Set(
+          mediaRows.flatMap((r) =>
+            [r.image_path, r.path_hero, r.path_standard, r.path_thumb].filter(Boolean) as string[],
+          ),
+        ),
+      );
       const urlByPath = await signGalleryPaths(paths);
       setImages(
-        mediaRows.map((r) => ({
-          id: r.id,
-          image_path: r.image_path,
-          title: r.title ?? "",
-          location: r.location ?? "",
-          description: r.description ?? "",
-          alt_text: r.alt_text ?? "",
-          category: r.category ?? "Culture",
-          sort_order: r.sort_order ?? 0,
-          url: urlByPath.get(r.image_path) ?? "",
-        })),
+        mediaRows.map((r) => {
+          const url =
+            urlByPath.get(r.image_path) ??
+            (r.path_standard ? urlByPath.get(r.path_standard) : undefined) ??
+            "";
+          const srcSet = [
+            r.path_thumb && urlByPath.get(r.path_thumb) ? `${urlByPath.get(r.path_thumb)} 500w` : "",
+            r.path_standard && urlByPath.get(r.path_standard)
+              ? `${urlByPath.get(r.path_standard)} 1200w`
+              : "",
+            r.path_hero && urlByPath.get(r.path_hero) ? `${urlByPath.get(r.path_hero)} 1600w` : "",
+          ]
+            .filter(Boolean)
+            .join(", ");
+          return {
+            id: r.id,
+            image_path: r.image_path,
+            title: r.title ?? "",
+            location: r.location ?? "",
+            description: r.description ?? "",
+            alt_text: r.alt_text ?? "",
+            category: r.category ?? "Culture",
+            sort_order: r.sort_order ?? 0,
+            url,
+            srcSet,
+          };
+        }),
       );
       setLoading(false);
       return;
     }
+
 
     // 2. Legacy fallback: original gallery_images table.
     const { data: legacy, error: legacyErr } = await supabase
