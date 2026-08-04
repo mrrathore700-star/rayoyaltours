@@ -31,9 +31,10 @@ const LuxHomeGallery = () => {
   const tiles = fallbackTiles.map((f, i) => {
     const a = assets[i];
     return a
-      ? { src: a.url, alt: a.alt_text || a.title || f.alt }
-      : { src: f.src, alt: f.alt };
+      ? { src: a.url, srcSet: a.srcSet || undefined, alt: a.alt_text || a.title || f.alt }
+      : { src: f.src, srcSet: undefined, alt: f.alt };
   });
+
 
   return (
     <section className="py-20 md:py-24 lux-cream-bg">
@@ -52,9 +53,12 @@ const LuxHomeGallery = () => {
             >
               <SmartImage
                 fallback={img.src}
+                srcSet={img.srcSet}
+                sizes="(min-width: 768px) 25vw, 50vw"
                 alt={img.alt}
                 className="w-full h-full object-cover transition-transform duration-[1200ms] group-hover:scale-110"
               />
+
               <div className="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-colors duration-500" />
             </Link>
           ))}

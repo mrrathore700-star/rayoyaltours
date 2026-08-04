@@ -20,6 +20,13 @@ import {
   Search,
 } from "lucide-react";
 import { toast } from "@/components/ui/sonner";
+import {
+  ImageValidationError,
+  formatBytes,
+  ACCEPT_ATTR,
+} from "@/lib/imageOptimizer";
+import { loadTakenSlugs, uploadOptimized, assetPaths } from "@/lib/mediaUpload";
+
 
 /**
  * Gallery Admin — Phase 2.
@@ -33,13 +40,6 @@ import { toast } from "@/components/ui/sonner";
  * Gallery falls back to legacy only when no featured_gallery rows exist.
  */
 
-const slugify = (s: string) =>
-  s
-    .toLowerCase()
-    .replace(/\.[a-z0-9]+$/i, "")
-    .replace(/[^a-z0-9]+/g, "-")
-    .replace(/^-+|-+$/g, "")
-    .slice(0, 60) || "image";
 
 const FLAG_LABELS: Record<FeaturedFlag, string> = {
   featured_homepage: "Home",
@@ -60,6 +60,14 @@ const GalleryAdmin = () => {
   const [password, setPassword] = useState("");
   const [authBusy, setAuthBusy] = useState(false);
   const [uploading, setUploading] = useState(false);
+  const [progress, setProgress] = useState<{
+    name: string;
+    label: string;
+    pct: number;
+    index: number;
+    total: number;
+  } | null>(null);
+
   const fileInput = useRef<HTMLInputElement>(null);
   const replaceInput = useRef<HTMLInputElement>(null);
   const [replaceTarget, setReplaceTarget] = useState<MediaAsset | null>(null);
@@ -120,36 +128,62 @@ const GalleryAdmin = () => {
     async (files: FileList | null) => {
       if (!files || files.length === 0) return;
       setUploading(true);
+      const taken = await loadTakenSlugs("gallery");
       const maxOrder = assets.reduce((m, i) => Math.max(m, i.sort_order), 0);
       let order = maxOrder + 1;
       let okCount = 0;
-      for (const file of Array.from(files)) {
-        const ext = file.name.split(".").pop()?.toLowerCase() || "jpg";
-        const path = `${Date.now()}-${Math.random().toString(36).slice(2, 8)}-${slugify(file.name)}.${ext}`;
-        const { error: upErr } = await supabase.storage
-          .from("gallery")
-          .upload(path, file, { cacheControl: "31536000", upsert: false, contentType: file.type });
-        if (upErr) {
-          toast.error(`${file.name}: ${upErr.message}`);
-          continue;
+      const list = Array.from(files);
+
+      for (let idx = 0; idx < list.length; idx++) {
+        const file = list[idx];
+        setProgress({ name: file.name, label: "Starting", pct: 0, index: idx + 1, total: list.length });
+        try {
+          const up = await uploadOptimized(file, taken, {
+            bucket: "gallery",
+            onStep: (label, pct) =>
+              setProgress({ name: file.name, label, pct, index: idx + 1, total: list.length }),
+          });
+          const { error: insErr } = await supabase.from("media_assets").insert({
+            bucket: "gallery",
+            image_path: up.imagePath,
+            path_hero: up.paths.hero,
+            path_standard: up.paths.standard,
+            path_thumb: up.paths.thumb,
+            width: up.width,
+            height: up.height,
+            bytes_original: up.bytesOriginal,
+            bytes_optimized: up.bytesOptimized,
+            title: up.title,
+            alt_text: up.title,
+            category: "Culture",
+            sort_order: order++,
+            featured_gallery: true,
+          });
+          if (insErr) {
+            await supabase.storage.from("gallery").remove(Object.values(up.paths));
+            toast.error(`${file.name}: ${insErr.message}`);
+            continue;
+          }
+          okCount++;
+          const saved = up.bytesOriginal - up.bytesOptimized;
+          toast.success(
+            up.result.alreadyOptimized
+              ? `${up.title} — already optimized, stored as-is`
+              : `${up.title} — optimized`,
+            {
+              description: up.result.alreadyOptimized
+                ? "✓ WebP · ✓ Within size limits · ✓ Ready for website"
+                : `✓ Image optimized · ✓ Converted to WebP · ✓ Compression complete (${formatBytes(
+                    up.bytesOriginal,
+                  )} → ${formatBytes(up.bytesOptimized)}${saved > 0 ? `, saved ${formatBytes(saved)}` : ""}) · ✓ Ready for website`,
+            },
+          );
+        } catch (err) {
+          const msg = err instanceof ImageValidationError ? err.message : (err as Error).message;
+          toast.error(msg);
         }
-        const title = file.name.replace(/\.[a-z0-9]+$/i, "").replace(/[-_]+/g, " ");
-        const { error: insErr } = await supabase.from("media_assets").insert({
-          bucket: "gallery",
-          image_path: path,
-          title,
-          alt_text: title,
-          category: "Culture",
-          sort_order: order++,
-          featured_gallery: true,
-        });
-        if (insErr) {
-          toast.error(`${file.name}: ${insErr.message}`);
-          await supabase.storage.from("gallery").remove([path]);
-          continue;
-        }
-        okCount++;
       }
+      setProgress(null);
       setUploading(false);
       if (okCount > 0) toast.success(`Uploaded ${okCount} image${okCount > 1 ? "s" : ""}`);
       refreshAll();
@@ -157,7 +191,8 @@ const GalleryAdmin = () => {
     [assets, refreshAll],
   );
 
-  const update = async (id: string, patch: Partial<Omit<MediaAsset, "id" | "url">>) => {
+
+  const update = async (id: string, patch: Partial<Omit<MediaAsset, "id" | "url" | "urlHero" | "urlThumb" | "srcSet">>) => {
     const { error } = await supabase.from("media_assets").update(patch).eq("id", id);
     if (error) toast.error(error.message);
     else refreshAll();
@@ -165,7 +200,7 @@ const GalleryAdmin = () => {
 
   const remove = async (a: MediaAsset) => {
     if (!confirm(`Delete "${a.title || a.image_path}"? Every page using this image will lose it.`)) return;
-    await supabase.storage.from(a.bucket || "gallery").remove([a.image_path]);
+    await supabase.storage.from(a.bucket || "gallery").remove(assetPaths(a));
     const { error } = await supabase.from("media_assets").delete().eq("id", a.id);
     if (error) toast.error(error.message);
     else {
@@ -192,24 +227,45 @@ const GalleryAdmin = () => {
 
   const replaceFile = async (file: File) => {
     if (!replaceTarget) return;
-    const ext = file.name.split(".").pop()?.toLowerCase() || "jpg";
-    const path = `${Date.now()}-${Math.random().toString(36).slice(2, 8)}-${slugify(file.name)}.${ext}`;
-    const { error: upErr } = await supabase.storage
-      .from(replaceTarget.bucket || "gallery")
-      .upload(path, file, { cacheControl: "31536000", contentType: file.type });
-    if (upErr) {
-      toast.error(upErr.message);
-      return;
+    const bucket = replaceTarget.bucket || "gallery";
+    setUploading(true);
+    try {
+      const taken = await loadTakenSlugs(bucket);
+      const up = await uploadOptimized(file, taken, {
+        bucket,
+        onStep: (label, pct) => setProgress({ name: file.name, label, pct, index: 1, total: 1 }),
+      });
+      await supabase.storage.from(bucket).remove(assetPaths(replaceTarget));
+      await supabase
+        .from("media_assets")
+        .update({
+          image_path: up.imagePath,
+          path_hero: up.paths.hero,
+          path_standard: up.paths.standard,
+          path_thumb: up.paths.thumb,
+          width: up.width,
+          height: up.height,
+          bytes_original: up.bytesOriginal,
+          bytes_optimized: up.bytesOptimized,
+        })
+        .eq("id", replaceTarget.id);
+      setReplaceTarget(null);
+      toast.success("Image replaced & optimized", {
+        description: "✓ Optimized · ✓ WebP · ✓ Compressed · ✓ Ready for website",
+      });
+      refreshAll();
+    } catch (err) {
+      const msg = err instanceof ImageValidationError ? err.message : (err as Error).message;
+      toast.error(msg);
+    } finally {
+      setProgress(null);
+      setUploading(false);
     }
-    await supabase.storage.from(replaceTarget.bucket || "gallery").remove([replaceTarget.image_path]);
-    await supabase.from("media_assets").update({ image_path: path }).eq("id", replaceTarget.id);
-    setReplaceTarget(null);
-    toast.success("Image replaced — every page using it now shows the new file.");
-    refreshAll();
   };
 
+
   const toggleFlag = (a: MediaAsset, flag: FeaturedFlag) => {
-    update(a.id, { [flag]: !a[flag] } as Partial<Omit<MediaAsset, "id" | "url">>);
+    update(a.id, { [flag]: !a[flag] } as Partial<Omit<MediaAsset, "id" | "url" | "urlHero" | "urlThumb" | "srcSet">>);
   };
 
   const filtered = useMemo(() => {
@@ -301,10 +357,30 @@ const GalleryAdmin = () => {
           <Upload className="mx-auto mb-3 text-[#C9A84C]" size={32} />
           <p className="font-serif text-lg">Drop images here, or</p>
           <button onClick={() => fileInput.current?.click()} disabled={uploading} className="mt-3 px-6 py-3 rounded-full bg-[#0F0F0F] text-[#FFF8F0] font-display tracking-[0.18em] uppercase text-xs disabled:opacity-50">
-            {uploading ? "Uploading…" : "Browse Files"}
+            {uploading ? "Optimizing…" : "Browse Files"}
           </button>
-          <input ref={fileInput} type="file" multiple accept="image/webp,image/jpeg,image/png,image/avif" className="hidden" onChange={(e) => handleUpload(e.target.files)} />
-          <p className="text-xs text-[#0F0F0F]/50 mt-3">WebP, JPG, PNG. Bulk upload supported. New uploads are featured in the Gallery by default.</p>
+          <input ref={fileInput} type="file" multiple accept={ACCEPT_ATTR} className="hidden" onChange={(e) => handleUpload(e.target.files)} />
+          <p className="text-xs text-[#0F0F0F]/50 mt-3">
+            JPG, PNG or WebP · up to 25 MB. Every upload is automatically resized, converted to WebP,
+            compressed and renamed — nothing to do manually.
+          </p>
+          {progress && (
+            <div className="mt-5 max-w-md mx-auto text-left">
+              <div className="flex justify-between text-[11px] font-display tracking-[0.14em] uppercase text-[#0F0F0F]/60 mb-2">
+                <span className="truncate pr-3">{progress.name}</span>
+                <span>
+                  {progress.index}/{progress.total} · {progress.label}
+                </span>
+              </div>
+              <div className="h-1.5 rounded-full bg-[#0F0F0F]/10 overflow-hidden">
+                <div
+                  className="h-full bg-[#C9A84C] transition-all duration-300"
+                  style={{ width: `${progress.pct}%` }}
+                />
+              </div>
+            </div>
+          )}
+
         </div>
 
         {/* Search + Sort */}
@@ -329,7 +405,7 @@ const GalleryAdmin = () => {
           </select>
         </div>
 
-        <input ref={replaceInput} type="file" accept="image/webp,image/jpeg,image/png,image/avif" className="hidden" onChange={(e) => e.target.files?.[0] && replaceFile(e.target.files[0])} />
+        <input ref={replaceInput} type="file" accept={ACCEPT_ATTR} className="hidden" onChange={(e) => e.target.files?.[0] && replaceFile(e.target.files[0])} />
 
         {loading ? (
           <p className="text-center text-[#0F0F0F]/60 py-12">Loading…</p>

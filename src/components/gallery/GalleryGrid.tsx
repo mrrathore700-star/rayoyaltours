@@ -30,9 +30,12 @@ const GalleryGrid = ({ images }: Props) => {
           >
             <SmartImage
               fallback={img.url}
+              srcSet={img.srcSet || undefined}
+              sizes="(min-width: 1280px) 25vw, (min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
               alt={img.alt_text || img.title}
               className="w-full h-auto object-cover transition-transform duration-[1200ms] ease-out group-hover:scale-[1.06]"
             />
+
             <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/75 via-black/0 to-black/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
             {(img.title || img.location) && (
               <div className="pointer-events-none absolute inset-x-0 bottom-0 p-5 translate-y-2 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 transition-all duration-500">

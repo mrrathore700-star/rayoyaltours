@@ -144,6 +144,8 @@ export type Database = {
         Row: {
           alt_text: string
           bucket: string
+          bytes_optimized: number | null
+          bytes_original: number | null
           category: string
           created_at: string
           created_by: string | null
@@ -162,6 +164,9 @@ export type Database = {
           image_path: string
           location: string
           mime_type: string | null
+          path_hero: string | null
+          path_standard: string | null
+          path_thumb: string | null
           sort_order: number
           tags: string[]
           title: string
@@ -171,6 +176,8 @@ export type Database = {
         Insert: {
           alt_text?: string
           bucket?: string
+          bytes_optimized?: number | null
+          bytes_original?: number | null
           category?: string
           created_at?: string
           created_by?: string | null
@@ -189,6 +196,9 @@ export type Database = {
           image_path: string
           location?: string
           mime_type?: string | null
+          path_hero?: string | null
+          path_standard?: string | null
+          path_thumb?: string | null
           sort_order?: number
           tags?: string[]
           title?: string
@@ -198,6 +208,8 @@ export type Database = {
         Update: {
           alt_text?: string
           bucket?: string
+          bytes_optimized?: number | null
+          bytes_original?: number | null
           category?: string
           created_at?: string
           created_by?: string | null
@@ -216,6 +228,9 @@ export type Database = {
           image_path?: string
           location?: string
           mime_type?: string | null
+          path_hero?: string | null
+          path_standard?: string | null
+          path_thumb?: string | null
           sort_order?: number
           tags?: string[]
           title?: string
