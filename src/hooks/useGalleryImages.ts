@@ -25,7 +25,10 @@ export interface GalleryImage {
   category: string;
   sort_order: number;
   url: string;
+  /** Responsive srcset from the optimized variants (empty for legacy rows). */
+  srcSet: string;
 }
+
 
 const SIGN_EXPIRY = 60 * 60 * 24 * 365;
 
