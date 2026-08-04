@@ -207,7 +207,7 @@ const GalleryAdmin = () => {
 
   const remove = async (a: MediaAsset) => {
     if (!confirm(`Delete "${a.title || a.image_path}"? Every page using this image will lose it.`)) return;
-    await supabase.storage.from(a.bucket || "gallery").remove([a.image_path]);
+    await supabase.storage.from(a.bucket || "gallery").remove(assetPaths(a));
     const { error } = await supabase.from("media_assets").delete().eq("id", a.id);
     if (error) toast.error(error.message);
     else {
