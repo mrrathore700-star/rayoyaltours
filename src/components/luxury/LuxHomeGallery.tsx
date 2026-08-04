@@ -53,9 +53,12 @@ const LuxHomeGallery = () => {
             >
               <SmartImage
                 fallback={img.src}
+                srcSet={img.srcSet}
+                sizes="(min-width: 768px) 25vw, 50vw"
                 alt={img.alt}
                 className="w-full h-full object-cover transition-transform duration-[1200ms] group-hover:scale-110"
               />
+
               <div className="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-colors duration-500" />
             </Link>
           ))}
