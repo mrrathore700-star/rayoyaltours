@@ -40,13 +40,6 @@ import { loadTakenSlugs, uploadOptimized, assetPaths } from "@/lib/mediaUpload";
  * Gallery falls back to legacy only when no featured_gallery rows exist.
  */
 
-const slugify = (s: string) =>
-  s
-    .toLowerCase()
-    .replace(/\.[a-z0-9]+$/i, "")
-    .replace(/[^a-z0-9]+/g, "-")
-    .replace(/^-+|-+$/g, "")
-    .slice(0, 60) || "image";
 
 const FLAG_LABELS: Record<FeaturedFlag, string> = {
   featured_homepage: "Home",
