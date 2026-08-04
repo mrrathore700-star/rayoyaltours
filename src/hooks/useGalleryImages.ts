@@ -144,7 +144,9 @@ export function useGalleryImages() {
         category: r.category ?? "Culture",
         sort_order: r.sort_order ?? 0,
         url: urlByPath.get(r.image_path) ?? "",
+        srcSet: "",
       })),
+
     );
     setLoading(false);
   }, []);
