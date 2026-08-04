@@ -37,6 +37,9 @@ export interface MediaAsset {
   id: string;
   bucket: string;
   image_path: string;
+  path_hero: string | null;
+  path_standard: string | null;
+  path_thumb: string | null;
   title: string;
   alt_text: string;
   description: string;
@@ -55,7 +58,13 @@ export interface MediaAsset {
   featured_experience: boolean;
   featured_vehicle: boolean;
   url: string;
+  /** Signed URLs for each stored size (fall back to `url`). */
+  urlHero: string;
+  urlThumb: string;
+  /** Automatic responsive srcset built from the stored variants. */
+  srcSet: string;
 }
+
 
 const SIGN_EXPIRY = 60 * 60 * 24 * 365;
 
