@@ -412,7 +412,7 @@ const GalleryAdmin = () => {
           </select>
         </div>
 
-        <input ref={replaceInput} type="file" accept="image/webp,image/jpeg,image/png,image/avif" className="hidden" onChange={(e) => e.target.files?.[0] && replaceFile(e.target.files[0])} />
+        <input ref={replaceInput} type="file" accept={ACCEPT_ATTR} className="hidden" onChange={(e) => e.target.files?.[0] && replaceFile(e.target.files[0])} />
 
         {loading ? (
           <p className="text-center text-[#0F0F0F]/60 py-12">Loading…</p>
