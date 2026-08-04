@@ -20,6 +20,13 @@ import {
   Search,
 } from "lucide-react";
 import { toast } from "@/components/ui/sonner";
+import {
+  ImageValidationError,
+  formatBytes,
+  ACCEPT_ATTR,
+} from "@/lib/imageOptimizer";
+import { loadTakenSlugs, uploadOptimized, assetPaths } from "@/lib/mediaUpload";
+
 
 /**
  * Gallery Admin — Phase 2.
