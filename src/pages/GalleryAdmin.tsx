@@ -120,42 +120,69 @@ const GalleryAdmin = () => {
     async (files: FileList | null) => {
       if (!files || files.length === 0) return;
       setUploading(true);
+      const taken = await loadTakenSlugs("gallery");
       const maxOrder = assets.reduce((m, i) => Math.max(m, i.sort_order), 0);
       let order = maxOrder + 1;
       let okCount = 0;
-      for (const file of Array.from(files)) {
-        const ext = file.name.split(".").pop()?.toLowerCase() || "jpg";
-        const path = `${Date.now()}-${Math.random().toString(36).slice(2, 8)}-${slugify(file.name)}.${ext}`;
-        const { error: upErr } = await supabase.storage
-          .from("gallery")
-          .upload(path, file, { cacheControl: "31536000", upsert: false, contentType: file.type });
-        if (upErr) {
-          toast.error(`${file.name}: ${upErr.message}`);
-          continue;
+      const list = Array.from(files);
+
+      for (let idx = 0; idx < list.length; idx++) {
+        const file = list[idx];
+        setProgress({ name: file.name, label: "Starting", pct: 0, index: idx + 1, total: list.length });
+        try {
+          const up = await uploadOptimized(file, taken, {
+            bucket: "gallery",
+            onStep: (label, pct) =>
+              setProgress({ name: file.name, label, pct, index: idx + 1, total: list.length }),
+          });
+          const { error: insErr } = await supabase.from("media_assets").insert({
+            bucket: "gallery",
+            image_path: up.imagePath,
+            path_hero: up.paths.hero,
+            path_standard: up.paths.standard,
+            path_thumb: up.paths.thumb,
+            width: up.width,
+            height: up.height,
+            bytes_original: up.bytesOriginal,
+            bytes_optimized: up.bytesOptimized,
+            title: up.title,
+            alt_text: up.title,
+            category: "Culture",
+            sort_order: order++,
+            featured_gallery: true,
+          });
+          if (insErr) {
+            await supabase.storage.from("gallery").remove(Object.values(up.paths));
+            toast.error(`${file.name}: ${insErr.message}`);
+            continue;
+          }
+          okCount++;
+          const saved = up.bytesOriginal - up.bytesOptimized;
+          toast.success(
+            up.result.alreadyOptimized
+              ? `${up.title} — already optimized, stored as-is`
+              : `${up.title} — optimized`,
+            {
+              description: up.result.alreadyOptimized
+                ? "✓ WebP · ✓ Within size limits · ✓ Ready for website"
+                : `✓ Image optimized · ✓ Converted to WebP · ✓ Compression complete (${formatBytes(
+                    up.bytesOriginal,
+                  )} → ${formatBytes(up.bytesOptimized)}${saved > 0 ? `, saved ${formatBytes(saved)}` : ""}) · ✓ Ready for website`,
+            },
+          );
+        } catch (err) {
+          const msg = err instanceof ImageValidationError ? err.message : (err as Error).message;
+          toast.error(msg);
         }
-        const title = file.name.replace(/\.[a-z0-9]+$/i, "").replace(/[-_]+/g, " ");
-        const { error: insErr } = await supabase.from("media_assets").insert({
-          bucket: "gallery",
-          image_path: path,
-          title,
-          alt_text: title,
-          category: "Culture",
-          sort_order: order++,
-          featured_gallery: true,
-        });
-        if (insErr) {
-          toast.error(`${file.name}: ${insErr.message}`);
-          await supabase.storage.from("gallery").remove([path]);
-          continue;
-        }
-        okCount++;
       }
+      setProgress(null);
       setUploading(false);
       if (okCount > 0) toast.success(`Uploaded ${okCount} image${okCount > 1 ? "s" : ""}`);
       refreshAll();
     },
     [assets, refreshAll],
   );
+
 
   const update = async (id: string, patch: Partial<Omit<MediaAsset, "id" | "url">>) => {
     const { error } = await supabase.from("media_assets").update(patch).eq("id", id);
