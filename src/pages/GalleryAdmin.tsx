@@ -67,6 +67,14 @@ const GalleryAdmin = () => {
   const [password, setPassword] = useState("");
   const [authBusy, setAuthBusy] = useState(false);
   const [uploading, setUploading] = useState(false);
+  const [progress, setProgress] = useState<{
+    name: string;
+    label: string;
+    pct: number;
+    index: number;
+    total: number;
+  } | null>(null);
+
   const fileInput = useRef<HTMLInputElement>(null);
   const replaceInput = useRef<HTMLInputElement>(null);
   const [replaceTarget, setReplaceTarget] = useState<MediaAsset | null>(null);
