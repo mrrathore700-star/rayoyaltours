@@ -60,7 +60,9 @@ const SmartImage = ({
   const src = media?.url ?? fallback;
   // A slot-resolved image replaces the fallback file, so any srcSet passed for
   // the fallback no longer applies.
-  const srcSet = media?.url ? undefined : (imgProps.srcSet as string | undefined);
+  const srcSet = media?.url
+    ? media.srcSet || undefined
+    : (imgProps.srcSet as string | undefined);
   const resolvedAlt = media?.alt?.trim() ? media.alt : alt;
   const resolvedWidth = width ?? media?.width ?? undefined;
   const resolvedHeight = height ?? media?.height ?? undefined;

@@ -18,6 +18,8 @@ import { supabase } from "@/integrations/supabase/client";
 
 export interface ResolvedMedia {
   url: string;
+  /** Responsive srcset from the optimized variants (may be empty). */
+  srcSet: string;
   alt: string;
   width: number | null;
   height: number | null;
@@ -37,7 +39,7 @@ async function resolveSlot(slotKey: string): Promise<ResolvedMedia | null> {
     const { data, error } = await supabase
       .from("media_slots")
       .select(
-        "alt_override, media_assets:asset_id (bucket, image_path, alt_text, width, height, focal_x, focal_y)",
+        "alt_override, media_assets:asset_id (bucket, image_path, path_hero, path_standard, path_thumb, alt_text, width, height, focal_x, focal_y)",
       )
       .eq("slot_key", slotKey)
       .maybeSingle();
@@ -50,6 +52,9 @@ async function resolveSlot(slotKey: string): Promise<ResolvedMedia | null> {
     const asset = data.media_assets as {
       bucket: string;
       image_path: string;
+      path_hero: string | null;
+      path_standard: string | null;
+      path_thumb: string | null;
       alt_text: string;
       width: number | null;
       height: number | null;
@@ -57,17 +62,46 @@ async function resolveSlot(slotKey: string): Promise<ResolvedMedia | null> {
       focal_y: number | null;
     };
 
-    const { data: signed, error: signErr } = await supabase.storage
-      .from(asset.bucket || "gallery")
-      .createSignedUrl(asset.image_path, SIGN_EXPIRY);
+    const bucket = asset.bucket || "gallery";
+    const variantPaths = Array.from(
+      new Set(
+        [asset.image_path, asset.path_hero, asset.path_standard, asset.path_thumb].filter(
+          Boolean,
+        ) as string[],
+      ),
+    );
+    const { data: signedList, error: signErr } = await supabase.storage
+      .from(bucket)
+      .createSignedUrls(variantPaths, SIGN_EXPIRY);
 
-    if (signErr || !signed?.signedUrl) {
+    const urlByPath = new Map<string, string>();
+    signedList?.forEach((s, i) => {
+      if (s.signedUrl) urlByPath.set(variantPaths[i], s.signedUrl);
+    });
+    const mainUrl = urlByPath.get(asset.image_path) ?? "";
+
+    if (signErr || !mainUrl) {
       cache.set(slotKey, null);
       return null;
     }
 
+    const srcSet = [
+      asset.path_thumb && urlByPath.get(asset.path_thumb)
+        ? `${urlByPath.get(asset.path_thumb)} 500w`
+        : "",
+      asset.path_standard && urlByPath.get(asset.path_standard)
+        ? `${urlByPath.get(asset.path_standard)} 1200w`
+        : "",
+      asset.path_hero && urlByPath.get(asset.path_hero)
+        ? `${urlByPath.get(asset.path_hero)} 1600w`
+        : "",
+    ]
+      .filter(Boolean)
+      .join(", ");
+
     const resolved: ResolvedMedia = {
-      url: signed.signedUrl,
+      url: mainUrl,
+      srcSet,
       alt: data.alt_override?.trim() || asset.alt_text || "",
       width: asset.width,
       height: asset.height,
