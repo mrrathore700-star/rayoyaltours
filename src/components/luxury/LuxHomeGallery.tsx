@@ -31,9 +31,10 @@ const LuxHomeGallery = () => {
   const tiles = fallbackTiles.map((f, i) => {
     const a = assets[i];
     return a
-      ? { src: a.url, alt: a.alt_text || a.title || f.alt }
-      : { src: f.src, alt: f.alt };
+      ? { src: a.url, srcSet: a.srcSet || undefined, alt: a.alt_text || a.title || f.alt }
+      : { src: f.src, srcSet: undefined, alt: f.alt };
   });
+
 
   return (
     <section className="py-20 md:py-24 lux-cream-bg">
