@@ -364,10 +364,30 @@ const GalleryAdmin = () => {
           <Upload className="mx-auto mb-3 text-[#C9A84C]" size={32} />
           <p className="font-serif text-lg">Drop images here, or</p>
           <button onClick={() => fileInput.current?.click()} disabled={uploading} className="mt-3 px-6 py-3 rounded-full bg-[#0F0F0F] text-[#FFF8F0] font-display tracking-[0.18em] uppercase text-xs disabled:opacity-50">
-            {uploading ? "Uploading…" : "Browse Files"}
+            {uploading ? "Optimizing…" : "Browse Files"}
           </button>
-          <input ref={fileInput} type="file" multiple accept="image/webp,image/jpeg,image/png,image/avif" className="hidden" onChange={(e) => handleUpload(e.target.files)} />
-          <p className="text-xs text-[#0F0F0F]/50 mt-3">WebP, JPG, PNG. Bulk upload supported. New uploads are featured in the Gallery by default.</p>
+          <input ref={fileInput} type="file" multiple accept={ACCEPT_ATTR} className="hidden" onChange={(e) => handleUpload(e.target.files)} />
+          <p className="text-xs text-[#0F0F0F]/50 mt-3">
+            JPG, PNG or WebP · up to 25 MB. Every upload is automatically resized, converted to WebP,
+            compressed and renamed — nothing to do manually.
+          </p>
+          {progress && (
+            <div className="mt-5 max-w-md mx-auto text-left">
+              <div className="flex justify-between text-[11px] font-display tracking-[0.14em] uppercase text-[#0F0F0F]/60 mb-2">
+                <span className="truncate pr-3">{progress.name}</span>
+                <span>
+                  {progress.index}/{progress.total} · {progress.label}
+                </span>
+              </div>
+              <div className="h-1.5 rounded-full bg-[#0F0F0F]/10 overflow-hidden">
+                <div
+                  className="h-full bg-[#C9A84C] transition-all duration-300"
+                  style={{ width: `${progress.pct}%` }}
+                />
+              </div>
+            </div>
+          )}
+
         </div>
 
         {/* Search + Sort */}
