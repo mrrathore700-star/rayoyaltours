@@ -108,17 +108,21 @@ export function useMediaAssets(opts: UseMediaAssetsOpts = {}) {
       return;
     }
 
-    // Sign URLs grouped by bucket (so one call covers all paths per bucket).
-    const byBucket = new Map<string, string[]>();
+    // Sign URLs grouped by bucket (one call covers every variant path).
+    const byBucket = new Map<string, Set<string>>();
     rows.forEach((r) => {
       const b = r.bucket || "gallery";
-      if (!byBucket.has(b)) byBucket.set(b, []);
-      byBucket.get(b)!.push(r.image_path);
+      if (!byBucket.has(b)) byBucket.set(b, new Set());
+      const set = byBucket.get(b)!;
+      [r.image_path, r.path_hero, r.path_standard, r.path_thumb].forEach((p) => {
+        if (p) set.add(p);
+      });
     });
 
     const urlByKey = new Map<string, string>(); // key = `${bucket}|${path}`
     await Promise.all(
-      Array.from(byBucket.entries()).map(async ([bucket, paths]) => {
+      Array.from(byBucket.entries()).map(async ([bucket, pathSet]) => {
+        const paths = Array.from(pathSet);
         const { data: signed } = await supabase.storage
           .from(bucket)
           .createSignedUrls(paths, SIGN_EXPIRY);
@@ -129,30 +133,51 @@ export function useMediaAssets(opts: UseMediaAssetsOpts = {}) {
     );
 
     setAssets(
-      rows.map((r) => ({
-        id: r.id,
-        bucket: r.bucket || "gallery",
-        image_path: r.image_path,
-        title: r.title ?? "",
-        alt_text: r.alt_text ?? "",
-        description: r.description ?? "",
-        category: r.category ?? "Culture",
-        location: r.location ?? "",
-        sort_order: r.sort_order ?? 0,
-        width: r.width,
-        height: r.height,
-        focal_x: r.focal_x,
-        focal_y: r.focal_y,
-        featured_homepage: !!r.featured_homepage,
-        featured_gallery: !!r.featured_gallery,
-        featured_package: !!r.featured_package,
-        featured_blog: !!r.featured_blog,
-        featured_destination: !!r.featured_destination,
-        featured_experience: !!r.featured_experience,
-        featured_vehicle: !!r.featured_vehicle,
-        url: urlByKey.get(`${r.bucket || "gallery"}|${r.image_path}`) ?? "",
-      })),
+      rows.map((r) => {
+        const bucket = r.bucket || "gallery";
+        const sign = (p?: string | null) => (p ? urlByKey.get(`${bucket}|${p}`) ?? "" : "");
+        const url = sign(r.image_path) || sign(r.path_standard) || sign(r.path_hero);
+        const urlHero = sign(r.path_hero) || url;
+        const urlThumb = sign(r.path_thumb) || url;
+        const srcSet = [
+          urlThumb && r.path_thumb ? `${urlThumb} 500w` : "",
+          sign(r.path_standard) ? `${sign(r.path_standard)} 1200w` : "",
+          r.path_hero && urlHero ? `${urlHero} 1600w` : "",
+        ]
+          .filter(Boolean)
+          .join(", ");
+        return {
+          id: r.id,
+          bucket,
+          image_path: r.image_path,
+          path_hero: r.path_hero ?? null,
+          path_standard: r.path_standard ?? null,
+          path_thumb: r.path_thumb ?? null,
+          title: r.title ?? "",
+          alt_text: r.alt_text ?? "",
+          description: r.description ?? "",
+          category: r.category ?? "Culture",
+          location: r.location ?? "",
+          sort_order: r.sort_order ?? 0,
+          width: r.width,
+          height: r.height,
+          focal_x: r.focal_x,
+          focal_y: r.focal_y,
+          featured_homepage: !!r.featured_homepage,
+          featured_gallery: !!r.featured_gallery,
+          featured_package: !!r.featured_package,
+          featured_blog: !!r.featured_blog,
+          featured_destination: !!r.featured_destination,
+          featured_experience: !!r.featured_experience,
+          featured_vehicle: !!r.featured_vehicle,
+          url,
+          urlHero,
+          urlThumb,
+          srcSet,
+        };
+      }),
     );
+
     setLoading(false);
   }, [flag, limit]);
 
