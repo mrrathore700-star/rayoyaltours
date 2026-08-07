@@ -10,6 +10,8 @@ import {
   FEATURED_FLAGS,
 } from "@/hooks/useMediaAssets";
 import { clearMediaSlotCache } from "@/hooks/useMediaSlot";
+import { clearGalleryCache } from "@/hooks/useGalleryImages";
+
 import {
   ArrowDown,
   ArrowUp,
