@@ -6,14 +6,17 @@ interface Props {
   images: GalleryImage[];
 }
 
-/** Fallback ratio for legacy rows with no stored dimensions. */
-const FALLBACK_RATIO = "4 / 3";
+/**
+ * A single uniform tile ratio keeps every row the same height, so the grid
+ * never rearranges and no blank space appears under shorter images. The real
+ * intrinsic dimensions are still passed to the <img> so the browser can size
+ * and prioritise correctly; `object-cover` fills the reserved box.
+ */
+const TILE_RATIO = "4 / 3";
 
 /** Above-the-fold tiles load eagerly; everything else is lazy. */
 const EAGER_COUNT = 3;
 
-const ratioOf = (img: GalleryImage) =>
-  img.width && img.height ? `${img.width} / ${img.height}` : FALLBACK_RATIO;
 
 const GalleryTile = ({
   img,
