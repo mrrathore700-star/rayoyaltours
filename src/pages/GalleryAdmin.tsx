@@ -123,8 +123,10 @@ const GalleryAdmin = () => {
 
   const refreshAll = useCallback(() => {
     clearMediaSlotCache();
+    clearGalleryCache();
     reload();
   }, [reload]);
+
 
   const handleUpload = useCallback(
     async (files: FileList | null) => {
