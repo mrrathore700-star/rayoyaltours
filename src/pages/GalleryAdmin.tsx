@@ -10,6 +10,8 @@ import {
   FEATURED_FLAGS,
 } from "@/hooks/useMediaAssets";
 import { clearMediaSlotCache } from "@/hooks/useMediaSlot";
+import { clearGalleryCache } from "@/hooks/useGalleryImages";
+
 import {
   ArrowDown,
   ArrowUp,
@@ -121,8 +123,10 @@ const GalleryAdmin = () => {
 
   const refreshAll = useCallback(() => {
     clearMediaSlotCache();
+    clearGalleryCache();
     reload();
   }, [reload]);
+
 
   const handleUpload = useCallback(
     async (files: FileList | null) => {
