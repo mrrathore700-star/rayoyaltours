@@ -33,7 +33,7 @@ const GalleryTile = ({
     <button
       onClick={onOpen}
       className="group relative block w-full overflow-hidden rounded-2xl bg-[#0F0F0F]/5 shadow-[0_8px_24px_-12px_rgba(0,0,0,0.25)] hover:shadow-[0_20px_40px_-12px_rgba(0,0,0,0.35)] transition-shadow duration-500 cursor-pointer text-left"
-      style={{ aspectRatio: ratioOf(img) }}
+      style={{ aspectRatio: TILE_RATIO }}
       aria-label={`Open ${img.alt_text || img.title || "gallery image"}`}
     >
       {/* Placeholder occupies the reserved box until the image decodes. */}
