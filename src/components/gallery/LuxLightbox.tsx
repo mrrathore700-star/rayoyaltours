@@ -85,10 +85,20 @@ const LuxLightbox = ({ images, index, onClose, onIndexChange }: LuxLightboxProps
       >
         <img
           src={img.url}
+          srcSet={img.srcSet || undefined}
+          sizes="92vw"
           alt={img.alt_text || img.title}
-          className={`max-w-[92vw] max-h-[78vh] object-contain rounded-xl shadow-2xl transition-opacity duration-300 ${loaded ? "opacity-100" : "opacity-0"}`}
+          width={img.width ?? undefined}
+          height={img.height ?? undefined}
+          decoding="async"
+          className={`max-w-[92vw] max-h-[78vh] w-auto h-auto object-contain rounded-xl shadow-2xl transition-opacity duration-300 ${loaded ? "opacity-100" : "opacity-0"}`}
           onLoad={() => setLoaded(true)}
+          onError={() => {
+            console.error("[Gallery] lightbox image failed to load:", img.image_path, img.url);
+            setLoaded(true);
+          }}
         />
+
         {(img.title || img.location) && (
           <div className="mt-4 text-center text-white/90 px-4">
             {img.title && <p className="font-serif text-base md:text-lg">{img.title}</p>}

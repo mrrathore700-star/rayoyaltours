@@ -74,18 +74,22 @@ const Gallery = () => {
           )}
 
           {loading ? (
-            <div className="columns-1 sm:columns-2 lg:columns-3 xl:columns-4 gap-5 md:gap-6 [&>*]:mb-5 md:[&>*]:mb-6" aria-hidden="true">
-              {Array.from({ length: 8 }).map((_, i) => (
+            <div
+              className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6"
+              aria-hidden="true"
+            >
+              {Array.from({ length: 9 }).map((_, i) => (
                 <div
                   key={i}
-                  className="break-inside-avoid rounded-2xl bg-[#0F0F0F]/5 animate-pulse"
-                  style={{ height: 240 + ((i * 53) % 180) }}
+                  className="rounded-2xl bg-[#0F0F0F]/[0.06] animate-pulse"
+                  style={{ aspectRatio: "4 / 3" }}
                 />
               ))}
             </div>
           ) : (
             <GalleryGrid images={filtered} />
           )}
+
         </div>
       </section>
 
