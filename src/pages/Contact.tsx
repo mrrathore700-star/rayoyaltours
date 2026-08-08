@@ -127,7 +127,7 @@ const Contact = () => {
               href="https://wa.me/919887688843"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-6 py-3 rounded-md bg-[hsl(142,70%,40%)] text-[hsl(0,0%,100%)] font-semibold hover:opacity-90 transition-opacity"
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-md lux-btn-wa font-semibold"
             >
               <MessageCircle className="h-5 w-5" /> Chat on WhatsApp
             </a>
@@ -229,11 +229,7 @@ const Contact = () => {
               type="submit"
               disabled={submitting}
               className="w-full py-3.5 rounded-xl font-bold text-sm tracking-wide transition-all duration-300 hover:shadow-lg hover:-translate-y-0.5 disabled:opacity-70 disabled:cursor-not-allowed disabled:transform-none flex items-center justify-center gap-2"
-              style={{
-                background: "linear-gradient(135deg, #8B1A1A 0%, #C9A84C 100%)",
-                color: "#FFF8F0",
-                boxShadow: "0 10px 25px -10px rgba(139,26,26,0.55)",
-              }}
+
             >
               {submitting ? (
                 <><Loader2 className="h-4 w-4 animate-spin" /> {t("contact.sending")}</>

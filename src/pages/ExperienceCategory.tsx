@@ -119,7 +119,7 @@ const ExperienceCategory = () => {
               href={waLink(`Hello, I would like to enquire about ${category.title} in Rajasthan. Please share details.`)}
               target="_blank"
               rel="noopener noreferrer"
-              className="px-6 py-3 rounded-md bg-[hsl(142,70%,40%)] text-white font-semibold shadow-lg hover:opacity-90 transition"
+              className="px-6 py-3 rounded-md lux-btn-wa font-semibold shadow-lg"
             >
               💬 Chat on WhatsApp
             </a>

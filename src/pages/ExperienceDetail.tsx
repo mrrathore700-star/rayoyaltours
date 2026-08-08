@@ -299,7 +299,7 @@ const ExperienceDetail = () => {
               href={waLink(inquiryMsg)}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-md bg-[hsl(142,70%,40%)] text-white font-semibold shadow-lg hover:opacity-90 transition hover-scale"
+              className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-md lux-btn-wa font-semibold shadow-lg hover-scale"
             >
               <MessageCircle className="h-5 w-5" /> Enquire on WhatsApp
             </a>
@@ -367,7 +367,7 @@ const ExperienceDetail = () => {
           href={waLink(inquiryMsg)}
           target="_blank"
           rel="noopener noreferrer"
-          className="flex items-center justify-center gap-2 w-full py-3 rounded-md bg-[hsl(142,70%,40%)] text-white font-semibold"
+          className="flex items-center justify-center gap-2 w-full py-3 rounded-md lux-btn-wa font-semibold"
         >
           <MessageCircle className="h-5 w-5" /> Enquire About This Experience
         </a>
