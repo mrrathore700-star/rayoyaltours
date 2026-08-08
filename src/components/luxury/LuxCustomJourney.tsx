@@ -150,7 +150,7 @@ const LuxCustomJourney = () => {
                 href={`https://wa.me/${WA_NUMBER}?text=${encodeURIComponent("Hi! I'd like to plan a custom Rajasthan tour.")}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="lux-btn-outline inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-full font-display tracking-[0.18em] uppercase text-xs flex-1"
+                className="lux-btn-wa inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-full font-display tracking-[0.18em] uppercase text-xs flex-1"
               >
                 <MessageCircle className="h-4 w-4" /> WhatsApp Our Team
               </a>

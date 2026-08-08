@@ -40,7 +40,7 @@ export const LuxAnchorBtn = ({
     href={href}
     target={external ? "_blank" : undefined}
     rel={external ? "noopener noreferrer" : undefined}
-    className={`${baseCls} ${variantCls(isWhatsAppHref(href) ? "whatsapp" : variant)} ${className}`}
+    className={`${baseCls} ${variantCls(variant === "outline" && isWhatsAppHref(href) ? "whatsapp" : variant)} ${className}`}
   >
     {children}
   </a>

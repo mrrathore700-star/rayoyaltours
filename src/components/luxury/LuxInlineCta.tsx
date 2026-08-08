@@ -25,7 +25,7 @@ const baseBtn =
 
 const Btn = ({ btn, variant }: { btn: BtnDef; variant: "gold" | "outline" }) => {
   const isWa = /(?:wa\.me|api\.whatsapp\.com|web\.whatsapp\.com)/i.test(btn.href ?? "");
-  const cls = `${baseBtn} ${isWa ? "lux-btn-wa" : variant === "gold" ? "lux-btn-gold" : "lux-btn-outline"}`;
+  const cls = `${baseBtn} ${variant === "gold" ? "lux-btn-gold" : isWa ? "lux-btn-wa" : "lux-btn-outline"}`;
   const Icon = btn.icon === "wa" ? MessageCircle : btn.icon === "send" ? Send : null;
   const content = (
     <>
