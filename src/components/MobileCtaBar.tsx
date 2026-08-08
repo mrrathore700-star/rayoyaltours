@@ -23,8 +23,7 @@ const MobileCtaBar = () => {
         href={WA}
         target="_blank"
         rel="noopener noreferrer"
-        className="inline-flex items-center justify-center gap-2 py-3 rounded-full font-display tracking-[0.16em] uppercase text-[11px] text-white"
-        style={{ background: "hsl(142,70%,38%)" }}
+        className="inline-flex items-center justify-center gap-2 py-3 rounded-full lux-btn-wa font-display tracking-[0.16em] uppercase text-[11px]"
       >
         <MessageCircle className="h-4 w-4" />
         WhatsApp Us

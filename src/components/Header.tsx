@@ -444,8 +444,7 @@ const Header = () => {
               target="_blank"
               rel="noopener noreferrer"
               aria-label="WhatsApp"
-              className="xl:hidden inline-flex items-center justify-center h-10 w-10 rounded-full text-white"
-              style={{ backgroundColor: "#1FA855" }}
+              className="xl:hidden inline-flex items-center justify-center h-10 w-10 rounded-full lux-btn-wa"
             >
               <MessageCircle className="h-4 w-4" />
             </a>
@@ -481,8 +480,8 @@ const Header = () => {
               href={WHATSAPP_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-2 w-full font-serif text-[13px] tracking-[0.18em] uppercase text-white rounded-full"
-              style={{ background: "linear-gradient(135deg, #1FA855 0%, #128C3E 100%)", padding: "14px 22px" }}
+              className="inline-flex items-center justify-center gap-2 w-full font-serif text-[13px] tracking-[0.18em] uppercase rounded-full lux-btn-wa"
+              style={{ padding: "14px 22px" }}
             >
               <MessageCircle className="h-4 w-4" />
               {t("common.whatsapp")}

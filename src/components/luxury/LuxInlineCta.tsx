@@ -24,7 +24,8 @@ const baseBtn =
   "inline-flex items-center justify-center gap-2 px-7 py-3 rounded-full font-display tracking-[0.18em] uppercase text-[11px] md:text-xs transition-all duration-300";
 
 const Btn = ({ btn, variant }: { btn: BtnDef; variant: "gold" | "outline" }) => {
-  const cls = `${baseBtn} ${variant === "gold" ? "lux-btn-gold" : "lux-btn-outline"}`;
+  const isWa = /(?:wa\.me|api\.whatsapp\.com|web\.whatsapp\.com)/i.test(btn.href ?? "");
+  const cls = `${baseBtn} ${variant === "gold" ? "lux-btn-gold" : isWa ? "lux-btn-wa" : "lux-btn-outline"}`;
   const Icon = btn.icon === "wa" ? MessageCircle : btn.icon === "send" ? Send : null;
   const content = (
     <>

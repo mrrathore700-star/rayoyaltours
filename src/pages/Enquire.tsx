@@ -179,8 +179,7 @@ const Enquire = () => {
                 href={waHref}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-full font-display tracking-[0.18em] uppercase text-xs text-white"
-                style={{ background: "hsl(142,70%,38%)" }}
+                className="inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-full lux-btn-wa font-display tracking-[0.18em] uppercase text-xs"
               >
                 <MessageCircle className="h-4 w-4" /> Chat On WhatsApp
               </a>
@@ -304,12 +303,8 @@ const Enquire = () => {
                 <button
                   type="submit"
                   disabled={submitting}
-                  className="flex-1 py-3.5 rounded-xl font-bold text-sm tracking-wide transition-all duration-300 hover:shadow-lg hover:-translate-y-0.5 disabled:opacity-70 disabled:cursor-not-allowed flex items-center justify-center gap-2"
-                  style={{
-                    background: "linear-gradient(135deg, #8B1A1A 0%, #C9A84C 100%)",
-                    color: "#FFF8F0",
-                    boxShadow: "0 10px 25px -10px rgba(139,26,26,0.55)",
-                  }}
+                  className="flex-1 py-3.5 rounded-xl lux-btn-gold font-bold text-sm tracking-wide transition-all duration-300 hover:shadow-lg hover:-translate-y-0.5 disabled:opacity-70 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+
                 >
                   {submitting ? (<><Loader2 className="h-4 w-4 animate-spin" /> Sending…</>) : (<><Send className="h-4 w-4" /> Send Inquiry</>)}
                 </button>
@@ -317,8 +312,7 @@ const Enquire = () => {
                   href={waHref}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex-1 py-3.5 rounded-xl font-bold text-sm tracking-wide transition-all duration-300 hover:shadow-lg hover:-translate-y-0.5 flex items-center justify-center gap-2 text-white"
-                  style={{ background: "hsl(142,70%,38%)" }}
+                  className="flex-1 py-3.5 rounded-xl lux-btn-wa font-bold text-sm tracking-wide flex items-center justify-center gap-2"
                 >
                   <MessageCircle className="h-4 w-4" /> WhatsApp Instead
                 </a>

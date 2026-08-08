@@ -219,15 +219,29 @@
     transform: translateY(-2px);
   }
 
+  .lux-btn-wa {
+    background: #25D366;
+    color: #FFFFFF;
+    border: none;
+    transition: all 0.3s ease;
+  }
+  .lux-btn-wa:hover {
+    background: #1EBE5A;
+    color: #FFFFFF;
+    border: none;
+    transform: translateY(-2px);
+    box-shadow: 0 12px 30px -10px rgba(37, 211, 102, 0.65);
+  }
+
   .lux-btn-outline {
-    border: 1px solid #6E0F1F;
-    color: #6E0F1F;
+    border: 1px solid #C9A84C;
+    color: #C9A84C;
     background: transparent;
-    transition: all 0.4s ease;
+    transition: all 0.35s ease;
   }
 
   .lux-btn-outline:hover {
-    background: rgba(255, 248, 240, 0.1);
+    background: rgba(201, 168, 76, 0.1);
     border-color: #C9A84C;
     color: #C9A84C;
   }
