@@ -1,7 +1,7 @@
 import { ReactNode } from "react";
 import { Link } from "react-router-dom";
 
-type Variant = "gold" | "outline";
+type Variant = "gold" | "outline" | "whatsapp";
 
 interface BaseProps {
   variant?: Variant;
@@ -12,7 +12,11 @@ interface BaseProps {
 const baseCls =
   "inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-full font-display tracking-[0.18em] uppercase text-xs md:text-sm transition-all duration-300";
 
-const variantCls = (v: Variant) => (v === "gold" ? "lux-btn-gold" : "lux-btn-outline");
+export const variantCls = (v: Variant) =>
+  v === "gold" ? "lux-btn-gold" : v === "whatsapp" ? "lux-btn-wa" : "lux-btn-outline";
+
+export const isWhatsAppHref = (href?: string) =>
+  !!href && /(?:wa\.me|api\.whatsapp\.com|web\.whatsapp\.com)/i.test(href);
 
 export const LuxLinkBtn = ({
   to,
@@ -36,7 +40,7 @@ export const LuxAnchorBtn = ({
     href={href}
     target={external ? "_blank" : undefined}
     rel={external ? "noopener noreferrer" : undefined}
-    className={`${baseCls} ${variantCls(variant)} ${className}`}
+    className={`${baseCls} ${variantCls(isWhatsAppHref(href) ? "whatsapp" : variant)} ${className}`}
   >
     {children}
   </a>
