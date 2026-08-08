@@ -228,7 +228,7 @@ const Contact = () => {
             <button
               type="submit"
               disabled={submitting}
-              className="w-full py-3.5 rounded-xl font-bold text-sm tracking-wide transition-all duration-300 hover:shadow-lg hover:-translate-y-0.5 disabled:opacity-70 disabled:cursor-not-allowed disabled:transform-none flex items-center justify-center gap-2"
+              className="w-full py-3.5 rounded-xl lux-btn-gold font-bold text-sm tracking-wide transition-all duration-300 hover:shadow-lg hover:-translate-y-0.5 disabled:opacity-70 disabled:cursor-not-allowed disabled:transform-none flex items-center justify-center gap-2"
 
             >
               {submitting ? (
