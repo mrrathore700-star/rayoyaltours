@@ -234,14 +234,14 @@
   }
 
   .lux-btn-outline {
-    border: 1px solid #6E0F1F;
-    color: #6E0F1F;
+    border: 1px solid #C9A84C;
+    color: #C9A84C;
     background: transparent;
-    transition: all 0.4s ease;
+    transition: all 0.35s ease;
   }
 
   .lux-btn-outline:hover {
-    background: rgba(255, 248, 240, 0.1);
+    background: rgba(201, 168, 76, 0.1);
     border-color: #C9A84C;
     color: #C9A84C;
   }
