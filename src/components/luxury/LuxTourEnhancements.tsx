@@ -279,7 +279,7 @@ const LuxTourEnhancements = ({
               href={quote(`Hello Heritage Jaipur Travels,\n\nI am interested in ${tourTitle}.\n\nTravel Dates:\nNumber of Travelers:\n\nPlease share details.`)}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-full lux-btn-outline tracking-[0.18em] uppercase text-xs font-display"
+              className="inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-full lux-btn-wa tracking-[0.18em] uppercase text-xs font-display"
             >
               <MessageCircle className="h-4 w-4" /> WhatsApp Specialist
             </a>
