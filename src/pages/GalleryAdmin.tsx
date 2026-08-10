@@ -117,9 +117,26 @@ const GalleryAdmin = () => {
     else toast.success("Account created. Ask the project owner to grant admin role.");
   };
 
+  const claimAdmin = async () => {
+    setAuthBusy(true);
+    const { data, error } = await supabase.rpc("claim_first_admin");
+    setAuthBusy(false);
+    if (error) {
+      toast.error(error.message);
+      return;
+    }
+    if (data) {
+      toast.success("Admin access granted.");
+      setIsAdmin(true);
+    } else {
+      toast.error("An admin already exists. Ask them to grant you access.");
+    }
+  };
+
   const signOut = async () => {
     await supabase.auth.signOut();
   };
+
 
   const refreshAll = useCallback(() => {
     clearMediaSlotCache();
