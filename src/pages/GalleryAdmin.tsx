@@ -20,6 +20,8 @@ import {
   LogOut,
   RefreshCw,
   Search,
+  ShieldCheck,
+
 } from "lucide-react";
 import { toast } from "@/components/ui/sonner";
 import {
@@ -117,9 +119,26 @@ const GalleryAdmin = () => {
     else toast.success("Account created. Ask the project owner to grant admin role.");
   };
 
+  const claimAdmin = async () => {
+    setAuthBusy(true);
+    const { data, error } = await supabase.rpc("claim_first_admin");
+    setAuthBusy(false);
+    if (error) {
+      toast.error(error.message);
+      return;
+    }
+    if (data) {
+      toast.success("Admin access granted.");
+      setIsAdmin(true);
+    } else {
+      toast.error("An admin already exists. Ask them to grant you access.");
+    }
+  };
+
   const signOut = async () => {
     await supabase.auth.signOut();
   };
+
 
   const refreshAll = useCallback(() => {
     clearMediaSlotCache();
@@ -317,8 +336,16 @@ const GalleryAdmin = () => {
           <h1 className="font-display text-2xl mb-3">Admin Access Required</h1>
           <p className="text-sm text-[#0F0F0F]/70 mb-6">
             Signed in as <strong>{session.user.email}</strong>.<br />
-            Ask the project owner to grant your account the <code>admin</code> role.
+            If this is a brand-new Media Library, you can claim the first admin account below.
+            Once one admin exists, further access must be granted by an existing admin.
           </p>
+          <button
+            onClick={claimAdmin}
+            disabled={authBusy}
+            className="w-full mb-3 py-3 rounded-lg bg-[#0F0F0F] text-[#FFF8F0] font-display tracking-[0.18em] uppercase text-xs disabled:opacity-50"
+          >
+            <ShieldCheck size={14} className="inline mr-2" />Claim First Admin Access
+          </button>
           <button onClick={signOut} className="px-5 py-2 rounded-full border border-[#0F0F0F]/20 text-xs font-display tracking-[0.18em] uppercase">
             <LogOut size={14} className="inline mr-2" />Sign Out
           </button>
@@ -326,6 +353,7 @@ const GalleryAdmin = () => {
       </main>
     );
   }
+
 
   if (isAdmin === null) {
     return <main className="min-h-screen lux-cream-bg py-20 text-center">Checking permissions…</main>;
