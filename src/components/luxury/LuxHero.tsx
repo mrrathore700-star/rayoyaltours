@@ -1,7 +1,10 @@
 import { ReactNode } from "react";
+import SmartImage from "@/components/media/SmartImage";
 
 interface LuxHeroProps {
   image: string;
+  /** Optional media slot key — when bound, the media system image wins. */
+  slotKey?: string;
   eyebrow?: string;
   title: ReactNode;
   subtitle?: ReactNode;
@@ -13,6 +16,7 @@ interface LuxHeroProps {
 
 const LuxHero = ({
   image,
+  slotKey,
   eyebrow,
   title,
   subtitle,
@@ -32,10 +36,13 @@ const LuxHero = ({
   return (
     <section className={`relative ${heightCls} flex ${alignCls} overflow-hidden lux-black-bg`}>
       <div className="absolute inset-0">
-        <img
-          src={image}
+        <SmartImage
+          slotKey={slotKey}
+          fallback={image}
           alt=""
           aria-hidden="true"
+          priority
+          sizes="100vw"
           className="w-full h-full object-cover lux-ken-burns"
         />
         <div className="absolute inset-0" style={{ background: overlay }} />

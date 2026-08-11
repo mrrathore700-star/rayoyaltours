@@ -1,25 +1,25 @@
-import { CSSProperties, ImgHTMLAttributes, useMemo } from "react";
+import { CSSProperties, ImgHTMLAttributes, useEffect, useMemo, useRef, useState } from "react";
 import { useMediaSlot } from "@/hooks/useMediaSlot";
 
 /**
- * Phase 1 Media Foundation — SmartImage.
+ * Global image component — the ONE place image loading/swapping is handled.
  *
- * Single reusable <img> wrapper that prepares the site for a centralized
- * media library without changing how any existing image renders.
- *
- * Resolution order (first match wins):
- *   1. `slotKey`  – if bound in the `media_slots` table, use the resolved
- *                   storage URL + stored alt text.
- *   2. `fallback` – the existing imported asset (string from `@/assets/...`),
- *                   so today's pages keep working untouched.
- *
- * Other features:
- *   - Lazy loading by default; pass `priority` for hero/LCP images.
- *   - Native `decoding="async"`.
- *   - Optional `aspectRatio` (e.g. "16/9") to reserve space and avoid CLS.
- *   - Optional `sizes` for responsive selection by the browser.
- *   - Fully transparent to the rest of the app: until any slot is populated,
- *     <SmartImage> behaves exactly like a plain <img src={fallback} />.
+ * Rules implemented here (site-wide guarantees):
+ *   1. Media system is the source of truth. If `slotKey` resolves to an asset
+ *      in `media_slots`/`media_assets`, that asset wins over the bundled
+ *      `fallback` file.
+ *   2. No old-image flash. While a slot is still resolving, nothing renders
+ *      except a neutral skeleton — a real photograph is never used as a
+ *      loading placeholder.
+ *   3. Atomic swap. When the resolved source changes, the new image is
+ *      preloaded off-screen and the visible <img> is only switched once the
+ *      new file has fully decoded. The currently visible image stays put in
+ *      the meantime.
+ *   4. Error safety. If the new source fails to load, the last valid visible
+ *      image is kept (never a broken icon, never an unrelated stock image).
+ *      With nothing visible yet, the neutral skeleton stays.
+ *   5. Responsive: `srcSet` + `sizes` are honoured, and preloading uses the
+ *      same srcSet so the browser picks the size it will actually paint.
  */
 
 type BaseImgProps = Omit<ImgHTMLAttributes<HTMLImageElement>, "src" | "loading">;
@@ -27,7 +27,7 @@ type BaseImgProps = Omit<ImgHTMLAttributes<HTMLImageElement>, "src" | "loading">
 export interface SmartImageProps extends BaseImgProps {
   /** Optional named slot to look up in `media_slots`. */
   slotKey?: string;
-  /** Bundled asset used when no slot is bound. Required for safety. */
+  /** Bundled/base asset used when no slot is bound. */
   fallback: string;
   /** Accessible description. Slot alt overrides win when present. */
   alt: string;
@@ -39,6 +39,40 @@ export interface SmartImageProps extends BaseImgProps {
   sizes?: string;
   /** Wrapper className (only applied when aspectRatio is set). */
   wrapperClassName?: string;
+  /** Set false to disable the neutral skeleton (rarely needed). */
+  skeleton?: boolean;
+}
+
+interface Shown {
+  src: string;
+  srcSet?: string;
+}
+
+/** Preload a source (respecting srcSet/sizes) and resolve when decoded. */
+function preload(src: string, srcSet?: string, sizes?: string): Promise<void> {
+  return new Promise((resolve, reject) => {
+    if (!src) {
+      reject(new Error("empty src"));
+      return;
+    }
+    const img = new Image();
+    if (srcSet) img.srcset = srcSet;
+    if (sizes) img.sizes = sizes;
+    img.src = src;
+    const done = () => {
+      if (typeof img.decode === "function") {
+        img.decode().then(() => resolve()).catch(() => resolve());
+      } else {
+        resolve();
+      }
+    };
+    if (img.complete && img.naturalWidth > 0) {
+      done();
+      return;
+    }
+    img.onload = done;
+    img.onerror = () => reject(new Error(`failed to load ${src}`));
+  });
 }
 
 const SmartImage = ({
@@ -53,20 +87,44 @@ const SmartImage = ({
   style,
   width,
   height,
+  skeleton = true,
   ...imgProps
 }: SmartImageProps) => {
-  const { media } = useMediaSlot(slotKey);
+  const { media, loading: slotLoading } = useMediaSlot(slotKey);
 
-  const src = media?.url ?? fallback;
-  // A slot-resolved image replaces the fallback file, so any srcSet passed for
-  // the fallback no longer applies.
-  const srcSet = media?.url
-    ? media.srcSet || undefined
-    : (imgProps.srcSet as string | undefined);
+  // Target source resolved from the single source of truth.
+  const target: Shown | null = useMemo(() => {
+    if (media?.url) return { src: media.url, srcSet: media.srcSet || undefined };
+    // A slot that is still resolving must NOT paint the bundled image yet,
+    // otherwise an outdated photo would flash before the managed one.
+    if (slotKey && slotLoading) return null;
+    return { src: fallback, srcSet: (imgProps.srcSet as string | undefined) || undefined };
+  }, [media?.url, media?.srcSet, slotKey, slotLoading, fallback, imgProps.srcSet]);
+
+  const [shown, setShown] = useState<Shown | null>(null);
+  const shownRef = useRef<Shown | null>(null);
+  shownRef.current = shown;
+
+  useEffect(() => {
+    if (!target?.src) return;
+    if (shownRef.current?.src === target.src && shownRef.current?.srcSet === target.srcSet) return;
+    let active = true;
+    preload(target.src, target.srcSet, sizes)
+      .then(() => {
+        if (active) setShown(target);
+      })
+      .catch((err) => {
+        // Keep the last valid image; never fall back to an unrelated photo.
+        console.error("[SmartImage] image failed to load", err);
+      });
+    return () => {
+      active = false;
+    };
+  }, [target?.src, target?.srcSet, sizes]);
+
   const resolvedAlt = media?.alt?.trim() ? media.alt : alt;
   const resolvedWidth = width ?? media?.width ?? undefined;
   const resolvedHeight = height ?? media?.height ?? undefined;
-
 
   const objectPosition = useMemo(() => {
     if (media?.focalX == null || media?.focalY == null) return undefined;
@@ -78,9 +136,20 @@ const SmartImage = ({
     ...style,
   };
 
-  const img = (
+  const { srcSet: _ignoredSrcSet, ...restImgProps } = imgProps;
+
+  const placeholder =
+    skeleton && !shown ? (
+      <div
+        className={`${className ?? ""} bg-[#0F0F0F]/[0.06] animate-pulse`}
+        style={aspectRatio ? undefined : { aspectRatio: undefined, ...style }}
+        aria-hidden="true"
+      />
+    ) : null;
+
+  const img = shown ? (
     <img
-      src={src}
+      src={shown.src}
       alt={resolvedAlt}
       loading={priority ? "eager" : "lazy"}
       decoding="async"
@@ -91,10 +160,11 @@ const SmartImage = ({
       sizes={sizes}
       className={className}
       style={imgStyle}
-      {...imgProps}
-      srcSet={srcSet}
+      {...restImgProps}
+      srcSet={shown.srcSet}
     />
-
+  ) : (
+    placeholder
   );
 
   if (!aspectRatio) return img;

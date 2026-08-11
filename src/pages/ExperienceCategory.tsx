@@ -2,6 +2,7 @@ import { Link, useParams, Navigate } from "react-router-dom";
 import SEO from "@/components/SEO";
 import SectionHeading from "@/components/SectionHeading";
 import { categories } from "@/data/experiences";
+import SmartImage from "@/components/media/SmartImage";
 
 const waLink = (msg: string) =>
   `https://wa.me/919887688843?text=${encodeURIComponent(msg)}`;
@@ -37,8 +38,8 @@ const ExperienceCategory = () => {
 
       {/* Hero */}
       <section className="relative h-[55vh] min-h-[380px] flex items-center justify-center overflow-hidden">
-        <img
-          src={category.image}
+        <SmartImage
+          fallback={category.image}
           alt={category.title}
           className="absolute inset-0 w-full h-full object-cover"
         />
@@ -79,10 +80,9 @@ const ExperienceCategory = () => {
               className="group rounded-lg overflow-hidden border border-border bg-card heritage-shadow hover:shadow-xl transition-all duration-300 hover:-translate-y-1 flex flex-col"
             >
               <Link to={`/experiences/${exp.slug}`} className="block relative aspect-[4/3] overflow-hidden">
-                <img
-                  src={exp.image}
+                <SmartImage
+                  fallback={exp.image}
                   alt={exp.title}
-                  loading="lazy"
                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                 />
               </Link>

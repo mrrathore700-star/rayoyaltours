@@ -3,6 +3,7 @@ import { ArrowRight, Clock } from "lucide-react";
 import LuxSectionHeading from "./LuxSectionHeading";
 import { LuxLinkBtn } from "./LuxButton";
 import { blogPosts } from "@/data/blogPosts";
+import SmartImage from "@/components/media/SmartImage";
 
 const FEATURED_SLUGS = [
   "rajasthan-travel-guide",
@@ -31,10 +32,9 @@ const LuxJournalPreview = () => {
               className="group flex flex-col bg-white border border-[#C9A84C]/10 hover:border-[#C9A84C]/60 rounded-sm overflow-hidden shadow-[0_2px_30px_rgba(110,15,31,0.05)] hover:shadow-[0_20px_50px_rgba(110,15,31,0.15)] transition-all duration-500 hover:-translate-y-1"
             >
               <Link to={`/blog/${post.slug}`} className="relative aspect-[4/3] overflow-hidden block">
-                <img
-                  src={post.image}
+                <SmartImage
+                  fallback={post.image}
                   alt={post.title}
-                  loading="lazy"
                   className="absolute inset-0 w-full h-full object-cover transition-transform duration-[1400ms] ease-out group-hover:scale-110"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#1a0709]/40 via-transparent to-transparent" />

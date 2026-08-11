@@ -1,5 +1,6 @@
 import { Clock, ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
+import SmartImage from "@/components/media/SmartImage";
 
 interface TourCardProps {
   image: string;
@@ -21,7 +22,7 @@ const TourCard = ({ image, title, duration, highlights, slug, badge }: TourCardP
         {badge}
       </span>
     )}
-    <img src={image} alt={title} loading="lazy" className="lux-edit-img" />
+    <SmartImage fallback={image} alt={title} className="lux-edit-img" />
 
     <div className="lux-edit-overlay" />
     <div className="lux-edit-body">

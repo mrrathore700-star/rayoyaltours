@@ -1,8 +1,11 @@
 import { ReactNode } from "react";
+import SmartImage from "@/components/media/SmartImage";
 import { LuxLinkBtn, LuxAnchorBtn } from "./LuxButton";
 
 interface LuxCtaBandProps {
   image: string;
+  /** Optional media slot key — when bound, the media system image wins. */
+  slotKey?: string;
   eyebrow?: string;
   title: ReactNode;
   subtitle?: ReactNode;
@@ -10,10 +13,10 @@ interface LuxCtaBandProps {
   secondary?: { label: string; to?: string; href?: string; external?: boolean };
 }
 
-const LuxCtaBand = ({ image, eyebrow, title, subtitle, primary, secondary }: LuxCtaBandProps) => (
+const LuxCtaBand = ({ image, slotKey, eyebrow, title, subtitle, primary, secondary }: LuxCtaBandProps) => (
   <section className="relative overflow-hidden lux-black-bg">
     <div className="absolute inset-0">
-      <img src={image} alt="" aria-hidden="true" className="w-full h-full object-cover lux-ken-burns" />
+      <SmartImage slotKey={slotKey} fallback={image} alt="" aria-hidden="true" sizes="100vw" className="w-full h-full object-cover lux-ken-burns" />
       <div
         className="absolute inset-0"
         style={{

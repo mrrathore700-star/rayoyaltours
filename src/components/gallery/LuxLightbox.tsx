@@ -1,3 +1,4 @@
+import SmartImage from "@/components/media/SmartImage";
 import { useEffect, useRef, useState } from "react";
 import { X, ChevronLeft, ChevronRight } from "lucide-react";
 import type { GalleryImage } from "@/hooks/useGalleryImages";
@@ -83,8 +84,8 @@ const LuxLightbox = ({ images, index, onClose, onIndexChange }: LuxLightboxProps
           touchStart.current = null;
         }}
       >
-        <img
-          src={img.url}
+        <SmartImage
+          fallback={img.url}
           srcSet={img.srcSet || undefined}
           sizes="92vw"
           alt={img.alt_text || img.title}

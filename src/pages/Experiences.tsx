@@ -18,6 +18,7 @@ import royalTour from "@/assets/royal-tour.jpg";
 import rajasthaniFood from "@/assets/rajasthani-food.jpg";
 import culturalDance from "@/assets/cultural-dance.jpg";
 import villageTour from "@/assets/village-tour.jpg";
+import SmartImage from "@/components/media/SmartImage";
 
 const waLink = (msg: string) =>
   `https://wa.me/919887688843?text=${encodeURIComponent(msg)}`;
@@ -120,7 +121,7 @@ const Experiences = () => {
       <section className="relative w-full overflow-hidden" style={{ height: "82vh", minHeight: 600 }}>
 
         <div className="absolute inset-0">
-          <img src={heroPalace} alt="Luxury Rajasthan palace at golden hour" className="w-full h-full object-cover lux-ken-burns" />
+          <SmartImage fallback={heroPalace} alt="Luxury Rajasthan palace at golden hour" className="w-full h-full object-cover lux-ken-burns" />
           <div className="absolute inset-0" style={{ background: "linear-gradient(90deg, rgba(15,15,15,0.78) 0%, rgba(15,15,15,0.55) 45%, rgba(15,15,15,0.25) 100%)" }} />
           <div className="absolute inset-0" style={{ background: "linear-gradient(180deg, rgba(15,15,15,0.45) 0%, rgba(15,15,15,0.1) 40%, rgba(15,15,15,0.8) 100%)" }} />
         </div>
@@ -177,7 +178,7 @@ const Experiences = () => {
                 className="lux-card group block relative overflow-hidden"
               >
                 <div className="relative aspect-[4/5] overflow-hidden bg-black">
-                  <img src={cat.image} alt={cat.title} loading="lazy" className="lux-card-img w-full h-full object-cover" />
+                  <SmartImage fallback={cat.image} alt={cat.title} className="lux-card-img w-full h-full object-cover" />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent" />
                   <span className="absolute top-5 left-5 text-[10px] tracking-[0.3em] uppercase lux-gold">
                     {cat.experiences.length} Experiences
@@ -230,7 +231,7 @@ const Experiences = () => {
             {featured.map((exp) => (
               <article key={exp.slug} className="lux-card group block relative overflow-hidden bg-white">
                 <Link to={`/experiences/${exp.slug}`} className="block relative aspect-[4/3] overflow-hidden">
-                  <img src={exp.image} alt={exp.title} loading="lazy" className="lux-card-img w-full h-full object-cover" />
+                  <SmartImage fallback={exp.image} alt={exp.title} className="lux-card-img w-full h-full object-cover" />
                 </Link>
                 <div className="p-6 md:p-7">
                   <span className="text-[10px] tracking-[0.3em] uppercase lux-gold">{exp.category}</span>
@@ -316,7 +317,7 @@ const Experiences = () => {
             {STYLES.map((s) => (
               <div key={s.title} className="relative overflow-hidden rounded-sm group" style={{ border: "1px solid rgba(201,168,76,0.25)" }}>
                 <div className="relative aspect-[5/4] overflow-hidden">
-                  <img src={s.image} alt={s.title} loading="lazy" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+                  <SmartImage fallback={s.image} alt={s.title} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
                   <div className="absolute inset-0" style={{ background: "linear-gradient(180deg, rgba(15,15,15,0.2) 0%, rgba(15,15,15,0.85) 100%)" }} />
                 </div>
                 <div className="absolute inset-x-0 bottom-0 p-6 md:p-7">
@@ -350,7 +351,7 @@ const Experiences = () => {
             {CITIES.map((c) => (
               <Link key={c.slug} to={`/destinations/${c.slug}`} className="lux-card group block relative overflow-hidden">
                 <div className="relative aspect-[4/3] overflow-hidden bg-black">
-                  <img src={c.image} alt={c.name} loading="lazy" className="lux-card-img w-full h-full object-cover" />
+                  <SmartImage fallback={c.image} alt={c.name} className="lux-card-img w-full h-full object-cover" />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent" />
                   <div className="absolute inset-x-0 bottom-0 p-6">
                     <span className="text-[10px] tracking-[0.3em] uppercase lux-gold">{c.tagline}</span>
@@ -397,7 +398,7 @@ const Experiences = () => {
       {/* CTA */}
       <section className="relative overflow-hidden">
         <div className="absolute inset-0">
-          <img src={desertSafari} alt="Rajasthan desert at twilight" className="w-full h-full object-cover" />
+          <SmartImage fallback={desertSafari} alt="Rajasthan desert at twilight" className="w-full h-full object-cover" />
           <div className="absolute inset-0" style={{ background: "linear-gradient(180deg, rgba(15,15,15,0.85) 0%, rgba(110,15,31,0.7) 100%)" }} />
         </div>
         <div className="relative z-10 container mx-auto px-5 md:px-8 py-28 md:py-36 text-center max-w-3xl">

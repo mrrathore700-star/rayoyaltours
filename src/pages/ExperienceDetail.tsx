@@ -1,3 +1,4 @@
+import SmartImage from "@/components/media/SmartImage";
 import { useState } from "react";
 import { Link, useParams, Navigate } from "react-router-dom";
 import SEO from "@/components/SEO";
@@ -133,10 +134,9 @@ const ExperienceDetail = () => {
 
       {/* Hero */}
       <section className="relative h-[85vh] min-h-[560px] flex items-end overflow-hidden">
-        <img
-          src={exp.image}
+        <SmartImage
+          fallback={exp.image}
           alt={exp.title}
-          loading="eager"
           className="absolute inset-0 w-full h-full object-cover scale-105 animate-[fade-in_1s_ease-out]"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-background via-background/70 to-background/20" />
@@ -268,10 +268,9 @@ const ExperienceDetail = () => {
                       className="group relative block w-full aspect-[4/3] overflow-hidden rounded-xl border border-border heritage-shadow"
                       aria-label={`View image ${i + 1} of ${exp.title}`}
                     >
-                      <img
-                        src={src}
+                      <SmartImage
+                        fallback={src}
                         alt={`${exp.title} – ${i + 1}`}
-                        loading="lazy"
                         className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                       />
                     </button>
@@ -341,10 +340,9 @@ const ExperienceDetail = () => {
                   className="group bg-card rounded-xl overflow-hidden border border-border heritage-shadow hover:shadow-2xl hover:-translate-y-1 transition-all duration-500"
                 >
                   <div className="relative aspect-[4/3] overflow-hidden">
-                    <img
-                      src={r.image}
+                    <SmartImage
+                      fallback={r.image}
                       alt={r.title}
-                      loading="lazy"
                       className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                     />
                   </div>
@@ -378,8 +376,8 @@ const ExperienceDetail = () => {
         <DialogContent className="max-w-5xl p-0 bg-background border-border">
           {lightbox && (
             <div className="relative">
-              <img
-                src={lightbox}
+              <SmartImage
+                fallback={lightbox}
                 alt={exp.title}
                 className="w-full h-auto max-h-[85vh] object-contain"
               />

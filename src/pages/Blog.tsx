@@ -7,6 +7,7 @@ import LuxHero from "@/components/luxury/LuxHero";
 import LuxCtaBand from "@/components/luxury/LuxCtaBand";
 import LuxTrustStrip from "@/components/luxury/LuxTrustStrip";
 import { blogPosts } from "@/data/blogPosts";
+import SmartImage from "@/components/media/SmartImage";
 
 const filters = [
   "All",
@@ -93,8 +94,8 @@ const Blog = () => {
           </div>
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center max-w-6xl mx-auto">
             <Link to={`/blog/${featured.slug}`} className="relative overflow-hidden aspect-[4/5] rounded-sm group block">
-              <img
-                src={featured.image}
+              <SmartImage
+                fallback={featured.image}
                 alt={featured.imageAlt || featured.title}
                 className="w-full h-full object-cover lux-ken-burns"
               />
@@ -169,11 +170,10 @@ const Blog = () => {
                 <Link key={post.slug} to={`/blog/${post.slug}`} className="group block">
                   <article>
                     <div className="relative overflow-hidden aspect-[4/5] rounded-sm mb-6">
-                      <img
-                        src={post.image}
+                      <SmartImage
+                        fallback={post.image}
                         alt={post.imageAlt || post.title}
                         className="w-full h-full object-cover transition-transform duration-[1200ms] group-hover:scale-105"
-                        loading="lazy"
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
                       <span className="absolute top-5 left-5 lux-glass px-3.5 py-1 rounded-full">

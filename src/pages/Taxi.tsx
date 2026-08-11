@@ -1,3 +1,4 @@
+import SmartImage from "@/components/media/SmartImage";
 import { Link } from "react-router-dom";
 import {
   Car, Plane, MapPin, Navigation, Bus, Clock, Shield, Users, Luggage, Snowflake, Fuel,
@@ -353,10 +354,9 @@ const Taxi = () => (
           {fleet.map((v, i) => (
             <article key={i} className="bg-white/80 border border-[#C9A84C]/25 rounded-sm overflow-hidden flex flex-col">
               <div className="aspect-[4/3] overflow-hidden bg-[#0F0F0F]">
-                <img
-                  src={v.image}
+                <SmartImage
+                  fallback={v.image}
                   alt={`${v.name} — chauffeur-driven vehicle`}
-                  loading="lazy"
                   className="w-full h-full object-cover"
                 />
               </div>

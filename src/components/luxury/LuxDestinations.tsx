@@ -7,6 +7,7 @@ import jodhpurFort from "@/assets/jodhpur-fort.jpg";
 import jaisalmerFort from "@/assets/jaisalmer-fort.jpg";
 import ranthamboreTiger from "@/assets/ranthambore-tiger.jpg";
 import pushkarLake from "@/assets/pushkar-lake.jpg";
+import SmartImage from "@/components/media/SmartImage";
 
 const destinations = [
   {
@@ -70,12 +71,11 @@ const LuxDestinations = () => {
               className="group relative overflow-hidden rounded-sm bg-white shadow-[0_2px_30px_rgba(110,15,31,0.06)] transition-all duration-500 hover:shadow-[0_20px_50px_rgba(110,15,31,0.18)] hover:-translate-y-1 border border-[#C9A84C]/10 hover:border-[#C9A84C]/60"
             >
               <div className="relative aspect-[4/5] overflow-hidden">
-                <img
-                  src={d.image}
+                <SmartImage
+                  fallback={d.image}
                   alt={`${d.name} — ${d.tagline}`}
                   width={1536}
                   height={1024}
-                  loading="lazy"
                   className="absolute inset-0 w-full h-full object-cover transition-transform duration-[1400ms] ease-out group-hover:scale-110"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#1a0709]/85 via-[#1a0709]/25 to-transparent" />
