@@ -27,8 +27,6 @@ const GalleryTile = ({
   eager: boolean;
   onOpen: () => void;
 }) => {
-  const [state, setState] = useState<"loading" | "loaded" | "error">("loading");
-
   return (
     <button
       onClick={onOpen}
@@ -36,41 +34,18 @@ const GalleryTile = ({
       style={{ aspectRatio: TILE_RATIO }}
       aria-label={`Open ${img.alt_text || img.title || "gallery image"}`}
     >
-      {/* Placeholder occupies the reserved box until the image decodes. */}
-      {state === "loading" && (
-        <div className="absolute inset-0 bg-[#0F0F0F]/[0.06] animate-pulse" aria-hidden="true" />
-      )}
+      {/* Loading/atomic-swap/error behaviour lives in SmartImage. */}
+      <SmartImage
+        fallback={img.url}
+        srcSet={img.srcSet || undefined}
+        sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
+        alt={img.alt_text || img.title}
+        width={img.width ?? undefined}
+        height={img.height ?? undefined}
+        priority={eager}
+        className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.06]"
+      />
 
-      {state === "error" ? (
-        <div
-          className="absolute inset-0 flex items-center justify-center bg-[#0F0F0F]/[0.06]"
-          aria-hidden="true"
-        >
-          <span className="font-display tracking-[0.18em] uppercase text-[10px] text-[#0F0F0F]/40">
-            Image unavailable
-          </span>
-        </div>
-      ) : (
-        <img
-          src={img.url}
-          srcSet={img.srcSet || undefined}
-          sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
-          alt={img.alt_text || img.title}
-          width={img.width ?? undefined}
-          height={img.height ?? undefined}
-          loading={eager ? "eager" : "lazy"}
-          decoding="async"
-          {...({ fetchpriority: eager ? "high" : "auto" } as Record<string, string>)}
-          onLoad={() => setState("loaded")}
-          onError={() => {
-            console.error("[Gallery] image failed to load:", img.image_path, img.url);
-            setState("error");
-          }}
-          className={`absolute inset-0 w-full h-full object-cover transition-[opacity,transform] duration-700 ease-out group-hover:scale-[1.06] ${
-            state === "loaded" ? "opacity-100" : "opacity-0"
-          }`}
-        />
-      )}
 
       <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/75 via-black/0 to-black/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
       {(img.title || img.location) && (
