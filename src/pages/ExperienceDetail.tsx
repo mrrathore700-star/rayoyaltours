@@ -1,3 +1,4 @@
+import SmartImage from "@/components/media/SmartImage";
 import { useState } from "react";
 import { Link, useParams, Navigate } from "react-router-dom";
 import SEO from "@/components/SEO";
@@ -11,7 +12,6 @@ import {
 } from "@/components/ui/carousel";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
 import {
-import SmartImage from "@/components/media/SmartImage";
   ChevronRight,
   Sparkles,
   Crown,

@@ -1,3 +1,4 @@
+import SmartImage from "@/components/media/SmartImage";
 import { Link } from "react-router-dom";
 import {
   Car, Plane, MapPin, Navigation, Bus, Clock, Shield, Users, Luggage, Snowflake, Fuel,
@@ -14,7 +15,6 @@ import LuxCtaBand from "@/components/luxury/LuxCtaBand";
 import { LuxLinkBtn, LuxAnchorBtn } from "@/components/luxury/LuxButton";
 import LuxInlineCta from "@/components/luxury/LuxInlineCta";
 import {
-import SmartImage from "@/components/media/SmartImage";
   Accordion, AccordionContent, AccordionItem, AccordionTrigger,
 } from "@/components/ui/accordion";
 

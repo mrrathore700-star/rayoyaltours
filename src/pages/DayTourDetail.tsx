@@ -1,3 +1,4 @@
+import SmartImage from "@/components/media/SmartImage";
 import { useParams, Link } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import {
@@ -18,7 +19,6 @@ import SectionHeading from "@/components/SectionHeading";
 import LuxTourEnhancements from "@/components/luxury/LuxTourEnhancements";
 import LuxInlineCta from "@/components/luxury/LuxInlineCta";
 import {
-import SmartImage from "@/components/media/SmartImage";
   Accordion,
   AccordionContent,
   AccordionItem,
