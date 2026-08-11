@@ -15,6 +15,7 @@ import {
 import { getDestination, destinations } from "@/data/destinations";
 import { tours } from "@/data/tours";
 import { blogPosts } from "@/data/blogPosts";
+import SmartImage from "@/components/media/SmartImage";
 
 const Destination = () => {
   const { slug } = useParams<{ slug: string }>();
@@ -294,8 +295,8 @@ const Destination = () => {
                   className="group block bg-white border border-[#C9A84C]/15 hover:border-[#C9A84C]/60 rounded-sm overflow-hidden shadow-[0_2px_30px_rgba(110,15,31,0.05)] hover:shadow-[0_18px_40px_rgba(110,15,31,0.15)] transition-all duration-500 hover:-translate-y-1"
                 >
                   <div className="aspect-[4/3] overflow-hidden">
-                    <img
-                      src={t.image}
+                    <SmartImage
+                      fallback={t.image}
                       alt={t.title}
                       loading="lazy"
                       className="w-full h-full object-cover transition-transform duration-[1200ms] group-hover:scale-110"
@@ -367,8 +368,8 @@ const Destination = () => {
                   className="group bg-white border border-[#C9A84C]/10 hover:border-[#C9A84C]/60 rounded-sm overflow-hidden shadow-[0_2px_30px_rgba(110,15,31,0.05)] hover:shadow-[0_18px_40px_rgba(110,15,31,0.15)] transition-all duration-500"
                 >
                   <Link to={`/blog/${post.slug}`} className="block aspect-[4/3] overflow-hidden">
-                    <img
-                      src={post.image}
+                    <SmartImage
+                      fallback={post.image}
                       alt={post.title}
                       loading="lazy"
                       className="w-full h-full object-cover transition-transform duration-[1200ms] group-hover:scale-110"
@@ -399,8 +400,8 @@ const Destination = () => {
                 to={`/destinations/${d.slug}`}
                 className="group relative aspect-[4/5] overflow-hidden rounded-sm block bg-[#1a0709]"
               >
-                <img
-                  src={d.heroImage}
+                <SmartImage
+                  fallback={d.heroImage}
                   alt={`${d.name} — ${d.tagline}`}
                   loading="lazy"
                   className="absolute inset-0 w-full h-full object-cover opacity-80 transition-all duration-[1200ms] group-hover:scale-110 group-hover:opacity-95"
@@ -430,7 +431,7 @@ const Destination = () => {
       {/* Final CTA */}
       <section className="relative py-24 md:py-32 lux-black-bg overflow-hidden">
         <div className="absolute inset-0 opacity-30">
-          <img src={dest.heroImage} alt="" aria-hidden="true" className="w-full h-full object-cover" />
+          <SmartImage fallback={dest.heroImage} alt="" aria-hidden="true" className="w-full h-full object-cover" />
           <div className="absolute inset-0 bg-gradient-to-t from-[#1a0709] via-[#1a0709]/80 to-[#1a0709]/60" />
         </div>
         <div className="relative container mx-auto px-6 text-center max-w-3xl">

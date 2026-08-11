@@ -12,6 +12,7 @@ import localMarket from "@/assets/local-market.jpg";
 import LuxHero from "@/components/luxury/LuxHero";
 import LuxCtaBand from "@/components/luxury/LuxCtaBand";
 import { LuxAnchorBtn, LuxLinkBtn } from "@/components/luxury/LuxButton";
+import SmartImage from "@/components/media/SmartImage";
 
 const spots = [
   { image: amberFort, title: "Amber Fort", desc: "A 16th-century hilltop fort by Raja Man Singh I — famed for its Sheesh Mahal, Ganesh Pol, and the soft Maota Lake mornings before the crowds arrive." },
@@ -54,8 +55,8 @@ const Sightseeing = () => (
             <div key={i} className={`flex flex-col ${i % 2 ? "md:flex-row-reverse" : "md:flex-row"} gap-10 md:gap-16 items-center`}>
               <div className="w-full md:w-1/2">
                 <div className="relative overflow-hidden rounded-sm group">
-                  <img
-                    src={spot.image}
+                  <SmartImage
+                    fallback={spot.image}
                     alt={spot.title}
                     className="w-full aspect-[4/5] object-cover transition-transform duration-[1200ms] group-hover:scale-105"
                     loading="lazy"

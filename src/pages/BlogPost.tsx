@@ -5,6 +5,7 @@ import LuxCtaBand from "@/components/luxury/LuxCtaBand";
 import { LuxLinkBtn, LuxAnchorBtn } from "@/components/luxury/LuxButton";
 import royalTour from "@/assets/royal-tour.jpg";
 import { blogPosts, getBlogPost } from "@/data/blogPosts";
+import SmartImage from "@/components/media/SmartImage";
 
 const SITE_URL = "https://www.heritagejaipurtravels.com";
 
@@ -210,8 +211,8 @@ const BlogPost = () => {
             {related.map((p) => (
               <Link key={p.slug} to={`/blog/${p.slug}`} className="group">
                 <div className="relative overflow-hidden aspect-[4/5] rounded-sm mb-5">
-                  <img
-                    src={p.image}
+                  <SmartImage
+                    fallback={p.image}
                     alt={p.imageAlt || p.title}
                     loading="lazy"
                     className="w-full h-full object-cover transition-transform duration-[1200ms] group-hover:scale-105"

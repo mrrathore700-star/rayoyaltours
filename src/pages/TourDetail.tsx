@@ -10,6 +10,7 @@ import { LuxLinkBtn, LuxAnchorBtn } from "@/components/luxury/LuxButton";
 import SectionHeading from "@/components/SectionHeading";
 import { useState } from "react";
 import { useToast } from "@/hooks/use-toast";
+import SmartImage from "@/components/media/SmartImage";
 
 const TourDetail = () => {
   const { slug } = useParams<{ slug: string }>();
@@ -84,8 +85,8 @@ const TourDetail = () => {
         {/* Cinematic Hero */}
         <section className="relative min-h-[75vh] md:min-h-[80vh] flex items-end overflow-hidden lux-black-bg">
           <div className="absolute inset-0">
-            <img
-              src={tours.find((t) => t.slug === slug)?.image || ""}
+            <SmartImage
+              fallback={tours.find((t) => t.slug === slug)?.image || ""}
               alt=""
               aria-hidden="true"
               className="w-full h-full object-cover lux-ken-burns"

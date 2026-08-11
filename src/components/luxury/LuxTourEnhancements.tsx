@@ -24,6 +24,7 @@ import {
 } from "@/components/ui/accordion";
 import SectionHeading from "@/components/SectionHeading";
 import { tours, type TourSummary } from "@/data/tours";
+import SmartImage from "@/components/media/SmartImage";
 
 interface FAQ { q: string; a: string }
 
@@ -302,8 +303,8 @@ const LuxTourEnhancements = ({
                     className="group bg-card rounded-lg overflow-hidden heritage-shadow border border-[#C9A84C]/20 hover:border-[#C9A84C]/60 transition-all"
                   >
                     <div className="aspect-[4/3] overflow-hidden">
-                      <img
-                        src={t.image}
+                      <SmartImage
+                        fallback={t.image}
                         alt={t.title}
                         loading="lazy"
                         className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"

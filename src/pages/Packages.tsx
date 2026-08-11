@@ -13,6 +13,7 @@ import { LuxLinkBtn, LuxAnchorBtn } from "@/components/luxury/LuxButton";
 import { tours } from "@/data/tours";
 import { dayToursList } from "@/data/dayTours";
 import royalTour from "@/assets/royal-tour.jpg";
+import SmartImage from "@/components/media/SmartImage";
 
 const WHATSAPP_URL =
   "https://wa.me/919887688843?text=" +
@@ -224,8 +225,8 @@ const Packages = () => {
                 className="group bg-card rounded-sm overflow-hidden heritage-shadow border border-[#C9A84C]/20 hover:border-[#C9A84C]/60 transition-all flex flex-col"
               >
                 <div className="relative aspect-[4/3] overflow-hidden">
-                  <img
-                    src={dt.image}
+                  <SmartImage
+                    fallback={dt.image}
                     alt={dt.title}
                     loading="lazy"
                     className="w-full h-full object-cover transition-transform duration-[1000ms] group-hover:scale-105"

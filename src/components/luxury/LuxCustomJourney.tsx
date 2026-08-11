@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Check, MessageCircle, Send } from "lucide-react";
 import { toast } from "sonner";
 import royalTour from "@/assets/royal-tour.jpg";
+import SmartImage from "@/components/media/SmartImage";
 
 const features = [
   "Customized Itineraries",
@@ -54,8 +55,8 @@ const LuxCustomJourney = () => {
   return (
     <section className="relative overflow-hidden lux-black-bg">
       <div className="absolute inset-0">
-        <img
-          src={royalTour}
+        <SmartImage
+          fallback={royalTour}
           alt=""
           aria-hidden="true"
           className="w-full h-full object-cover lux-ken-burns"

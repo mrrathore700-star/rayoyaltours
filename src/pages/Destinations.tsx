@@ -11,6 +11,7 @@ import { destinations } from "@/data/destinations";
 import { tours } from "@/data/tours";
 import { allExperiences } from "@/data/experiences";
 import heroPalace from "@/assets/hero-palace.jpg";
+import SmartImage from "@/components/media/SmartImage";
 
 const WHATSAPP_URL =
   "https://wa.me/919887688843?text=" +
@@ -144,7 +145,7 @@ const Destinations = () => {
       {/* Hero */}
       <section className="relative overflow-hidden lux-black-bg">
         <div className="absolute inset-0">
-          <img src={heroPalace} alt="" aria-hidden="true" className="w-full h-full object-cover lux-ken-burns" />
+          <SmartImage fallback={heroPalace} alt="" aria-hidden="true" className="w-full h-full object-cover lux-ken-burns" />
           <div
             className="absolute inset-0"
             style={{
@@ -234,8 +235,8 @@ const Destinations = () => {
                   className="group flex flex-col overflow-hidden rounded-sm bg-white shadow-[0_2px_30px_rgba(110,15,31,0.06)] transition-all duration-500 hover:shadow-[0_20px_50px_rgba(110,15,31,0.18)] hover:-translate-y-1 border border-[#C9A84C]/10 hover:border-[#C9A84C]/60"
                 >
                   <div className="relative aspect-[4/3] overflow-hidden">
-                    <img
-                      src={c.image}
+                    <SmartImage
+                      fallback={c.image}
                       alt={`${c.name} — ${c.tagline}`}
                       loading="lazy"
                       className="absolute inset-0 w-full h-full object-cover transition-transform duration-[1400ms] ease-out group-hover:scale-110"
@@ -340,8 +341,8 @@ const Destinations = () => {
                 className="group flex flex-col overflow-hidden rounded-sm bg-white shadow-[0_2px_30px_rgba(110,15,31,0.06)] hover:shadow-[0_20px_50px_rgba(110,15,31,0.18)] transition-all duration-500 hover:-translate-y-1 border border-[#C9A84C]/10 hover:border-[#C9A84C]/60"
               >
                 <div className="relative aspect-[4/3] overflow-hidden">
-                  <img
-                    src={e.image}
+                  <SmartImage
+                    fallback={e.image}
                     alt={e.title}
                     loading="lazy"
                     className="absolute inset-0 w-full h-full object-cover transition-transform duration-[1400ms] ease-out group-hover:scale-110"

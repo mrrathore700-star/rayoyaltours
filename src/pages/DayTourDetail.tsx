@@ -18,6 +18,7 @@ import SectionHeading from "@/components/SectionHeading";
 import LuxTourEnhancements from "@/components/luxury/LuxTourEnhancements";
 import LuxInlineCta from "@/components/luxury/LuxInlineCta";
 import {
+import SmartImage from "@/components/media/SmartImage";
   Accordion,
   AccordionContent,
   AccordionItem,
@@ -115,8 +116,8 @@ const DayTourDetail = () => {
         {/* Hero */}
         <section className="relative min-h-[70vh] md:min-h-[78vh] flex items-end overflow-hidden lux-black-bg">
           <div className="absolute inset-0">
-            <img
-              src={tour.image}
+            <SmartImage
+              fallback={tour.image}
               alt=""
               aria-hidden="true"
               className="w-full h-full object-cover lux-ken-burns"
