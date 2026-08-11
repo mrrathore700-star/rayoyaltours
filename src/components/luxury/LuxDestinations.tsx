@@ -76,7 +76,6 @@ const LuxDestinations = () => {
                   alt={`${d.name} — ${d.tagline}`}
                   width={1536}
                   height={1024}
-                  loading="lazy"
                   className="absolute inset-0 w-full h-full object-cover transition-transform duration-[1400ms] ease-out group-hover:scale-110"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#1a0709]/85 via-[#1a0709]/25 to-transparent" />

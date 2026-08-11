@@ -238,7 +238,6 @@ const Destinations = () => {
                     <SmartImage
                       fallback={c.image}
                       alt={`${c.name} — ${c.tagline}`}
-                      loading="lazy"
                       className="absolute inset-0 w-full h-full object-cover transition-transform duration-[1400ms] ease-out group-hover:scale-110"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-[#1a0709]/70 via-transparent to-transparent" />
@@ -344,7 +343,6 @@ const Destinations = () => {
                   <SmartImage
                     fallback={e.image}
                     alt={e.title}
-                    loading="lazy"
                     className="absolute inset-0 w-full h-full object-cover transition-transform duration-[1400ms] ease-out group-hover:scale-110"
                   />
                 </div>

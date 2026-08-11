@@ -228,7 +228,6 @@ const Packages = () => {
                   <SmartImage
                     fallback={dt.image}
                     alt={dt.title}
-                    loading="lazy"
                     className="w-full h-full object-cover transition-transform duration-[1000ms] group-hover:scale-105"
                   />
                   {dt.badge && (

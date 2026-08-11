@@ -178,7 +178,7 @@ const Experiences = () => {
                 className="lux-card group block relative overflow-hidden"
               >
                 <div className="relative aspect-[4/5] overflow-hidden bg-black">
-                  <SmartImage fallback={cat.image} alt={cat.title} loading="lazy" className="lux-card-img w-full h-full object-cover" />
+                  <SmartImage fallback={cat.image} alt={cat.title} className="lux-card-img w-full h-full object-cover" />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent" />
                   <span className="absolute top-5 left-5 text-[10px] tracking-[0.3em] uppercase lux-gold">
                     {cat.experiences.length} Experiences
@@ -231,7 +231,7 @@ const Experiences = () => {
             {featured.map((exp) => (
               <article key={exp.slug} className="lux-card group block relative overflow-hidden bg-white">
                 <Link to={`/experiences/${exp.slug}`} className="block relative aspect-[4/3] overflow-hidden">
-                  <SmartImage fallback={exp.image} alt={exp.title} loading="lazy" className="lux-card-img w-full h-full object-cover" />
+                  <SmartImage fallback={exp.image} alt={exp.title} className="lux-card-img w-full h-full object-cover" />
                 </Link>
                 <div className="p-6 md:p-7">
                   <span className="text-[10px] tracking-[0.3em] uppercase lux-gold">{exp.category}</span>
@@ -317,7 +317,7 @@ const Experiences = () => {
             {STYLES.map((s) => (
               <div key={s.title} className="relative overflow-hidden rounded-sm group" style={{ border: "1px solid rgba(201,168,76,0.25)" }}>
                 <div className="relative aspect-[5/4] overflow-hidden">
-                  <SmartImage fallback={s.image} alt={s.title} loading="lazy" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+                  <SmartImage fallback={s.image} alt={s.title} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
                   <div className="absolute inset-0" style={{ background: "linear-gradient(180deg, rgba(15,15,15,0.2) 0%, rgba(15,15,15,0.85) 100%)" }} />
                 </div>
                 <div className="absolute inset-x-0 bottom-0 p-6 md:p-7">
@@ -351,7 +351,7 @@ const Experiences = () => {
             {CITIES.map((c) => (
               <Link key={c.slug} to={`/destinations/${c.slug}`} className="lux-card group block relative overflow-hidden">
                 <div className="relative aspect-[4/3] overflow-hidden bg-black">
-                  <SmartImage fallback={c.image} alt={c.name} loading="lazy" className="lux-card-img w-full h-full object-cover" />
+                  <SmartImage fallback={c.image} alt={c.name} className="lux-card-img w-full h-full object-cover" />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent" />
                   <div className="absolute inset-x-0 bottom-0 p-6">
                     <span className="text-[10px] tracking-[0.3em] uppercase lux-gold">{c.tagline}</span>

@@ -214,7 +214,6 @@ const BlogPost = () => {
                   <SmartImage
                     fallback={p.image}
                     alt={p.imageAlt || p.title}
-                    loading="lazy"
                     className="w-full h-full object-cover transition-transform duration-[1200ms] group-hover:scale-105"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />

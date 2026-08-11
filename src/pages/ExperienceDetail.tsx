@@ -137,7 +137,6 @@ const ExperienceDetail = () => {
         <SmartImage
           fallback={exp.image}
           alt={exp.title}
-          loading="eager"
           className="absolute inset-0 w-full h-full object-cover scale-105 animate-[fade-in_1s_ease-out]"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-background via-background/70 to-background/20" />
@@ -272,7 +271,6 @@ const ExperienceDetail = () => {
                       <SmartImage
                         fallback={src}
                         alt={`${exp.title} – ${i + 1}`}
-                        loading="lazy"
                         className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                       />
                     </button>
@@ -345,7 +343,6 @@ const ExperienceDetail = () => {
                     <SmartImage
                       fallback={r.image}
                       alt={r.title}
-                      loading="lazy"
                       className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                     />
                   </div>

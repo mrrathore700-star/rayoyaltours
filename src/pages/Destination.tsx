@@ -298,7 +298,6 @@ const Destination = () => {
                     <SmartImage
                       fallback={t.image}
                       alt={t.title}
-                      loading="lazy"
                       className="w-full h-full object-cover transition-transform duration-[1200ms] group-hover:scale-110"
                     />
                   </div>
@@ -371,7 +370,6 @@ const Destination = () => {
                     <SmartImage
                       fallback={post.image}
                       alt={post.title}
-                      loading="lazy"
                       className="w-full h-full object-cover transition-transform duration-[1200ms] group-hover:scale-110"
                     />
                   </Link>
@@ -403,7 +401,6 @@ const Destination = () => {
                 <SmartImage
                   fallback={d.heroImage}
                   alt={`${d.name} — ${d.tagline}`}
-                  loading="lazy"
                   className="absolute inset-0 w-full h-full object-cover opacity-80 transition-all duration-[1200ms] group-hover:scale-110 group-hover:opacity-95"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#1a0709]/90 via-[#1a0709]/20 to-transparent" />

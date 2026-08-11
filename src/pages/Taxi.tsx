@@ -357,7 +357,6 @@ const Taxi = () => (
                 <SmartImage
                   fallback={v.image}
                   alt={`${v.name} — chauffeur-driven vehicle`}
-                  loading="lazy"
                   className="w-full h-full object-cover"
                 />
               </div>
