@@ -1,3 +1,4 @@
+import { useState } from "react";
 
 import SmartImage from "@/components/media/SmartImage";
 import LuxLightbox from "./LuxLightbox";
