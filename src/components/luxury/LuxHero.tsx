@@ -12,6 +12,10 @@ interface LuxHeroProps {
   height?: "tall" | "regular";
   align?: "center" | "left";
   overlay?: string;
+  /** Accessible description for the background photo (empty = decorative). */
+  imageAlt?: string;
+  /** Extra classes for the background image, e.g. responsive object-position. */
+  imageClassName?: string;
 }
 
 const LuxHero = ({
@@ -24,6 +28,8 @@ const LuxHero = ({
   height = "regular",
   align = "center",
   overlay = "linear-gradient(180deg, rgba(0,0,0,0.45) 0%, rgba(0,0,0,0.35) 40%, rgba(0,0,0,0.7) 100%)",
+  imageAlt = "",
+  imageClassName = "",
 }: LuxHeroProps) => {
   const heightCls = height === "tall"
     ? "min-h-[88vh] md:min-h-[92vh]"
@@ -39,12 +45,13 @@ const LuxHero = ({
         <SmartImage
           slotKey={slotKey}
           fallback={image}
-          alt=""
-          aria-hidden="true"
+          alt={imageAlt}
+          {...(imageAlt ? {} : { "aria-hidden": "true" as const })}
           priority
           sizes="100vw"
-          className="w-full h-full object-cover lux-ken-burns"
+          className={`w-full h-full object-cover lux-ken-burns ${imageClassName}`}
         />
+
         <div className="absolute inset-0" style={{ background: overlay }} />
       </div>
 

@@ -254,6 +254,17 @@
     animation: lux-ken-burns 18s ease-in-out infinite alternate;
   }
 
+  /* Homepage hero framing — keeps Amber Fort and both elephants in view */
+  .lux-hero-amber {
+    object-position: 65% center;
+  }
+  @media (min-width: 768px) {
+    .lux-hero-amber { object-position: 60% center; }
+  }
+  @media (min-width: 1024px) {
+    .lux-hero-amber { object-position: 62% center; }
+  }
+
   @keyframes lux-particle {
     0%   { transform: translateY(0) translateX(0); opacity: 0; }
     10%  { opacity: 0.6; }

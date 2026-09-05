@@ -1,5 +1,6 @@
 import { ArrowRight } from "lucide-react";
 import heroPalace from "@/assets/hero-palace.jpg";
+import heroAmberFort from "@/assets/amber-fort-jaipur-elephant-experience.webp";
 import culturalDance from "@/assets/cultural-dance.jpg";
 import TourCard from "@/components/TourCard";
 import SEO from "@/components/SEO";
@@ -28,7 +29,9 @@ const Index = () => {
       />
 
       <LuxHero
-        image={heroPalace}
+        image={heroAmberFort}
+        imageAlt="Amber Fort Jaipur with traditional elephant experience, Rajasthan"
+        imageClassName="lux-hero-amber"
         eyebrow="Jaipur-Based Rajasthan Travel Company"
         title={<>Private <span className="text-[#C9A84C]">Rajasthan</span> Tours, Planned in Jaipur</>}
         subtitle="A family-run Rajasthan travel company with 20+ years of experience. Private tours, chauffeur services and customized itineraries for travelers from India and around the world."
