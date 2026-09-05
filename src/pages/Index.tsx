@@ -29,7 +29,9 @@ const Index = () => {
       />
 
       <LuxHero
-        image={heroPalace}
+        image={heroAmberFort.url}
+        imageAlt="Amber Fort Jaipur with traditional elephant experience, Rajasthan"
+        imageClassName="lux-hero-amber"
         eyebrow="Jaipur-Based Rajasthan Travel Company"
         title={<>Private <span className="text-[#C9A84C]">Rajasthan</span> Tours, Planned in Jaipur</>}
         subtitle="A family-run Rajasthan travel company with 20+ years of experience. Private tours, chauffeur services and customized itineraries for travelers from India and around the world."
