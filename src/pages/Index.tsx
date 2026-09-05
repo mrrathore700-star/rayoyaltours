@@ -1,6 +1,6 @@
 import { ArrowRight } from "lucide-react";
 import heroPalace from "@/assets/hero-palace.jpg";
-import heroAmberFort from "@/assets/amber-fort-jaipur-elephant-experience.webp.asset.json";
+import heroAmberFort from "@/assets/amber-fort-jaipur-elephant-experience.webp";
 import culturalDance from "@/assets/cultural-dance.jpg";
 import TourCard from "@/components/TourCard";
 import SEO from "@/components/SEO";
