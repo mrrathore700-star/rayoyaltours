@@ -29,7 +29,7 @@ const Index = () => {
       />
 
       <LuxHero
-        image={heroAmberFort.url}
+        image={heroAmberFort}
         imageAlt="Amber Fort Jaipur with traditional elephant experience, Rajasthan"
         imageClassName="lux-hero-amber"
         eyebrow="Jaipur-Based Rajasthan Travel Company"
