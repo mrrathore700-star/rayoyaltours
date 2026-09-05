@@ -12,6 +12,10 @@ interface LuxHeroProps {
   height?: "tall" | "regular";
   align?: "center" | "left";
   overlay?: string;
+  /** Accessible description for the background photo (empty = decorative). */
+  imageAlt?: string;
+  /** Extra classes for the background image, e.g. responsive object-position. */
+  imageClassName?: string;
 }
 
 const LuxHero = ({
