@@ -5,6 +5,10 @@ import desertSafari from "@/assets/desert-safari.jpg";
 import udaipurLake from "@/assets/udaipur-lake.jpg";
 import ranthamboreTiger from "@/assets/ranthambore-tiger.jpg";
 import heroPalace from "@/assets/hero-palace.jpg";
+import grandRajasthanHero from "@/assets/grand-rajasthan-taj-mahal-hero.webp";
+import goldenTriangleRoyalHero from "@/assets/golden-triangle-royal-city-palace-hero.webp";
+import rajasthanRoyalHero from "@/assets/rajasthan-royal-umaid-bhawan-hero.webp";
+import goldenTriangleHero from "@/assets/golden-triangle-taj-mahal-hero.webp";
 
 
 export interface TourSummary {
@@ -19,7 +23,7 @@ export interface TourSummary {
 
 export const tours: TourSummary[] = [
   {
-    image: heroPalace,
+    image: grandRajasthanHero,
     title: "Grand Rajasthan Heritage Tour with Taj Mahal",
     duration: "12 Nights / 13 Days",
     highlights: ["Delhi", "Jaisalmer", "Udaipur", "Jaipur", "Agra"],
@@ -28,7 +32,7 @@ export const tours: TourSummary[] = [
     badge: "Best Seller",
   },
   {
-    image: goldenTriangle,
+    image: goldenTriangleRoyalHero,
     title: "Golden Triangle & Royal Rajasthan Tour",
     duration: "9 Nights / 10 Days",
     highlights: ["Delhi", "Agra", "Jaipur", "Pushkar", "Jodhpur", "Udaipur"],
@@ -37,7 +41,7 @@ export const tours: TourSummary[] = [
     badge: "Most Popular",
   },
   {
-    image: royalTour,
+    image: rajasthanRoyalHero,
     title: "Rajasthan Royal Heritage Tour",
     duration: "6 Days / 5 Nights",
     highlights: ["Jaipur", "Jodhpur", "Jaisalmer"],
@@ -46,7 +50,7 @@ export const tours: TourSummary[] = [
   },
 
   {
-    image: goldenTriangle,
+    image: goldenTriangleHero,
     title: "Golden Triangle Tour",
     duration: "6 Days / 5 Nights",
     highlights: ["Delhi", "Agra", "Jaipur"],
