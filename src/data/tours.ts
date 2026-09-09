@@ -23,7 +23,7 @@ export interface TourSummary {
 
 export const tours: TourSummary[] = [
   {
-    image: grandRajasthanHero.url,
+    image: grandRajasthanHero,
     title: "Grand Rajasthan Heritage Tour with Taj Mahal",
     duration: "12 Nights / 13 Days",
     highlights: ["Delhi", "Jaisalmer", "Udaipur", "Jaipur", "Agra"],
@@ -32,7 +32,7 @@ export const tours: TourSummary[] = [
     badge: "Best Seller",
   },
   {
-    image: goldenTriangleRoyalHero.url,
+    image: goldenTriangleRoyalHero,
     title: "Golden Triangle & Royal Rajasthan Tour",
     duration: "9 Nights / 10 Days",
     highlights: ["Delhi", "Agra", "Jaipur", "Pushkar", "Jodhpur", "Udaipur"],
@@ -41,7 +41,7 @@ export const tours: TourSummary[] = [
     badge: "Most Popular",
   },
   {
-    image: rajasthanRoyalHero.url,
+    image: rajasthanRoyalHero,
     title: "Rajasthan Royal Heritage Tour",
     duration: "6 Days / 5 Nights",
     highlights: ["Jaipur", "Jodhpur", "Jaisalmer"],
@@ -50,7 +50,7 @@ export const tours: TourSummary[] = [
   },
 
   {
-    image: goldenTriangleHero.url,
+    image: goldenTriangleHero,
     title: "Golden Triangle Tour",
     duration: "6 Days / 5 Nights",
     highlights: ["Delhi", "Agra", "Jaipur"],
