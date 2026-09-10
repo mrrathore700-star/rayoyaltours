@@ -1,9 +1,10 @@
 import amberFort from "@/assets/amber-fort.jpg";
 import goldenTriangle from "@/assets/golden-triangle.jpg";
 import royalTour from "@/assets/royal-tour.jpg";
-import desertSafari from "@/assets/desert-safari.jpg";
-import udaipurLake from "@/assets/udaipur-lake.jpg";
-import ranthamboreTiger from "@/assets/ranthambore-tiger.jpg";
+import desertSafari from "@/assets/desert-safari-jaisalmer-hero.webp";
+import udaipurLake from "@/assets/udaipur-lake-palace-hero.webp";
+import ranthamboreTiger from "@/assets/golden-triangle-ranthambore-hero.webp";
+import jaipurHeritage from "@/assets/jaipur-heritage-amber-fort-hero.webp";
 import heroPalace from "@/assets/hero-palace.jpg";
 import grandRajasthanHero from "@/assets/grand-rajasthan-taj-mahal-hero.webp";
 import goldenTriangleRoyalHero from "@/assets/golden-triangle-royal-city-palace-hero.webp";
@@ -66,7 +67,7 @@ export const tours: TourSummary[] = [
     slug: "golden-triangle-ranthambore",
   },
   {
-    image: amberFort,
+    image: jaipurHeritage,
     title: "Jaipur Heritage Tour",
     duration: "2 Days / 1 Night",
     highlights: ["Jaipur"],
