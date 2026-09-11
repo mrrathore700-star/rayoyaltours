@@ -1,7 +1,7 @@
-import amberFort from "@/assets/amber-fort.jpg";
-import pushkarLake from "@/assets/pushkar-lake.jpg";
-import pannaMeenaKund from "@/assets/panna-meena-kund.jpg";
-import ranthamboreTiger from "@/assets/ranthambore-tiger.jpg";
+import amberFort from "@/assets/jaipur-sightseeing-hawa-mahal-hero.webp";
+import pushkarLake from "@/assets/pushkar-lake-ghats-hero.webp";
+import pannaMeenaKund from "@/assets/abhaneri-chand-baori-hero.webp";
+import ranthamboreTiger from "@/assets/ranthambore-tiger-safari-hero.webp";
 
 export interface DayTourPlace {
   name: string;
