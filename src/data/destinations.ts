@@ -1,9 +1,9 @@
-import hawaMahal from "@/assets/hawa-mahal.jpg";
-import udaipurLake from "@/assets/udaipur-lake.jpg";
-import jodhpurFort from "@/assets/jodhpur-fort.jpg";
-import jaisalmerFort from "@/assets/jaisalmer-fort.jpg";
-import ranthamboreTiger from "@/assets/ranthambore-tiger.jpg";
-import pushkarLake from "@/assets/pushkar-lake.jpg";
+import jaipurDestination from "@/assets/jaipur-destination.webp.jpg.asset.json";
+import udaipurDestination from "@/assets/udaipur-destination.webp.jpg.asset.json";
+import jodhpurDestination from "@/assets/jodhpur-destination.webp.jpg.asset.json";
+import jaisalmerDestination from "@/assets/jaisalmer-destination.webp.jpg.asset.json";
+import ranthamboreDestination from "@/assets/ranthambore-destination.webp.jpg.asset.json";
+import pushkarDestination from "@/assets/pushkar-destination.webp.jpg.asset.json";
 
 export interface DestinationFAQ {
   q: string;
@@ -48,7 +48,7 @@ export const destinations: Destination[] = [
     metaTitle: "Jaipur Travel Guide — Luxury Tours, Palaces & Heritage | Heritage Jaipur Travels",
     metaDescription:
       "Plan a luxury Jaipur journey with our complete travel guide — top attractions, royal palaces, heritage stays, best time to visit and sample itineraries for international travelers.",
-    heroImage: hawaMahal,
+    heroImage: jaipurDestination.url,
     heroEyebrow: "Destination Guide",
     heroTitle: "Jaipur — The Pink City of Royal Rajasthan",
     heroSubtitle:
@@ -108,7 +108,7 @@ export const destinations: Destination[] = [
     metaTitle: "Udaipur Travel Guide — Lakes, Palaces & Luxury Tours | Heritage Jaipur Travels",
     metaDescription:
       "A complete luxury travel guide to Udaipur — top attractions, lake palaces, sunset boat rides, best time to visit and sample itineraries for international travellers.",
-    heroImage: udaipurLake,
+    heroImage: udaipurDestination.url,
     heroEyebrow: "Destination Guide",
     heroTitle: "Udaipur — The Romantic City of Lakes",
     heroSubtitle:
@@ -168,7 +168,7 @@ export const destinations: Destination[] = [
     metaTitle: "Jodhpur Travel Guide — Mehrangarh Fort & Blue City Tours | Heritage Jaipur Travels",
     metaDescription:
       "Discover Jodhpur with our luxury travel guide — Mehrangarh Fort, the indigo old town, palace stays, best time to visit and sample itineraries for international travellers.",
-    heroImage: jodhpurFort,
+    heroImage: jodhpurDestination.url,
     heroEyebrow: "Destination Guide",
     heroTitle: "Jodhpur — The Magnificent Blue City",
     heroSubtitle:
@@ -227,7 +227,7 @@ export const destinations: Destination[] = [
     metaTitle: "Jaisalmer Travel Guide — Desert Safaris & Golden Fort | Heritage Jaipur Travels",
     metaDescription:
       "Plan a luxury Jaisalmer journey — golden sandstone fort, Thar desert safaris, luxury desert camps, best time to visit and complete itineraries for international travellers.",
-    heroImage: jaisalmerFort,
+    heroImage: jaisalmerDestination.url,
     heroEyebrow: "Destination Guide",
     heroTitle: "Jaisalmer — The Golden City of the Thar",
     heroSubtitle:
@@ -287,7 +287,7 @@ export const destinations: Destination[] = [
     metaTitle: "Ranthambore Travel Guide — Luxury Tiger Safaris | Heritage Jaipur Travels",
     metaDescription:
       "A complete luxury travel guide to Ranthambore National Park — tiger safaris, luxury jungle lodges, best time to visit and sample itineraries for international travellers.",
-    heroImage: ranthamboreTiger,
+    heroImage: ranthamboreDestination.url,
     heroEyebrow: "Destination Guide",
     heroTitle: "Ranthambore — Where Tigers Roam Royal Ruins",
     heroSubtitle:
@@ -347,7 +347,7 @@ export const destinations: Destination[] = [
     metaTitle: "Pushkar Travel Guide — Sacred Lake, Camel Fair & Tours | Heritage Jaipur Travels",
     metaDescription:
       "Discover Pushkar with our luxury travel guide — sacred ghats, Brahma temple, the famous camel fair, best time to visit and sample itineraries for international travellers.",
-    heroImage: pushkarLake,
+    heroImage: pushkarDestination.url,
     heroEyebrow: "Destination Guide",
     heroTitle: "Pushkar — The Sacred Soul of Rajasthan",
     heroSubtitle:
