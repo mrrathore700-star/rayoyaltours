@@ -2,7 +2,7 @@ import jaipurDestination from "@/assets/jaipur.webp.jpg";
 import udaipurDestination from "@/assets/udaipur.webp.jpg";
 import jodhpurDestination from "@/assets/jodhpur.webp.jpg";
 import jaisalmerDestination from "@/assets/jaisalmer.webp.jpg";
-import ranthamboreDestination from "@/assets/ranthambore.webp.jpg";
+import ranthamboreDestination from "@/assets/ranthambore-tiger.webp.jpg";
 import pushkarDestination from "@/assets/pushkar.webp.jpg";
 
 export interface DestinationFAQ {
