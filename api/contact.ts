@@ -1,5 +1,6 @@
 import type { VercelRequest, VercelResponse } from "@vercel/node";
 import nodemailer from "nodemailer";
+import { z } from "zod";
 
 const RECIPIENT_EMAIL = "info@heritagejaipurtravels.com";
 const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
@@ -10,7 +11,25 @@ type InquiryBody = {
   phone?: unknown;
   message?: unknown;
   website?: unknown;
+  travelers?: unknown;
+  date?: unknown;
+  tourName?: unknown;
+  tourSlug?: unknown;
+  tourUrl?: unknown;
 };
+
+const inquirySchema = z.object({
+  name: z.string().trim().min(1).max(100),
+  email: z.string().trim().max(255).refine((value) => !value || EMAIL_PATTERN.test(value)),
+  phone: z.string().trim().min(1).max(30).regex(/^[+0-9().\-\s]+$/),
+  message: z.string().trim().min(5).max(3000),
+  website: z.string().max(200).optional(),
+  travelers: z.number().int().min(1).max(50).optional(),
+  date: z.string().max(40).optional(),
+  tourName: z.string().trim().max(200).optional(),
+  tourSlug: z.string().trim().max(120).regex(/^[a-z0-9-]+$/).optional(),
+  tourUrl: z.string().url().max(500).optional(),
+});
 
 const cleanEnv = (value: string | undefined) => (value ?? "").trim().replace(/^['"]|['"]$/g, "");
 const cleanText = (value: unknown) => String(value ?? "").trim();
@@ -54,17 +73,33 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     const phone = cleanText(body.phone);
     const message = cleanText(body.message);
     const website = cleanText(body.website);
+    const parsed = inquirySchema.safeParse({
+      name,
+      email,
+      phone,
+      message,
+      website,
+      travelers: typeof body.travelers === "number" ? body.travelers : undefined,
+      date: cleanText(body.date) || undefined,
+      tourName: cleanText(body.tourName) || undefined,
+      tourSlug: cleanText(body.tourSlug) || undefined,
+      tourUrl: cleanText(body.tourUrl) || undefined,
+    });
 
     if (website) {
       console.warn("[contact] Honeypot submission ignored");
       return res.status(200).json({ success: true });
     }
 
+    if (!parsed.success) {
+      return res.status(400).json({ success: false, error: "Please check your enquiry details and try again." });
+    }
+
     if (!name || name.length > 100) {
       return res.status(500).json({ success: false, error: "Invalid inquiry name." });
     }
 
-    if (!EMAIL_PATTERN.test(email) || email.length > 255) {
+    if (email && (!EMAIL_PATTERN.test(email) || email.length > 255)) {
       return res.status(500).json({ success: false, error: "Invalid inquiry email." });
     }
 
@@ -105,6 +140,11 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       `Name: ${name}`,
       `Email: ${email}`,
       `Phone: ${phone || "Not provided"}`,
+      `Tour: ${parsed.data.tourName || "General enquiry"}`,
+      `Tour Slug: ${parsed.data.tourSlug || "Not provided"}`,
+      `Tour URL: ${parsed.data.tourUrl || "Not provided"}`,
+      `Number of Travellers: ${parsed.data.travelers ?? "Not provided"}`,
+      `Preferred Travel Date: ${parsed.data.date || "Not provided"}`,
       `Submitted: ${submittedAt}`,
       "",
       "Message:",
@@ -121,6 +161,10 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
           <p><strong>Name:</strong> ${escapeHtml(name)}</p>
           <p><strong>Email:</strong> <a href="mailto:${escapeHtml(email)}">${escapeHtml(email)}</a></p>
           <p><strong>Phone:</strong> ${escapeHtml(phone || "Not provided")}</p>
+          <p><strong>Tour:</strong> ${escapeHtml(parsed.data.tourName || "General enquiry")}</p>
+          <p><strong>Tour URL:</strong> ${escapeHtml(parsed.data.tourUrl || "Not provided")}</p>
+          <p><strong>Travellers:</strong> ${escapeHtml(String(parsed.data.travelers ?? "Not provided"))}</p>
+          <p><strong>Preferred date:</strong> ${escapeHtml(parsed.data.date || "Not provided")}</p>
           <p><strong>Submitted:</strong> ${escapeHtml(submittedAt)}</p>
           <hr style="border:0;border-top:1px solid rgba(201,168,76,.35);margin:20px 0" />
           <p style="white-space:pre-wrap;margin:0">${escapeHtml(message)}</p>
@@ -148,7 +192,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       const info = await transporter.sendMail({
         from: `Heritage Jaipur Travels <${smtpUser}>`,
         to: RECIPIENT_EMAIL,
-        replyTo: email,
+        ...(email ? { replyTo: email } : {}),
         subject: "New Inquiry - Heritage Jaipur Travels",
         text,
         html,

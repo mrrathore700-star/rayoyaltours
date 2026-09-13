@@ -16,6 +16,7 @@ interface TourEnquiryFormProps extends TourEnquiryJourney {
   className?: string;
   showHeading?: boolean;
   onSuccess?: () => void;
+  idPrefix?: string;
 }
 
 const enquirySchema = z.object({
@@ -56,6 +57,7 @@ const TourEnquiryForm = ({
   className = "",
   showHeading = true,
   onSuccess,
+  idPrefix = "tour-enquiry",
 }: TourEnquiryFormProps) => {
   const { toast } = useToast();
   const [form, setForm] = useState<EnquiryForm>(initialForm);
@@ -181,22 +183,22 @@ const TourEnquiryForm = ({
       )}
 
       <div>
-        <label htmlFor="tour-enquiry-name" className="mb-1 block text-sm font-semibold text-foreground">Full Name *</label>
-        <input id="tour-enquiry-name" type="text" autoComplete="name" maxLength={100} className={inputClass} value={form.name} onChange={(event) => updateField("name", event.target.value)} aria-invalid={Boolean(errors.name)} />
+        <label htmlFor={`${idPrefix}-name`} className="mb-1 block text-sm font-semibold text-foreground">Full Name *</label>
+        <input id={`${idPrefix}-name`} type="text" autoComplete="name" maxLength={100} className={inputClass} value={form.name} onChange={(event) => updateField("name", event.target.value)} aria-invalid={Boolean(errors.name)} />
         {fieldError("name")}
       </div>
 
       <div>
-        <label htmlFor="tour-enquiry-email" className="mb-1 block text-sm font-semibold text-foreground">Email</label>
-        <input id="tour-enquiry-email" type="email" autoComplete="email" maxLength={255} className={inputClass} value={form.email} onChange={(event) => updateField("email", event.target.value)} aria-invalid={Boolean(errors.email)} />
+        <label htmlFor={`${idPrefix}-email`} className="mb-1 block text-sm font-semibold text-foreground">Email</label>
+        <input id={`${idPrefix}-email`} type="email" autoComplete="email" maxLength={255} className={inputClass} value={form.email} onChange={(event) => updateField("email", event.target.value)} aria-invalid={Boolean(errors.email)} />
         {fieldError("email")}
       </div>
 
       <div>
-        <label htmlFor="tour-enquiry-phone" className="mb-1 block text-sm font-semibold text-foreground">Phone / WhatsApp *</label>
+        <label htmlFor={`${idPrefix}-phone`} className="mb-1 block text-sm font-semibold text-foreground">Phone / WhatsApp *</label>
         <div className="rounded-md border border-border bg-background px-3 py-2.5 focus-within:ring-2 focus-within:ring-primary">
           <PhoneInput
-            id="tour-enquiry-phone"
+            id={`${idPrefix}-phone`}
             international
             defaultCountry="IN"
             value={form.phone || undefined}
@@ -210,20 +212,20 @@ const TourEnquiryForm = ({
       </div>
 
       <div>
-        <label htmlFor="tour-enquiry-travelers" className="mb-1 block text-sm font-semibold text-foreground">Number of Travellers *</label>
-        <input id="tour-enquiry-travelers" type="number" min={1} max={50} inputMode="numeric" className={inputClass} value={form.travelers} onChange={(event) => updateField("travelers", event.target.value)} aria-invalid={Boolean(errors.travelers)} />
+        <label htmlFor={`${idPrefix}-travelers`} className="mb-1 block text-sm font-semibold text-foreground">Number of Travellers *</label>
+        <input id={`${idPrefix}-travelers`} type="number" min={1} max={50} inputMode="numeric" className={inputClass} value={form.travelers} onChange={(event) => updateField("travelers", event.target.value)} aria-invalid={Boolean(errors.travelers)} />
         {fieldError("travelers")}
       </div>
 
       <div>
-        <label htmlFor="tour-enquiry-date" className="mb-1 block text-sm font-semibold text-foreground">Preferred Travel Date *</label>
-        <input id="tour-enquiry-date" type="date" min={new Date().toISOString().split("T")[0]} className={inputClass} value={form.date} onChange={(event) => updateField("date", event.target.value)} aria-invalid={Boolean(errors.date)} />
+        <label htmlFor={`${idPrefix}-date`} className="mb-1 block text-sm font-semibold text-foreground">Preferred Travel Date *</label>
+        <input id={`${idPrefix}-date`} type="date" min={new Date().toISOString().split("T")[0]} className={inputClass} value={form.date} onChange={(event) => updateField("date", event.target.value)} aria-invalid={Boolean(errors.date)} />
         {fieldError("date")}
       </div>
 
       <div>
-        <label htmlFor="tour-enquiry-message" className="mb-1 block text-sm font-semibold text-foreground">Special Requests</label>
-        <textarea id="tour-enquiry-message" rows={3} maxLength={1000} className={`${inputClass} resize-none`} value={form.message} onChange={(event) => updateField("message", event.target.value)} />
+        <label htmlFor={`${idPrefix}-message`} className="mb-1 block text-sm font-semibold text-foreground">Special Requests</label>
+        <textarea id={`${idPrefix}-message`} rows={3} maxLength={1000} className={`${inputClass} resize-none`} value={form.message} onChange={(event) => updateField("message", event.target.value)} />
         {fieldError("message")}
       </div>
 
