@@ -1,6 +1,6 @@
 import { useParams, Link } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
-import { ArrowLeft, CheckCircle, XCircle, MapPin, Calendar, Users, Star, Plane, Hotel, Send } from "lucide-react";
+import { ArrowLeft, CheckCircle, XCircle, MapPin, Calendar, Users, Star, Plane, Hotel } from "lucide-react";
 import { tourDetails } from "@/data/tourDetails";
 import { tours } from "@/data/tours";
 import LuxTourEnhancements from "@/components/luxury/LuxTourEnhancements";
@@ -8,17 +8,12 @@ import LuxGoogleReviews from "@/components/luxury/LuxGoogleReviews";
 import LuxCtaBand from "@/components/luxury/LuxCtaBand";
 import { LuxLinkBtn, LuxAnchorBtn } from "@/components/luxury/LuxButton";
 import SectionHeading from "@/components/SectionHeading";
-import { useState } from "react";
-import { useToast } from "@/hooks/use-toast";
 import SmartImage from "@/components/media/SmartImage";
+import TourEnquiryForm from "@/components/luxury/TourEnquiryForm";
 
 const TourDetail = () => {
   const { slug } = useParams<{ slug: string }>();
   const tour = slug ? tourDetails[slug] : null;
-  const { toast } = useToast();
-
-  const [form, setForm] = useState({ name: "", email: "", phone: "", travelers: "2", date: "", message: "" });
-  const [submitting, setSubmitting] = useState(false);
 
   if (!tour) {
     return (
@@ -30,21 +25,6 @@ const TourDetail = () => {
       </main>
     );
   }
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!form.name.trim() || !form.phone.trim()) {
-      toast({ title: "Please fill required fields", variant: "destructive" });
-      return;
-    }
-    setSubmitting(true);
-    const whatsappMsg = encodeURIComponent(
-      `Hello, I would like to enquire about the ${tour.title}.\n\nName: ${form.name}\nEmail: ${form.email}\nPhone: ${form.phone}\nTravellers: ${form.travelers}\nPreferred Date: ${form.date}\nMessage: ${form.message}`
-    );
-    window.open(`https://wa.me/919887688843?text=${whatsappMsg}`, "_blank");
-    toast({ title: "Redirecting to WhatsApp!", description: "Your specialist will be in touch shortly." });
-    setSubmitting(false);
-  };
 
   return (
     <>
@@ -81,7 +61,7 @@ const TourDetail = () => {
         })}</script>
       </Helmet>
 
-      <main className="lux-cream-bg">
+      <main className="lux-cream-bg pb-24 md:pb-0">
         {/* Cinematic Hero */}
         <section className="relative min-h-[75vh] md:min-h-[80vh] flex items-end overflow-hidden lux-black-bg">
           <div className="absolute inset-0">
@@ -185,54 +165,69 @@ const TourDetail = () => {
 
         {/* Day-by-Day Itinerary */}
         <section className="py-16 bg-background">
-          <div className="container mx-auto px-4 max-w-4xl">
-            <SectionHeading title="Day-by-Day Itinerary" />
-            <div className="space-y-6">
-              {tour.itinerary.map((day) => (
-                <div key={day.day} className="bg-card rounded-lg overflow-hidden heritage-shadow">
-                  <div className="heritage-gradient text-primary-foreground px-6 py-3 flex items-center gap-3">
-                    <span className="bg-secondary text-secondary-foreground w-10 h-10 rounded-full flex items-center justify-center font-bold text-sm">
-                      D{day.day}
-                    </span>
-                    <h3 className="font-display font-bold text-lg">{day.title}</h3>
-                  </div>
-                  <div className="p-6">
-                    <ul className="space-y-2">
-                      {day.activities.map((act, i) => (
-                        <li key={i} className="flex items-start gap-2 text-sm text-muted-foreground">
-                          <CheckCircle className="h-4 w-4 text-primary shrink-0 mt-0.5" /> {act}
-                        </li>
-                      ))}
-                    </ul>
-                    {day.note && (
-                      <div className="mt-5 rounded-lg border border-[#C9A84C]/40 bg-[#FFF8F0] p-5">
-                        <p className="font-display text-sm tracking-[0.16em] uppercase text-[#7A5C1E] mb-3">
-                          {day.note.title}
-                        </p>
-                        <div className="grid sm:grid-cols-2 gap-4">
-                          {day.note.options.map((opt, oi) => (
-                            <div key={oi} className="bg-card rounded-md p-4 border border-border">
-                              <p className="font-semibold text-foreground mb-2">{opt.label}</p>
-                              <ul className="space-y-1">
-                                {opt.details.map((d, di) => (
-                                  <li key={di} className="text-sm text-muted-foreground flex items-start gap-2">
-                                    <CheckCircle className="h-4 w-4 text-[#C9A84C] shrink-0 mt-0.5" /> {d}
-                                  </li>
-                                ))}
-                              </ul>
-                            </div>
+          <div className="container mx-auto px-4 max-w-6xl">
+            <div className="grid items-start gap-8 md:grid-cols-[minmax(0,1fr)_320px] lg:grid-cols-[minmax(0,1fr)_360px]">
+              <div>
+                <SectionHeading title="Day-by-Day Itinerary" />
+                <div className="space-y-6">
+                  {tour.itinerary.map((day) => (
+                    <div key={day.day} className="bg-card rounded-lg overflow-hidden heritage-shadow">
+                      <div className="heritage-gradient text-primary-foreground px-6 py-3 flex items-center gap-3">
+                        <span className="bg-secondary text-secondary-foreground w-10 h-10 rounded-full flex items-center justify-center font-bold text-sm">
+                          D{day.day}
+                        </span>
+                        <h3 className="font-display font-bold text-lg">{day.title}</h3>
+                      </div>
+                      <div className="p-6">
+                        <ul className="space-y-2">
+                          {day.activities.map((act, i) => (
+                            <li key={i} className="flex items-start gap-2 text-sm text-muted-foreground">
+                              <CheckCircle className="h-4 w-4 text-primary shrink-0 mt-0.5" /> {act}
+                            </li>
                           ))}
-                        </div>
-                        {day.note.footer && (
-                          <p className="mt-3 text-xs italic text-muted-foreground">{day.note.footer}</p>
+                        </ul>
+                        {day.note && (
+                          <div className="mt-5 rounded-lg border border-[#C9A84C]/40 bg-[#FFF8F0] p-5">
+                            <p className="font-display text-sm tracking-[0.16em] uppercase text-[#7A5C1E] mb-3">
+                              {day.note.title}
+                            </p>
+                            <div className="grid sm:grid-cols-2 gap-4">
+                              {day.note.options.map((opt, oi) => (
+                                <div key={oi} className="bg-card rounded-md p-4 border border-border">
+                                  <p className="font-semibold text-foreground mb-2">{opt.label}</p>
+                                  <ul className="space-y-1">
+                                    {opt.details.map((d, di) => (
+                                      <li key={di} className="text-sm text-muted-foreground flex items-start gap-2">
+                                        <CheckCircle className="h-4 w-4 text-[#C9A84C] shrink-0 mt-0.5" /> {d}
+                                      </li>
+                                    ))}
+                                  </ul>
+                                </div>
+                              ))}
+                            </div>
+                            {day.note.footer && (
+                              <p className="mt-3 text-xs italic text-muted-foreground">{day.note.footer}</p>
+                            )}
+                          </div>
+                        )}
+                        {day.overnight && day.overnight !== "—" && (
+                          <p className="mt-4 text-sm font-semibold text-foreground flex items-center gap-2">
+                            <Hotel className="h-4 w-4 text-secondary" /> Overnight stay in {day.overnight}
+                          </p>
                         )}
                       </div>
-                    )}
-                    {day.overnight && day.overnight !== "—" && (
-                      <p className="mt-4 text-sm font-semibold text-foreground flex items-center gap-2">
-                        <Hotel className="h-4 w-4 text-secondary" /> Overnight stay in {day.overnight}
-                      </p>
-                    )}
+                    </div>
+                  ))}
+                </div>
+              </div>
+              <aside className="hidden md:block md:sticky md:top-[120px]">
+                <TourEnquiryForm
+                  tourName={tour.title}
+                  tourSlug={tour.slug}
+                  tourUrl={`https://www.heritagejaipurtravels.com/packages/${tour.slug}`}
+                  idPrefix="tour-itinerary-enquiry"
+                />
+              </aside>
                   </div>
                 </div>
               ))}
@@ -340,82 +335,12 @@ const TourDetail = () => {
         {/* Booking Form */}
         <section className="py-16 bg-background" id="book">
           <div className="container mx-auto px-4 max-w-2xl">
-            <SectionHeading title="Enquire About This Journey" subtitle="Share your details and our specialist will respond shortly" />
-            <form onSubmit={handleSubmit} className="bg-card rounded-lg p-8 heritage-shadow space-y-5">
-              <div className="grid sm:grid-cols-2 gap-4">
-                <div>
-                  <label className="block text-sm font-semibold text-foreground mb-1">Name *</label>
-                  <input
-                    type="text"
-                    required
-                    maxLength={100}
-                    className="w-full rounded-md border border-border bg-background px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-primary"
-                    value={form.name}
-                    onChange={(e) => setForm({ ...form, name: e.target.value })}
-                  />
-                </div>
-                <div>
-                  <label className="block text-sm font-semibold text-foreground mb-1">Email</label>
-                  <input
-                    type="email"
-                    maxLength={255}
-                    className="w-full rounded-md border border-border bg-background px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-primary"
-                    value={form.email}
-                    onChange={(e) => setForm({ ...form, email: e.target.value })}
-                  />
-                </div>
-              </div>
-              <div className="grid sm:grid-cols-2 gap-4">
-                <div>
-                  <label className="block text-sm font-semibold text-foreground mb-1">Phone / WhatsApp *</label>
-                  <input
-                    type="tel"
-                    required
-                    maxLength={20}
-                    className="w-full rounded-md border border-border bg-background px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-primary"
-                    value={form.phone}
-                    onChange={(e) => setForm({ ...form, phone: e.target.value })}
-                  />
-                </div>
-                <div>
-                  <label className="block text-sm font-semibold text-foreground mb-1">Number of Travellers</label>
-                  <input
-                    type="number"
-                    min={1}
-                    max={50}
-                    className="w-full rounded-md border border-border bg-background px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-primary"
-                    value={form.travelers}
-                    onChange={(e) => setForm({ ...form, travelers: e.target.value })}
-                  />
-                </div>
-              </div>
-              <div>
-                <label className="block text-sm font-semibold text-foreground mb-1">Preferred Travel Date</label>
-                <input
-                  type="date"
-                  className="w-full rounded-md border border-border bg-background px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-primary"
-                  value={form.date}
-                  onChange={(e) => setForm({ ...form, date: e.target.value })}
-                />
-              </div>
-              <div>
-                <label className="block text-sm font-semibold text-foreground mb-1">Special Requests</label>
-                <textarea
-                  rows={3}
-                  maxLength={1000}
-                  className="w-full rounded-md border border-border bg-background px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-primary resize-none"
-                  value={form.message}
-                  onChange={(e) => setForm({ ...form, message: e.target.value })}
-                />
-              </div>
-              <button
-                type="submit"
-                disabled={submitting}
-                className="w-full inline-flex items-center justify-center gap-2 py-3.5 rounded-full lux-btn-gold font-display tracking-[0.18em] uppercase text-xs md:text-sm disabled:opacity-60"
-              >
-                <Send className="h-4 w-4" /> Send Enquiry
-              </button>
-            </form>
+            <TourEnquiryForm
+              tourName={tour.title}
+              tourSlug={tour.slug}
+              tourUrl={`https://www.heritagejaipurtravels.com/packages/${tour.slug}`}
+              idPrefix="tour-page-enquiry"
+            />
           </div>
         </section>
 
