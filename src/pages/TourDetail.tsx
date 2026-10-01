@@ -228,9 +228,6 @@ const TourDetail = () => {
                   idPrefix="tour-itinerary-enquiry"
                 />
               </aside>
-                  </div>
-                </div>
-              ))}
             </div>
           </div>
         </section>
