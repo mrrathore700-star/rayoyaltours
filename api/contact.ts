@@ -21,7 +21,7 @@ type InquiryBody = {
 const inquirySchema = z.object({
   name: z.string().trim().min(1).max(100),
   email: z.string().trim().max(255).refine((value) => !value || EMAIL_PATTERN.test(value)),
-  phone: z.string().trim().min(1).max(30).regex(/^[+0-9().\-\s]+$/),
+  phone: z.string().trim().max(30).regex(/^[+0-9().\-\s]+$/),
   message: z.string().trim().min(5).max(3000),
   website: z.string().max(200).optional(),
   travelers: z.number().int().min(1).max(50).optional(),
