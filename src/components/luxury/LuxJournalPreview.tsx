@@ -35,7 +35,7 @@ const LuxJournalPreview = () => {
                 <SmartImage
                   fallback={post.image}
                   alt={post.title}
-                  className="absolute inset-0 w-full h-full object-cover transition-transform duration-[1400ms] ease-out group-hover:scale-110"
+                  className="absolute inset-0 w-full h-full object-cover transition-transform [transition-duration:1400ms] ease-out group-hover:scale-110"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#1a0709]/40 via-transparent to-transparent" />
                 <span className="absolute top-4 left-4 text-[10px] tracking-[0.3em] uppercase text-[#C9A84C] bg-[#1a0709]/70 backdrop-blur-sm px-3 py-1.5 border border-[#C9A84C]/40">

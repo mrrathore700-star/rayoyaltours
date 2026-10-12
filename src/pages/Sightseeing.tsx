@@ -58,7 +58,7 @@ const Sightseeing = () => (
                   <SmartImage
                     fallback={spot.image}
                     alt={spot.title}
-                    className="w-full aspect-[4/5] object-cover transition-transform duration-[1200ms] group-hover:scale-105"
+                    className="w-full aspect-[4/5] object-cover transition-transform [transition-duration:1200ms] group-hover:scale-105"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
                 </div>

@@ -128,7 +128,7 @@ const BrandMark = ({ onNavigate }: { onNavigate: (to: string) => (e: React.Mouse
       src={icon}
       alt="Heritage Jaipur Travels"
       loading="eager"
-      fetchPriority="high"
+      {...({ fetchpriority: "high" } as Record<string, string>)}
       decoding="async"
       className="lux-brand-icon block"
     />
