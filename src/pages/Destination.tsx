@@ -76,7 +76,7 @@ const Destination = () => {
             <LuxLinkBtn to={`/enquire?destination=${encodeURIComponent(dest.name)}`} variant="gold">
               Plan My {dest.name} Tour
             </LuxLinkBtn>
-            <LuxAnchorBtn href="https://wa.me/919461069858" variant="outline" external>
+            <LuxAnchorBtn href="https://wa.me/919887688843" variant="outline" external>
               WhatsApp Us
             </LuxAnchorBtn>
           </>
@@ -447,7 +447,7 @@ const Destination = () => {
             <LuxLinkBtn to={`/enquire?destination=${encodeURIComponent(dest.name)}`} variant="gold">
               Plan My {dest.name} Tour
             </LuxLinkBtn>
-            <LuxAnchorBtn href="https://wa.me/919461069858" variant="outline" external>
+            <LuxAnchorBtn href="https://wa.me/919887688843" variant="outline" external>
               WhatsApp Us
             </LuxAnchorBtn>
           </div>
