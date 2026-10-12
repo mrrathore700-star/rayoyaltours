@@ -45,7 +45,6 @@ const ExperienceCategory = () => {
         />
         <div className="absolute inset-0 bg-gradient-to-b from-background/60 via-background/40 to-background/90" />
         <div className="relative z-10 container mx-auto px-4 text-center">
-          <div className="text-5xl mb-3">{category.icon}</div>
           <h1 className="font-display text-3xl md:text-5xl lg:text-6xl font-bold text-foreground mb-4 drop-shadow-lg">
             {category.title}
           </h1>
