@@ -228,7 +228,7 @@ const Packages = () => {
                   <SmartImage
                     fallback={dt.image}
                     alt={dt.title}
-                    className="w-full h-full object-cover transition-transform duration-[1000ms] group-hover:scale-105"
+                    className="w-full h-full object-cover transition-transform [transition-duration:1000ms] group-hover:scale-105"
                   />
                   {dt.badge && (
                     <span className="absolute top-4 left-4 px-3 py-1 rounded-full bg-[#C9A84C] text-[#0F0F0F] font-display text-[10px] tracking-[0.18em] uppercase shadow-md">
