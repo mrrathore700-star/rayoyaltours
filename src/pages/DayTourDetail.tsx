@@ -1,6 +1,7 @@
 import SmartImage from "@/components/media/SmartImage";
 import { useParams, Link } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
+import { aggregateRating } from "@/lib/reviewSchema";
 import {
   ArrowLeft,
   CheckCircle,
@@ -65,6 +66,7 @@ const DayTourDetail = () => {
               name: "Heritage Jaipur Travels",
               telephone: "+919887688843",
               url: "https://www.heritagejaipurtravels.com",
+              aggregateRating,
             },
           })}
         </script>

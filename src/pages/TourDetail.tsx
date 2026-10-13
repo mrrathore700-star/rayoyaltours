@@ -1,5 +1,6 @@
 import { useParams, Link } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
+import { aggregateRating } from "@/lib/reviewSchema";
 import { ArrowLeft, CheckCircle, XCircle, MapPin, Calendar, Users, Star, Plane, Hotel } from "lucide-react";
 import { tourDetails } from "@/data/tourDetails";
 import { tours } from "@/data/tours";
@@ -57,6 +58,7 @@ const TourDetail = () => {
             "name": "Heritage Jaipur Travels",
             "telephone": "+919887688843",
             "url": "https://www.heritagejaipurtravels.com",
+            "aggregateRating": aggregateRating,
           },
         })}</script>
       </Helmet>

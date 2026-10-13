@@ -172,9 +172,8 @@ export const tourDetails: Record<string, TourDetail> = {
       "Golden triangle with Jaisalmer extension",
       "Rajasthan itinerary for foreign tourists",
     ],
-    metaTitle: "Rajasthan Royal Heritage Tour – 6 Days | Heritage Jaipur Travels",
-    metaDescription:
-      "Experience royal Rajasthan in 6 days – Jaipur, Jodhpur & Jaisalmer with Delhi/Jaipur pickup & drop. Camel safari, forts, desert camp. Enquire today",
+    metaTitle: "Rajasthan Royal Heritage Tour 6 Days | Jaipur, Jodhpur & Jaisalmer by Private Car",
+    metaDescription: "Private 6-day tour of Jaipur, Jodhpur and Jaisalmer with your own chauffeur, handpicked hotels and a flexible itinerary. Rated 4.8★ on Google. Get a free quote on WhatsApp.",
   },
   "jaipur-heritage": {
     slug: "jaipur-heritage",
@@ -243,8 +242,8 @@ export const tourDetails: Record<string, TourDetail> = {
       "Custom upgrades (luxury stay / guide / cultural dinner)",
     ],
     seoKeywords: ["Jaipur heritage tour", "Jaipur 2 day tour package", "Jaipur sightseeing tour", "Pink City tour", "Jaipur weekend tour"],
-    metaTitle: "Jaipur Heritage Tour – 2 Days | Heritage Jaipur Travels",
-    metaDescription: "Experience Jaipur in 48 hours – Amber Fort, Hawa Mahal, City Palace & more. Private AC vehicle, heritage stays & expert guides. Enquire today",
+    metaTitle: "Jaipur Heritage Tour 2 Days | Amber Fort, Hawa Mahal & City Palace",
+    metaDescription: "See the best of Jaipur in 2 days: Amber Fort, Hawa Mahal and City Palace with a private car and local guide. Family-run since 20+ years. Enquire for a free quote.",
   },
   "golden-triangle": {
     slug: "golden-triangle",
@@ -396,8 +395,8 @@ export const tourDetails: Record<string, TourDetail> = {
       "Taj Mahal sunrise tour",
       "Fatehpur Sikri tour",
     ],
-    metaTitle: "Golden Triangle Tour – 6 Days | Delhi Agra Jaipur | Heritage Jaipur Travels",
-    metaDescription: "Explore India's Golden Triangle – Delhi, Agra & Jaipur with Fatehpur Sikri. 6 Days / 5 Nights tailor-made tour for international travelers. Enquire today",
+    metaTitle: "Golden Triangle Tour 6 Days | Delhi, Agra & Jaipur Private Car Tour",
+    metaDescription: "Private 6-day Golden Triangle tour covering Delhi, the Taj Mahal and Jaipur with your own chauffeur and hotels of your choice. Rated 4.8★ on Google. Get a free quote today.",
   },
   "desert-safari": {
     slug: "desert-safari",
@@ -421,8 +420,8 @@ export const tourDetails: Record<string, TourDetail> = {
     idealFor: ["Adventure seekers", "Photographers", "Couples", "International tourists"],
     whyChoose: ["Authentic desert experience", "Comfortable camps", "Expert local guides"],
     seoKeywords: ["Jaisalmer desert safari", "Rajasthan desert camp", "camel safari India"],
-    metaTitle: "Desert Safari Jaisalmer – 3 Days | Heritage Jaipur Travels",
-    metaDescription: "Experience Jaisalmer desert safari with camel rides, cultural night & desert camping. 3-day tour with pickup & drop. Enquire today",
+    metaTitle: "Jaisalmer Desert Safari Tour 3 Days | Camel Ride & Desert Camp",
+    metaDescription: "3-day private Jaisalmer tour with Golden Fort, camel safari, folk music night and a desert camp stay. Pickup and drop included. WhatsApp us for a free quote.",
   },
   "udaipur-lake": {
     slug: "udaipur-lake",
@@ -446,8 +445,8 @@ export const tourDetails: Record<string, TourDetail> = {
     idealFor: ["Couples & honeymooners", "Photography lovers", "Culture enthusiasts"],
     whyChoose: ["Romantic lakeside experience", "Heritage hotel options", "Customisable itinerary"],
     seoKeywords: ["Udaipur lake tour", "Udaipur sightseeing", "Udaipur honeymoon package"],
-    metaTitle: "Udaipur Lake Tour – 3 Days | Heritage Jaipur Travels",
-    metaDescription: "Discover Udaipur's lakes, palaces & sunsets in our 3-day tour. Boat ride on Lake Pichola, City Palace & more. Enquire today",
+    metaTitle: "Udaipur Lake Tour 3 Days | City Palace & Lake Pichola Boat Ride",
+    metaDescription: "Private 3-day Udaipur tour with City Palace, a sunset boat ride on Lake Pichola and lakeside hotels. Flexible dates, local specialists. Get a free quote on WhatsApp.",
   },
   "golden-triangle-ranthambore": {
     slug: "golden-triangle-ranthambore",
@@ -593,9 +592,8 @@ export const tourDetails: Record<string, TourDetail> = {
       "Golden triangle wildlife tour India",
       "Ranthambore tiger safari package",
     ],
-    metaTitle: "Golden Triangle with Ranthambore – 7 Days | Heritage Jaipur Travels",
-    metaDescription:
-      "Discover India's best – Taj Mahal, Ranthambore Tiger Safari, Amber Fort & more in 7 days. Culture, Wildlife tour with Delhi/Jaipur pickup. Enquire today",
+    metaTitle: "Golden Triangle with Ranthambore 7 Days | Taj Mahal & Tiger Safari",
+    metaDescription: "Private 7-day tour of Delhi, Agra, Ranthambore and Jaipur with tiger safaris booked for you, your own chauffeur and chosen hotels. Rated 4.8★ on Google. Get a free quote.",
   },
   "grand-rajasthan-heritage-tour": {
     slug: "grand-rajasthan-heritage-tour",
@@ -824,9 +822,8 @@ export const tourDetails: Record<string, TourDetail> = {
       "Delhi Mandawa Bikaner Jaisalmer Jodhpur Udaipur Pushkar Jaipur Agra tour",
       "Rajasthan heritage tour with Taj Mahal",
     ],
-    metaTitle: "Grand Rajasthan Heritage Tour with Taj Mahal | 12 Nights 13 Days Rajasthan Tour",
-    metaDescription:
-      "Book the Grand Rajasthan Heritage Tour with Taj Mahal. Explore Delhi, Mandawa, Bikaner, Jaisalmer, Jodhpur, Udaipur, Pushkar, Jaipur, Agra in a 13-day luxury Rajasthan journey.",
+    metaTitle: "Grand Rajasthan Tour with Taj Mahal 13 Days | Private Car & Heritage Hotels",
+    metaDescription: "13-day private journey across Delhi, Jaisalmer, Jodhpur, Udaipur, Jaipur and Agra with your own chauffeur and heritage hotels. Fully customizable. Get a free quote on WhatsApp.",
   },
   "golden-triangle-royal-rajasthan-tour": {
     slug: "golden-triangle-royal-rajasthan-tour",
@@ -1010,9 +1007,8 @@ export const tourDetails: Record<string, TourDetail> = {
       "Golden Triangle with Udaipur",
       "Royal Rajasthan private tour",
     ],
-    metaTitle: "Golden Triangle & Royal Rajasthan Tour | Delhi Agra Jaipur Pushkar Jodhpur Udaipur",
-    metaDescription:
-      "Book the Golden Triangle & Royal Rajasthan Tour with Heritage Jaipur Travels. Visit Delhi, Agra, Jaipur, Pushkar, Jodhpur and Udaipur in a 10-day private Rajasthan journey.",
+    metaTitle: "Golden Triangle & Royal Rajasthan Tour 10 Days | Private Car Tour",
+    metaDescription: "Private 10-day tour of Delhi, Agra, Jaipur, Pushkar, Jodhpur and Udaipur with your own chauffeur and handpicked hotels. Rated 4.8★ on Google. Request a free quote today.",
   },
 };
 
