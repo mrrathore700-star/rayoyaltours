@@ -111,9 +111,8 @@ export const dayTours: Record<string, DayTour> = {
     inclusions: commonInclusions,
     exclusions: commonExclusions,
     faqs: commonFAQs,
-    metaTitle: "Jaipur Full Day Sightseeing Tour | Private Pink City Tour",
-    metaDescription:
-      "Private Jaipur full day sightseeing tour covering Amber Fort, Hawa Mahal, City Palace, Jantar Mantar, Jal Mahal and local bazaars with chauffeur-driven vehicle.",
+    metaTitle: "Jaipur Full Day Sightseeing Tour by Private Car | Amber Fort & Hawa Mahal",
+    metaDescription: "Private full-day Jaipur tour: Amber Fort, Hawa Mahal, City Palace and Jantar Mantar with hotel pickup and an AC car. Rated 4.8★ on Google. Book on WhatsApp in minutes.",
     seoKeywords: ["Jaipur day tour", "Jaipur sightseeing", "Pink City tour", "Amber Fort tour"],
     badge: "Most Popular",
   },
@@ -156,9 +155,8 @@ export const dayTours: Record<string, DayTour> = {
     inclusions: commonInclusions,
     exclusions: commonExclusions,
     faqs: commonFAQs,
-    metaTitle: "Pushkar Day Trip from Jaipur | Private Tour to Holy Pushkar",
-    metaDescription:
-      "Private day trip to Pushkar from Jaipur. Visit Brahma Temple, sacred Pushkar Lake, Savitri Temple and Pushkar bazaar with chauffeur-driven vehicle.",
+    metaTitle: "Pushkar Day Trip from Jaipur by Private Car | Lake, Ghats & Brahma Temple",
+    metaDescription: "Private day trip from Jaipur to Pushkar's holy lake, ghats and Brahma Temple with hotel pickup and drop in an AC car. Flexible timing. Get a quick quote on WhatsApp.",
     seoKeywords: ["Pushkar day trip", "Jaipur to Pushkar tour", "Brahma Temple tour"],
   },
 
@@ -194,9 +192,8 @@ export const dayTours: Record<string, DayTour> = {
     inclusions: commonInclusions,
     exclusions: commonExclusions,
     faqs: commonFAQs,
-    metaTitle: "Abhaneri Chand Baori Day Trip | Private Stepwell Tour",
-    metaDescription:
-      "Private day trip to Abhaneri Chand Baori, one of India's largest stepwells, with visit to Harshat Mata Temple and rural Rajasthan villages.",
+    metaTitle: "Abhaneri Chand Baori Day Trip from Jaipur | Private Stepwell Tour",
+    metaDescription: "Private day trip from Jaipur to the famous Chand Baori stepwell and Harshat Mata Temple at Abhaneri, with hotel pickup and AC car. Ask for a free quote on WhatsApp.",
     seoKeywords: ["Chand Baori tour", "Abhaneri day trip", "Stepwell tour Rajasthan"],
   },
 
@@ -238,9 +235,8 @@ export const dayTours: Record<string, DayTour> = {
       "Forest Entry Fee",
     ],
     faqs: commonFAQs,
-    metaTitle: "Ranthambore Tiger Safari Day Trip | Private Wildlife Tour",
-    metaDescription:
-      "Private day trip to Ranthambore National Park for tiger safari. Spot Bengal tigers, leopards and exotic wildlife with comfortable chauffeur-driven transfer.",
+    metaTitle: "Ranthambore Tiger Safari Day Trip from Jaipur | Private Car & Safari Help",
+    metaDescription: "Private day trip from Jaipur to Ranthambore National Park with help booking your tiger safari, hotel pickup and AC car. Rated 4.8★ on Google. Enquire on WhatsApp.",
     seoKeywords: ["Ranthambore day trip", "Ranthambore tiger safari", "Wildlife tour Rajasthan"],
   },
 };
