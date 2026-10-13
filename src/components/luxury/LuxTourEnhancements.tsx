@@ -236,9 +236,20 @@ const LuxTourEnhancements = ({
 
       {/* FAQs (only render if caller didn't already render one) */}
       {!hideFaqs && (
-        <section className="py-16 sand-gradient">
+        <section className="py-16 sand-gradient" id="faq">
+          <Helmet>
+            <script type="application/ld+json">{JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "FAQPage",
+              mainEntity: finalFaqs.map((f) => ({
+                "@type": "Question",
+                name: f.q,
+                acceptedAnswer: { "@type": "Answer", text: f.a },
+              })),
+            })}</script>
+          </Helmet>
           <div className="container mx-auto px-4 max-w-3xl">
-            <SectionHeading title="Frequently Asked Questions" />
+            <SectionHeading title={`${tourTitle} – Frequently Asked Questions`} />
             <Accordion type="single" collapsible className="space-y-4">
               {finalFaqs.map((f, i) => (
                 <AccordionItem
@@ -255,6 +266,17 @@ const LuxTourEnhancements = ({
                 </AccordionItem>
               ))}
             </Accordion>
+            <p className="text-center mt-8 text-sm text-foreground/75">
+              Have another question?{" "}
+              <a
+                href={quote(`Hi! I have a question about ${tourTitle}.`)}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-semibold text-[#6E0F1F] underline underline-offset-4 hover:text-[#C9A84C]"
+              >
+                WhatsApp a Travel Specialist
+              </a>
+            </p>
           </div>
         </section>
       )}
