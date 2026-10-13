@@ -351,6 +351,25 @@ const TourDetail = () => {
           endLocation={tour.departureOptions[0] || "Jaipur"}
           priceLabel="Custom Pricing Available"
           relatedBasePath="/packages"
+          faqs={(() => {
+            const text = `${tour.title} ${slug}`.toLowerCase();
+            const list = [
+              { q: `How many days is the ${tour.title}?`, a: `The suggested duration is ${tour.duration}. We can shorten or extend it and add or remove cities to suit your travel dates.` },
+              { q: "Is this a private tour?", a: "Yes. The tour is operated privately for you and your companions, with a dedicated AC vehicle and experienced local driver throughout the journey." },
+              { q: "Can the itinerary be customized?", a: "Yes. We adjust the pace, hotels, sightseeing and route to match your interests, dates and budget." },
+              { q: "Where does the tour start and end?", a: `Common pickup points are ${tour.arrivalOptions.join(", ") || "Jaipur"}, and drop-off options include ${tour.departureOptions.join(", ") || "Jaipur"}. Airport, railway station and hotel pickups can be arranged.` },
+              { q: "What hotel categories are available?", a: "We arrange 3-star, 4-star, 5-star and heritage palace hotels. Share your preference and we will suggest the right stays." },
+            ];
+            if (text.includes("taj") || text.includes("agra") || text.includes("golden")) {
+              list.push({ q: "Is the Taj Mahal open every day?", a: "No. The Taj Mahal is closed every Friday, so we plan your Agra visit on another day of the week." });
+            }
+            if (text.includes("ranthambore")) {
+              list.push({ q: "How early should Ranthambore safaris be booked?", a: "Safari permits are limited, so we recommend booking as early as possible once your dates are confirmed. We can arrange jeep or canter safaris for you." });
+            }
+            list.push({ q: "Are entrance tickets included?", a: "Monument entrance fees are usually excluded so you pay the exact ticket cost. We can pre-book them for you on request." });
+            list.push({ q: "How do I get a quote?", a: "Send an enquiry or WhatsApp us with your dates and number of travellers, and our Jaipur team will share a personalized quote." });
+            return list;
+          })()}
         />
 
         <LuxGoogleReviews />
