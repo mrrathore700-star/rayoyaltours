@@ -18,14 +18,16 @@ import LuxCtaBand from "@/components/luxury/LuxCtaBand";
 import LuxCustomJourney from "@/components/luxury/LuxCustomJourney";
 import { LuxLinkBtn, LuxAnchorBtn } from "@/components/luxury/LuxButton";
 import { tours } from "@/data/tours";
+import { travelAgencySchema } from "@/lib/reviewSchema";
 
 const Index = () => {
   return (
     <main className="lux-cream-bg">
       <SEO
-        title="Heritage Jaipur Travels | Private Rajasthan Tours"
-        description="A family-run Rajasthan travel company planning private tours — palaces, deserts, wildlife and culture, designed by Jaipur-based specialists for over 20 years."
+        title="Private Rajasthan Tour Packages with Driver | Heritage Jaipur Travels"
+        description="Family-run Jaipur travel company with 20+ years experience. Private Rajasthan & Golden Triangle tours with your own chauffeur. Rated 4.8★ on Google. Free quote on WhatsApp."
         path="/"
+        jsonLd={travelAgencySchema}
       />
 
       <LuxHero
