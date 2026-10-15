@@ -1,3 +1,4 @@
+import { submitEnquiry } from "@/lib/enquiries";
 import { trackLead } from "@/lib/analytics";
 import { useRef, useState } from "react";
 import SEO from "@/components/SEO";
@@ -54,22 +55,14 @@ const Contact = () => {
     setSubmitting(true);
     lastSubmitRef.current = Date.now();
     try {
-      const res = await fetch("/api/contact", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          name: form.name.trim(),
-          email: form.email.trim(),
-          phone: phone ?? "",
-          message: form.message.trim(),
-          website,
-        }),
+      await submitEnquiry({
+        source: "contact_page",
+        name: form.name,
+        email: form.email,
+        phone: phone ?? "",
+        message: form.message,
+        website,
       });
-
-      const data = await res.json().catch(() => ({}));
-      if (!res.ok || !data?.success) {
-        throw new Error(data?.error || "Send failed");
-      }
 
       trackLead("contact_page");
       setSent(true);

@@ -101,6 +101,54 @@ export type Database = {
         }
         Relationships: []
       }
+      enquiries: {
+        Row: {
+          created_at: string
+          email: string
+          id: string
+          message: string
+          name: string
+          page_url: string | null
+          phone: string
+          source: string
+          status: string
+          tour_name: string | null
+          tour_slug: string | null
+          travel_date: string | null
+          travelers: number | null
+        }
+        Insert: {
+          created_at?: string
+          email?: string
+          id?: string
+          message?: string
+          name: string
+          page_url?: string | null
+          phone?: string
+          source?: string
+          status?: string
+          tour_name?: string | null
+          tour_slug?: string | null
+          travel_date?: string | null
+          travelers?: number | null
+        }
+        Update: {
+          created_at?: string
+          email?: string
+          id?: string
+          message?: string
+          name?: string
+          page_url?: string | null
+          phone?: string
+          source?: string
+          status?: string
+          tour_name?: string | null
+          tour_slug?: string | null
+          travel_date?: string | null
+          travelers?: number | null
+        }
+        Relationships: []
+      }
       gallery_images: {
         Row: {
           alt_text: string

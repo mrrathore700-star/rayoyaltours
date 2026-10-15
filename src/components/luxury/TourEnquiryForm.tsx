@@ -1,3 +1,4 @@
+import { submitEnquiry } from "@/lib/enquiries";
 import { trackLead } from "@/lib/analytics";
 import { useMemo, useRef, useState } from "react";
 import { CheckCircle2, Loader2, MessageCircle, Send } from "lucide-react";
@@ -120,23 +121,17 @@ const TourEnquiryForm = ({
     ].join("\n");
 
     try {
-      const response = await fetch("/api/contact", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          name: form.name.trim(),
-          email: form.email.trim(),
-          phone: form.phone.trim(),
-          message,
-          travelers: Number(form.travelers),
-          date: form.date,
-          tourName,
-          tourSlug,
-          tourUrl,
-        }),
+      await submitEnquiry({
+        source: "tour_enquiry",
+        name: form.name,
+        email: form.email,
+        phone: form.phone,
+        message,
+        travelers: Number(form.travelers) || null,
+        travelDate: form.date,
+        tourName,
+        tourSlug,
       });
-      const data = await response.json().catch(() => ({}));
-      if (!response.ok || !data?.success) throw new Error(data?.error || "Unable to send enquiry.");
       trackLead("tour_enquiry", { tour_slug: tourSlug });
       setSent(true);
       toast({ title: "Thank you! We’ve received your enquiry." });
