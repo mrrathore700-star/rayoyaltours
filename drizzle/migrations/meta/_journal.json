@@ -29,6 +29,13 @@
       "when": 1792069403645,
       "tag": "0003_revoke_first_admin_self_claim",
       "breakpoints": true
+    },
+    {
+      "idx": 4,
+      "version": "7",
+      "when": 1792070939658,
+      "tag": "0004_create_enquiries",
+      "breakpoints": true
     }
   ]
 }
