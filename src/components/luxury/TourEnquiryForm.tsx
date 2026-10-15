@@ -1,3 +1,4 @@
+import { trackLead } from "@/lib/analytics";
 import { useMemo, useRef, useState } from "react";
 import { CheckCircle2, Loader2, MessageCircle, Send } from "lucide-react";
 import PhoneInput, { isValidPhoneNumber } from "react-phone-number-input";
@@ -136,6 +137,7 @@ const TourEnquiryForm = ({
       });
       const data = await response.json().catch(() => ({}));
       if (!response.ok || !data?.success) throw new Error(data?.error || "Unable to send enquiry.");
+      trackLead("tour_enquiry", { tour_slug: tourSlug });
       setSent(true);
       toast({ title: "Thank you! We’ve received your enquiry." });
       onSuccess?.();

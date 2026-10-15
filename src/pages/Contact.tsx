@@ -1,3 +1,4 @@
+import { trackLead } from "@/lib/analytics";
 import { useRef, useState } from "react";
 import SEO from "@/components/SEO";
 import { MapPin, Phone, Mail, MessageCircle, Instagram, Loader2, CheckCircle2 } from "lucide-react";
@@ -70,6 +71,7 @@ const Contact = () => {
         throw new Error(data?.error || "Send failed");
       }
 
+      trackLead("contact_page");
       setSent(true);
       toast.success(t("contact.thankYou"));
       setForm({ name: "", email: "", message: "" });

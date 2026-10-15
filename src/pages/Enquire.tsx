@@ -1,3 +1,4 @@
+import { trackLead } from "@/lib/analytics";
 import { useMemo, useRef, useState } from "react";
 import { useSearchParams, Link } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
@@ -123,6 +124,7 @@ const Enquire = () => {
       });
       const data = await res.json().catch(() => ({}));
       if (!res.ok || !data?.success) throw new Error(data?.error || "Send failed");
+      trackLead("enquire_page");
       setSent(true);
       toast.success("Inquiry sent — we'll be in touch shortly.");
     } catch (err) {
