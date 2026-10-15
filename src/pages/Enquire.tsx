@@ -111,19 +111,16 @@ const Enquire = () => {
     const composed = parts.join("\n");
 
     try {
-      const res = await fetch("/api/contact", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          name: form.name.trim(),
-          email: form.email.trim(),
-          phone: phone ?? "",
-          message: composed,
-          website,
-        }),
+      await submitEnquiry({
+        source: "enquire_page",
+        name: form.name,
+        email: form.email,
+        phone: phone ?? "",
+        message: composed,
+        travelers: form.travelers ? Number(form.travelers) || null : null,
+        travelDate: form.dates || null,
+        website,
       });
-      const data = await res.json().catch(() => ({}));
-      if (!res.ok || !data?.success) throw new Error(data?.error || "Send failed");
       trackLead("enquire_page");
       setSent(true);
       toast.success("Inquiry sent — we'll be in touch shortly.");
