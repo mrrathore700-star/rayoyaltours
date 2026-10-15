@@ -123,6 +123,7 @@ const Enquire = () => {
       });
       const data = await res.json().catch(() => ({}));
       if (!res.ok || !data?.success) throw new Error(data?.error || "Send failed");
+      trackLead("enquire_page");
       setSent(true);
       toast.success("Inquiry sent — we'll be in touch shortly.");
     } catch (err) {

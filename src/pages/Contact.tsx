@@ -70,6 +70,7 @@ const Contact = () => {
         throw new Error(data?.error || "Send failed");
       }
 
+      trackLead("contact_page");
       setSent(true);
       toast.success(t("contact.thankYou"));
       setForm({ name: "", email: "", message: "" });
