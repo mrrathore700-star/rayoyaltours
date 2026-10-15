@@ -1,3 +1,4 @@
+import { trackLead } from "@/lib/analytics";
 import { useMemo, useRef, useState } from "react";
 import { useSearchParams, Link } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
