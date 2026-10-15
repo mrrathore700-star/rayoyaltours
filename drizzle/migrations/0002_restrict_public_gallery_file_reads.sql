@@ -1,0 +1,1 @@
+DROP POLICY IF EXISTS "Public can read published gallery files" ON storage.objects;
