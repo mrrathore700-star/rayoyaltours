@@ -55,7 +55,7 @@ const TaxiQuoteForm = () => {
       <div className="p-8 bg-white/90 border border-[#C9A84C]/40 rounded-sm text-center" role="status">
         <h3 className="font-display text-2xl text-[#6E0F1F] font-semibold mb-2">Thank you, {f.name}!</h3>
         <p className="font-serif text-[#0F0F0F]/75 mb-6">Our Jaipur team will send your taxi quote shortly. For a faster reply, continue on WhatsApp.</p>
-        <a href={waLink} target="_blank" rel="noopener noreferrer" className="lux-btn-whatsapp inline-flex items-center justify-center px-6 py-3 rounded-sm text-sm font-semibold tracking-[0.14em] uppercase">Continue on WhatsApp</a>
+        <a href={waLink} target="_blank" rel="noopener noreferrer" className="lux-btn-wa inline-flex items-center justify-center px-6 py-3 rounded-sm text-sm font-semibold tracking-[0.14em] uppercase">Continue on WhatsApp</a>
       </div>
     );
   }

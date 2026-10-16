@@ -499,7 +499,7 @@ const Taxi = () => (
                   href={`https://wa.me/919887688843?text=${encodeURIComponent(`Hi! I need a taxi quote for ${r.from} to ${r.to}. Travel date: `)}`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="lux-btn-whatsapp inline-flex items-center gap-2 px-4 py-2 rounded-sm text-[11px] tracking-[0.14em] uppercase font-semibold"
+                  className="lux-btn-wa inline-flex items-center gap-2 px-4 py-2 rounded-sm text-[11px] tracking-[0.14em] uppercase font-semibold"
                 >
                   <MessageCircle className="h-4 w-4" aria-hidden="true" /> WhatsApp Quote
                 </a>
