@@ -43,7 +43,7 @@ const TaxiQuoteForm = () => {
     setStatus("sending");
     try {
       await submitEnquiry({ source: "taxi", name: f.name, phone: f.phone, message: summary, travelDate: f.date, tourName: `Taxi: ${f.pickup} to ${f.drop}`, tourSlug: "taxi", website: f.website });
-      trackLead?.("taxi_form");
+      trackLead("taxi_form");
       setStatus("done");
     } catch {
       setStatus("error");
