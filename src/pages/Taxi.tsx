@@ -12,6 +12,8 @@ import fleetImg from "@/assets/fleet-vehicles.jpg";
 import sedanImg from "@/assets/sedan-car.jpg";
 import innovaImg from "@/assets/innova-crysta.jpg";
 import tempoImg from "@/assets/tempo-traveller.jpg";
+import mercedesImg from "@/assets/mercedes-luxury-car.jpg";
+import ertigaImg from "@/assets/ertiga-suv.jpg";
 import TaxiQuoteForm from "@/components/luxury/TaxiQuoteForm";
 import LuxHero from "@/components/luxury/LuxHero";
 import LuxSectionHeading from "@/components/luxury/LuxSectionHeading";
@@ -64,7 +66,7 @@ const fleet = [
     fuel: "Diesel",
     bestFor: "Small families & friends",
     trips: "Golden Triangle · Ranthambore · Udaipur",
-    image: fleetImg,
+    image: ertigaImg,
   },
   {
     name: "Toyota Innova Crysta",
@@ -97,7 +99,7 @@ const fleet = [
     fuel: "Diesel",
     bestFor: "Premium & honeymoon trips",
     trips: "Palace stays · Private Rajasthan tours",
-    image: luxuryCar,
+    image: mercedesImg,
   },
 ];
 
@@ -330,18 +332,6 @@ const Taxi = () => (
       </div>
     </section>
 
-    {/* Quick quote form */}
-    <section id="taxi-quote" className="py-20 md:py-24" style={{ background: "linear-gradient(180deg, #FFF8F0 0%, #F5ECDC 100%)" }}>
-      <div className="container mx-auto px-6 max-w-4xl">
-        <LuxSectionHeading
-          eyebrow="Quick Taxi Quote"
-          title="Tell Us Your Route — Get a Fixed Quote"
-          intro="One-way drops and round trips both available. One-way fares are quoted for the drop only — no return charge unless the car stays with you."
-        />
-        <TaxiQuoteForm />
-      </div>
-    </section>
-
     {/* Services */}
     <section className="py-20 md:py-24 lux-cream-bg">
       <div className="container mx-auto px-6">
@@ -512,6 +502,19 @@ const Taxi = () => (
         </div>
       </div>
     </section>
+
+    {/* Quick quote form */}
+    <section id="taxi-quote" className="py-20 md:py-24" style={{ background: "linear-gradient(180deg, #FFF8F0 0%, #F5ECDC 100%)" }}>
+      <div className="container mx-auto px-6 max-w-4xl">
+        <LuxSectionHeading
+          eyebrow="Quick Taxi Quote"
+          title="Tell Us Your Route — Get a Fixed Quote"
+          intro="One-way drops and round trips both available. One-way fares are quoted for the drop only — no return charge unless the car stays with you."
+        />
+        <TaxiQuoteForm />
+      </div>
+    </section>
+
 
     {/* Why Choose Us */}
     <section className="py-20 md:py-24 lux-cream-bg">
