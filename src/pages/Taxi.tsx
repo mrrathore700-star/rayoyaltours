@@ -9,6 +9,10 @@ import { Helmet } from "react-helmet-async";
 import SEO from "@/components/SEO";
 import luxuryCar from "@/assets/luxury-car.jpg";
 import fleetImg from "@/assets/fleet-vehicles.jpg";
+import sedanImg from "@/assets/sedan-car.jpg";
+import innovaImg from "@/assets/innova-crysta.jpg";
+import tempoImg from "@/assets/tempo-traveller.jpg";
+import TaxiQuoteForm from "@/components/luxury/TaxiQuoteForm";
 import LuxHero from "@/components/luxury/LuxHero";
 import LuxSectionHeading from "@/components/luxury/LuxSectionHeading";
 import LuxCtaBand from "@/components/luxury/LuxCtaBand";
@@ -49,7 +53,7 @@ const fleet = [
     fuel: "Diesel / Petrol",
     bestFor: "Couples & solo travellers",
     trips: "Airport transfers · City tours · Jaipur–Ajmer / Pushkar",
-    image: luxuryCar,
+    image: sedanImg,
   },
   {
     name: "SUV — Ertiga / Innova",
@@ -71,7 +75,7 @@ const fleet = [
     fuel: "Diesel",
     bestFor: "Long outstation tours",
     trips: "Jaipur → Jaisalmer · Full Rajasthan circuits",
-    image: luxuryCar,
+    image: innovaImg,
   },
   {
     name: "Tempo Traveller",
@@ -82,7 +86,7 @@ const fleet = [
     fuel: "Diesel",
     bestFor: "Groups & extended families",
     trips: "Group tours · Weddings · Corporate travel",
-    image: fleetImg,
+    image: tempoImg,
   },
   {
     name: "Luxury Vehicle",
@@ -119,6 +123,13 @@ const routes = [
   { from: "Jaipur", to: "Jaisalmer", km: "560 km", time: "10–11 hrs", vehicle: "Innova Crysta" },
   { from: "Jaipur", to: "Bikaner", km: "335 km", time: "6 hrs", vehicle: "Innova / Crysta" },
   { from: "Jaipur", to: "Mount Abu", km: "500 km", time: "9–10 hrs", vehicle: "Innova Crysta" },
+];
+
+
+const localTours = [
+  { title: "Jaipur City Tour — 8 Hr / 80 Km", desc: "Amber Fort, Hawa Mahal, City Palace, Jantar Mantar and Albert Hall with a private chauffeur.", wa: "Hi! I need an 8 hr / 80 km Jaipur city tour cab." },
+  { title: "Full Day Heritage & Sunset Tour", desc: "Morning forts and bazaars, ending with sunset at Nahargarh Fort.", wa: "Hi! I need a full day Jaipur heritage & sunset tour cab." },
+  { title: "Chokhi Dhani Evening Pickup & Drop", desc: "Hotel pickup, wait time and drop back after the cultural village dinner.", wa: "Hi! I need a Chokhi Dhani pickup and drop cab." },
 ];
 
 const whyChoose = [
@@ -164,6 +175,7 @@ const steps = [
 
 const faqs = [
   { q: "How do I book a taxi in Jaipur?", a: "Send us your route, dates and number of travellers by WhatsApp, phone or the enquiry form. We'll reply with a fixed all-inclusive quote and confirm your booking once you approve it." },
+  { q: "Do you offer one-way taxi drops?", a: "Yes. One-way drops (for example Jaipur to Delhi or Jaipur to Udaipur) are available. We will quote one-way or round-trip clearly before you confirm." },
   { q: "Can I hire a car for multiple days?", a: "Yes. Most of our travellers hire chauffeur-driven vehicles for multi-day Rajasthan tours — anywhere from 2 to 15+ days. The vehicle and driver stay with you for the whole trip." },
   { q: "Can I customise the itinerary during the trip?", a: "Absolutely. You can add sightseeing stops, adjust pickup times, change hotels or extend days. Our office team is on WhatsApp throughout your journey." },
   { q: "Are tolls and parking included in the price?", a: "Toll taxes, parking fees and interstate permits can be included in the quote on request. We'll clearly mention what is and isn't included before you confirm." },
@@ -318,6 +330,18 @@ const Taxi = () => (
       </div>
     </section>
 
+    {/* Quick quote form */}
+    <section id="taxi-quote" className="py-20 md:py-24" style={{ background: "linear-gradient(180deg, #FFF8F0 0%, #F5ECDC 100%)" }}>
+      <div className="container mx-auto px-6 max-w-4xl">
+        <LuxSectionHeading
+          eyebrow="Quick Taxi Quote"
+          title="Tell Us Your Route — Get a Fixed Quote"
+          intro="One-way drops and round trips both available. One-way fares are quoted for the drop only — no return charge unless the car stays with you."
+        />
+        <TaxiQuoteForm />
+      </div>
+    </section>
+
     {/* Services */}
     <section className="py-20 md:py-24 lux-cream-bg">
       <div className="container mx-auto px-6">
@@ -431,6 +455,22 @@ const Taxi = () => (
       compact
     />
 
+    {/* Local Jaipur tours */}
+    <section className="py-20 md:py-24 lux-cream-bg">
+      <div className="container mx-auto px-6">
+        <LuxSectionHeading eyebrow="Jaipur Local" title="Popular Jaipur Sightseeing Cabs" />
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-6xl mx-auto">
+          {localTours.map((t) => (
+            <article key={t.title} className="p-6 bg-white/80 border border-[#C9A84C]/25 rounded-sm flex flex-col">
+              <h3 className="font-display text-xl font-semibold text-[#0F0F0F] mb-2">{t.title}</h3>
+              <p className="font-serif text-[15px] text-[#0F0F0F]/70 leading-relaxed mb-5">{t.desc}</p>
+              <LuxAnchorBtn href={`https://wa.me/919887688843?text=${encodeURIComponent(t.wa)}`} external variant="outline" className="mt-auto !px-5 !py-2.5 !text-[11px]">WhatsApp Quote</LuxAnchorBtn>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
     {/* Popular Routes */}
     <section className="py-20 md:py-24" style={{ background: "linear-gradient(180deg, #FFF8F0 0%, #F5ECDC 100%)" }}>
       <div className="container mx-auto px-6">
@@ -454,12 +494,19 @@ const Taxi = () => (
                 <div><dt className="text-[11px] uppercase tracking-[0.14em] text-[#0F0F0F]/50">Travel Time</dt><dd className="font-serif">{r.time}</dd></div>
                 <div className="col-span-2"><dt className="text-[11px] uppercase tracking-[0.14em] text-[#0F0F0F]/50">Recommended Vehicle</dt><dd className="font-serif">{r.vehicle}</dd></div>
               </dl>
-              <Link
-                to={`/enquire?service=${encodeURIComponent(`${r.from} to ${r.to} Taxi`)}`}
-                className="text-xs tracking-[0.18em] uppercase text-[#6E0F1F] hover:text-[#C9A84C] transition-colors font-semibold"
-              >
-                Quick Inquiry →
-              </Link>
+              <div className="flex flex-wrap items-center gap-4">
+                <a
+                  href={`https://wa.me/919887688843?text=${encodeURIComponent(`Hi! I need a taxi quote for ${r.from} to ${r.to}. Travel date: `)}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="lux-btn-wa inline-flex items-center gap-2 px-4 py-2 rounded-sm text-[11px] tracking-[0.14em] uppercase font-semibold"
+                >
+                  <MessageCircle className="h-4 w-4" aria-hidden="true" /> WhatsApp Quote
+                </a>
+                <a href="#taxi-quote" className="text-xs tracking-[0.18em] uppercase text-[#6E0F1F] hover:text-[#C9A84C] transition-colors font-semibold">
+                  Quick Inquiry →
+                </a>
+              </div>
             </article>
           ))}
         </div>
