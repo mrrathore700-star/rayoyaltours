@@ -8,7 +8,6 @@ import {
 import { Helmet } from "react-helmet-async";
 import SEO from "@/components/SEO";
 import luxuryCar from "@/assets/luxury-car.jpg";
-import fleetImg from "@/assets/fleet-vehicles.jpg";
 import sedanImg from "@/assets/sedan-car.jpg";
 import innovaImg from "@/assets/innova-crysta.jpg";
 import tempoImg from "@/assets/tempo-traveller.jpg";
