@@ -18,7 +18,7 @@ export const travelAgencySchema = {
   "@context": "https://schema.org",
   "@type": "TravelAgency",
   name: "Heritage Jaipur Travels",
-  url: "https://heritagejaipurtravels.com",
+  url: "https://www.heritagejaipurtravels.com",
   image: "https://www.heritagejaipurtravels.com/og-image.jpg",
   telephone: "+91-9887688843",
   email: "info@heritagejaipurtravels.com",

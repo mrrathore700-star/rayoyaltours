@@ -11,7 +11,7 @@ import LuxInlineCta from "@/components/luxury/LuxInlineCta";
 const About = () => (
   <main className="lux-cream-bg">
     <SEO
-      title="About Us | Heritage Jaipur Travels"
+      title="About Us | Family-Run Travel Agency in Jaipur, 20+ Years"
       description="Meet Kailash and the Heritage Jaipur Travels family — a local Rajasthan travel company built on relationships, trust, and over twenty years of experience."
       path="/about"
     />

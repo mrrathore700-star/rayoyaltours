@@ -137,7 +137,7 @@ const Destinations = () => {
     <>
       <SEO
         title="Rajasthan Destinations | Jaipur, Udaipur, Jodhpur, Jaisalmer & More"
-        description="Explore every Rajasthan destination we offer — royal cities, desert towns, wildlife reserves and sacred lakes. Build your private Rajasthan journey with Heritage Jaipur Travels."
+        description="Explore Rajasthan destinations — Jaipur, Udaipur, Jodhpur, Jaisalmer, Ranthambore & more. Plan a private Rajasthan tour with a local Jaipur team."
         path="/destinations"
         jsonLd={jsonLd}
       />
