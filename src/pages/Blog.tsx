@@ -71,7 +71,7 @@ const Blog = () => {
     <main className="lux-cream-bg">
       <SEO
         title="Luxury Rajasthan Travel Journal | Stories & Guides — Heritage Jaipur Travels"
-        description="Luxury Rajasthan travel inspiration — palace stays, Jaipur travel guides, tiger safaris, desert journeys, hidden experiences and itineraries from Jaipur-based specialists with 20+ years of expertise."
+        description="Rajasthan travel guides from Jaipur locals — palace stays, tiger safaris, desert journeys, itineraries and hidden experiences across Rajasthan."
         path="/blog"
         image={hawaMahal}
         jsonLd={[blogSchema, breadcrumbSchema]}
