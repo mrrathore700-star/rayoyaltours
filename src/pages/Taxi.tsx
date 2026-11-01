@@ -11,6 +11,7 @@ import luxuryCar from "@/assets/luxury-car.jpg";
 import sedanImg from "@/assets/sedan-car.jpg";
 import innovaImg from "@/assets/innova-crysta.jpg";
 import tempoImg from "@/assets/tempo-traveller.jpg";
+import urbaniaImg from "@/assets/force-urbania.jpg";
 import mercedesImg from "@/assets/mercedes-luxury-car.jpg";
 import ertigaImg from "@/assets/ertiga-suv.jpg";
 import TaxiQuoteForm from "@/components/luxury/TaxiQuoteForm";
@@ -88,6 +89,17 @@ const fleet = [
     bestFor: "Groups & extended families",
     trips: "Group tours · Weddings · Corporate travel",
     image: tempoImg,
+  },
+  {
+    name: "Force Urbania",
+    models: "Luxury Van · 10 / 13 / 17 Seater",
+    passengers: "Up to 17 Passengers",
+    luggage: "Spacious rear luggage area",
+    ac: "Roof-mounted Air Conditioning",
+    fuel: "Diesel",
+    bestFor: "Premium group travel",
+    trips: "Family tours · Weddings · Corporate groups",
+    image: urbaniaImg,
   },
   {
     name: "Luxury Vehicle",
