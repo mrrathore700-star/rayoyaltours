@@ -111,7 +111,7 @@ const Experiences = () => {
     <main style={{ background: "#FFF8F0" }}>
       <SEO
         title="Rajasthan Experiences | Camel Safari, Heritage Walks, Food Tours & More"
-        description="Discover authentic Rajasthan experiences including camel safaris, village visits, food walks, heritage tours, wildlife adventures, cultural workshops and more with Heritage Jaipur Travels."
+        description="Authentic Rajasthan experiences — camel safaris, village visits, food walks, heritage tours, wildlife safaris and cultural workshops. Book with locals."
         path="/experiences"
         image={heroPalace}
         jsonLd={jsonLd}

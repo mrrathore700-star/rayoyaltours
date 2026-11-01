@@ -30,8 +30,8 @@ const spots = [
 const Sightseeing = () => (
   <main className="lux-cream-bg">
     <SEO
-      title="Jaipur Sightseeing | Private Tours of the Pink City"
-      description="Explore Jaipur's forts, palaces, stepwells and bazaars with private local specialists — quiet mornings at Amber, sunsets at Nahargarh, hidden lanes beyond the guidebook."
+      title="Jaipur Sightseeing Tour by Car with Driver | Pink City"
+      description="Full-day Jaipur sightseeing taxi with driver — Amber Fort, City Palace, Hawa Mahal, Nahargarh & bazaars. Private local tours. Free quote on WhatsApp."
       path="/sightseeing"
     />
 

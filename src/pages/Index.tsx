@@ -25,7 +25,7 @@ const Index = () => {
     <main className="lux-cream-bg">
       <SEO
         title="Private Rajasthan Tour Packages with Driver | Heritage Jaipur Travels"
-        description="Family-run Jaipur travel company with 20+ years experience. Private Rajasthan & Golden Triangle tours with your own chauffeur. Rated 4.8★ on Google. Free quote on WhatsApp."
+        description="Family-run Jaipur travel agency, 20+ years. Private Rajasthan & Golden Triangle tour packages with driver. Rated 4.8★ on Google. Free quote on WhatsApp."
         path="/"
         jsonLd={travelAgencySchema}
       />

@@ -7,7 +7,7 @@ import heroPalace from "@/assets/hero-palace.jpg";
 const Reviews = () => (
   <main className="lux-cream-bg">
     <SEO
-      title="Reviews | Heritage Jaipur Travels"
+      title="Customer Reviews & Ratings | Heritage Jaipur Travels"
       description="Read verified Google reviews from travellers who explored Rajasthan with Kailash and the Heritage Jaipur Travels team — over 20 years of trusted, personal service."
       path="/reviews"
     />

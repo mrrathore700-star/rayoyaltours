@@ -297,8 +297,8 @@ const breadcrumbSchema = {
 const Taxi = () => (
   <main className="lux-cream-bg">
     <SEO
-      title="Jaipur Taxi Service | Private Chauffeur & Rajasthan Cabs"
-      description="Private taxi and chauffeur service in Jaipur — airport transfers, outstation cabs, sedans, SUVs, Innova Crysta and Tempo Travellers for Rajasthan tours. Transparent pricing, licensed drivers, 24/7 support."
+      title="Taxi Service in Jaipur | Airport, Local & Outstation Cabs"
+      description="Taxi service in Jaipur — airport transfers, local sightseeing & outstation cabs. Sedan, Ertiga, Innova Crysta, Tempo Traveller. 24/7, licensed drivers."
       path="/taxi"
       jsonLd={[serviceSchema, localBusinessSchema, faqSchema, breadcrumbSchema]}
     />
