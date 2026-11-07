@@ -70,6 +70,8 @@ const SightseeingEnquiryForm = () => {
       "Hello Heritage Jaipur Travels,",
       "I have submitted a private Jaipur sightseeing enquiry.",
       `Name: ${values.name.trim() || "Not provided"}`,
+      `WhatsApp: ${phone || "Not provided"}`,
+      `Email: ${values.email || "Not provided"}`,
       `Travel date: ${values.date || "Flexible"}`,
       `Guests: ${values.travelers || "Not specified"}`,
       `Vehicle preference: ${values.vehicle || "Please advise"}`,

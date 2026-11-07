@@ -186,16 +186,6 @@ const faqs = [
   },
 ];
 
-const faqSchema = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  mainEntity: faqs.map(({ q, a }) => ({
-    "@type": "Question",
-    name: q,
-    acceptedAnswer: { "@type": "Answer", text: a },
-  })),
-};
-
 const attractionsSchema = {
   "@context": "https://schema.org",
   "@type": "ItemList",
@@ -214,7 +204,7 @@ const Sightseeing = () => (
       title={pageTitle}
       description={pageDescription}
       path="/sightseeing"
-      jsonLd={[faqSchema, attractionsSchema]}
+      jsonLd={attractionsSchema}
     />
 
     <LuxHero
@@ -287,10 +277,19 @@ const Sightseeing = () => (
                       <h3 className="font-display text-lg font-semibold text-foreground">Plan your visit</h3>
                       <p className="mt-1 text-sm leading-relaxed text-muted-foreground">{attraction.planning}</p>
                     </div>
+                    <div>
+                      <h3 className="font-display text-lg font-semibold text-foreground">Best time and access</h3>
+                      <p className="mt-1 text-sm leading-relaxed text-muted-foreground">{attraction.bestTime} {attraction.access}</p>
+                    </div>
                     <p className="flex gap-2 rounded-sm border-l-2 border-primary/60 bg-background/60 px-3 py-2 text-sm leading-relaxed text-muted-foreground">
                       <TicketCheck className="mt-0.5 h-4 w-4 shrink-0 text-primary" aria-hidden="true" />
                       <span>{attraction.visitorNote}</span>
                     </p>
+                    {attraction.officialLink && (
+                      <a href={attraction.officialLink.href} target="_blank" rel="noopener noreferrer" className="inline-flex items-center text-sm font-medium text-primary underline-offset-4 hover:underline">
+                        Check {attraction.officialLink.label}
+                      </a>
+                    )}
                   </div>
                   <a
                     href={`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`}
