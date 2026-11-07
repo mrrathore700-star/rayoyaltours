@@ -29,15 +29,33 @@ const WHATSAPP_NUMBER = "919887688843";
 const pageTitle = "Jaipur Sightseeing Guide | Top Monuments & Private Tours";
 const pageDescription = "Explore Jaipur's famous forts, palaces and monuments with our detailed sightseeing guide. Book a private Jaipur tour by car with Heritage Jaipur Travels.";
 
-const attractions = [
+interface Attraction {
+  image: string;
+  title: string;
+  location: string;
+  duration: string;
+  overview: string;
+  highlights: string;
+  bestTime?: string;
+  access?: string;
+  officialLink?: { label: string; href: string };
+  planning: string;
+  visitorNote: string;
+  illustrativeImage?: boolean;
+}
+
+const attractions: Attraction[] = [
   {
     image: amberFort,
     title: "Amber Fort",
     location: "Amer, north of Jaipur",
     duration: "Allow 2–3 hours",
     overview: "Set above Maota Lake, Amber Fort is a hilltop palace complex of courtyards, gateways and richly decorated rooms. The fort grew under Raja Man Singh I and later Kachwaha rulers, combining Rajput forms with Mughal-influenced details.",
-    highlights: "Look for Ganesh Pol, the audience courtyards, mirrored decoration in Sheesh Mahal and views toward Maota Lake. Each courtyard gives a different sense of how the palace handled public, ceremonial and private life.",
-    planning: "Begin earlier in the day if Amber is a priority, then pair it with nearby Panna Meena ka Kund and Jaigarh Fort if time and mobility allow. The complex has slopes, steps and uneven historic surfaces; visitors who need step-free access should confirm routes and assistance before arrival.",
+    highlights: "Look for Ganesh Pol, Diwan-e-Aam, Diwan-e-Khas, mirrored decoration in Sheesh Mahal, the palace courtyards and views toward Maota Lake. Each space gives a different sense of how the palace handled public, ceremonial and private life.",
+    bestTime: "Arrive earlier in the day for cooler walking and softer light around Maota Lake. The fort is outdoors and can feel hot in warmer months.",
+    access: "Expect slopes, steps and uneven historic surfaces. Families with small children and visitors with limited mobility should confirm the route and available assistance; step-free access is not assumed.",
+    officialLink: { label: "Rajasthan monument ticket portal", href: "https://obms-tourist.rajasthan.gov.in/place-details/Amber-Fort" },
+    planning: "Begin earlier in the day if Amber is a priority, then pair it with nearby Panna Meena ka Kund and Jaigarh Fort if time and mobility allow.",
     visitorNote: "Fort entry, opening hours, ticket categories and camera rules can change. Check the official ticketing source before setting out; a vehicle or guide does not automatically include monument admission.",
   },
   {
@@ -46,9 +64,12 @@ const attractions = [
     location: "The ridge above Amber Fort",
     duration: "Allow 1½–2 hours",
     overview: "Jaigarh is a fortified hilltop complex associated with the defence of the Amber region. Its strong walls, gateways and elevated position explain its strategic role as well as its connection to the palace below.",
-    highlights: "Explore the fort walls, watch points, water-storage features and museum displays. The Jaivana cannon is a major landmark within the complex; it is best understood as a historic artillery piece rather than a record-breaking claim without context.",
+    highlights: "Explore the fort walls, watchtowers, water-storage features and museum displays. The Jaivana cannon is a major landmark within the complex; it is best understood as a historic artillery piece rather than a record-breaking claim without context.",
+    bestTime: "Morning is usually more comfortable for walking the exposed ramparts; visibility and photography depend on weather and haze.",
+    access: "The hilltop fort includes uneven historic routes and open ramparts. Keep children close near walls and confirm accessibility needs before booking a visit.",
+    officialLink: { label: "Jaigarh visitor information", href: "https://www.jaigarh.co/visit" },
     planning: "Its uphill setting makes this a natural extension of an Amber Fort day. Allow time for the terrain, weather and the drive between sites, and check what areas are open before visiting.",
-    visitorNote: "The fort publishes visitor details and ticket information on its official site. Hours, last entry, rates and concessions may change, so confirm them before travel.",
+    visitorNote: "The visitor page lists daily hours and ticket information. Hours, last entry, rates and concessions may change, so confirm them before travel.",
   },
   {
     image: nahargarhFort,
@@ -56,8 +77,11 @@ const attractions = [
     location: "Aravalli hills overlooking Jaipur",
     duration: "Allow 1½–2 hours",
     overview: "Built during the reign of Sawai Jai Singh II, Nahargarh formed part of the defensive landscape around Jaipur. The fort looks over the city from the Aravalli ridge and offers a striking contrast between its quiet historic courtyards and the urban view below.",
-    highlights: "Madhavendra Bhawan is known for its connected suites and painted interiors. Ramparts and viewpoints open out over Jaipur; visibility depends on weather, haze and the time of day.",
-    planning: "Many visitors make this a separate afternoon or sunset-facing drive. Rajasthan Tourism notes that public transport is not available to the fort, so arrange a return vehicle in advance and allow extra time on the hill road.",
+    highlights: "Madhavendra Bhawan is known for its connected palace suites and painted interiors. Ramparts and viewpoints open out over Jaipur; visibility depends on weather, haze and the time of day.",
+    bestTime: "Late afternoon offers softer light and a chance to see the city as it changes toward evening. The view is weather-dependent.",
+    access: "Expect an uphill road and walking on uneven fort surfaces. Rajasthan Tourism notes that public transport is not available to the fort; arrange a return vehicle, and check family or mobility needs before visiting.",
+    officialLink: { label: "Rajasthan Tourism fort guide", href: "https://www.tourism.rajasthan.gov.in/nahargarh-fort.html" },
+    planning: "Many visitors make this a separate afternoon or sunset-facing drive. Arrange a return vehicle in advance and allow extra time on the hill road.",
     visitorNote: "Check current fort hours, entry arrangements and road conditions before leaving. Sunset views are weather-dependent, and the drive back can take longer in busy periods.",
   },
   {
@@ -66,7 +90,9 @@ const attractions = [
     location: "Man Sagar Lake, on the Amber route",
     duration: "Allow 15–30 minutes for a viewpoint stop",
     overview: "Jal Mahal, or the Water Palace, sits in Man Sagar Lake against the Aravalli hills. From the public lakeside promenade, visitors can appreciate its pale façade and the changing reflections across the water.",
-    highlights: "The best-known experience is the exterior view from the shore, especially when the light is soft and the lake is calm. The palace itself should not be confused with the public photo stop.",
+    highlights: "The palace is often described as having five levels; when lake water is high, the lower storeys may be submerged. The best-known experience for visitors is the exterior view from shore, not palace entry.",
+    bestTime: "Soft morning or late-afternoon light can flatter the water and façade; reflections vary with weather and lake conditions.",
+    access: "The public viewpoint is a short outdoor stop. Surfaces and crowds can vary; keep children with an adult near the lakeside and follow posted directions.",
     planning: "It fits naturally as a brief pause while travelling between central Jaipur and Amber. Keep to public viewpoints and follow posted directions around the promenade.",
     visitorNote: "Do not assume interior palace access, boat access or unrestricted lakeside access. Current access rules and any restrictions should be checked locally; this guide describes the public-facing photo stop only.",
   },
@@ -76,6 +102,9 @@ const attractions = [
     location: "Badi Chaupar, Jaipur old city",
     duration: "Allow 45–90 minutes inside; add time for exterior photos",
     overview: "Commissioned by Maharaja Sawai Pratap Singh and designed by Lal Chand Ustad, Hawa Mahal was completed in 1799. Its distinctive five-storey façade is pierced by many small windows, creating a screened edge to the historic city streets.",
+    bestTime: "The façade is often photographed in morning light from across the road. Plan the interior visit during confirmed opening hours and allow extra time for old-city traffic.",
+    access: "The interior has narrow passages and stairs that may be difficult for visitors with limited mobility. Families should keep children close near stairways and crowded viewpoints.",
+    officialLink: { label: "Rajasthan monument ticket portal", href: "https://obms-tourist.rajasthan.gov.in/place-details/Hawa-mahal" },
     highlights: "Inside, ramps, narrow passages and small viewing openings frame the bazaar and street life below. The famous façade is also photographed from across the road, where its full profile is easier to see.",
     planning: "Visit the interior when it is open, then cross to a suitable public viewpoint for the façade. Take care around traffic and use designated crossings in the busy old city.",
     visitorNote: "The official Rajasthan booking portal lists Hawa Mahal, but hours and ticket rates can change. Verify current entry details and photography rules before visiting.",
@@ -86,7 +115,10 @@ const attractions = [
     location: "The heart of Jaipur's walled city",
     duration: "Allow 2–3 hours",
     overview: "Founded as part of Sawai Jai Singh II's new capital, City Palace remains connected to Jaipur's royal family. The complex brings together courtyards, ceremonial gateways, museum spaces and continuing royal residence.",
-    highlights: "Mubarak Mahal, the courtyards, Diwan-i-Khas and the decorated Peacock Gate at Pritam Niwas Chowk are among its best-known features. Museum collections include textiles, arms and objects connected with court life.",
+    highlights: "Mubarak Mahal, the courtyards, Diwan-i-Khas and the decorated Peacock Gate at Pritam Niwas Chowk are among its best-known features. Museum collections include textiles, arms and objects connected with court life; access to Chandra Mahal depends on the tour selected.",
+    bestTime: "A morning visit leaves room to explore the palace galleries at an unhurried pace; check the official visit page for current entry times.",
+    access: "The palace is a large historic complex with walking between courtyards and galleries. Ask about current routes, seating and access support if travelling with seniors or young children.",
+    officialLink: { label: "City Palace visit information", href: "https://citypalace.org/visit" },
     planning: "Choose the museum visit that matches your interests and allow time to move through the palace at an unhurried pace. Some areas and tour types have separate access arrangements.",
     visitorNote: "The official City Palace visitor page lists Museum Tour hours as 9:30 a.m.–6:30 p.m.; access to parts of Chandra Mahal is a separate Royal Tour. Confirm the latest hours, ticket categories and photography rules on the official visit page before travel.",
   },
@@ -96,7 +128,10 @@ const attractions = [
     location: "Beside City Palace in the old city",
     duration: "Allow 60–90 minutes",
     overview: "Built by Sawai Jai Singh II, Jaipur's Jantar Mantar is an astronomical observatory and a UNESCO World Heritage Site. Its large masonry instruments were designed to observe celestial positions and measure time.",
-    highlights: "The Samrat Yantra is the observatory's best-known instrument. Other structures demonstrate different ways of tracking the sun, stars and celestial coordinates; a guide can make their scale and purpose easier to understand.",
+    highlights: "The Samrat Yantra is the observatory's best-known instrument. Other structures demonstrate different ways of tracking the sun, stars and celestial positions; a guide can make their scale and purpose easier to understand.",
+    bestTime: "Visit earlier in the day to explore the outdoor instruments more comfortably. A guided explanation can help make the observatory easier to follow.",
+    access: "The site is largely outdoors with open paths between instruments. Expect sun exposure and some uneven ground; bring water and check route suitability for your group.",
+    officialLink: { label: "Rajasthan Tourism observatory guide", href: "https://www.tourism.rajasthan.gov.in/content/rajasthan-tourism/en/tourist-destinations/jantar-mantar.html" },
     planning: "Pair it with City Palace for a compact old-city heritage visit. A guided explanation is especially useful if you want to understand how the instruments work rather than simply photograph them.",
     visitorNote: "Check current visiting hours, entry tickets and any conservation-related restrictions through the official Rajasthan ticketing source. Instrument access and visitor routes may be adjusted.",
   },
@@ -107,6 +142,8 @@ const attractions = [
     duration: "Allow 20–40 minutes",
     overview: "This historic stepwell is known for its repeated stairways and geometric layout. Like stepwells across Rajasthan, it reflects the practical importance of collecting and reaching water in a dry climate, while its patterned architecture makes it visually distinctive.",
     highlights: "The opposing stair flights and strong symmetry are the main details to notice. The changing light across the steps can make a simple viewpoint photograph especially effective.",
+    bestTime: "Morning light is often gentler for photographs and the open stepwell can feel cooler before midday.",
+    access: "The geometry includes steep steps and edges. Do not climb or descend unless it is expressly permitted; supervise children and follow staff instructions.",
     planning: "It can be combined with Amber Fort, but access conditions may differ from the fort itself. Keep to the areas open to visitors and follow the directions of local staff.",
     visitorNote: "Do not assume that descending or climbing the steps is permitted, or that entry is free. Visitor restrictions and access arrangements can change; confirm them locally and avoid restricted areas.",
   },
@@ -116,7 +153,10 @@ const attractions = [
     location: "Ram Niwas Garden, Jaipur",
     duration: "Allow 1½–2 hours inside",
     overview: "Albert Hall, also known as the Central Museum, is a prominent Indo-Saracenic building in Ram Niwas Garden. Its galleries bring together objects and artworks from Rajasthan and beyond, making it a useful stop for visitors who want context beyond the palaces.",
-    highlights: "Collections span decorative arts, paintings, sculpture, textiles and historical objects; particular displays can change. The illuminated exterior is a separate outdoor viewing opportunity and does not mean the museum galleries are open.",
+    highlights: "Collections span decorative arts, paintings, sculpture, textiles and historical objects; particular displays can change. An Egyptian mummy has been among the museum's notable exhibits, but current display should be confirmed. The illuminated exterior is a separate outdoor viewing opportunity and does not mean the galleries are open.",
+    bestTime: "Choose museum hours for the galleries; the façade is often photographed after dark when illumination is operating. Confirm both separately.",
+    access: "Plan for walking between museum galleries and check current lift, seating and step-free arrangements with the museum if travelling with seniors or visitors with mobility needs.",
+    officialLink: { label: "Rajasthan museum information", href: "https://www.jkk.artandculture.rajasthan.gov.in/content/ArtandCulture/en/ArchaeologyandMuseum/CentralMuseumAlbertHall%2cJaipur.html" },
     planning: "Visit the galleries during confirmed museum hours, or plan a separate exterior photo stop if you are only passing the gardens. Check photography rules for indoor collections.",
     visitorNote: "Museum hours, gallery availability, photography permissions and entry rates are subject to change. Confirm current details through the Rajasthan Department of Archaeology and Museums before visiting.",
   },
@@ -127,6 +167,8 @@ const attractions = [
     duration: "Allow 1–2 hours, or longer for shopping",
     overview: "Jaipur's bazaars are part of the city's living heritage, not a single monument. Streets around the old city are known for jewellery, textiles, footwear, crafts and everyday market activity.",
     highlights: "Johari Bazaar is associated with jewellery, while Bapu Bazaar is known for textiles, footwear and souvenirs. Browse at a relaxed pace, compare quality and ask before photographing shopkeepers or their work.",
+    bestTime: "Late afternoon and early evening can suit a market stroll, but individual shops keep different hours and some close on particular days.",
+    access: "Market lanes may be crowded and uneven. Families should agree on a meeting point; visitors who need step-free access should plan the walking route in advance.",
     planning: "Combine a market walk with Hawa Mahal and the nearby old-city monuments. Opening patterns vary by shop and day; leave enough time for traffic and walking between lanes.",
     visitorNote: "Shop selection and prices vary. Ask for a receipt, clarify materials and return terms before buying, and keep personal belongings secure in crowded lanes.",
   },
@@ -136,7 +178,9 @@ const attractions = [
     location: "Jawahar Circle, south Jaipur",
     duration: "Allow 20–40 minutes",
     overview: "Patrika Gate is a colourful gateway at Jawahar Circle, with painted architectural details that draw on Rajasthan's visual traditions. It offers a contemporary Jaipur photo stop rather than an ancient fort or UNESCO monument.",
-    highlights: "Look closely at the painted columns, arches and decorative panels. The central perspective is popular for photographs; be considerate of other visitors and avoid blocking the passage.",
+    highlights: "Look closely at the painted columns, arches and decorative panels, which draw on regional art and cultural themes. The central perspective is popular for photographs; be considerate of other visitors and avoid blocking the passage.",
+    bestTime: "Morning or late afternoon offers softer natural light for the painted details. Crowds and event activity can affect photography.",
+    access: "This is a public-facing outdoor photo stop with open paved approaches; surfaces and crowd levels may vary. Keep the gateway clear for other visitors.",
     planning: "Its location in south Jaipur makes it easier to pair with an airport-side arrival or departure than with the Amber-area forts. Allow for the cross-city drive when placing it in a full-day route.",
     visitorNote: "Opening hours, any event-related restrictions and visitor rules were not independently confirmed for this guide. Check local notices before travel; do not assume that specific entry charges or unrestricted access apply.",
     illustrativeImage: true,
