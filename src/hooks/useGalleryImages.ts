@@ -1,5 +1,6 @@
 import { useEffect, useState, useCallback } from "react";
 import { supabase } from "@/integrations/supabase/client";
+import { clearPublicMediaUrlCache, getPublicMediaUrls } from "@/lib/publicMediaUrls";
 
 /**
  * Public gallery hook.
@@ -34,37 +35,13 @@ export interface GalleryImage {
   height: number | null;
 }
 
-const SIGN_EXPIRY = 60 * 60 * 24 * 365;
-
-/** Session cache: signed URLs are valid for a year, so reuse them. */
+const IMAGE_CACHE_TTL_MS = 45 * 60 * 1000;
 let cachedImages: GalleryImage[] | null = null;
+let cachedAt = 0;
 let inflight: Promise<GalleryImage[]> | null = null;
 
-const signedUrlCache = new Map<string, string>();
-
 async function signGalleryPaths(paths: string[]): Promise<Map<string, string>> {
-  const map = new Map<string, string>();
-  const missing: string[] = [];
-
-  for (const p of paths) {
-    const cached = signedUrlCache.get(p);
-    if (cached) map.set(p, cached);
-    else missing.push(p);
-  }
-
-  if (missing.length > 0) {
-    const { data: signed } = await supabase.storage
-      .from("gallery")
-      .createSignedUrls(missing, SIGN_EXPIRY);
-    signed?.forEach((s, i) => {
-      if (s.signedUrl) {
-        signedUrlCache.set(missing[i], s.signedUrl);
-        map.set(missing[i], s.signedUrl);
-      }
-    });
-  }
-
-  return map;
+  return getPublicMediaUrls("gallery", paths);
 }
 
 async function fetchGalleryImages(): Promise<GalleryImage[]> {
@@ -159,9 +136,10 @@ export function useGalleryImages() {
   const load = useCallback(async (force = false) => {
     if (force) {
       cachedImages = null;
+      cachedAt = 0;
       inflight = null;
-      signedUrlCache.clear();
-    } else if (cachedImages) {
+      clearPublicMediaUrlCache();
+    } else if (cachedImages && Date.now() - cachedAt < IMAGE_CACHE_TTL_MS) {
       setImages(cachedImages);
       setLoading(false);
       return;
@@ -173,6 +151,7 @@ export function useGalleryImages() {
       inflight = inflight ?? fetchGalleryImages();
       const result = await inflight;
       cachedImages = result;
+      cachedAt = Date.now();
       setImages(result);
     } catch (e) {
       setError(e instanceof Error ? e.message : "Failed to load gallery");
@@ -192,6 +171,7 @@ export function useGalleryImages() {
 /** Clears the session gallery cache (used by the admin UI after edits). */
 export function clearGalleryCache() {
   cachedImages = null;
+  cachedAt = 0;
   inflight = null;
-  signedUrlCache.clear();
+  clearPublicMediaUrlCache();
 }
