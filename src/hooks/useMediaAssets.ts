@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useState } from "react";
 import { supabase } from "@/integrations/supabase/client";
+import { getPublicMediaUrls } from "@/lib/publicMediaUrls";
 
 /**
  * Phase 2 — Central Media Library hook.
@@ -66,8 +67,6 @@ export interface MediaAsset {
 }
 
 
-const SIGN_EXPIRY = 60 * 60 * 24 * 365;
-
 export interface UseMediaAssetsOpts {
   /** If set, only rows where this flag is true are returned. */
   flag?: FeaturedFlag;
@@ -108,7 +107,8 @@ export function useMediaAssets(opts: UseMediaAssetsOpts = {}) {
       return;
     }
 
-    // Sign URLs grouped by bucket (one call covers every variant path).
+    // Public placements use the path-allowlisted signer. The unfiltered query
+    // is used by the admin library and remains protected by admin-only storage RLS.
     const byBucket = new Map<string, Set<string>>();
     rows.forEach((r) => {
       const b = r.bucket || "gallery";
@@ -123,11 +123,17 @@ export function useMediaAssets(opts: UseMediaAssetsOpts = {}) {
     await Promise.all(
       Array.from(byBucket.entries()).map(async ([bucket, pathSet]) => {
         const paths = Array.from(pathSet);
+        if (flag && bucket === "gallery") {
+          const signedUrls = await getPublicMediaUrls(bucket, paths);
+          signedUrls.forEach((signedUrl, path) => urlByKey.set(`${bucket}|${path}`, signedUrl));
+          return;
+        }
+
         const { data: signed } = await supabase.storage
           .from(bucket)
-          .createSignedUrls(paths, SIGN_EXPIRY);
-        signed?.forEach((s, i) => {
-          if (s.signedUrl) urlByKey.set(`${bucket}|${paths[i]}`, s.signedUrl);
+          .createSignedUrls(paths, 60 * 60);
+        signed?.forEach((item, i) => {
+          if (item.signedUrl) urlByKey.set(`${bucket}|${paths[i]}`, item.signedUrl);
         });
       }),
     );

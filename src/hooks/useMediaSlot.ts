@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { supabase } from "@/integrations/supabase/client";
+import { getPublicMediaUrls } from "@/lib/publicMediaUrls";
 
 /**
  * Phase 1 Media Foundation — slot resolver hook.
@@ -27,12 +28,14 @@ export interface ResolvedMedia {
   focalY: number | null;
 }
 
-const SIGN_EXPIRY = 60 * 60 * 24 * 365; // 1 year, matches gallery system
-const cache = new Map<string, ResolvedMedia | null>();
+const CACHE_TTL_MS = 45 * 60 * 1000;
+const cache = new Map<string, { media: ResolvedMedia | null; expiresAt: number }>();
 const inflight = new Map<string, Promise<ResolvedMedia | null>>();
 
 async function resolveSlot(slotKey: string): Promise<ResolvedMedia | null> {
-  if (cache.has(slotKey)) return cache.get(slotKey) ?? null;
+  const cached = cache.get(slotKey);
+  if (cached && cached.expiresAt > Date.now()) return cached.media;
+  if (cached) cache.delete(slotKey);
   if (inflight.has(slotKey)) return inflight.get(slotKey)!;
 
   const p = (async (): Promise<ResolvedMedia | null> => {
@@ -45,7 +48,7 @@ async function resolveSlot(slotKey: string): Promise<ResolvedMedia | null> {
       .maybeSingle();
 
     if (error || !data || !data.media_assets) {
-      cache.set(slotKey, null);
+      cache.set(slotKey, { media: null, expiresAt: Date.now() + CACHE_TTL_MS });
       return null;
     }
 
@@ -70,18 +73,17 @@ async function resolveSlot(slotKey: string): Promise<ResolvedMedia | null> {
         ) as string[],
       ),
     );
-    const { data: signedList, error: signErr } = await supabase.storage
-      .from(bucket)
-      .createSignedUrls(variantPaths, SIGN_EXPIRY);
-
-    const urlByPath = new Map<string, string>();
-    signedList?.forEach((s, i) => {
-      if (s.signedUrl) urlByPath.set(variantPaths[i], s.signedUrl);
-    });
+    let urlByPath: Map<string, string>;
+    try {
+      urlByPath = await getPublicMediaUrls(bucket, variantPaths);
+    } catch {
+      cache.set(slotKey, { media: null, expiresAt: Date.now() + CACHE_TTL_MS });
+      return null;
+    }
     const mainUrl = urlByPath.get(asset.image_path) ?? "";
 
-    if (signErr || !mainUrl) {
-      cache.set(slotKey, null);
+    if (!mainUrl) {
+      cache.set(slotKey, { media: null, expiresAt: Date.now() + CACHE_TTL_MS });
       return null;
     }
 
@@ -108,7 +110,7 @@ async function resolveSlot(slotKey: string): Promise<ResolvedMedia | null> {
       focalX: asset.focal_x,
       focalY: asset.focal_y,
     };
-    cache.set(slotKey, resolved);
+    cache.set(slotKey, { media: resolved, expiresAt: Date.now() + CACHE_TTL_MS });
     return resolved;
   })();
 
@@ -122,7 +124,9 @@ async function resolveSlot(slotKey: string): Promise<ResolvedMedia | null> {
 
 export function useMediaSlot(slotKey: string | undefined | null) {
   const [media, setMedia] = useState<ResolvedMedia | null>(
-    slotKey ? cache.get(slotKey) ?? null : null,
+    slotKey && (cache.get(slotKey)?.expiresAt ?? 0) > Date.now()
+      ? cache.get(slotKey)?.media ?? null
+      : null,
   );
   const [loading, setLoading] = useState<boolean>(
     !!slotKey && !cache.has(slotKey),
@@ -135,8 +139,9 @@ export function useMediaSlot(slotKey: string | undefined | null) {
       setLoading(false);
       return;
     }
-    if (cache.has(slotKey)) {
-      setMedia(cache.get(slotKey) ?? null);
+    const cached = cache.get(slotKey);
+    if (cached && cached.expiresAt > Date.now()) {
+      setMedia(cached.media);
       setLoading(false);
       return;
     }

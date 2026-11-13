@@ -1,0 +1,1 @@
+DROP POLICY IF EXISTS "Public can view gallery images" ON storage.objects;

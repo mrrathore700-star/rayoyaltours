@@ -1,1 +1,2 @@
 Keep page-specific enquiry forms in focused components and reuse the shared enquiry submission and lead-tracking utilities so success reflects a saved enquiry.
+Serve public gallery/media images through short-lived signed URLs limited to explicitly published asset paths; keep the gallery bucket private and admin file operations protected by storage RLS.
