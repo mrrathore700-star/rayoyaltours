@@ -36,6 +36,13 @@
       "when": 1792070939658,
       "tag": "0004_create_enquiries",
       "breakpoints": true
+    },
+    {
+      "idx": 5,
+      "version": "7",
+      "when": 1794564322668,
+      "tag": "0005_restrict_public_gallery_storage_reads",
+      "breakpoints": true
     }
   ]
 }
