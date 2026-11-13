@@ -105,7 +105,7 @@ const attractions: Attraction[] = [
     bestTime: "The façade is often photographed in morning light from across the road. Plan the interior visit during confirmed opening hours and allow extra time for old-city traffic.",
     access: "The interior has narrow passages and stairs that may be difficult for visitors with limited mobility. Families should keep children close near stairways and crowded viewpoints.",
     officialLink: { label: "Rajasthan monument ticket portal", href: "https://obms-tourist.rajasthan.gov.in/place-details/Hawa-mahal" },
-    highlights: "Inside, ramps, narrow passages and small viewing openings frame the bazaar and street life below. The famous façade is also photographed from across the road, where its full profile is easier to see.",
+    highlights: "Interior galleries and viewing openings frame the bazaar and street life below. The famous façade is also photographed from across the road, where its full profile is easier to see.",
     planning: "Visit the interior when it is open, then cross to a suitable public viewpoint for the façade. Take care around traffic and use designated crossings in the busy old city.",
     visitorNote: "The official Rajasthan booking portal lists Hawa Mahal, but hours and ticket rates can change. Verify current entry details and photography rules before visiting.",
   },
