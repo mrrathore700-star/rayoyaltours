@@ -36,8 +36,8 @@ interface Attraction {
   duration: string;
   overview: string;
   highlights: string;
-  bestTime?: string;
-  access?: string;
+  bestTime: string;
+  access: string;
   officialLink?: { label: string; href: string };
   planning: string;
   visitorNote: string;
@@ -101,7 +101,7 @@ const attractions: Attraction[] = [
     title: "Hawa Mahal",
     location: "Badi Chaupar, Jaipur old city",
     duration: "Allow 45–90 minutes inside; add time for exterior photos",
-    overview: "Commissioned by Maharaja Sawai Pratap Singh and designed by Lal Chand Ustad, Hawa Mahal was completed in 1799. Its distinctive five-storey façade is pierced by many small windows, creating a screened edge to the historic city streets.",
+    overview: "Commissioned by Maharaja Sawai Pratap Singh and designed by Lal Chand Ustad, Hawa Mahal was completed in 1799. Its distinctive five-storey façade is commonly described as having 953 small jharokha windows, creating a screened edge to the historic city streets.",
     bestTime: "The façade is often photographed in morning light from across the road. Plan the interior visit during confirmed opening hours and allow extra time for old-city traffic.",
     access: "The interior has narrow passages and stairs that may be difficult for visitors with limited mobility. Families should keep children close near stairways and crowded viewpoints.",
     officialLink: { label: "Rajasthan monument ticket portal", href: "https://obms-tourist.rajasthan.gov.in/place-details/Hawa-mahal" },
