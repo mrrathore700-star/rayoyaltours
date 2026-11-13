@@ -123,19 +123,18 @@ export function useMediaAssets(opts: UseMediaAssetsOpts = {}) {
     await Promise.all(
       Array.from(byBucket.entries()).map(async ([bucket, pathSet]) => {
         const paths = Array.from(pathSet);
-        const { data: signed } = await supabase.storage
-          ...(flag
-            ? await getPublicMediaUrls(bucket, paths).then((urls) => ({ data: [...urls.entries()] }))
-            : await supabase.storage.from(bucket).createSignedUrls(paths, 60 * 60));
-        if (flag) {
-          (signed as { data: [string, string][] }).data.forEach(([path, signedUrl]) => {
-            urlByKey.set(`${bucket}|${path}`, signedUrl);
-          });
-        } else {
-          (signed as Awaited<ReturnType<ReturnType<typeof supabase.storage.from>['createSignedUrls']>>).data?.forEach((item, i) => {
-            if (item.signedUrl) urlByKey.set(`${bucket}|${paths[i]}`, item.signedUrl);
-          });
+        if (flag && bucket === "gallery") {
+          const signedUrls = await getPublicMediaUrls(bucket, paths);
+          signedUrls.forEach((signedUrl, path) => urlByKey.set(`${bucket}|${path}`, signedUrl));
+          return;
         }
+
+        const { data: signed } = await supabase.storage
+          .from(bucket)
+          .createSignedUrls(paths, 60 * 60);
+        signed?.forEach((item, i) => {
+          if (item.signedUrl) urlByKey.set(`${bucket}|${paths[i]}`, item.signedUrl);
+        });
       }),
     );
 

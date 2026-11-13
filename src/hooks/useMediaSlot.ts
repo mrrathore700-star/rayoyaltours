@@ -124,7 +124,9 @@ async function resolveSlot(slotKey: string): Promise<ResolvedMedia | null> {
 
 export function useMediaSlot(slotKey: string | undefined | null) {
   const [media, setMedia] = useState<ResolvedMedia | null>(
-    slotKey ? cache.get(slotKey)?.media ?? null : null,
+    slotKey && (cache.get(slotKey)?.expiresAt ?? 0) > Date.now()
+      ? cache.get(slotKey)?.media ?? null
+      : null,
   );
   const [loading, setLoading] = useState<boolean>(
     !!slotKey && !cache.has(slotKey),
