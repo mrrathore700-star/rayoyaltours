@@ -624,7 +624,7 @@ const Taxi = () => (
           eyebrow="Customer Reviews"
           title="What Travellers Say About Our Chauffeurs"
         />
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-6xl mx-auto">
           {reviews.map((r, i) => (
             <figure key={i} className="p-8 bg-white/80 border border-[#C9A84C]/25 rounded-sm">
               <div className="flex gap-1 mb-4">
@@ -637,7 +637,7 @@ const Taxi = () => (
               </blockquote>
               <figcaption className="text-sm">
                 <div className="font-display font-semibold text-[#6E0F1F]">{r.name}</div>
-                <div className="text-[#0F0F0F]/60">{r.country} · {r.vehicle}</div>
+                <div className="text-[#0F0F0F]/60">Verified Google Review</div>
               </figcaption>
             </figure>
           ))}
