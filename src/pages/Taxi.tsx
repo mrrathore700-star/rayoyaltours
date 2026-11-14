@@ -216,10 +216,9 @@ const stats = [
 ];
 
 const reviews = [
-  { name: "Emily & James", country: "United Kingdom", vehicle: "Toyota Innova Crysta", quote: "Our chauffeur was punctual, courteous and knew Rajasthan inside out. The car was spotless and comfortable for our 10-day trip.", rating: 5 },
-  { name: "Marc Dupont", country: "France", vehicle: "Sedan", quote: "Late-night airport pickup, driver waiting with a name board, straight to the hotel. Exactly the reliable service we needed.", rating: 5 },
-  { name: "The Müller Family", country: "Germany", vehicle: "Tempo Traveller (12-seater)", quote: "Travelled with our extended family. Plenty of space, cool air conditioning and a very patient driver — highly recommended.", rating: 5 },
-  { name: "Priya Menon", country: "India", vehicle: "Ertiga SUV", quote: "Transparent pricing and no surprises. The driver knew every fort and stopped whenever we wanted photos.", rating: 5 },
+  { name: "Muriel Chaume", country: "", vehicle: "", quote: "A pleasure to travel with Kailash: perfect driving in all circumstances, punctual, discreet, and elegant…the perfect driver to show you the beauties of North India! 👌🏼", rating: 5 },
+  { name: "Yuliya Masyukova", country: "", vehicle: "", quote: "Me and my Mom travelled through Golden Triangle and absolutely loved Kailash services! Honest, always in time, super friendly. His restaurant and places to visit recommendations worked 100%. Thank you very much for an amazing holidays!", rating: 5 },
+  { name: "Janine Parmenter", country: "", vehicle: "", quote: "My husband and I enjoyed a fantastic experience on our 10 day tour of Rajisthan with Kailash. He is reliable, trustworthy and knowledgable. His English is great and above all I felt 100% safe in the crazy traffic! I would definitely recommend using him as your driver and navigator!!", rating: 5 },
 ];
 
 /* ---------- Schema (JSON-LD) ---------- */
@@ -625,7 +624,7 @@ const Taxi = () => (
           eyebrow="Customer Reviews"
           title="What Travellers Say About Our Chauffeurs"
         />
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-6xl mx-auto">
           {reviews.map((r, i) => (
             <figure key={i} className="p-8 bg-white/80 border border-[#C9A84C]/25 rounded-sm">
               <div className="flex gap-1 mb-4">
@@ -638,7 +637,7 @@ const Taxi = () => (
               </blockquote>
               <figcaption className="text-sm">
                 <div className="font-display font-semibold text-[#6E0F1F]">{r.name}</div>
-                <div className="text-[#0F0F0F]/60">{r.country} · {r.vehicle}</div>
+                <div className="text-[#0F0F0F]/60">Verified Google Review</div>
               </figcaption>
             </figure>
           ))}
