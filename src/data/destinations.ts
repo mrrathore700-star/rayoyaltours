@@ -23,6 +23,7 @@ export interface Destination {
   metaTitle: string;
   metaDescription: string;
   heroImage: string;
+  heroImageAlt: string;
   heroEyebrow: string;
   heroTitle: string;
   heroSubtitle: string;
@@ -49,6 +50,7 @@ export const destinations: Destination[] = [
     metaDescription:
       "Plan a Jaipur trip with this guide to Amber Fort, palaces, markets, local food, the best season to visit and a practical 2–3 day itinerary.",
     heroImage: jaipurDestination,
+    heroImageAlt: "Amber Fort above Maota Lake in Jaipur, Rajasthan",
     heroEyebrow: "Destination Guide",
     heroTitle: "Jaipur — The Pink City of Royal Rajasthan",
     heroSubtitle:
@@ -92,9 +94,9 @@ export const destinations: Destination[] = [
     recommendedDuration: "2 – 3 Days",
     durationNote: "Most travellers spend 2 nights in Jaipur on the Golden Triangle, or 3 nights for a deeper heritage experience with day trips to Samode or Abhaneri.",
     itinerary: [
-      { day: "Day 1", title: "Arrival & Old City", text: "Arrive in Jaipur, check in to your heritage hotel, afternoon walking tour of Hawa Mahal, City Palace and Jantar Mantar, sunset at Nahargarh Fort, royal dinner." },
-      { day: "Day 2", title: "Amber Fort & Artisans", text: "Morning at Amber Fort and Panna Meena Stepwell, lunch at 1135 AD, afternoon block-printing workshop in Bagru, evening at Chokhi Dhani cultural village." },
-      { day: "Day 3", title: "Hidden Jaipur", text: "Optional day — visit Galta Ji 'Monkey Temple', Jaigarh Fort, gem and textile workshops, and a vintage car drive through the Pink City." },
+      { day: "Day 1", title: "Old City & Observatory", text: "After arrival and check-in, focus on the walkable old-city sights: Hawa Mahal, City Palace and Jantar Mantar, allowing time for museum rooms and breaks. Finish with dinner nearby; save Nahargarh for a separate evening when road and access conditions suit." },
+      { day: "Day 2", title: "Amber & the Hill Forts", text: "Spend the morning at Amber Fort and Panna Meena Ka Kund, then choose either Jaigarh or a relaxed return to the city for lunch. Add a craft workshop only if travel time and the artisan's location fit comfortably; Bagru is a separate outing." },
+      { day: "Day 3", title: "Museums, Markets & Temples", text: "Choose a manageable mix such as Albert Hall Museum and the bazaars, or an outing to Galtaji and Patrika Gate. Leave time for traffic, rest and opening schedules rather than trying to cross the city repeatedly." },
     ],
     faqs: [
       { q: "How many days do I need in Jaipur?", a: "Two days cover the highlights; three days allow time for artisan visits, hidden quarters and day trips like Samode or Abhaneri." },
@@ -119,6 +121,7 @@ export const destinations: Destination[] = [
     metaDescription:
       "Plan a Udaipur trip with this guide to City Palace, Lake Pichola, local markets, the best season to visit and a practical 2–3 day itinerary.",
     heroImage: udaipurDestination,
+    heroImageAlt: "Udaipur's Lake Pichola and historic palace skyline, Rajasthan",
     heroEyebrow: "Destination Guide",
     heroTitle: "Udaipur — The Romantic City of Lakes",
     heroSubtitle:
@@ -188,6 +191,7 @@ export const destinations: Destination[] = [
     metaDescription:
       "Plan a Jodhpur trip with this guide to Mehrangarh Fort, Blue City lanes, local food, markets, the best season and a practical two-day itinerary.",
     heroImage: jodhpurDestination,
+    heroImageAlt: "Mehrangarh Fort overlooking Jodhpur's blue-painted old city",
     heroEyebrow: "Destination Guide",
     heroTitle: "Jodhpur — The Magnificent Blue City",
     heroSubtitle:
@@ -256,6 +260,7 @@ export const destinations: Destination[] = [
     metaDescription:
       "Plan a Jaisalmer trip with this guide to the living fort, havelis, Sam and Khuri dunes, desert activities and a practical 2–3 day itinerary.",
     heroImage: jaisalmerDestination,
+    heroImageAlt: "Golden sandstone architecture of Jaisalmer in the Thar Desert",
     heroEyebrow: "Destination Guide",
     heroTitle: "Jaisalmer — The Golden City of the Thar",
     heroSubtitle:
@@ -267,7 +272,7 @@ export const destinations: Destination[] = [
     whyVisit: [
       { title: "Living Sonar Quila", text: "One of very few inhabited forts on earth — a UNESCO-protected golden citadel." },
       { title: "Thar Desert Safaris", text: "Camel rides, jeep safaris and silent dune nights under endless stars." },
-      { title: "Luxury Desert Camps", text: "World-class tented suites at Suján The Serai and Mihir Garh in the dunes." },
+      { title: "Desert Camp Stays", text: "A range of desert camps offer overnight stays near the dunes. Compare each camp's location, facilities, transfers and cultural programme before booking." },
       { title: "Sandstone Architecture", text: "Some of India's most beautiful havelis — Patwon, Salim Singh and Nathmal." },
     ],
     topAttractions: [
@@ -326,6 +331,7 @@ export const destinations: Destination[] = [
     metaDescription:
       "Plan a Ranthambore visit with practical safari guidance, zones 1–10, jeep and canter options, the fort, seasonal access and a sample itinerary.",
     heroImage: ranthamboreDestination,
+    heroImageAlt: "A Bengal tiger in the forest landscape of Ranthambore, Rajasthan",
     heroEyebrow: "Destination Guide",
     heroTitle: "Ranthambore — Where Tigers Roam Royal Ruins",
     heroSubtitle:
@@ -395,6 +401,7 @@ export const destinations: Destination[] = [
     metaDescription:
       "Plan a Pushkar trip with this guide to the sacred lake, temples, markets, Camel Fair dates, local customs and an easy one- or two-day itinerary.",
     heroImage: pushkarDestination,
+    heroImageAlt: "Pushkar's sacred lake, temples and surrounding Aravalli hills",
     heroEyebrow: "Destination Guide",
     heroTitle: "Pushkar — The Sacred Soul of Rajasthan",
     heroSubtitle:
@@ -444,7 +451,7 @@ export const destinations: Destination[] = [
       { q: "Is Pushkar worth visiting?", a: "Yes — Pushkar offers a quieter, more spiritual side of Rajasthan that complements the great fort cities beautifully." },
       { q: "When is the Pushkar Camel Fair?", a: "The fair is held around Kartik Purnima, with dates that vary each year according to the Hindu calendar. Check the confirmed annual dates and programme before booking; accommodation can be in high demand." },
       { q: "How long should I stay in Pushkar?", a: "One night is sufficient outside the fair. During the November fair, two or three nights are recommended." },
-      { q: "Is alcohol available in Pushkar?", a: "Pushkar is a sacred town where alcohol and meat are prohibited. Luxury hotels just outside town serve both." },
+      { q: "Are there local customs to know about in Pushkar?", a: "Pushkar is an important pilgrimage town, and many businesses serve vegetarian food. Ask about local expectations at your accommodation, dress modestly near temples and ghats, and follow signs or guidance around alcohol, footwear and photography." },
       { q: "How do I get to Pushkar?", a: "Pushkar is reached by road from Ajmer, which has rail connections. Jaipur and Jodhpur are also linked by road and rail, but journey times vary with route and traffic; confirm schedules and allow time for the final local transfer." },
       { q: "What should I wear at Pushkar's temples and ghats?", a: "Choose modest clothing, remove footwear where asked and follow signs or local instructions. The ghats are sacred spaces; avoid interrupting rituals and ask before taking photographs." },
       { q: "What can I buy in Pushkar?", a: "Markets offer textiles, embroidered goods, jewellery, leather items and souvenirs. Compare quality, ask about materials, and shop considerately in the town's religious centre." },
